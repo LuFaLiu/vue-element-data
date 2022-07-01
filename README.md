@@ -5,7 +5,7 @@ English | [简体中文](./README-zh.md)
 ## Build Setup
 
 ```bash
-# clone the project
+# clone the project  
 git clone https://github.com/LuFaLiu/vue-element-data.git
 
 # enter the project directory
