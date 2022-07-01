@@ -21,6 +21,17 @@ export default {
       })
     },
 
+    operationDynamicList(data) {
+      return request({
+        url: '/table/operationDynamicList',
+        method: 'post',
+        data,
+        showLoading: false
+      })
+    },
+
+    
+
     getDefaultList(params) {
       return request({
         url: '/table/defaultList',

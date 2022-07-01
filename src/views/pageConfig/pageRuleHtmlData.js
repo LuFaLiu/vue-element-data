@@ -111,8 +111,7 @@ export const htmlData = {
                   row:true,
                   tableParams:true,
                   title:['form.edit'],
-                  btnType:'text',
-                  btnCondition:'title.i18n_title'
+                  btnType:'text'
                 },
                 {
                   componentName:'elButton',
@@ -122,8 +121,7 @@ export const htmlData = {
                   row:true,
                   tableParams:true,
                   title:['form.delete'],
-                  btnType:'text',
-                  btnCondition:'title.i18n_title'
+                  btnType:'text'
                 }
   
               ]
@@ -206,9 +204,7 @@ export const htmlData = {
             model:'paramsData',
             formRule:'paramsDataRules',
             labelWidth:'230px',
-            upladRef:'uploadFile',
-            refName:'paramsDataRef',
-            slotList:[{slotName:'moduleUploadSearchSlot',name:'moduleUploadSlot'}],
+            refName:'formRef',
             childrenNode:[
               {
                 componentName:'elContainer', 
@@ -218,7 +214,7 @@ export const htmlData = {
                   {
                     componentName:'elFormItem',
                     label:'pageRule.componentType',
-                    prop:'',
+                    prop:'componentType',
                     elFormItemCondition:'editMethodUser',
                     childrenNode:[
                       {
@@ -235,14 +231,13 @@ export const htmlData = {
                   {
                     componentName:'elFormItem', 
                     label:'pageRule.componentName',
-                    prop:'',
+                    prop:'componentName',
                     childrenNode:[
                       {
                         componentName:'elInput', 
                         inputCondition:'editMethodUser',
                         vModel:'paramsData.componentName',
                         label:'form.componentName',
-                        prop:'',
                         autocomplete:'off',
                         placeholder:['placeholder.pleaseEnter','pageRule.componentName'],
                         clearable:true
@@ -256,10 +251,8 @@ export const htmlData = {
                     childrenNode:[
                       {
                         componentName:'elInput', 
-                        inputCondition:'editMethodUser',
                         vModel:'paramsData.attributeName',
                         label:'pageRule.attributeName',
-                        prop:'attributeName',
                         autocomplete:'off',
                         placeholder:['placeholder.pleaseEnter','pageRule.attributeName'],
                         clearable:true
@@ -273,10 +266,8 @@ export const htmlData = {
                     childrenNode:[
                       {
                         componentName:'elInput', 
-                        inputCondition:'editMethodUser',
                         vModel:'paramsData.attributeType',
                         label:'pageRule.attributeType',
-                        prop:'attributeType',
                         autocomplete:'off',
                         placeholder:['placeholder.pleaseEnter','pageRule.attributeType'],
                         clearable:true
@@ -293,7 +284,6 @@ export const htmlData = {
                         componentName:'elInput', 
                         vModel:'paramsData.attributeLabel',
                         label:'pageRule.attributeLabel',
-                        prop:'attributeLabel',
                         autocomplete:'off',
                         placeholder:['placeholder.pleaseEnter','pageRule.attributeLabel'],
                         clearable:true
@@ -310,7 +300,6 @@ export const htmlData = {
                         componentName:'elInput', 
                         vModel:'paramsData.attributeModel',
                         label:'pageRule.attributeModel',
-                        prop:'attributeModel',
                         autocomplete:'off',
                         placeholder:['placeholder.pleaseEnter','pageRule.attributeModel'],
                         clearable:true
@@ -334,7 +323,7 @@ export const htmlData = {
                         event:'resetForm',
                         icon:'',
                         params:true,
-                        paramsName:'paramsDataRef',
+                        paramsName:'formRef',
                         elFormStatus:'resetFieldStatus',
                         title:['form.cancel'],
                         ref:'paramsData'
@@ -347,7 +336,7 @@ export const htmlData = {
                         icon:'',
                         params:true,
                         elFormStatus:'resetFieldStatus',
-                        paramsName:'paramsDataRef',
+                        paramsName:'formRef',
                         title:['form.save']
                       }
                     ]  

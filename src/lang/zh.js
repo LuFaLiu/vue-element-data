@@ -207,6 +207,9 @@ export default {
     selectPageComponent:'请选择组件',
     addPageRuleParams:'请新增规则参数',
     multiple:'多选',
+    refName:'ref名称',
+    selectionEvent:'选择事件',
+    inputType:'输入框类型',
 
     //searchFrom
     componentType:'组件类别',
@@ -228,6 +231,17 @@ export default {
     event:'事件名称',
     icon:'图标',
     title:'标题',
+
+
+    //pagination
+    currentChangeName:'当前页事件名称',
+    total:'总条目数',
+    size:'条目个数',
+    current:'当前页',
+    params:'参数',
+    layout:'组件布局',
+    pageSize:'每页显示条目个数',
+    className:'样式类名称',
 
     //table
     tableDataName:'表格数据属性名',
@@ -254,6 +268,7 @@ export default {
     btnType:'按钮类型',
     btnCondition:'操作按钮判断条件',
     condition:'判断条件',
+    
 
     //form
     model:'表单属性名称',

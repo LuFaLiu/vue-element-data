@@ -26,28 +26,37 @@ export default {
     elLevelSelect
   },
   data() {
+
     const validateAttributeName = ((rule,value,callback)=>{
       if(!value){
         const tip = this.$t('placeholder.pleaseEnter') + this.$t('pageRule.attributeName');
         return callback(new Error(tip))
+      }else{
+        callback();
       }
     })
     const validateAttributeType = ((rule,value,callback)=>{
       if(!value){
         const tip = this.$t('placeholder.pleaseEnter') + this.$t('pageRule.attributeType');
         return callback(new Error(tip))
+      }else{
+        callback();
       }
     })
     const validateAttributeLabel = ((rule,value,callback)=>{
       if(!value){
         const tip = this.$t('placeholder.pleaseEnter') + this.$t('pageRule.attributeLabel');
         return callback(new Error(tip))
+      }else{
+        callback();
       }
     })
     const validateAttributeModel = ((rule,value,callback)=>{
       if(!value){
         const tip = this.$t('placeholder.pleaseEnter') + this.$t('pageRule.attributeModel');
         return callback(new Error(tip))
+      }else{
+        callback();
       }
     })
     return {
@@ -91,9 +100,6 @@ export default {
       multipleSelection: [],
       editMethodUser: 0,
       tableHeight: 0,
-      moduleUploadComponentList: [
-        { name: "moduleUpload", id: 1, paramsData: { title: "", url: "" } },
-      ],
       moduleFileIdList:[],
 
       pageAttribute:{
@@ -212,7 +218,7 @@ export default {
 
     handleClose(ref) {
       if (this.editMethodUser == 0) {//Add
-        var resetForm = getVueComponent(this,'$children','$refs','paramsDataRef');
+        var resetForm = getVueComponent(this,'$children','$refs','formRef');
         resetForm.resetFields();
         this.paramsData.referenceName = '';
       }
@@ -224,12 +230,6 @@ export default {
       this.addContentDialog = true;
       //The data is cleared each time the data is added
       this.paramsData = resetObj(this.paramsData);
-      this.moduleUploadComponentList = [];
-      this.moduleUploadComponentList.push({
-        name: "moduleUpload",
-        id: 1,
-        paramsData: { id: 1, title: "", url: "" },
-      });
     },
 
     editContent(row) {
@@ -243,36 +243,19 @@ export default {
     },
 
     submitForm(formName) {
-      var resetForm = getVueComponent(this,'$children','$refs',formName);
+      var that = this;
+      var resetForm = getVueComponent(that,'$children','$refs',formName);
+
       resetForm.validate((valid) => {
-
         if(valid){
-          var that = this;
-          if (that.editMethodUser == 0) {
-
-            /*
-            apiRequest(that,sysUse,'addMethodUse',formDatas,function (e) {
-              if(e == 'success'){
+            that.paramsData.count = that.levelSelectListCount;
+            apiRequestParams(that,pageConfigApi,'operationDynamicList',that.paramsData,function (e) {
+              if(e.code == 200){
                 that.operationSuccess();
               }else {
                 that.addContentDialog = false; 
               }
             })
-            */
-
-          } else {
-
-            /*
-            apiRequest(that,sysUse,'editMethodUse',formDatas,function (e) {
-              if(e == 'success'){
-                that.operationSuccess();
-              }else {
-                that.btnLoading = false; 
-              }
-            })
-            */
-
-          }
         }else{
           return false;
         }

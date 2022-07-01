@@ -694,7 +694,7 @@ const defaultData = Mock.mock({
         {
           attributeName:'operation',
           attributeType:'ruleRadio',
-          attributeLabel:'pageRule.operation',
+          attributeLabel:'form.operation',
           attributeModel:'operation'
         }
       ]
@@ -854,6 +854,23 @@ module.exports = [
     }
   },
   {
+    url: '/table/operationDynamicList',
+    type: 'post',
+    response: config => {
+      if(!config.body.id){
+        config.body.parentId = config.body.componentType;
+      }
+      operateDynamicListInfo(dynamicData.items,config.body);
+      return {
+        code: 200,
+        data: {
+          code: 200,
+          message:'success'
+        }
+      }
+    }
+  },
+  {
     url: '/table/dynamicList',
     type: 'get',
     response: config => {
@@ -881,3 +898,26 @@ module.exports = [
     }
   }
 ]
+
+
+function operateDynamicListInfo(list,data) {
+  _.filter(list,function (item) {
+      if(data.parentId && data.id){ //edit
+          return item.id == data.id ? _.mergeWith(item,data) : operateDynamicListInfo(item.childrenNode,data);
+      }else if(data.parentId){ //add
+          if(item.id == data.parentId){
+            if(item.childrenNode && item.childrenNode.length == 0){
+              data.id = data.count + 1;
+              data.childrenNode = [];
+              return item.childrenNode.push(data);
+            }else{
+              data.id = data.count + 1;
+              item.childrenNode = [];
+              return item.childrenNode .push(data);
+            }
+          }else{
+            return operateDynamicListInfo(item.childrenNode,data);
+          }
+      }
+  }) 
+}

@@ -39,9 +39,9 @@
         :label="$t('form.menuType')" 
       >
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.type === 0" size="small">{{$t('form.directory')}}</el-tag>
-          <el-tag v-else-if="scope.row.type === 1" size="small" type="success">{{$t('form.menu')}}</el-tag>
-          <el-tag v-else-if="scope.row.type === 2" size="small" type="info">{{$t('form.button')}}</el-tag>
+          <el-tag v-if="scope.row.type === 1" size="small">{{$t('form.directory')}}</el-tag>
+          <el-tag v-else-if="scope.row.type === 2" size="small" type="success">{{$t('form.menu')}}</el-tag>
+          <el-tag v-else-if="scope.row.type === 3" size="small" type="info">{{$t('form.button')}}</el-tag>
         </template>
 
       </el-table-column>
@@ -92,18 +92,18 @@
         <el-form-item :label="$t('form.higherMenu')" prop="parentId">
           <el-select v-model="editForm.parentId" clearable :placeholder="$t('tip.withoutSelectingMenu')" @change="testChange(editForm)">
             <template v-for="item in tableData">
-              <el-option :key="item.id" :label="item.name" :value="item.id" />
+              <el-option :key="item.id" :label="$t(item.title)" :value="item.id" />
               <template v-for="child in item.children">
-                <el-option :key="child.id" :label="child.name" :value="child.id">
-                  <span>{{ "- " + child.name }}</span>
+                <el-option :key="child.id" :label="$t(child.title)" :value="child.id">
+                  <span>{{ "- " + $t(child.title) }}</span>
                 </el-option>
               </template>
             </template>
           </el-select>
         </el-form-item>
 
-        <el-form-item :label="$t('form.menuName')" prop="name">
-          <el-input v-model="editForm.name" autocomplete="off" />
+        <el-form-item :label="$t('form.menuName')" prop="title">
+          <el-input v-model="editForm.title" autocomplete="off" />
         </el-form-item>
 
         <el-form-item :label="$t('form.menuIcon')" prop="icon">
@@ -119,9 +119,9 @@
 
         <el-form-item :label="$t('form.menuType')" prop="type">
           <el-radio-group v-model="editForm.type">
-            <el-radio :label="0">{{$t('form.directory')}}</el-radio>
-            <el-radio :label="1">{{$t('form.menu')}}</el-radio>
-            <el-radio :label="2">{{$t('form.button')}}</el-radio>
+            <el-radio :label="1">{{$t('form.directory')}}</el-radio>
+            <el-radio :label="2">{{$t('form.menu')}}</el-radio>
+            <el-radio :label="3">{{$t('form.button')}}</el-radio>
           </el-radio-group>
         </el-form-item>
 
@@ -158,7 +158,7 @@ export default {
   name: 'Menu',
   data() {
     const validateParentId = (rule, value, callback) => {
-      if (!_.isNumber(value) && this.editForm.type !== 0) {
+      if (!_.isNumber(value) && this.editForm.type !== 1) {
         var tip = this.$t('placeholder.pleaseSelect') + this.$t('form.higherMenu');
         callback(new Error(tip))
       } else {
@@ -206,7 +206,7 @@ export default {
         parentId: [
           { validator: validateParentId, trigger: 'blur' }
         ],
-        name: [
+        title: [
           { required: true, validator:validateName, trigger: 'blur' }
         ],
         type: [

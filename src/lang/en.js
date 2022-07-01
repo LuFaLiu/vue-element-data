@@ -207,6 +207,9 @@ export default {
     selectPageComponent:'Please Select Page Component',
     addPageRuleParams:'Please Add Page Rule Params',
     multiple:'Multiple',
+    refName:'RefName',
+    selectionEvent:'Selection Event',
+    inputType:'Input Type',
 
     componentType:'Component Type',
     componentName:'Component Name',
@@ -228,6 +231,16 @@ export default {
     event:'Event',
     icon:'Icon',
     title:'Title',
+
+    //pagination
+    currentChangeName:'Current Change Name',
+    total:'Total',
+    size:'Size',
+    current:'Current',
+    params:'Params',
+    layout:'Layout',
+    pageSize:'Page Size',
+    className:'Class Name',
 
     //table
     tableDataName:'Table Data Name',

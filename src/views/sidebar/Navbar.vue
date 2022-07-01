@@ -113,7 +113,7 @@ export default {
         ],
         newPassword:[
           {required:true,message:this.$t('placeholder.pleaseEnter') + this.$t('common.newPassword'),trigger:'blur'},
-          { min: 6, max: 12, message:this.$t('placeholder.lengthCharacters'), trigger: 'blur' }
+          { min: 6, max: 12, message:this.$t('common.lengthCharacters'), trigger: 'blur' }
         ],
         checkPass:[
           {required:true,validator: validatePass,trigger:'blur'}

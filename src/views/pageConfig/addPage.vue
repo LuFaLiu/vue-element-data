@@ -43,10 +43,10 @@
       <el-dialog
         :title="$t('tip.tip')"
         :visible.sync="dialogVisible"
-        width="70%"
+        width="50%"
         :before-close="handleClose"
       >
-        <el-form ref="form" :model="form" label-width="80px">
+        <el-form ref="form" :model="form" label-width="180px">
           <el-form-item :label="$t('pageRule.componentName')">
             <el-select v-model="form.componentName" :placeholder="$t('placeholder.pleaseSelect') + $t('pageRule.componentName')" @change="selectComponent">
               <el-option
