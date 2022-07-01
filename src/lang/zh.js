@@ -115,6 +115,14 @@ export default {
     activation:'激活',
     isTrue:'是',
     isFalse:'否',
+    directory:'目录',
+    menu:'菜单',
+    button:'按钮',
+    menuName:'菜单名称',
+    menuIcon:'菜单图标',
+    menuType:'菜单类型',
+    menuUrl:'菜单URL',
+    menuComponent:'菜单组件',
     searchReferenceName:'问题分类',
     specificationName:'说明书名称',
     millType:'机型',
@@ -130,6 +138,8 @@ export default {
     specialType:'特效类型',
     ruleParametersLibrary:'规则参数库',
     addRuleParameters:'新增规则参数',
+    higherMenu:'上级菜单',
+    resetMenu:'重置',
 
 
     //账户管理界面
@@ -181,7 +191,9 @@ export default {
     formatPhone:'请填写正确的手机号码',
     formatEmail:'请填写正确的邮箱地址',
     enterPassword:'请再次输入密码',
-    enteredTwiceInconsistent:'两次输入密码不一致!'
+    enteredTwiceInconsistent:'两次输入密码不一致!',
+    deleteCurrentMenu:'是否删除该菜单？',
+    withoutSelectingMenu:'创建目录时可不选择菜单',
   },
   pageRule:{
     preview:'预览效果',

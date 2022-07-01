@@ -3,7 +3,7 @@
 
     <el-form :inline="true">
       <el-form-item>
-        <el-button type="primary"  @click="addMenu">新增</el-button>
+        <el-button type="primary"  @click="addMenu">{{$t('form.add')}}</el-button>
       </el-form-item>
     </el-form>
 
@@ -20,7 +20,7 @@
 
       <el-table-column
         prop="title"
-        label="名称"
+        :label="$t('form.menuName')"
         sortable
         width="180"
       >
@@ -31,56 +31,47 @@
 
       <el-table-column
         prop="icon"
-        label="图标"
+        :label="$t('form.menuIcon')" 
       />
 
       <el-table-column
         prop="type"
-        label="类型"
+        :label="$t('form.menuType')" 
       >
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.type === 0" size="small">目录</el-tag>
-          <el-tag v-else-if="scope.row.type === 1" size="small" type="success">菜单</el-tag>
-          <el-tag v-else-if="scope.row.type === 2" size="small" type="info">按钮</el-tag>
+          <el-tag v-if="scope.row.type === 0" size="small">{{$t('form.directory')}}</el-tag>
+          <el-tag v-else-if="scope.row.type === 1" size="small" type="success">{{$t('form.menu')}}</el-tag>
+          <el-tag v-else-if="scope.row.type === 2" size="small" type="info">{{$t('form.button')}}</el-tag>
         </template>
 
       </el-table-column>
 
       <el-table-column
         prop="path"
-        label="菜单URL"
+        :label="$t('form.menuUrl')" 
       />
       <el-table-column
-        prop="component"
-        label="菜单组件"
+        prop="component" 
+        :label="$t('form.menuComponent')" 
       />
       <el-table-column
-        prop="orderNum"
-        label="排序号"
+        prop="orderNum" 
+        :label="$t('form.sorting')" 
       />
-      <el-table-column
-        prop="statu"
-        label="状态"
-      >
-        <template slot-scope="scope">
-          <el-tag v-if="scope.row.statu === 1" size="small" type="success">正常</el-tag>
-          <el-tag v-else-if="scope.row.statu === 0" size="small" type="danger">禁用</el-tag>
-        </template>
 
-      </el-table-column>
       <el-table-column
         prop="icon"
-        label="操作"
+        :label="$t('form.operation')" 
       >
 
         <template slot-scope="scope">
-          <el-button type="text"   @click="editHandle(scope.row.id)">编辑</el-button>
+          <el-button type="text"   @click="editHandle(scope.row.id)">{{$t('form.edit')}}</el-button>
 
           
           <el-divider  direction="vertical" />
           <template >
-            <el-popconfirm  title="这是一段内容确定删除吗？" @confirm="delHandle(scope.row.id)">
-              <el-button  slot="reference"  type="text">删除</el-button>
+            <el-popconfirm  :title="$t('tip.deleteCurrentMenu')" @confirm="delHandle(scope.row.id)">
+              <el-button  slot="reference"  type="text">{{$t('form.delete')}}</el-button>
             </el-popconfirm>
           </template>
 
@@ -89,18 +80,17 @@
 
     </el-table>
 
-    <!--新增对话框-->
     <el-dialog
-      title="提示"
+      :title="$t('tip.tip')"
       :visible.sync="dialogVisible"
       width="600px"
       :before-close="handleClose"
     >
 
-      <el-form ref="editForm" :model="editForm" :rules="editFormRules" label-width="100px" class="demo-editForm">
+      <el-form ref="editForm" :model="editForm" :rules="editFormRules" label-width="150px" class="demo-editForm">
 
-        <el-form-item label="上级菜单" prop="parentId">
-          <el-select v-model="editForm.parentId" clearable placeholder="创建目录时可不选择菜单" @change="testChange(editForm)">
+        <el-form-item :label="$t('form.higherMenu')" prop="parentId">
+          <el-select v-model="editForm.parentId" clearable :placeholder="$t('tip.withoutSelectingMenu')" @change="testChange(editForm)">
             <template v-for="item in tableData">
               <el-option :key="item.id" :label="item.name" :value="item.id" />
               <template v-for="child in item.children">
@@ -112,43 +102,43 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item label="菜单名称" prop="name" label-width="100px">
+        <el-form-item :label="$t('form.menuName')" prop="name">
           <el-input v-model="editForm.name" autocomplete="off" />
         </el-form-item>
 
-        <el-form-item label="图标" prop="icon" label-width="100px">
+        <el-form-item :label="$t('form.menuIcon')" prop="icon">
           <el-input v-model="editForm.icon" autocomplete="off" />
         </el-form-item>
-        <el-form-item label="菜单URL" prop="path" label-width="100px">
+        <el-form-item :label="$t('form.menuUrl')" prop="path">
           <el-input v-model="editForm.path" autocomplete="off" />
         </el-form-item>
 
-        <el-form-item label="菜单组件" prop="component" label-width="100px">
+        <el-form-item :label="$t('form.menuComponent')" prop="component">
           <el-input v-model="editForm.component" autocomplete="off" />
         </el-form-item>
 
-        <el-form-item label="类型" prop="type" label-width="100px">
+        <el-form-item :label="$t('form.menuType')" prop="type">
           <el-radio-group v-model="editForm.type">
-            <el-radio :label="0">目录</el-radio>
-            <el-radio :label="1">菜单</el-radio>
-            <el-radio :label="2">按钮</el-radio>
+            <el-radio :label="0">{{$t('form.directory')}}</el-radio>
+            <el-radio :label="1">{{$t('form.menu')}}</el-radio>
+            <el-radio :label="2">{{$t('form.button')}}</el-radio>
           </el-radio-group>
         </el-form-item>
 
-        <el-form-item label="状态" prop="status" label-width="100px">
+        <el-form-item :label="$t('form.menuType')" prop="status">
           <el-radio-group v-model="editForm.status">
-            <el-radio :label="0">禁用</el-radio>
-            <el-radio :label="1">正常</el-radio>
+            <el-radio :label="0">{{$t('form.disable')}}</el-radio>
+            <el-radio :label="1">{{$t('form.normal')}}</el-radio>
           </el-radio-group>
         </el-form-item>
 
-        <el-form-item label="排序号" prop="orderNum" label-width="100px">
-          <el-input-number v-model="editForm.orderNum" :min="1" label="排序号">1</el-input-number>
+        <el-form-item :label="$t('form.sorting')" prop="orderNum">
+          <el-input-number v-model="editForm.orderNum" :min="1" :label="$t('form.sorting')">1</el-input-number>
         </el-form-item>
 
         <el-form-item class="submitMenu">
-          <el-button type="primary" @click="submitForm('editForm')">立即创建</el-button>
-          <el-button @click="resetForm('editForm')">重置</el-button>
+          <el-button type="primary" @click="submitForm('editForm')">{{$t('form.save')}}</el-button>
+          <el-button @click="resetForm('editForm')">{{$t('form.resetMenu')}}</el-button>
         </el-form-item>
       </el-form>
 
@@ -169,7 +159,42 @@ export default {
   data() {
     const validateParentId = (rule, value, callback) => {
       if (!_.isNumber(value) && this.editForm.type !== 0) {
-        callback(new Error('请选择上级菜单'))
+        var tip = this.$t('placeholder.pleaseSelect') + this.$t('form.higherMenu');
+        callback(new Error(tip))
+      } else {
+        callback()
+      }
+    }
+    const validateName = (rule, value, callback) => {
+      if (!value) {
+        var tip = this.$t('placeholder.pleaseEnter') + this.$t('form.menuName');
+        callback(new Error(tip))
+      } else {
+        callback()
+      }
+    }
+
+    const validateType = (rule, value, callback) => {
+      if (!value) {
+        var tip = this.$t('placeholder.pleaseSelect') + this.$t('form.menuType');
+        callback(new Error(tip))
+      } else {
+        callback()
+      }
+    }
+    
+    const validateOrderNum = (rule, value, callback) => {
+      if (!value) {
+        var tip = this.$t('placeholder.pleaseWrite') + this.$t('form.sorting');
+        callback(new Error(tip))
+      } else {
+        callback()
+      }
+    }
+    const validateStatu = (rule, value, callback) => {
+      if (!value) {
+        var tip = this.$t('placeholder.pleaseSelect') + this.$t('form.statu');
+        callback(new Error(tip))
       } else {
         callback()
       }
@@ -182,16 +207,16 @@ export default {
           { validator: validateParentId, trigger: 'blur' }
         ],
         name: [
-          { required: true, message: '请输入名称', trigger: 'blur' }
+          { required: true, validator:validateName, trigger: 'blur' }
         ],
         type: [
-          { required: true, message: '请选择状态', trigger: 'blur' }
+          { required: true, validator:validateType, trigger: 'blur' }
         ],
         orderNum: [
-          { required: true, message: '请填入排序号', trigger: 'blur' }
+          { required: true, validator:validateOrderNum, trigger: 'blur' }
         ],
         statu: [
-          { required: true, message: '请选择状态', trigger: 'blur' }
+          { required: true, validator:validateStatu, trigger: 'blur' }
         ]
       },
       tableData: []
@@ -201,7 +226,7 @@ export default {
     this.getMenuTree();
   },
   methods: {
-    //新增菜单
+    
     addMenu(){
       this.dialogVisible = true;
       this.editForm = resetObj(this.editForm);
@@ -225,20 +250,20 @@ export default {
          sysMenuApi.operateMockMenu(submitForm).then(res => {
             this.$message({
               showClose: true,
-              message: '恭喜你，操作成功',
+              message: this.$t('tip.success'),
               type: 'success',
               duration:500,
               onClose: () => {
                 this.getMenuTree();
-                getSysMenu(); //重新属性路由列表
-                this.$store.commit('resetState'); //清除已有的菜单选中状态(已有选中状态会与新菜单列表匹配错误)
-                //针对当前菜单做选中状态
+                getSysMenu(); //Obtain the route list again
+                this.$store.commit('resetState'); //Clear existing menu selection status (existing selection status will not match the new menu list)
+                //Select status for the current menu
                 var routeList = this.$route.name.split(':');
-                var currentRouteType = routeList[0] + ':' + routeList[1] + ':list'; //有子菜单的父菜单命名后缀都为:list
-                var currentRouterList = this.$router.options.routes[0].children; //取动态可访问的子路由
-                var tab = _.filter(currentRouterList,['name',currentRouteType]); //匹配父菜单信息
-                if(tab.length > 0){ //存在子路由
-                  this.$store.commit('addTab', tab[0]); //设置子菜单归属的父菜单的选中回显
+                var currentRouteType = routeList[0] + ':' + routeList[1] + ':list'; //Parent menus that have submenus are named with the suffix :list
+                var currentRouterList = this.$router.options.routes[0].children; //
+                var tab = _.filter(currentRouterList,['name',currentRouteType]); //Get dynamically accessible child routes
+                if(tab.length > 0){ //There are child routes
+                  this.$store.commit('addTab', tab[0]); //The parent menu to which the submenu belongs is displayed
                 }
               }
             })
@@ -276,7 +301,7 @@ export default {
       sysMenuApi.deleteMenu(id).then(res => {
         this.$message({
           showClose: true,
-          message: '恭喜你，操作成功',
+          message: this.$t('tip.success'),
           type: 'success',
           duration:500,
           onClose: () => {
@@ -295,7 +320,11 @@ export default {
   }
   ::v-deep{
     .el-table--border .el-table__cell, .el-table__body-wrapper .el-table--border.is-scrolling-left~.el-table__fixed {
-        border-right: 0px!important;
+      border-right: 0px!important;
+    }
+
+    .el-select{
+      width: 100%;
     }
   }
 </style>

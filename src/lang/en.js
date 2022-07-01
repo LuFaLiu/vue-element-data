@@ -115,6 +115,14 @@ export default {
     activation:'The Activation',
     isTrue:'True',
     isFalse:'False',
+    directory:'Directory',
+    menu:'Menu',
+    button:'Button',
+    menuName:'Menu Name',
+    menuIcon:'Menu Icon',
+    menuType:'Menu Type',
+    menuUrl:'Menu URL',
+    menuComponent:'Menu Component',
     searchReferenceName:'Question Class Ification',
     specificationName:'Specification Name',
     millType:'Mill Type',
@@ -130,6 +138,8 @@ export default {
     specialType:'Special Type',
     ruleParametersLibrary:'Rule Parameters Library',
     addRuleParameters:'Add Rule Parameters',
+    higherMenu:'Higher The Menu',
+    resetMenu:'Reset Menu',
 
 
     //account manage
@@ -181,7 +191,9 @@ export default {
     formatPhone:'Phone Rrror Format',
     formatEmail:'Email Rrror Format',
     enterPassword:'Please Enter Your Password Again',
-    enteredTwiceInconsistent:'The password entered twice is inconsistent!',
+    enteredTwiceInconsistent:'The Password Entered Twice Is Inconsistent!',
+    deleteCurrentMenu:'Whether To Delete Current Menu?',
+    withoutSelectingMenu:'Create A Directory Without Selecting A Menu'
   },
   pageRule:{
     preview:'Preview',
