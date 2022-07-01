@@ -1,0 +1,65 @@
+{
+  "id": "3230034",
+  "name": "menu-icon",
+  "font_family": "font_family",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "30069754",
+      "name": "app",
+      "font_class": "app",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "30069756",
+      "name": "tool",
+      "font_class": "tool",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "30068761",
+      "name": "logout",
+      "font_class": "logout",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "30068762",
+      "name": "password",
+      "font_class": "password",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "30068607",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "30068608",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "30068609",
+      "name": "website",
+      "font_class": "website",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "30068611",
+      "name": "setting",
+      "font_class": "setting",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    }
+  ]
+}

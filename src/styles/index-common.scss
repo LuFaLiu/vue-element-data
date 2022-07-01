@@ -1,0 +1,48 @@
+.bg-purple {
+  background: #FFFFFF 100%;
+}
+.inner-bg-purple {
+  background: linear-gradient(133deg, #A86BF4 0%, #7B1DF1 100%);
+}
+.inner-bg-blue {
+  background: linear-gradient(134deg, #56DEFA 0%, #039CD8 100%);
+}
+.inner-bg-yellow {
+  background: linear-gradient(131deg, #FD9D00 0%, #FA6400 100%);
+}
+.inner-bg-deepBlue {
+  background: linear-gradient(134deg, #00C4FF 0%, #0091FF 100%);
+}
+.grid-left {
+  border-radius: 8px;
+  min-height: 150px;
+  /*width: 1320px;*/
+}
+
+.grid-content {
+  border-radius: 8px;
+  min-height: 125px;
+  width: 100%;
+}
+.grid-right {
+  border-radius: 8px;
+  min-height: 300px;
+  width:auto;
+}
+.el-image__inner {
+  vertical-align: bottom;
+  height: 25px;
+  width: 35px;
+  margin-bottom: -5px;
+}
+.el-row {
+  margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.div-inline{
+  float: left;
+}
+
+
