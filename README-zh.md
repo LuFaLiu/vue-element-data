@@ -1,10 +1,6 @@
 # vue-element-data
 
-> 这是 vue element 管理后台。可以通过数据进行自定义配置界面,权限可控度高,减少重复定义的dom元素以及事件名称，减少父子组件重复取值，减少父子组件重复通信，逻辑统一在父组件进行操作，组件可拓展性强,组件属性拓展性强
-
-[线上地址](http://LuFaLiu.github.io/vue-element-data)
-
-[国内访问](https://LuFaLiu.gitee.io/vue-element-data)
+> 这是一个基于Element UI管理后台。可以通过数据进行自定义配置界面。包含预览功能。
 
 ## Build Setup
 

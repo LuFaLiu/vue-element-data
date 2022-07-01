@@ -2,6 +2,8 @@
 
 English | [简体中文](./README-zh.md)
 
+> This is an Element UI vue Admin template that allows you to build a background interface using data
+
 ## Build Setup
 
 ```bash
