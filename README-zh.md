@@ -2,6 +2,8 @@
 
 > 这是一个基于Element UI管理后台。可以通过数据进行自定义配置界面。包含预览功能。
 
+[线上地址](https://lufaliu.github.io/vue-element-data)
+
 ## Build Setup
 
 ```bash
