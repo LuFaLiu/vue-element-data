@@ -297,6 +297,13 @@ export default {
     men:'男',
     women:'女',
     secret:'保密',
+  },
+  moduleUplad:{
+    describe:'描述',
+    descriptionAndPicture:'请输入描述标题以及上传描述图片',
+    whetherDeleteModule:'是否删除当前模块？',
+    deleteModule:'删除当前模块',
+    incorrectFile:'文件格式有误，请重新上传！',
   }
 
 

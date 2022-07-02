@@ -295,6 +295,13 @@ export default {
     men:'Men',
     women:'Women',
     secret:'Secret',
+  },
+  moduleUplad:{
+    describe:'Describe',
+    descriptionAndPicture:'Please Enter A Description Title And Upload A Description Picture',
+    whetherDeleteModule:'Whether To Delete The Current Module?',
+    deleteModule:'Delete The Current Module',
+    incorrectFile:'Incorrect file format, please re-upload!',
   }
 
 

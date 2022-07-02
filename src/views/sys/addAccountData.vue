@@ -131,7 +131,6 @@
     },
     methods: {
       submitForm(formName) {
-        console.log(formName);
         var resetForm = getVueComponent(this,'$children','$refs',formName);
         resetForm.validate((valid) => {
           if (valid) {

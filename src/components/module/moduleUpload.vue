@@ -3,7 +3,7 @@
     <el-input
       v-model="paramsData.title"
       clearable
-      placeholder="请输入描述"
+      :placeholder="$t('placeholder.pleaseEnter') + $t('moduleUplad.describe')"
       autocomplete="off"
     />
     <el-upload
@@ -25,15 +25,15 @@
       class="el-form-item__error"
       v-if="!(paramsData.url && paramsData.title)"
     >
-      请输入描述标题以及上传描述图片
+      {{$t('moduleUplad.descriptionAndPicture')}}
     </div>
     <el-popconfirm
       class="deleteReference"
       v-if="data.id > 1"
-      title="是否删除当前模块？"
+      :title="$t('moduleUplad.whetherDeleteModule')"
       @confirm="confirmDelete(data.id)"
     >
-      <el-button slot="reference">删除当前模块</el-button>
+      <el-button slot="reference">{{$t('moduleUplad.deleteModule')}}</el-button>
     </el-popconfirm>
   </el-form-item>
 </template>
@@ -65,13 +65,13 @@ export default {
     }
   },
   methods: {
-    //上传图片时（单个图片）
+    //single file
     handleAppTitleChange(file) {
       var extension = this.uploadFileCondition(file);
       if (!extension) {
         this.$message({
           showClose: true,
-          message: "文件格式有误，请重新上传！",
+          message: this.$t('moduleUplad.incorrectFile'),
           type: "warning",
         });
         return false;
@@ -80,7 +80,7 @@ export default {
         this.paramsData.file = file;
       }
     },
-    //检查文件格式
+    //check file format
     uploadFileCondition(file) {
       var testmsg = file.name.substring(file.name.lastIndexOf(".") + 1);
       const extension =
@@ -91,7 +91,7 @@ export default {
         testmsg === "gif";
       return extension;
     },
-    //删除当前模块
+    //delete current model
     confirmDelete(e) {
       this.$emit("deleteCurrentMoule", e);
     },
