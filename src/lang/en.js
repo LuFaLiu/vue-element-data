@@ -193,7 +193,8 @@ export default {
     enterPassword:'Please Enter Your Password Again',
     enteredTwiceInconsistent:'The Password Entered Twice Is Inconsistent!',
     deleteCurrentMenu:'Whether To Delete Current Menu?',
-    withoutSelectingMenu:'Create A Directory Without Selecting A Menu'
+    withoutSelectingMenu:'Create A Directory Without Selecting A Menu',
+    logAgain:'Please Log In Again.',
   },
   pageRule:{
     preview:'Preview',

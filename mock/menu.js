@@ -28,8 +28,8 @@ const paramsList = Mock.mock({
         },
         {"id":7,"name":"sys:tools","title":"menu.systemTools","icon":"icon-tool","path":"","component":null,"type":1,
             "children":[
-                {"id":8,"name":"systools:menu:list","title":"menu.menuManage","icon":"el-icon-menu","path":"/systools/menus","component":"systools/Menu","children":[]},
-                {"id":9,"name":"systools:menu:role","title":"menu.rightsManagement","icon":"el-icon-menu","path":"/systools/role","component":"systools/role","children":[]}
+                {"id":8,"parentId":7,"name":"systools:menu:manage","title":"menu.menuManage","icon":"el-icon-menu","path":"/systools/menus","component":"systools/Menu","children":[]},
+                {"id":9,"parentId":7,"name":"systools:menu:role","title":"menu.rightsManagement","icon":"el-icon-menu","path":"/systools/role","component":"systools/role","children":[]}
             ]
         }
     ]

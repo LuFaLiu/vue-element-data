@@ -51,7 +51,7 @@ export default {
     ...mapGetters(['menuList', 'editableTabsValue'])
   },
   watch:{
-    '$route':function (val,oldVal) {
+    '$route':function (val) {
       if (val.path != '/login' && val.path != '/index') {
         var routeList = val.name.split(':');
         var currentRouteType = routeList[0] + ':' + routeList[1] + ':list';

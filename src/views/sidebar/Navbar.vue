@@ -144,7 +144,7 @@ export default {
             userApi.updatePass(_this.passForm).then(res => {
               _this.$message({
                 showClose: true,
-                message: res.data.msg + '请重新登录！',
+                message: res.data.msg + this.$t('tip.logAgain'),
                 type: 'success',
                 duration:500,
                 onClose: () => {

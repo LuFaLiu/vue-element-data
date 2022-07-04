@@ -256,7 +256,7 @@ export default {
       background: #F9F9F9;
     }
 
-    /*重写el-pagination样式 */
+    /*el-pagination style */
     .el-pagination {
       .btn-prev{
         margin-right: 14px;
@@ -367,50 +367,6 @@ export default {
           background-size: 100%;
           background-image: url(./static/icon/recordPicker.svg);
       }
-      /*
-      .el-icon-date{
-          float: right;
-          position: absolute;
-          top: 1px;
-          right: 3px;
-      }
-      
-      
-      .el-icon-date:before {
-          content: "";
-          position: absolute;
-          width: 17px;
-          height: 17px;
-          top: 8px;
-          right: 6px;
-          background-size: 100%;
-          background-image: url(./static/icon/recordPicker.svg);
-      }
-      
-
-      .el-range-input{
-          width: 42%;
-      }
-
-      .el-range-separator{
-          padding: 0;
-          position: relative;
-          visibility: hidden;
-          width: 3%;
-          text-align: center;
-      }
-      .el-range-separator::after{
-          visibility: initial;
-          padding: 0;
-          content: "-";
-          position: absolute;
-          left: 0;
-          top: 0;    
-      }
-      .el-range__close-icon{
-          display: none;
-      }
-      */
   }
 
 

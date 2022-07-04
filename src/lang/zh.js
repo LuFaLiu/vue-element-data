@@ -194,6 +194,7 @@ export default {
     enteredTwiceInconsistent:'两次输入密码不一致!',
     deleteCurrentMenu:'是否删除该菜单？',
     withoutSelectingMenu:'创建目录时可不选择菜单',
+    logAgain:'请重新登录！'
   },
   pageRule:{
     preview:'预览效果',

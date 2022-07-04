@@ -906,14 +906,13 @@ function operateDynamicListInfo(list,data) {
           return item.id == data.id ? _.mergeWith(item,data) : operateDynamicListInfo(item.childrenNode,data);
       }else if(data.parentId){ //add
           if(item.id == data.parentId){
+            data.id = data.count + 1;
             if(item.childrenNode && item.childrenNode.length == 0){
-              data.id = data.count + 1;
               data.childrenNode = [];
               return item.childrenNode.push(data);
             }else{
-              data.id = data.count + 1;
               item.childrenNode = [];
-              return item.childrenNode .push(data);
+              return item.childrenNode.push(data);
             }
           }else{
             return operateDynamicListInfo(item.childrenNode,data);

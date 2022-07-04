@@ -106,23 +106,7 @@ const paramsList = Mock.mock({
                     "children":[]},{"id":1655448285630,"label":"elButton","componentRule":{"class":[""],"btnType":"primary","event":"submitForm","title":["form.sure"]},
                     "children":[]}]}]}]}]}]}]}]
 
-                },
-                
-                /*
-                ,
-                {
-                    pageName: 'sys:role:list', //角色管理
-                    node: [
-
-                    ]
-                },
-                {
-                    pageName: 'systools:menu:list', //菜单管理
-                    node: [
-
-                    ]
                 }
-                */
             ]
 })
 module.exports = [
