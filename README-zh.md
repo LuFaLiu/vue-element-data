@@ -4,6 +4,8 @@
 
 [线上地址](https://lufaliu.github.io/vue-element-data)
 
+[国内访问](http://lufaliu.gitee.io/vue-element-data)
+
 ## Build Setup
 
 ```bash
