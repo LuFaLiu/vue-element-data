@@ -73,6 +73,7 @@ export default {
 <style lang="scss" scoped>
 
 	.el-row {
+    background-image: url(../static/image/loginBg.jpg);
     background-attachment: fixed;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -94,7 +95,6 @@ export default {
 		border-radius: 6px;
     background: #C9C9C9;
 	}
-
 
   .row-bg-left{
     color: #FFFFFF;
