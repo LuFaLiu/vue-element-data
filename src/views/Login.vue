@@ -73,10 +73,7 @@ export default {
 <style lang="scss" scoped>
 
 	.el-row {
-    background-image: url(../static/image/loginBg.jpg);
-    background-attachment: fixed;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    background-color: #1A1A1D;
 		height: 100%;
 		display: flex;
 		align-items: center;
