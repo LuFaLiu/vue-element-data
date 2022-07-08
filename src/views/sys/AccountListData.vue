@@ -12,7 +12,6 @@ import elMain from '@/components/Page/elMain'
 import {deleteApiRequest,apiRequest,apiRequestTable,apiRequestList,apiRequestParams} from "@/api/commonApi";
 
 export default {
-  name: 'Role',
   provide(){
     return {
       superParams:this

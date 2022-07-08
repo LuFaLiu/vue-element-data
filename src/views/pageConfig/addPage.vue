@@ -183,6 +183,10 @@ export default {
           label:'elContainer',
         },
         {
+          value:'customContent',
+          label:'customContent',
+        },
+        {
           value:'elSelect',
           label:'elSelect',
         },

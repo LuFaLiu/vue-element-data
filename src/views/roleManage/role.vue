@@ -1,31 +1,7 @@
 <template>
   <div v-resize="onResize">
+    <elMain :parentNode="appParams.pageData" v-resize="onResize" />
     <!--
-    <el-form :inline="true">
-      <el-form-item>
-        <el-input
-          v-model="searchForm.name"
-          placeholder="名称"
-          clearable
-        />
-      </el-form-item>
-
-      <el-form-item>
-        <el-button @click="getRoleList">搜索</el-button>
-      </el-form-item>
-
-      <el-form-item>
-        <el-button type="primary" @click="dialogVisible = true">新增</el-button>
-      </el-form-item>
-      <el-form-item>
-        <el-popconfirm title="这是确定批量删除吗？" @confirm="delHandle(null)">
-          <el-button slot="reference" type="danger" :disabled="delBtlStatu">批量删除</el-button>
-        </el-popconfirm>
-      </el-form-item>
-    </el-form>
-    -->
-
-
     <div class="roleManage">
       <div class="dataCout_title">角色管理</div>
       <div class="roleManage_right">
@@ -64,13 +40,6 @@
         label="角色"
         width="120"
       />
-      <!--
-      <el-table-column
-        prop="code"
-        label="唯一编码"
-        show-overflow-tooltip
-      />
-      -->
       <el-table-column
         prop="remark"
         label="备注"
@@ -101,14 +70,9 @@
 
               <el-button type="text" class="roleButton" @click="adminConfig(scope.row.id)" v-else>权限</el-button>
             </div>
-      
 
-            <!--
-            <el-button type="text" @click="editHandle(scope.row.id)">编辑</el-button>
-            -->
             <el-button type="text" class="viewButton" v-if="hasAuth('sys:role:queryRole')" @click="viewCurrentRole(scope.row.id)">查看</el-button>
             
-
             <template>
               <el-switch
                 v-if="scope.row.code != 'superAdmin'"
@@ -118,11 +82,6 @@
                 @change="disableRoleAccount(scope.row)"
                 inactive-color="#CCCCCC">
               </el-switch>
-              <!--
-              <el-popconfirm title="这是一段内容确定删除吗？" @confirm="delHandle(scope.row.id)">
-                <el-button slot="reference" type="text">删除</el-button>
-              </el-popconfirm>
-              -->
             </template>
           </div>
 
@@ -142,7 +101,7 @@
       @current-change="handleCurrentChange"
     />
 
-    <!--新增对话框-->
+  
     <el-dialog
       title="提示"
       :visible.sync="dialogVisible"
@@ -178,6 +137,7 @@
       </el-form>
 
     </el-dialog>
+    -->
 
   </div>
 </template>
@@ -185,9 +145,17 @@
 <script>
 import sysRoleApi from '@/api/sysRoleApi'
 import { resizeObserver } from '@/utils/auth'
-
+import elMain from '@/components/Page/elMain'
 export default {
-  name: 'Role',
+  provide(){
+    return {
+      superParams:this
+    }
+  },
+  inject:['appParams'],
+  components: {
+    elMain
+  },
   data() {
     return {
       searchForm: {},
@@ -227,19 +195,23 @@ export default {
     }
   },
   created() {
-    this.getRoleList();
+    //this.getRoleList();
+    //get parent dom
+    if(!this.appParams.pageData){
+      this.appParams['getPageNodeMethod'](this.$route.name);
+    }
   },
   mounted() {
       var that = this;
       //界面挂载时设置固定高度
       that.$nextTick(function () {
-          that.tableHeight = resizeObserver("el-main",["roleManage","account-bottom"],85);
+          //that.tableHeight = resizeObserver("el-main",["roleManage","account-bottom"],85);
       })
   },
   methods: {
     //监听浏览器窗口变化
     onResize() {
-        this.tableHeight = resizeObserver("el-main",["roleManage","account-bottom"],85);
+        //this.tableHeight = resizeObserver("el-main",["roleManage","account-bottom"],85);
     },
     indexMethod(val){
       if(val < 10){

@@ -831,6 +831,26 @@ const defaultData = Mock.mock({
         }
       ]
     },
+    {
+      id:'@id',
+      componentName:'customContent',
+      childrenNode:[
+        {
+          attributeName:'class',
+          attributeType:'ruleDynamicInput',
+          attributeLabel:'pageRule.className',
+          childrenNode:[{
+            value:''
+          }]
+        },
+        {
+          attributeName:'elContainerTitle',
+          attributeType:'ruleInput',
+          attributeLabel:'pageRule.elContainerTitle',
+          attributeModel:'elContainerTitle'
+        }
+      ]
+    }
   ]
 })
 

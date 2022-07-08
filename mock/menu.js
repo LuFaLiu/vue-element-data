@@ -17,13 +17,19 @@ const paramsList = Mock.mock({
         {   "id":4,"status":1,"parentId":0,"title":"menu.systemManage","path":"","name":"sys:manage","component":"","type":1,"icon":"icon-setting","orderNum":3,
             "children":[
                 {
-                    "id":5,"status":1,"parentId":2,"title":"menu.accountManage","path":"/sys/accountListData","name":"sys:account:listData","component":"sys/AccountListData","type":2,"icon":"el-icon-s-order","orderNum":5,
+                    "id":5,"status":1,"parentId":4,"title":"menu.accountManage","path":"/sys/accountListData","name":"sys:account:listData","component":"sys/AccountListData","type":2,"icon":"el-icon-s-order","orderNum":5,
                     "children":[
                         {
                             "id":6,"status":1,"parentId":5,"title":"menu.addAccount","path":"/sys/addAccountData","name":"sys:account:addData","component":"sys/addAccountData","type":3,"icon":null,"orderNum":1,"children":[]
                         }
                     ]
+                },
+                /*
+                {
+                    "id":10,"status":1,"parentId":4,"title":"menu.roleManage","path":"/roleManage/role","name":"role:manage:list","component":"roleManage/role","type":2,"icon":"el-icon-s-order","orderNum":6,
+                    "children":[]
                 }
+                */
             ]
         },
         {"id":7,"name":"sys:tools","title":"menu.systemTools","icon":"icon-tool","path":"","component":null,"type":1,

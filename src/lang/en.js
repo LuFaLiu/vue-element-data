@@ -8,7 +8,8 @@ export default {
     addAccount:'Add Account',
     systemTools:'System Tools',
     menuManage:'Menu Management',
-    rightsManagement:'Rights Management'
+    rightsManagement:'Rights Management',
+    roleManage:'Role Management'
   },
   languageSelect: {
     switchLanguage: 'Language Changed Success'
@@ -211,6 +212,7 @@ export default {
     refName:'RefName',
     selectionEvent:'Selection Event',
     inputType:'Input Type',
+    
 
     componentType:'Component Type',
     componentName:'Component Name',
@@ -232,6 +234,9 @@ export default {
     event:'Event',
     icon:'Icon',
     title:'Title',
+
+    //elContainer
+    elContainerTitle:'elContainer Title',
 
     //pagination
     currentChangeName:'Current Change Name',

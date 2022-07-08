@@ -8,7 +8,8 @@ export default {
     addAccount:'新增账户',
     systemTools:'系统工具',
     menuManage:'菜单管理',
-    rightsManagement:'权限管理'
+    rightsManagement:'权限管理',
+    roleManage:'角色管理'
   },
   languageSelect: {
     switchLanguage: '语言切换成功'
@@ -211,6 +212,9 @@ export default {
     refName:'ref名称',
     selectionEvent:'选择事件',
     inputType:'输入框类型',
+
+    //elContainer
+    elContainerTitle:'内容',
 
     //searchFrom
     componentType:'组件类别',

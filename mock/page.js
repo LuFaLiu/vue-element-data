@@ -55,7 +55,12 @@ const paramsList = Mock.mock({
                     "children":[]}]},{"id":1655533665134,"label":"elFormItem","componentRule":{},
                     "children":[{"id":1655533710799,"label":"elButton","componentRule":{"class":["mic-btn-primary"],"params":true,"ref":"ruleForm","paramsName":"ruleForm","event":"submitForm","title":["form.save"],"elFormStatus":""},
                     "children":[]}]}]}]}]
-                },{
+                },
+                {
+                    pageName:'role:manage:list',
+                    node:[{"id":1,"label":"elMain","children":[{"id":1657271682335,"label":"elContainer","componentRule":{"class":["roleManage"]},"children":[{"id":1657271714703,"label":"elContainer","componentRule":{"class":["dataCout_title"],"elContainerTitle":"menu.roleManage"},"children":[]}]}]}]
+                },
+                {
                     //权限管理(测试数据)
                     "pageName": "systools:menu:role", 
                     "node": [{"id":1,"label":"elMain",

@@ -47,7 +47,9 @@ export default {
       var that = this;
       pageConfigApi.getPageNode(val).then(res=>{
         if(res.data.data.length > 0){
+          //console.log(JSON.stringify(res.data.data[0].node));
           that.pageData = that.conversionPageData(res.data.data[0].node,[])[0].childrenNode[0];
+          //console.log(that.pageData);
         }
       })
     },

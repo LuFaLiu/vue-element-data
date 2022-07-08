@@ -5,16 +5,21 @@
 </template>
 <script>
 import elFormItem from '@/components/Page/elFormItem';
+import customContent from '@/components/Page/customContent';
 export default{
     inject: ['superParams'],
     components:{
-      elFormItem
+      elFormItem,
+      customContent
     },
     props:{
         parentNode:{
             type:Object,
             require:true
         }
+    },
+    mounted(){
+      console.log(this.parentNode);
     }
 }
 </script>
