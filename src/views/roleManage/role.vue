@@ -1,144 +1,6 @@
 <template>
   <div v-resize="onResize">
     <elMain :parentNode="appParams.pageData" v-resize="onResize" />
-    <!--
-    <div class="roleManage">
-      <div class="dataCout_title">角色管理</div>
-      <div class="roleManage_right">
-        <el-button type="primary" class="addAccountBtn" v-if="hasAuth('sys:role:save')" @click="addRole" icon="el-icon-plus">新增</el-button>
-        <el-button slot="reference" icon="el-icon-delete" v-if="hasAuth('sys:role:delete')" type="danger" :disabled="delBtlStatu"  @click="delHandle(null)">删除</el-button>
-      </div>
-    </div>
-
-    <el-table
-      ref="multipleTable"
-      :data="tableData"
-      tooltip-effect="dark"
-      style="width: 100%"
-      :height="tableHeight"
-      stripe
-      class="roleManage_table"
-      @selection-change="handleSelectionChange"
-    >
-
-      <el-table-column
-        type="selection"
-        width="55"
-        align="center"
-      />
-
-      <el-table-column
-        type="index"
-        label="序号"
-        width="55"
-        align="center"
-        :index="indexMethod"
-      />
-
-      <el-table-column
-        prop="name"
-        label="角色"
-        width="120"
-      />
-      <el-table-column
-        prop="remark"
-        label="备注"
-        show-overflow-tooltip
-      />
-
-      <el-table-column
-        prop="status"
-        label="状态"
-      >
-        <template slot-scope="scope">
-          <div v-if="scope.row.status === 1">正常</div>
-          <div v-else-if="scope.row.status === 0">禁用</div>
-        </template>
-
-      </el-table-column>
-      <el-table-column
-        prop="icon"
-        label="操作"
-      >
-
-        <template slot-scope="scope">
-          <div style="display:flex;align-items: center;">
-            <div v-if="hasAuth('sys:role:perm')">
-              <el-tooltip class="item" effect="dark" content="系统默认最高权限，不可以编辑和任意修改" placement="top" v-if="scope.row.code == 'superAdmin'">
-                <span style="color:#C1C1C1;">权限</span>
-              </el-tooltip>
-
-              <el-button type="text" class="roleButton" @click="adminConfig(scope.row.id)" v-else>权限</el-button>
-            </div>
-
-            <el-button type="text" class="viewButton" v-if="hasAuth('sys:role:queryRole')" @click="viewCurrentRole(scope.row.id)">查看</el-button>
-            
-            <template>
-              <el-switch
-                v-if="scope.row.code != 'superAdmin'"
-                class="switchRole"
-                v-model="scope.row.switchStatus"
-                active-color="#1951FF"
-                @change="disableRoleAccount(scope.row)"
-                inactive-color="#CCCCCC">
-              </el-switch>
-            </template>
-          </div>
-
-        </template>
-      </el-table-column>
-
-    </el-table>
-
-    <el-pagination
-      class="account-bottom"
-      layout="prev, pager, next"
-      :page-sizes="[10, 20, 50, 100]"
-      :current-page="current"
-      :page-size="size"
-      :total="total"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    />
-
-  
-    <el-dialog
-      title="提示"
-      :visible.sync="dialogVisible"
-      width="600px"
-      :before-close="handleClose"
-    >
-
-      <el-form ref="editForm" :model="editForm" :rules="editFormRules" label-width="100px" class="demo-editForm">
-
-        <el-form-item label="角色名称" prop="name" label-width="100px">
-          <el-input v-model="editForm.name" autocomplete="off" />
-        </el-form-item>
-
-        <el-form-item label="唯一编码" prop="code" label-width="100px">
-          <el-input v-model="editForm.code" autocomplete="off" />
-        </el-form-item>
-
-        <el-form-item label="描述" prop="remark" label-width="100px">
-          <el-input v-model="editForm.remark" autocomplete="off" />
-        </el-form-item>
-
-        <el-form-item label="状态" prop="status" label-width="100px">
-          <el-radio-group v-model="editForm.status">
-            <el-radio :label="0">禁用</el-radio>
-            <el-radio :label="1">正常</el-radio>
-          </el-radio-group>
-        </el-form-item>
-
-        <el-form-item>
-          <el-button type="primary" @click="submitForm('editForm')">立即创建</el-button>
-          <el-button @click="resetForm('editForm')">重置</el-button>
-        </el-form-item>
-      </el-form>
-
-    </el-dialog>
-    -->
-
   </div>
 </template>
 
@@ -254,7 +116,7 @@ export default {
           if(res.data.code == 200){
             this.$message({
               showClose: true,
-              message: '恭喜你，操作成功',
+              message: this.$t('tip.success'),
               type: 'success',
               duration:500,
               onClose: () => {
@@ -324,7 +186,7 @@ export default {
             .then(res => {
               this.$message.success({
                 showClose: true,
-                message: '恭喜你，操作成功',
+                message: this.$t('tip.success'),
                 duration:500,
                 onClose: () => {
                   this.getRoleList()
@@ -359,7 +221,7 @@ export default {
       sysRoleApi.deleteSelectRole(ids).then(res => {
         this.$message({
           showClose: true,
-          message: '恭喜你，操作成功',
+          message: this.$t('tip.success'),
           type: 'success',
           duration:500,
           onClose: () => {
