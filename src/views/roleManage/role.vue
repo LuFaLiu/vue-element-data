@@ -36,13 +36,13 @@ export default {
 
       editFormRules: {
         name: [
-          { required: true, message: '请输入角色名称', trigger: 'blur' }
+          { required: true, message:this.$t('placeholder.pleaseEnter') + this.$t('routerMenu.roleName'), trigger: 'blur' }
         ],
         code: [
-          { required: true, message: '请输入唯一编码', trigger: 'blur' }
+          { required: true, message:this.$t('placeholder.pleaseEnter') + this.$t('form.onlyCoding'), trigger: 'blur' }
         ],
         status: [
-          { required: true, message: '请选择状态', trigger: 'blur' }
+          { required: true, message:this.$t('placeholder.pleaseSelect') + this.$t('form.statu'), trigger: 'blur' }
         ]
       },
 
@@ -65,13 +65,12 @@ export default {
   },
   mounted() {
       var that = this;
-      //界面挂载时设置固定高度
       that.$nextTick(function () {
           //that.tableHeight = resizeObserver("el-main",["roleManage","account-bottom"],85);
       })
   },
   methods: {
-    //监听浏览器窗口变化
+    //Listen for browser window changes
     onResize() {
         //this.tableHeight = resizeObserver("el-main",["roleManage","account-bottom"],85);
     },
@@ -98,18 +97,18 @@ export default {
         this.$refs.multipleTable.clearSelection()
       }
     },
-    //禁用/启用该角色的用户
+    //To disable or enable users of this role
     disableRoleAccount(row){
       var title = '';
-      if(row.switchStatus){ //启用
-        title = '启用';
-      }else{ //禁用
-        title = '禁用';
+      if(row.switchStatus){ 
+        title = this.$t('form.enable');
+      }else{ 
+        title = this.$t('form.disable');
       }
 
-      this.$confirm('确认要'+title+'该角色的用户', '确定'+title+'', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm( row.switchStatus ? this.$t('tip.enableRole') : this.$t('tip.disableRole'),row.switchStatus ?  (this.$('form.sure') + this.$t('form.enable')) : (this.$('form.sure') + this.$t('form.disable')), {
+        confirmButtonText: this.$t('form.sure'),
+        cancelButtonText: this.$t('form.cancel'),
         type: 'warning'
       }).then(() => {
         sysRoleApi.disableRole(row.id,row.switchStatus ? 1 : 0).then(res => {
@@ -128,7 +127,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消禁用'
+          message: this.$t('tip.beenCancelled')
         });   
         this.getRoleList();    
       });
@@ -142,12 +141,10 @@ export default {
     },
 
     handleSizeChange(val) {
-      //console.log(`每页 ${val} 条`)
       this.size = val
       this.getRoleList();
     },
     handleCurrentChange(val) {
-      //console.log(`当前页: ${val}`)
       this.current = val
       this.getRoleList();
     },

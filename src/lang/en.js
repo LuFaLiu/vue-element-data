@@ -59,7 +59,8 @@ export default {
     user_manage: 'User Manage',
     user_list: 'User List',
     test_catalogue: 'Test Catalogue',
-    test_menu: 'Test Menu'
+    test_menu: 'Test Menu',
+    roleName: 'Role Name'
   },
   homePage: {
     weekOfIncreaseTop: 'Week Of Increase',
@@ -141,6 +142,7 @@ export default {
     addRuleParameters:'Add Rule Parameters',
     higherMenu:'Higher The Menu',
     resetMenu:'Reset Menu',
+    onlyCoding:'Only Coding',
 
 
     //account manage
@@ -167,6 +169,7 @@ export default {
     count:'Count',
     article:'Article',
     labelWidth:'Label Width',
+    enable:'Enable',
     disable:'Disable',
     normal:'Normal',
     radioVal:'Radio Value',
@@ -196,6 +199,9 @@ export default {
     deleteCurrentMenu:'Whether To Delete Current Menu?',
     withoutSelectingMenu:'Create A Directory Without Selecting A Menu',
     logAgain:'Please Log In Again.',
+    beenCancelled:'Has Been Cancelled Disabled',
+    disableRole:'Confirm The User That You Want To Disable For This Role?',
+    enableRole:'Identify The User To Enable The Role?'
   },
   pageRule:{
     preview:'Preview',

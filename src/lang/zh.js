@@ -59,7 +59,8 @@ export default {
     user_manage: '用户管理',
     user_list: '用户列表',
     test_catalogue: 'Test目录',
-    test_menu: 'Test菜单'
+    test_menu: 'Test菜单',
+    roleName: '角色名称'
   },
   homePage: {
     weekOfIncreaseTop: '本周区域增长Top',
@@ -141,13 +142,13 @@ export default {
     addRuleParameters:'新增规则参数',
     higherMenu:'上级菜单',
     resetMenu:'重置',
+    onlyCoding:'唯一编码',
 
 
     //账户管理界面
     account:'账户',
     nickName:'昵称',
     roleName:'角色名称',
-    statu:'状态',
     add:'新增',
     batchDelete:'批量删除',
     query:'查询',
@@ -167,6 +168,7 @@ export default {
     count:'共',
     article:'条',
     labelWidth:'标识宽度',
+    enable:'启用',
     disable:'禁用',
     normal:'正常',
     radioVal:'单选值',
@@ -195,7 +197,11 @@ export default {
     enteredTwiceInconsistent:'两次输入密码不一致!',
     deleteCurrentMenu:'是否删除该菜单？',
     withoutSelectingMenu:'创建目录时可不选择菜单',
-    logAgain:'请重新登录！'
+    logAgain:'请重新登录！',
+    beenCancelled:'已取消禁用',
+    disableRole:'确认要禁用该角色的用户？',
+    enableRole:'确认要开启该角色的用户？'
+
   },
   pageRule:{
     preview:'预览效果',
