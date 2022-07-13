@@ -67,18 +67,18 @@
         },
         mounted() {
             var that = this;
-            //界面挂载时设置固定高度
+            //Set a fixed height when mounting the interface
             that.$nextTick(function () {
                 that.tableHeight = resizeObserver("el-main",["el-col-8"],125);
             })
         },
         methods:{
-            //监听浏览器窗口变化
+            //Listen for browser window changes
             onResize() {
                 this.tableHeight = resizeObserver("el-main",["el-col-8"],125);
             },
-            searchCurrentMenu(id,list){ //目前菜单只有两个三层
-                //children,type,parentId 下级永远拥有一个父级（parentId）指向父级
+            searchCurrentMenu(id,list){
+                //children,type,parentId A child always has a parent (parentId) pointing to the parent
                 var menuList = [];
                 if(list){
                     list.filter(v=>{
@@ -100,18 +100,18 @@
 
             getRoleManageList(id){
                 sysMenuApi.getMenuList().then(res => {
-                    this.permTreeData = res.data.data; //菜单列表
+                    this.permTreeData = res.data.data; //Menu list
                     this.deepPermTreeData = [];
-                    this.deepMenuList(res.data.data); //菜单列表扁平化
+                    this.deepMenuList(res.data.data); //Menu list flattens out
 
-                    sysRoleApi.getRoleMenuInfo(id).then(res2 => { //已存在的权限列表
+                    sysRoleApi.getRoleMenuInfo(id).then(res2 => { //List of existing permissions
                         this.roleType = res2.data.data.name;
                         this.permForm = res2.data.data;
-                        this.deepPermTreeData.filter(v=>{ //菜单列表进行匹配
-                            if(res2.data.data.menuIds.indexOf(v.id) > -1){ //用已有权限id去匹配菜单信息 格式：[1,2,3,4,5,6]
-                                this.$set(v,'checked',true); //存在时把状态设置为勾选
+                        this.deepPermTreeData.filter(v=>{ //Menu list to match
+                            if(res2.data.data.menuIds.indexOf(v.id) > -1){ //Match menu information format with existing permission ID: [1,2,3,4,5,6]
+                                this.$set(v,'checked',true); //Set state to check if it exists
                             }else {
-                                this.$set(v,'checked',false); //不存在时把状态设置为取消勾选
+                                this.$set(v,'checked',false); //Set state to uncheck if it does not exist
                             }
                         });
                     })
@@ -121,13 +121,13 @@
             deepMenuList(data){
                 data.filter(v=>{
                     this.deepPermTreeData.push(v);
-                    if(v.children){ //不能添加v.children.length > 0否则会跳过后面的执行
+                    if(v.children){ //Can not add v.children.length > 0 Otherwise, subsequent execution will be skipped
                         this.deepMenuList(v.children,v.id,v.type);
                     }
                 })
                 
             },
-            //进行勾选操作
+            //Perform the check operation
             checkMenu(row){
                 var selectItem = [];
                 this.parentIdList = [];
@@ -135,24 +135,24 @@
                 this.searchParent(row);
 
                 this.deepPermTreeData.filter(v=>{
-                    if(v.checked == true){ //筛选已勾选项
+                    if(v.checked == true){ //Filter the checked items
                         selectItem.push(v.id);
                     }
                 })
 
                 sysRoleApi.grantRolePermission(this.permForm.id, selectItem).then(res => {         
-                    if(res.data.code == 200){ //成功状态
+                    if(res.data.code == 200){ //The successful state
                         this.$message({
                             showClose: true,
-                            message: '恭喜你，操作成功',
+                            message: this.$t('tip.success'),
                             type: 'success',
                             duration:500,
                             onClose: () => {
-                                getSysMenu(); //重新属性路由列表
+                                getSysMenu(); //Re-attribute the route list
                                 //this.getRoleManageList(this.$router.currentRoute.query.id);
                             }
                         })
-                    }else { //失败状态时重新获取接口重新勾选上
+                    }else { //If the interface is in the failed state, reobtain it and select it again
                         sysRoleApi.getRoleMenuInfo(this.$router.currentRoute.query.id).then(res2 => {
                             this.roleType = res2.data.data.name;
                             this.permForm = res2.data.data;
@@ -169,51 +169,51 @@
                     
                 })
             },
-            //查找父级id
+            //Find the parent ID
             searchParent(row){
                 //this.$set(v,'checked',false);
                this.deepPermTreeData.filter(v=>{
-                        if(row.parentId == 0){ //当前级别为最高级别
-                            if(row.id == v.parentId){ //当前最高级别的子级
-                                if(row.checked){ //当前元素为勾选状态
-                                    this.$set(v,'checked',true); //对当前元素的子级进行勾选
-                                    this.checkedparams(row.children); //勾选相关联的元素
-                                }else { //当前元素为取消勾选状态
-                                    this.$set(v,'checked',false); //对当前元素的子级取消勾选
-                                    this.unCheckedparams(row.children); //取消勾选相关联的元素
+                        if(row.parentId == 0){ //The current level is the highest
+                            if(row.id == v.parentId){ //Current highest level sublevel
+                                if(row.checked){ //The current element is checked
+                                    this.$set(v,'checked',true); //Checks the children of the current element
+                                    this.checkedparams(row.children); //Check the associated elements
+                                }else { //The current element is unselected
+                                    this.$set(v,'checked',false); //Uncheck the children of the current element
+                                    this.unCheckedparams(row.children); //Deselect the associated element
                                 }
                             }
                         }else {
-                            if(v.id == row.parentId){ //当前级别不是最高级别/当前元素父级
-                                if(row.checked){ //当前元素已勾选
-                                    this.$set(v,'checked',true); //勾选父级
+                            if(v.id == row.parentId){ //The current level is not the highest level/parent of the current element
+                                if(row.checked){ //The current element is checked
+                                    this.$set(v,'checked',true); //Check the parent
                                     var idList = [];
                                     idList.push(v.parentId);
-                                    this.checkedRoleList(idList); //勾选对应的权限
-                                    this.checkedparams(row.children); //勾选相关联的元素
-                                }else{ //当前元素取消勾选
-                                    this.deepunCheckedRoleList(v,row.id); //取消勾选父级元素
-                                    this.unCheckedparams(row.children); //取消勾选子级元素
+                                    this.checkedRoleList(idList); //Select the corresponding permission
+                                    this.checkedparams(row.children); //Check the associated elements
+                                }else{ //The current element is unchecked
+                                    this.deepunCheckedRoleList(v,row.id); //Deselect the parent element
+                                    this.unCheckedparams(row.children); //Deselect child elements
                                 }
                             }
                     
                         }
                })
             },
-            //勾选相关联的元素
+            //Check the associated elements
             checkedparams(row){
                this.checkList = [];
                this.deepCheckedChildList(row);
                this.checkedRoleList(this.checkList);
             },
 
-            //取消勾选相关联的元素
+            //Deselect the associated element
             unCheckedparams(row){
                this.checkList = [];
                this.deepCheckedChildList(row);
                this.unCheckedRoleList(this.checkList);
             },
-            //勾选对应的权限
+            //Select the corresponding permission
             checkedRoleList(idList){
                 this.deepPermTreeData.filter(v=>{
                     if(idList.indexOf(v.id) > -1){
@@ -221,7 +221,7 @@
                     }
                 })
             },
-            //取消勾选对应的权限
+            //Deselect the corresponding permission
             unCheckedRoleList(idList){
                 this.deepPermTreeData.filter(v=>{
                     if(idList.indexOf(v.id) > -1){
@@ -229,23 +229,23 @@
                     }
                 })
             },
-            //递归遍历子级列表
+            //Recursively traverses the list of child levels
             deepunCheckedRoleList(list,id){
                 var isChecked = [];
                 //var unChecked = [];
-                isChecked = _.filter(list.children,['checked',false]); //同级节点未勾选节点
-                //unChecked = _.filter(list.children,['checked',true]); //同级已勾选的节点
-                if(isChecked.length == list.children.length){ //同级元素都取消勾选
+                isChecked = _.filter(list.children,['checked',false]); //Nodes at the same level are not selected
+                //unChecked = _.filter(list.children,['checked',true]); //Nodes selected at the same level
+                if(isChecked.length == list.children.length){ //All sibling elements are unchecked
                     var listId = [];
                     listId.push(list.id);
-                    this.unCheckedRoleList(listId); //取消勾选父级
-                    if(list.parentId != 0){ //当前级别不是最高级/存在子级列表
-                        var parentObj = this.searchRoleList(list.parentId); //找出父级的同级
-                        this.deepunCheckedRoleList(parentObj,parentObj.id); //存在子列表时再进行递归
+                    this.unCheckedRoleList(listId); //Deselect the parent level
+                    if(list.parentId != 0){ //The current level is not superlative/a sublevel list exists
+                        var parentObj = this.searchRoleList(list.parentId); //Find the sibling of the parent
+                        this.deepunCheckedRoleList(parentObj,parentObj.id); //Recurse when there are sublists
                     }
                 }
             },
-            //找到对应父节点列表
+            //Find the corresponding parent node list
             searchRoleList(id){
                 var list = {};
                 this.deepPermTreeData.filter(v=>{
@@ -255,7 +255,7 @@
                 })
                 return list;
             },
-            //遍历出当前列表项的id
+            //Iterates over the ID of the current list item
             deepCheckedChildList(row){
                 row.filter(v=>{
                     this.checkList.push(v.id);
@@ -266,7 +266,7 @@
             },
             beforeDestroy() {
                 let _this = this
-                // 离开页面删除检测器和所有侦听器
+                // Leave the page and remove the detector and all listeners
                 _this.resizeObserver.disconnect();
             }
         }
