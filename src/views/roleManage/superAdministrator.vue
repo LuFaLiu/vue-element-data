@@ -48,7 +48,7 @@
     import sysRoleApi from '@/api/sysRoleApi'
     import sysMenuApi from '@/api/sysMenuApi'
     import { getSysMenu } from '@/api/commonApi'
-    import { resizeObserver } from '@/utils/auth'
+    import { resizeObserver } from '@/utils/index'
     import _ from 'lodash'
     export default{
         data(){

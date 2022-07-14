@@ -1,5 +1,7 @@
 <template>
   <elMain :parentNode="appParams.pageData" v-resize="onResize" />
+  <!--<componentNode :node="appParams.pageData" v-resize="onResize"/>-->
+
 </template>
 
 <script>
@@ -10,6 +12,7 @@ import { resizeObserver } from '@/utils/index'
 import _ from 'lodash'
 import elMain from '@/components/Page/elMain'
 import {deleteApiRequest,apiRequest,apiRequestTable,apiRequestList,apiRequestParams} from "@/api/commonApi";
+import componentNode from './component-node.vue';
 
 export default {
   provide(){
@@ -19,7 +22,8 @@ export default {
   },
   inject:['appParams'],
   components: {
-    elMain
+    elMain,
+    componentNode
   },
   data() {
     return {
@@ -98,7 +102,7 @@ export default {
   },
   methods: {
     onResize() {
-        this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
+      this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
     },
 
     indexMethod(index){

@@ -19,7 +19,7 @@ export default{
         }
     },
     mounted(){
-      console.log(this.parentNode);
+      //console.log(this.parentNode);
     }
 }
 </script>

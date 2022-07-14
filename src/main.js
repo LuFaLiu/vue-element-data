@@ -24,6 +24,7 @@ mockXHR()
 
 Vue.directive('resize',{
   bind(el, binding) {
+    if(!!binding.value){
       let width = '', height = '';
       function isReize() {
           const style = document.defaultView.getComputedStyle(el);// In browsers, this property returns the window object associated with the current Document object, or null if not.
@@ -34,6 +35,7 @@ Vue.directive('resize',{
           height = style.height;
       }
       el.__vueSetInterval__ = setInterval(isReize, 500);
+    }
   },
   unbind(el) {
       clearInterval(el.__vueSetInterval__);

@@ -83,7 +83,7 @@
 import sysRoleApi from '@/api/sysRoleApi'
 import sysMenuApi from '@/api/sysMenuApi'
 import { convertPinyin } from '@/utils/convertPinYin'
-import { resizeObserver } from '@/utils/auth'
+import { resizeObserver } from '@/utils/index'
 export default {
     data(){
         return {
