@@ -20,16 +20,16 @@ export default {
         const node = parent.appParams.pageData
         //console.log(parent);
         if(!!node){
-            /*
+            
             return h(
                 'div',
                 this.deepChildrenComponent(node.childrenNode,h)
             )
-            */
-            return h(
+            
+            /*return h(
                 'div',
                 this.deepChildrenComponent(node.childrenNode,h)
-            )
+            )*/
         }
     },
     data(){
@@ -39,13 +39,13 @@ export default {
     },
     methods:{
         deepChildrenComponent(node,h,dom = []){
-            /*
+           
             var that = this;
             return node.map(function (v) {
                 return h(v.componentName,'template');
             })
-            */
 
+            /*
             var that = this;
             return node.map(function (v) {
                 console.log(v);
@@ -56,6 +56,7 @@ export default {
                     return h;
                 }
             })
+            */
             
 
             //return h('div',[ h('h1',[ h("I'm a template!") ] ) ])

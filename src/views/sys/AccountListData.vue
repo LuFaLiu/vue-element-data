@@ -1,7 +1,6 @@
 <template>
   <elMain :parentNode="appParams.pageData" v-resize="onResize" />
   <!--<componentNode :node="appParams.pageData" v-resize="onResize"/>-->
-
 </template>
 
 <script>
