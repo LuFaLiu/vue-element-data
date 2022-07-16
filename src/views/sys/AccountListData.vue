@@ -95,13 +95,13 @@ export default {
   mounted() {
     var that = this;
     that.$nextTick(function () {
-      that.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85); //设置固定高度
+      //that.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85); //设置固定高度
     })
     
   },
   methods: {
     onResize() {
-      this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
+      //this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
     },
 
     indexMethod(index){
