@@ -1,7 +1,9 @@
 <script type="text/jsx">
 import { filteri18n, dynamicvModel } from '@/utils/index'
+import Template from './template'
 export default {
     inject: ['superParams'],
+    name: 'ElCombination',
     props:{
         node:{
             type:Object
@@ -23,13 +25,19 @@ export default {
             
         }
     },
+    components:{
+        Template
+    },
     data(){
         return {
             domList:[]
         }
     },
     mounted(){
-        //console.log(this.node);
+        console.log("界面初始化数据");
+        console.log(this.node);
+        console.log("父组件数据");
+        console.log(this.superParams);
     },
     computed:{
         resetvModel:{
@@ -51,7 +59,7 @@ export default {
                     item.componentName == 'elContainer' ? 'div' : item.componentName,
                     {
                         'class':item.class,
-                        props: 
+                        props: //compontent attribute
                             item.componentName == 'elPagination' ? 
                             {
                                 layout:item.layout,
@@ -78,7 +86,7 @@ export default {
                                 icon:item.icon,
                                 class:item.class,
                                 disabled:item.btnCondition ? (that.getValue() ? true : false) : false,
-                                loading:item.loading ? that.superParams.btnLoading : false
+                                loading:item.loading ? that.superParams.btnLoading : false,
                             } : item.componentName == 'elInput' ? 
                             {
                                 type:item.inputType,
@@ -94,15 +102,56 @@ export default {
                                 placeholder:that.filteri18n(item.placeholder) || '',
                                 disabled:item.inputCondition ? (that.superParams[item.inputCondition] ? true : false) : item.disabled,
                                 clearable:true
+                            } : item.componentName == 'elTable' ? 
+                            {
+                                class:item.class,
+                                ref:item.refName,
+                                data:that.superParams[item.tableDataName],
+                                'tooltip-effect':item.tooltipEffect,
+                                style:[item.style],
+                                stripe:item.stripe,
+                                height:that.superParams[item.tableHeightName],
+                                'default-sort':item.defaultSort,
+                                'row-key':item.rowKey && item.rowKey,
+                                'default-expand-all':item.defaultExpandAll && item.defaultExpandAll,
+                                'tree-prop':item.treeProp
+                            } : item.componentName == 'elTableColumn' ? 
+                            {
+                                type:item.type,
+                                label:that.$t(item.label),
+                                width:item.width,
+                                align:'center'
                             }
                             : item,  
+                        on:{
+                            click:function (e) {
+                                switch (item.componentName) {
+                                    case "elButton" :
+                                        const elButtonParent = that.$parent;
+                                        console.log(elButtonParent);
+                                        that.btnClick(item);
+                                        break;
+                                
+                                    default:
+                                        break;
+                                }
+                            },
+                            'selection-change':function (e) {
+                                that.selectChange(e,item);
+                            }
+                        },
+                        scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' ? {
+                            default: props => h('Template',{props,item}) //通过单文件组件展示对应的信息(组件需要的一切都是通过 context 参数传递)
+                        } 
+                        : that.$slots.default
                     },
                     //item.childrenNode ? that.deepChildrenComponent(item,h) : that.$slots.default()
                     item.childrenNode.length > 0  
                         ? that.deepChildrenComponent(item,h) 
                             : item.componentName == 'elButton' 
                                 ? [h('span',that.filteri18n(item.title))] 
-                                    : [h('h1','13456')]
+                                    //: [h(item.componentName,{scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' ? {default: props => h('Template',{props,item}) }] 
+                                        : [h('h1','13456')]
                 )
            })
         },
@@ -116,7 +165,36 @@ export default {
         vModelVal(item){
             console.log(item);
             return dynamicvModel(this.superParams,item.vModel,'','get');
-        }
+        },
+        sizeChange(val){
+            this.superParams[this.parentNode.sizeChangeName](val);
+        },
+        currentChange(val){
+            this.superParams[this.parentNode.currentChangeName](val);
+        },
+        btnClick(item){
+            if(item.params){
+                this.superParams[item.event](item.paramsName);
+            }else if(item.tableParams){
+                this.superParams[item.event](this.rowData);  
+            } else{
+                this.superParams[item.event]();  
+            }
+        },
+        selectChange(val,item){ 
+            var selectName = item.selectionEvent;
+            this.superParams[selectName](val);
+        },
+        indexMethod(index) {
+            if (index < 9) {
+                return "0" + (index + 1);
+            } else {
+                return index + 1;
+            }
+        },
+        getObjKey(row,key){
+            return _.get(row, key);
+        },
     }
 }
 </script>

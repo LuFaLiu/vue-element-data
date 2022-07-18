@@ -1,6 +1,6 @@
 <template>
-  <elMain :parentNode="appParams.pageData" v-resize="onResize" />
-  <!--<componentNode :node="appParams.pageData" v-resize="onResize"/>-->
+  <!--<elMain :parentNode="appParams.pageData" v-resize="onResize" />-->
+  <elComponent :node="appParams.pageData" v-resize="onResize"/>
 </template>
 
 <script>
@@ -11,7 +11,7 @@ import { resizeObserver } from '@/utils/index'
 import _ from 'lodash'
 import elMain from '@/components/Page/elMain'
 import {deleteApiRequest,apiRequest,apiRequestTable,apiRequestList,apiRequestParams} from "@/api/commonApi";
-import componentNode from './component-node.vue';
+import elComponent from '@/components/elComponent/index'
 
 export default {
   provide(){
@@ -22,7 +22,7 @@ export default {
   inject:['appParams'],
   components: {
     elMain,
-    componentNode
+    elComponent
   },
   data() {
     return {
@@ -95,13 +95,12 @@ export default {
   mounted() {
     var that = this;
     that.$nextTick(function () {
-      //that.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85); //设置固定高度
+      that.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85); //设置固定高度
     })
-    
   },
   methods: {
     onResize() {
-      //this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
+      this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
     },
 
     indexMethod(index){

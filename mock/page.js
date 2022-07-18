@@ -22,7 +22,7 @@ const paramsList = Mock.mock({
                     "children":[{"id":1014,"label":"elButton","componentRule":{"class":[""],"btnType":"danger","event":"delHandle","icon":"el-icon-delete","title":["form.batchDelete"]},
                     "children":[]}]}]},{"id":1655448696710,"label":"elContainer","componentRule":{"class":["search-right"]},
                     "children":[{"id":1655448703478,"label":"elFormItem","componentRule":{},
-                    "children":[{"id":1655448732846,"label":"elButton","componentRule":{"class":["mic-btn-primary","searchAccount"],"event":"getUserList","title":["form.query"]},
+                    "children":[{"id":1655448732846,"label":"elButton","componentRule":{"class":["mic-btn-primary","searchAccount"],"event":"getDataList","title":["form.query"]},
                     "children":[]}]}]}]},{"id":1015,"label":"elTable","componentRule":{"label":"form.account","value":"username","rowKey":"","selectionEvent":"handleSelectionChange","defaultSort":{},"defaultExpandAll":false,"treeProp":{},"refName":"multipleTable","class":["accountTable"],"tableDataName":"tableData","tableHeightName":"tableHeight","style":"dark"},
                     "children":[{"id":1016,"label":"elTableColumn","componentRule":{"type":"selection","width":"55"},
                     "children":[]},{"id":1017,"label":"elTableColumn","componentRule":{"type":"index","label":"form.sortNum","width":"130"},
