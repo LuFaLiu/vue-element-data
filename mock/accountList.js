@@ -15,13 +15,23 @@ module.exports = [
         response: config => {
             const items = data.accountList;
             const paging = _.chunk(items, 10);
+            const filterItem = paging[parseInt(config.query.current-1)].filter(v=>{
+                if(config.body.accountId){
+                    return v.username == config.body.accountId;
+                }else if(config.body.nickName) {
+                    return v.nickName == config.body.nickName;
+                }else {
+                    return v;
+                }
+            })
+            
             return {
                 code: 200,
                 data:{
                     total: (paging.length * 10),
                     current: config.query.current,
                     size: items.length < 10 ? (items.length+10) : items.length,
-                    items: paging[parseInt(config.query.current-1)]
+                    items: filterItem
                 }
             }
         }

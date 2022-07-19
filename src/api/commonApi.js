@@ -151,7 +151,7 @@ export function apiRequestOpration(method,apiName,callback){ //Returns a paramet
 export function apiRequestTable(_this,method,apiName,pageData,callback,params,current,size){
     method[apiName](params,current,size).then(res=>{
         if(res.data.code == 200){
-            callback(res.data.data.records);
+            callback(res.data.data);
             pageData ? _.mergeWith(_this[pageData],res.data.data) :  _.mergeWith(_this,_.pickBy(res.data.data,_.isNumber)); 
         }
     })

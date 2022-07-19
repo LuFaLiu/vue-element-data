@@ -95,12 +95,12 @@ export default {
   mounted() {
     var that = this;
     that.$nextTick(function () {
-      that.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85); //设置固定高度
+      that.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],125); //设置固定高度
     })
   },
   methods: {
     onResize() {
-      this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
+      this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],125);
     },
 
     indexMethod(index){
@@ -148,14 +148,13 @@ export default {
     },
 
     getDataList() {
-
       var that = this;
-      apiRequestParams(that,userManageApi,'getAccountList',that.pageAttribute,function (res) {
+      apiRequestTable(that,userManageApi,'getAccountList','',function (res) {
         that.tableData = res.items;
         that.pageAttribute.current = parseInt(res.current);
         that.pageAttribute.size = res.size;
         that.pageAttribute.total = res.total;
-      });
+      },that.searchForm,that.pageAttribute.current,that.pageAttribute.size);
       
     },
 

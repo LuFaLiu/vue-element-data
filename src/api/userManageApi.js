@@ -3,11 +3,11 @@ export default {
   post: (url, data, config = { showLoading: false }) => request.service.post(url, data, config),
   get: (url, params, config = { showLoading: false }) => request.service.get(url, params, config),
 
-  getAccountList(params) {
+  getAccountList(data,current,size) {
     return request({
-      url: '/account/getAccountList',
+      url: '/account/getAccountList?current='+current+'&size='+size,
       method: 'get',
-      params,
+      data,
       showLoading: false
     })
   },

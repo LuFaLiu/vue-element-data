@@ -1,6 +1,7 @@
 <script type="text/jsx">
 import { filteri18n, dynamicvModel } from '@/utils/index'
 import Template from './template'
+import TraverseTemplate from './traverseTemplate'
 export default {
     inject: ['superParams'],
     name: 'ElCombination',
@@ -10,15 +11,21 @@ export default {
         }
     },
     render(h){
-        const parent = this.$parent;
-        const node = parent.appParams.pageData;
+        const node = this.node;
         if(!!node){
-            this.deepChildrenComponent(node,h)
             return h(
                 node.componentName,
                 {
                     'class': node.class,
-                    props:node,
+                    props: node.componentName == 'elForm' ? 
+                            {
+                                model:node.model ? this.superParams[node.model] : {},
+                                class:node.class,
+                                rules:node.formRule ? this.superParams[node.formRule] : {},
+                                'label-width':node.labelWidth  || '',
+                                'label-position':node.labelPosition || 'right',
+                            } : node,
+                    ref:node.refName  || '',       
                 },
                 this.deepChildrenComponent(node,h)
             )
@@ -26,18 +33,13 @@ export default {
         }
     },
     components:{
-        Template
+        Template,
+        TraverseTemplate
     },
     data(){
         return {
             domList:[]
         }
-    },
-    mounted(){
-        console.log("界面初始化数据");
-        console.log(this.node);
-        console.log("父组件数据");
-        console.log(this.superParams);
     },
     computed:{
         resetvModel:{
@@ -54,11 +56,13 @@ export default {
         deepChildrenComponent(node,h){
            var that = this;
            return node.childrenNode.map(function (item) {
-                //console.log(item.componentName);
                 return h(
                     item.componentName == 'elContainer' ? 'div' : item.componentName,
                     {
                         'class':item.class,
+                        attrs: {
+                            placeholder: item.componentName == 'elInput' && that.filteri18n(item.placeholder) || ''
+                        },
                         props: //compontent attribute
                             item.componentName == 'elPagination' ? 
                             {
@@ -67,14 +71,12 @@ export default {
                                 'current-page': that.superParams[item.params]['current'],
                                 'page-size':that.superParams[item.params]['size'],
                                 total:that.superParams[item.params]['total'],
-                                ref:item.refName || '',
                             } : item.componentName == 'elForm' ? 
                             {
                                 model:item.model ? that.superParams[item.model] : {},
                                 class:item.class,
                                 rules:item.formRule ? that.superParams[item.formRule] : {},
                                 'label-width':item.labelWidth  || '',
-                                ref:item.refName  || '',
                                 'label-position':item.labelPosition || 'right',
                             } : item.componentName == 'elFormItem' ? 
                             {
@@ -90,22 +92,12 @@ export default {
                             } : item.componentName == 'elInput' ? 
                             {
                                 type:item.inputType,
-                                //'v-model':that.vModelVal(item),
-                                domProps: {
-                                    value: that.vModelVal(item)
-                                },
-                                on: {
-                                    input: function (event) {
-                                        that.$emit('input', event.target.value)
-                                    }
-                                },
-                                placeholder:that.filteri18n(item.placeholder) || '',
+                                value:that.vModelVal(item), //必须值
                                 disabled:item.inputCondition ? (that.superParams[item.inputCondition] ? true : false) : item.disabled,
                                 clearable:true
                             } : item.componentName == 'elTable' ? 
                             {
                                 class:item.class,
-                                ref:item.refName,
                                 data:that.superParams[item.tableDataName],
                                 'tooltip-effect':item.tooltipEffect,
                                 style:[item.style],
@@ -114,21 +106,20 @@ export default {
                                 'default-sort':item.defaultSort,
                                 'row-key':item.rowKey && item.rowKey,
                                 'default-expand-all':item.defaultExpandAll && item.defaultExpandAll,
-                                'tree-prop':item.treeProp
+                                'tree-prop':item.treeProp,
                             } : item.componentName == 'elTableColumn' ? 
                             {
                                 type:item.type,
                                 label:that.$t(item.label),
                                 width:item.width,
                                 align:'center'
-                            }
+                            } 
                             : item,  
                         on:{
                             click:function (e) {
                                 switch (item.componentName) {
                                     case "elButton" :
                                         const elButtonParent = that.$parent;
-                                        console.log(elButtonParent);
                                         that.btnClick(item);
                                         break;
                                 
@@ -138,20 +129,28 @@ export default {
                             },
                             'selection-change':function (e) {
                                 that.selectChange(e,item);
+                            },
+                            input: function (event) { //v-model
+                                if(typeof event == 'string'){
+                                    dynamicvModel(that.superParams,item.vModel,event,'set');
+                                }
+                            },
+                            change:function (event) {
+                                if(item.componentName == 'elRadioGroup'){
+                                    dynamicvModel(that.superParams,item.vModel,event,'set');
+                                }
                             }
                         },
-                        scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' ? {
+                        ref:item.refName || '',
+                        scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' && !item.operation && {
                             default: props => h('Template',{props,item}) //通过单文件组件展示对应的信息(组件需要的一切都是通过 context 参数传递)
-                        } 
-                        : that.$slots.default
+                        } || item.componentName == 'elRadioGroup' && { default: props => h('TraverseTemplate',{props:{node:item,parent:that}})  } //非单文件组件
                     },
-                    //item.childrenNode ? that.deepChildrenComponent(item,h) : that.$slots.default()
-                    item.childrenNode.length > 0  
+                    item.childrenNode && item.childrenNode.length > 0  
                         ? that.deepChildrenComponent(item,h) 
                             : item.componentName == 'elButton' 
                                 ? [h('span',that.filteri18n(item.title))] 
-                                    //: [h(item.componentName,{scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' ? {default: props => h('Template',{props,item}) }] 
-                                        : [h('h1','13456')]
+                                        : that.$slots.default
                 )
            })
         },
@@ -163,8 +162,9 @@ export default {
             }
         },
         vModelVal(item){
-            console.log(item);
-            return dynamicvModel(this.superParams,item.vModel,'','get');
+            if(typeof item == 'object'){
+                return dynamicvModel(this.superParams,item.vModel,'','get');
+            }
         },
         sizeChange(val){
             this.superParams[this.parentNode.sizeChangeName](val);
@@ -195,9 +195,12 @@ export default {
         getObjKey(row,key){
             return _.get(row, key);
         },
+        formatDate(val){
+            return this.$formatDate(val);
+        }
     }
 }
 </script>
 <style lang="scss" scoped>
-    @import "~@/styles/component.scss";
+    @import "~@/styles/elComponent.scss";
 </style>
