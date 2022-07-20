@@ -132,10 +132,12 @@ export default {
     this.chart = null
   },
   methods: {
+
     init(){
       var myChart = this.$echarts.init(document.getElementById('myQueueEchart'))
       myChart.setOption(this.option,true)
     },
+
     customColorMethod(percentage) {
       if (percentage < 30) {
         return '#67c23a'
@@ -145,7 +147,6 @@ export default {
         return '#f56c6c'
       }
     },
-
 
     drawLineChart() {
       var that = this;
@@ -360,15 +361,15 @@ export default {
 
     },
 
-  
     myqueEcharts(newData) {
+      var that = this;
       var chartDom = document.getElementById('myQueueEchart');
       
-      var myChart = this.$echarts.init(chartDom);
+      var myChart = that.$echarts.init(chartDom);
       
-      var countryColors = {}
+      var countryColors = {};
 
-      if(this.$i18n.locale == 'zh'){
+      if(that.$i18n.locale == 'zh'){
         countryColors = {
             '中国': '#C04B28',
             '美国': '#044A7E',
@@ -396,54 +397,31 @@ export default {
         
       var yAxis = [];
       var seriesData = [];
-      this.userDetails.globalUserPercent.filter(v=>{ 
-
-        let enName = '';
-        enName = getEnName(this,v.country) ? getEnName(this,v.country) : ''; //zh
-    
-        if(enName){
-          yAxis.push({name:v.country,value:enName});
-        }else {
-          yAxis.push({name: this.$i18n.locale == 'en' ? 'Order' : '其他',value:'order'});
-        }
-        seriesData.push({name:v.country,value:parseInt(v.count)});
-      })
-
-      
       if(newData){
 
-        var seriesData2 = [];
-
-        newData.filter(v=>{ 
-          seriesData2.push({name:v.country,value:parseInt(v.count)});
+        newData.filter(v=>{ //遍历接口数据
+          let enName = getEnName(v.country) ? getEnName(v.country) : ''; //将中文转为英文类型
+          if(enName){
+            yAxis.push({name:v.country,value:enName});
+          }else {
+            yAxis.push({name:that.$i18n.locale == 'zh' ? '其他' : 'Order',value:'order'});
+          }
+          seriesData.push({name:v.country,value:parseInt(v.count)});
         })
 
-        
-        this.option.series[0].data = seriesData2;
-
-        var obj = {};
-        yAxis.filter(v=>{
-            var currentVal = v.value.toLowerCase();
-            obj[v.value] = {
-              width:39,
-              height:26,
-              shadowColor:'#DEDEDE',
-              shadowBlur:2,
-              backgroundColor:{
-                image:require('../../icons/flagIcon/'+currentVal+'.svg')
-              }
-          }  
-        })
-
-       
-
-        
-        this.option.yAxis.data = yAxis;
-        this.option.yAxis.axisLabel.rich = obj;
-        
       }else {
+         that.userDetails.globalUserPercent.filter(v=>{ //遍历接口数据
+          let enName = getEnName(v.country) ? getEnName(v.country) : ''; //将中文转为英文类型
+          if(enName){
+            yAxis.push({name:v.country,value:enName});
+          }else {
+            yAxis.push({name:that.$i18n.locale == 'zh' ? '其他' : 'Order',value:'order'});
+          }
+          seriesData.push({name:v.country,value:parseInt(v.count)});
+        })
+      } 
 
-        this.option = {
+        that.option = {
           dataZoom:{
             show:false,
             type:'inside',
@@ -548,16 +526,15 @@ export default {
           }  
         })
 
-        this.option.yAxis.axisLabel.rich = obj;
-      }  
-
+        that.option.yAxis.axisLabel.rich = obj;
+      
 
 
       //transcoding
-      function getEnName(_this,name){
+      function getEnName(name){
         let countryTypeName;
         var lang = ''; 
-        if(_this.$i18n.locale == 'zh'){
+        if(that.$i18n.locale == 'zh'){
           lang = /[^\u4e00-\u9fa5]/gi;
         }else{
           lang = /[^a-zA-Z]/g;
@@ -582,7 +559,7 @@ export default {
         ).code;
       }
       
-      this.option && myChart.setOption(this.option,true);
+      that.option && myChart.setOption(that.option,true);
 
       window.addEventListener('resize',function(){
         myChart.resize();

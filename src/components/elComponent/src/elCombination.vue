@@ -134,11 +134,6 @@ export default {
                                 if(typeof event == 'string'){
                                     dynamicvModel(that.superParams,item.vModel,event,'set');
                                 }
-                            },
-                            change:function (event) {
-                                if(item.componentName == 'elRadioGroup'){
-                                    dynamicvModel(that.superParams,item.vModel,event,'set');
-                                }
                             }
                         },
                         ref:item.refName || '',
