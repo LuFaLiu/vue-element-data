@@ -1,6 +1,6 @@
 <template>
   <div>
-    <elMain :parentNode="htmlData" v-resize="onResize" />
+    <elComponent :node="appParams.pageData" v-resize="onResize" v-cloak/>
   </div>
 </template>
 
@@ -9,10 +9,8 @@ import pageConfigApi from "@/api/pageConfigApi"
 import {deleteApiRequest,apiRequest,apiRequestParams,apiRequestOpration} from "@/api/commonApi";
 import _ from "lodash";
 import { resizeObserver,resetObj,getVueComponent } from '@/utils/index'
-import elMain from '@/components/Page/elMain'
 import { htmlData } from "./pageRuleHtmlData";
-
-import elLevelSelect from '@/components/Page/elLevelSelect'
+import elComponent from '@/components/elComponent/index'
 
 export default {
  
@@ -21,9 +19,9 @@ export default {
       superParams:this
     }
   },
+  inject:['appParams'],
   components: {
-    elMain,
-    elLevelSelect
+    elComponent
   },
   data() {
 
@@ -121,10 +119,15 @@ export default {
   created() {
     var that = this;
     that.getDataList();
+    
   },
   mounted() {
     var that = this;
     that.getTypeList();
+    that.openFullScreen();
+    if(!that.appParams.pageData){
+      that.appParams['getPageNodeMethod'](that.$route.name);
+    }
 
     //Set a fixed height when mounting the interface
     that.$nextTick(function () {
@@ -141,6 +144,20 @@ export default {
   },
   
   methods: {
+    openFullScreen() {
+      const loading = this.$loading({
+        lock: true,
+        text: 'Loading',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      });
+      setTimeout(() => {
+        loading.close();
+      }, 1000);
+    },
+    onResize() {
+      this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
+    },
 
     deepList(list) {
       var that = this;
@@ -157,10 +174,6 @@ export default {
           that.num = 0;
         }
       });
-    },
-
-    onResize() {
-        this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
     },
 
     toggleSelection(rows) {

@@ -1,13 +1,11 @@
 <template>
   <div v-resize="onResize">
-    <elMain :parentNode="appParams.pageData" v-resize="onResize" />
   </div>
 </template>
 
 <script>
 import sysRoleApi from '@/api/sysRoleApi'
 import { resizeObserver } from '@/utils/auth'
-import elMain from '@/components/Page/elMain'
 export default {
   provide(){
     return {
@@ -16,7 +14,7 @@ export default {
   },
   inject:['appParams'],
   components: {
-    elMain
+    
   },
   data() {
     return {

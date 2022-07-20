@@ -1,6 +1,6 @@
 <template>
     <el-form-item :label="$t(parentNode.attributeLabel)">
-        <component v-for="(item,index) in parentNode" :parentNode="item" :key="index" :is="item.attributeType" />
+        <component v-for="(item,index) in parentNode.childrenNode" :parentNode="item" :key="index" :is="item.attributeType" />
     </el-form-item>
 </template>
 <script>

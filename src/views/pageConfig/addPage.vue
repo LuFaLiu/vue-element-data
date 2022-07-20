@@ -209,6 +209,10 @@ export default {
         {
           value:'elRadioGroup',
           label:'elRadioGroup',
+        },
+        {
+          value:'elLevelSelect',
+          label:'elLevelSelect'
         }
       ],
       dynamicList:[],
@@ -255,10 +259,13 @@ export default {
     getRouterList(){
       var that = this;
       _.filter(_.filter(that.$router.options.routes[0].children,_.matches({name:'page:manage:add'}))[0].children,function (item) { 
-      if(item.name.indexOf('page') == -1){ 
         that.routerList.push({'label': that.$t(item.meta.title),'value':item.name});
-      }
-    });
+        /*
+        if(item.name.indexOf('page') == -1){ 
+          that.routerList.push({'label': that.$t(item.meta.title),'value':item.name});
+        }
+        */
+      });
     },
   
     selectPageMethod(val,showType){
@@ -438,7 +445,7 @@ export default {
       }
 
       _.filter(that.defaultList[0].childrenNode,function (param) { //Adds the rule parameter list parameter to form.componentRule Facilitate the value of subcomponents
-        if(param.attributeType == "ruleParamsInput" || param.attributeType == "ruleDynamicInput"){
+        if(param.attributeType == "ruleDynamicInput"){
           that.$set(that.form.componentRule,param.attributeName,{});
           param.childrenNode.filter((v,index)=>{ //Gets the child node parameters
             if(that.editThreeStatus == 0){ //Add
@@ -447,7 +454,16 @@ export default {
               that.$set(that.form.componentRule[param.attributeName],_.keys(param.childrenNode)[index],v.value); //Dynamically set multiple child elements key、value
             }
           })
-        }else{
+        }else if(param.attributeType == "ruleParamsInput"){
+          that.$set(that.form.componentRule,param.attributeName,{});
+          param.childrenNode.filter(v=>{ //Gets the child node parameters
+            if(that.editThreeStatus == 0){ //Add
+              that.$set(that.form.componentRule[param.attributeModel],v.attributeModel,v[v.attributeModel]);
+            }else{ //Edit
+              that.$set(that.form.componentRule[param.attributeModel],v.attributeModel,v[v.attributeModel]); //Dynamically set multiple child elements key、value
+            }
+          })
+        } else{
           that.$set(that.form.componentRule,param.attributeModel,param[param.attributeModel]); //Gets the dynamic property value assigned to that.form.componentRule
         }
       })
@@ -535,7 +551,14 @@ export default {
             })
           } 
         }else{
-          that.$set(childrenNode,childrenNode.attributeName,that.appendData.componentRule[childrenNode.attributeName]); //Assign to the original rule parameter
+          if(childrenNode.attributeType == 'ruleParamsInput'){
+            that.$set(childrenNode,childrenNode.attributeName,that.appendData.componentRule[childrenNode.attributeName]); 
+            childrenNode.childrenNode.filter(v=>{
+              that.$set(v,v.attributeModel,that.appendData.componentRule[childrenNode.attributeName][v.attributeModel]);
+            })
+          }else {
+            that.$set(childrenNode,childrenNode.attributeName,that.appendData.componentRule[childrenNode.attributeName]); //Assign to the original rule parameter
+          }
         }
         that.defaultList[0].childrenNode.push(childrenNode);
      }); 

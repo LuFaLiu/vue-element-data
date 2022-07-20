@@ -122,14 +122,14 @@ const dynamicData = Mock.mock({
               id: 16,
               parentId:15,
               attributeType:'ruleInput',
-              attributeLabel:'pageRule.prop',
+              attributeLabel:'prop',
               attributeModel:'prop'
             },
             {
               id: 17,
               parentId:15,
               attributeType:'ruleInput',
-              attributeLabel:'pageRule.order',
+              attributeLabel:'order',
               attributeModel:'order'
             }
           ]
@@ -154,14 +154,14 @@ const dynamicData = Mock.mock({
               id: 20,
               parentId:19,
               attributeType:'ruleInput',
-              attributeLabel:'pageRule.children',
+              attributeLabel:'children',
               attributeModel:'children'
             },
             {
               id: 21,
               parentId:19,
               attributeType:'ruleInput',
-              attributeLabel:'pageRule.hasChildren',
+              attributeLabel:'hasChildren',
               attributeModel:'hasChildren'
             }
           ]
@@ -227,7 +227,7 @@ const dynamicData = Mock.mock({
           parentId:28,
           attributeName:'ref',
           attributeType:'ruleInput',
-          attributeLabel:'pageRule.ref',
+          attributeLabel:'pageRule.refName',
           attributeModel:'ref'
         },
         {
@@ -318,6 +318,14 @@ const dynamicData = Mock.mock({
           attributeType:'ruleInput',
           attributeLabel:'pageRule.maxlength',
           attributeModel:'maxlength'
+        },
+        {
+          id: 50,
+          parentId:38,
+          attributeName:'inputCondition',
+          attributeType:'ruleInput',
+          attributeLabel:'pageRule.inputCondition',
+          attributeModel:'inputCondition'
         }
       ]
       
@@ -398,7 +406,7 @@ const dynamicData = Mock.mock({
   ]
 })
 
-//defaultData:elMain,elForm,elTable,elFormItem,elButton,elContainer,elSelect,elInput,elTableColumn,elDialog,elPagination,elRadioGroup
+//defaultData:elMain,elForm,elTable,elFormItem,elButton,elContainer,elSelect,elInput,elTableColumn,elDialog,elPagination,elRadioGroup,elLevelSelect
 const defaultData = Mock.mock({
   'items': [
     {
@@ -464,8 +472,8 @@ const defaultData = Mock.mock({
         {
           attributeName:'tooltipEffect',
           attributeType:'ruleInput',
-          attributeLabel:'pageRule.refName',
-          attributeModel:'refName'
+          attributeLabel:'pageRule.tooltipEffect',
+          attributeModel:'tooltipEffect'
         },
         {
           attributeName:'stripe',
@@ -848,6 +856,44 @@ const defaultData = Mock.mock({
           attributeType:'ruleInput',
           attributeLabel:'pageRule.elContainerTitle',
           attributeModel:'elContainerTitle'
+        }
+      ]
+    },
+    {
+      id:'@id',
+      componentName:'elLevelSelect',
+      childrenNode:[
+        {
+          attributeName:'paramsName',
+          attributeType:'ruleInput',
+          attributeLabel:'pageRule.paramsName',
+          attributeModel:'paramsName'
+        },
+        {
+          attributeName:'vModel',
+          attributeType:'ruleInput',
+          attributeLabel:'pageRule.vModel',
+          attributeModel:'vModel'
+        },
+        {
+          attributeName:'placeholder',
+          attributeType:'ruleDynamicInput',
+          attributeLabel:'pageRule.placeholder',
+          childrenNode:[{
+            value:''
+          }]
+        },
+        {
+          attributeName:'clearable',
+          attributeType:'ruleRadio',
+          attributeLabel:'pageRule.clearable',
+          attributeModel:'clearable'
+        },
+        {
+          attributeName:'elOptionList',
+          attributeType:'ruleInput',
+          attributeLabel:'pageRule.elOptionList',
+          attributeModel:'elOptionList'
         }
       ]
     }

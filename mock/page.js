@@ -61,6 +61,62 @@ const paramsList = Mock.mock({
                     node:[{"id":1,"label":"elMain","children":[{"id":1657271682335,"label":"elContainer","componentRule":{"class":["roleManage"]},"children":[{"id":1657271714703,"label":"elContainer","componentRule":{"class":["dataCout_title"],"elContainerTitle":"menu.roleManage"},"children":[]}]}]}]
                 },
                 {
+                    pageName:'page:manage:rule',
+                    "node":[{"id":1,"label":"elMain","children":[{"id":1658282536249,"label":"elMain","componentRule":{"class":["accountList","container"]},
+                    "children":[
+                    {
+                        "id":1658282549986,"label":"elForm","componentRule":{"class":["searchForm","searchUser"]},
+                        "children":[{"id":1658282564937,"label":"elContainer","componentRule":{"class":["search-left"]},
+                        "children":[{"id":1658282577273,"label":"elFormItem","componentRule":{"label":"form.sorting"},
+                        "children":[{"id":1658282607914,"label":"elInput","componentRule":{"paramsName":"searchForm","vModel":"orderNum","placeholder":["placeholder.pleaseEnter","form.sorting"]},
+                        "children":[]}]},{"id":1658283854305,"label":"elFormItem","componentRule":{"label":"form.searchReferenceName"},
+                        "children":[{"id":1658283879570,"label":"elLevelSelect","componentRule":{"paramsName":"searchForm","vModel":"referenceName","placeholder":["placeholder.pleaseSelect","persion.problemCategory"],"elOptionList":"levelSelectList"},
+                        "children":[]}]},{"id":1658283893793,"label":"elFormItem","componentRule":{},
+                        "children":[{"id":1658283919369,"label":"elButton","componentRule":{"class":["addAccountBtn"],"event":"addContent","icon":"el-icon-plus","title":["form.add"]},
+                        "children":[]}]}]},{"id":1658283930161,"label":"elContainer","componentRule":{"class":["search-right"]},
+                        "children":[{"id":1658283937962,"label":"elFormItem","componentRule":{},
+                        "children":[{"id":1658283961793,"label":"elButton","componentRule":{"class":["mic-btn-primary","searchAccount"],"event":"queryList","title":["form.query"]},
+                        "children":[]}]}]}]
+                    },
+                    {
+                        "id":1658284977880,"label":"elTable","componentRule":{"tableDataName":"tableData","tableHeightName":"tableHeight","refName":"multipleTable","tooltipEffect":"dark","style":"width: 100%;margin-bottom: 20px;","class":["accountTable"],"stripe":false,"defaultSort":{"prop":"orderNum","order":"ascending"},"defaultExpandAll":true,"treeProp":{"children":"childrenNode","hasChildren":"hasChildren"},"rowKey":"id"},
+                        "children":[{"id":1658286089968,"label":"elTableColumn","componentRule":{"label":"pageRule.componentName","value":"componentName"},
+                        "children":[]},{"id":1658286110129,"label":"elTableColumn","componentRule":{"label":"pageRule.attributeName","value":"attributeName"},
+                        "children":[]},{"id":1658286122185,"label":"elTableColumn","componentRule":{"label":"pageRule.attributeName","value":"attributeName"},
+                        "children":[]},{"id":1658286134352,"label":"elTableColumn","componentRule":{"label":"pageRule.attributeType","value":"attributeType"},
+                        "children":[]},{"id":1658286149704,"label":"elTableColumn","componentRule":{"label":"pageRule.attributeLabel","value":"attributeLabel"},
+                        "children":[]},{"id":1658286166984,"label":"elTableColumn","componentRule":{"label":"pageRule.attributeModel","value":"attributeModel"},
+                        "children":[]},{"id":1658285051144,"label":"elTableColumn","componentRule":{"label":"table.operation","width":"260","align":"center","operation":true},
+                        "children":[{"id":1658285295560,"label":"elButton","componentRule":{"class":["editBtn"],"btnType":"text","event":"editContent","title":["form.edit"],"params":false,"paramsName":"row"},
+                        "children":[]},{"id":1658286050856,"label":"elButton","componentRule":{"class":["delBtn"],"btnType":"text","event":"delHandle","title":["form.delete"],"params":false,"paramsName":"row"},
+                        "children":[]}]},
+                    ]
+                    },
+                    {"id":1658298281089,"label":"elPagination","componentRule":{"total":"0","size":"10","current":"1","params":"pageAttribute","layout":"prev, pager, next","pageSize":["10","20","50","100"],"class":["account-bottom"],"currentChangeName":"handleCurrentChange"},"children":[]},
+                    {"id":1658298488408,"label":"elDialog","componentRule":{"title":["form.add"],"width":"850px","dialogShowName":"addContentDialog","condition":"editMethodUser","closeMethodName":"handleClose","center":"center"},
+                    "children":[{"id":1658298543688,"label":"elForm","componentRule":{"class":[""],"model":"paramsData","labelWidth":"230px","refName":"formRef","formRule":"paramsDataRules"},
+                    "children":[{"id":1658299622776,"label":"elContainer","componentRule":{"class":["helpInfo"],"refName":"helpInfo"},
+                    "children":[{"id":1658298575240,"label":"elFormItem","componentRule":{"label":"pageRule.componentType","prop":"componentType","elFormItemCondition":"editMethodUser"},
+                    "children":[{"id":1658298613088,"label":"elLevelSelect","componentRule":{"paramsName":"pageRule.componentType","vModel":"paramsData.componentType","placeholder":["placeholder.pleaseSelect","pageRule.componentType"],"clearable":true,"elOptionList":"levelSelectList"},
+                    "children":[]}]},{"id":1658299303232,"label":"elFormItem","componentRule":{"label":"pageRule.attributeName","prop":"attributeName"},
+                    "children":[{"id":1658299356488,"label":"elInput","componentRule":{"vModel":"paramsData.attributeName","label":"pageRule.attributeName","autocomplete":"off","placeholder":["placeholder.pleaseEnter","pageRule.attributeName"],"clearable":true},"children":[]}]},
+                    {"id":1658299415840,"label":"elFormItem","componentRule":{"label":"pageRule.attributeType","prop":"attributeType"},
+                    "children":[{"id":1658299449488,"label":"elInput","componentRule":{"inputType":"","vModel":"paramsData.attributeType","label":"pageRule.attributeType","autocomplete":"off","placeholder":["placeholder.pleaseEnter","pageRule.attributeType"],"clearable":true},
+                    "children":[]}]},{"id":1658299522632,"label":"elFormItem","componentRule":{"label":"pageRule.attributeModel","prop":"attributeModel"},
+                    "children":[{"id":1658299563872,"label":"elInput","componentRule":{"paramsName":"","vModel":"paramsData.attributeModel","label":"pageRule.attributeModel","autocomplete":"off","placeholder":["placeholder.pleaseEnter","pageRule.attributeModel"],"clearable":true},
+                    "children":[]}]},{"id":1658299473120,"label":"elFormItem","componentRule":{"label":"pageRule.attributeLabel","prop":"attributeLabel"},
+                    "children":[{"id":1658299506104,"label":"elInput","componentRule":{"paramsName":"pageRule.attributeLabel","vModel":"paramsData.attributeLabel","autocomplete":"off","placeholder":["placeholder.pleaseEnter","pageRule.attributeLabel"],"clearable":true},
+                    "children":[]}]},{"id":1658298627688,"label":"elFormItem","componentRule":{"label":"pageRule.componentName","prop":"componentName"},
+                    "children":[{"id":1658298722760,"label":"elInput","componentRule":{"paramsName":"","inputType":"","vModel":"paramsData.componentName","label":"form.componentName","autocomplete":"off","placeholder":["placeholder.pleaseEnter","pageRule.componentName"],"clearable":true,"inputCondition":"editMethodUser"},
+                    "children":[]}]}]},{"id":1658299686816,"label":"elContainer","componentRule":{"class":["dialog-footer"]},
+                    "children":[{"id":1658299696128,"label":"elFormItem","componentRule":{},
+                    "children":[{"id":1658299788416,"label":"elButton","componentRule":{"btnType":"","icon":"","params":true,"paramsName":"formRef","elFormStatus":"resetFieldStatus","class":["el-button--default"],"event":"resetForm","title":["form.cancel"],"ref":"paramsData"},"children":[]},
+                    {"id":1658300193407,"label":"elButton","componentRule":{"class":["saveMethodList"],"btnType":"primary","event":"submitForm","title":["form.save"],"ref":"","elFormStatus":"resetFieldStatus","params":true,"paramsName":"formRef"},"children":[]}]
+                    }]}]}]}
+
+                    ]}]}]
+                },
+                {
                     //权限管理(测试数据)
                     "pageName": "systools:menu:role", 
                     "node": [{"id":1,"label":"elMain",

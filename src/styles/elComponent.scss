@@ -1,6 +1,7 @@
 
 //elContainer
 .accountList {
+    padding: 0;
     .el-row {
       margin: 0 !important;
       padding: 20px;
@@ -86,5 +87,12 @@
     .accountTable {
       margin-top: 20px;
       border-radius: 8px;
+    }
+  }
+
+  ::v-deep {
+    .el-dialog--center .el-dialog__body {
+        text-align: initial;
+        padding: 25px 25px 30px;
     }
   }

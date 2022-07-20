@@ -1,15 +1,12 @@
 <template>
-  <!--<elMain :parentNode="appParams.pageData" v-resize="onResize" />-->
-  <elComponent :node="appParams.pageData" v-resize="onResize"/>
+  <elComponent :node="appParams.pageData" v-resize="onResize" v-cloak/>
 </template>
 
 <script>
-//import globalFun from '@/utils/globalFun'
 import sysRoleApi from '@/api/sysRoleApi'
 import userManageApi from '@/api/userManageApi'
 import { resizeObserver } from '@/utils/index'
 import _ from 'lodash'
-import elMain from '@/components/Page/elMain'
 import {deleteApiRequest,apiRequest,apiRequestTable,apiRequestList,apiRequestParams} from "@/api/commonApi";
 import elComponent from '@/components/elComponent/index'
 
@@ -21,7 +18,6 @@ export default {
   },
   inject:['appParams'],
   components: {
-    elMain,
     elComponent
   },
   data() {
@@ -88,19 +84,31 @@ export default {
     var that = this;
     that.getDataList();
     //get parent dom
-    if(!that.appParams.pageData){
-      that.appParams['getPageNodeMethod'](that.$route.name);
-    }
   },
   mounted() {
     var that = this;
+    that.openFullScreen();
+    if(!that.appParams.pageData){
+      that.appParams['getPageNodeMethod'](that.$route.name); 
+    }
     that.$nextTick(function () {
-      that.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],125); //设置固定高度
+      that.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85); //设置固定高度
     })
   },
   methods: {
+    openFullScreen() {
+      const loading = this.$loading({
+        lock: true,
+        text: 'Loading',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      });
+      setTimeout(() => {
+        loading.close();
+      }, 1000);
+    },
     onResize() {
-      this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],125);
+      this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
     },
 
     indexMethod(index){

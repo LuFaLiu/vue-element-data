@@ -2,6 +2,7 @@
 import { filteri18n, dynamicvModel } from '@/utils/index'
 import Template from './template'
 import TraverseTemplate from './traverseTemplate'
+import elLevelSelect from '@/components/Page/elLevelSelect'
 export default {
     inject: ['superParams'],
     name: 'ElCombination',
@@ -34,12 +35,8 @@ export default {
     },
     components:{
         Template,
-        TraverseTemplate
-    },
-    data(){
-        return {
-            domList:[]
-        }
+        TraverseTemplate,
+        elLevelSelect
     },
     computed:{
         resetvModel:{
@@ -97,22 +94,34 @@ export default {
                                 clearable:true
                             } : item.componentName == 'elTable' ? 
                             {
+                                loading:that.loading,
                                 class:item.class,
                                 data:that.superParams[item.tableDataName],
-                                'tooltip-effect':item.tooltipEffect,
+                                tooltipEffect:item.tooltipEffect,
                                 style:[item.style],
                                 stripe:item.stripe,
                                 height:that.superParams[item.tableHeightName],
-                                'default-sort':item.defaultSort,
-                                'row-key':item.rowKey && item.rowKey,
-                                'default-expand-all':item.defaultExpandAll && item.defaultExpandAll,
-                                'tree-prop':item.treeProp,
+                                defaultSort:item.defaultSort || '',
+                                rowKey:item.rowKey || '',
+                                defaultExpandAll:item.defaultExpandAll || '',
+                                treeProps:item.treeProp || '',
                             } : item.componentName == 'elTableColumn' ? 
                             {
                                 type:item.type,
                                 label:that.$t(item.label),
                                 width:item.width,
                                 align:'center'
+                            }  : item.componentName == 'elLevelSelect' ? 
+                            {
+                                parentNode:item,
+                            }   : item.componentName == 'elDialog' ? 
+                            {
+                                ref:item.refName || '',
+                                title:that.filteri18n(item.title),
+                                visible:that.superParams[item.dialogShowName], //官方:visible.sync
+                                width:item.width,
+                                'before-close':()=>that.beforeClose(item), //匿名函数阻止首次执行（非直接调用）
+                                center:item.center,
                             } 
                             : item,  
                         on:{
@@ -136,6 +145,7 @@ export default {
                                 }
                             }
                         },
+                        key:Math.random(),
                         ref:item.refName || '',
                         scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' && !item.operation && {
                             default: props => h('Template',{props,item}) //通过单文件组件展示对应的信息(组件需要的一切都是通过 context 参数传递)
@@ -143,7 +153,7 @@ export default {
                     },
                     item.childrenNode && item.childrenNode.length > 0  
                         ? that.deepChildrenComponent(item,h) 
-                            : item.componentName == 'elButton' 
+                            : item.componentName == 'elButton'
                                 ? [h('span',that.filteri18n(item.title))] 
                                         : that.$slots.default
                 )
@@ -192,8 +202,17 @@ export default {
         },
         formatDate(val){
             return this.$formatDate(val);
+        },
+        beforeClose(item){
+          this.superParams[item.closeMethodName]();
         }
-    }
+    },
+    data(){
+        return {
+            loading:true,
+            domList:[]
+        }
+    },
 }
 </script>
 <style lang="scss" scoped>

@@ -3,7 +3,6 @@
         <div class="dataCout_title">{{$t('form.add')}}{{$t('form.account')}}</div>
         <div class="addAccount_title">{{$t('form.personalData')}}</div>
         <el-col :span="5">
-            <!--<elMain  :parentNode="appParams.pageData" :is="appParams.pageData.componentName" />-->
             <elComponent :node="appParams.pageData" />
         </el-col>
     </el-row>
@@ -11,13 +10,6 @@
 </template>
 <script>
   import userManageApi from '@/api/userManageApi'
-  /*
-  import elMain from '@/components/Page/elMain'
-  import elForm from '@/components/Page/elForm';
-  import elTable from '@/components/Page/elTable';
-  import elPagination from '@/components/Page/elPagination';
-  import elDialog from '@/components/Page/elDialog';
-  */
   import { getVueComponent } from '@/utils/index'
   import elComponent from '@/components/elComponent/index'
   var moment = require('moment');
@@ -29,14 +21,7 @@
     },
     inject:['appParams'],
     components: {
-        elComponent,
-        /*
-        elMain,
-        elForm,
-        elTable,
-        elPagination,
-        elDialog
-        */
+        elComponent
     },
     data() {
       const checkPhoneNumber = (rule, value, callback) => {
