@@ -14,6 +14,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/zh-CN' // lang i18n
 import VueResource from 'vue-resource'
 import { debounce } from '@/utils/debounceUtil'
+import 'default-passive-events'
 import LangFlag from 'vue-lang-code-flags'
 import './static/font/iconfont.css'
 import _ from "lodash";

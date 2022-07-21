@@ -12,11 +12,11 @@ export default {
       })
     },
 
-    getDynamicListPaging(params) {
+    getDynamicListPaging(data,current,size) {
       return request({
-        url: '/table/dynamicListPaging',
+        url: '/table/dynamicListPaging?current='+current+'&size='+size,
         method: 'get',
-        params,
+        data,
         showLoading: false
       })
     },

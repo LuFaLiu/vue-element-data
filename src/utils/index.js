@@ -25,10 +25,10 @@ export function filteri18n(arr) {
  * @returns {number}
  */
 export function resizeObserver(mainClass,orderClass,orderNum) {
-    var mainHeight = document.getElementsByClassName(mainClass)[0].clientHeight;
+    var mainHeight = document.getElementsByClassName(mainClass).length > 0 && document.getElementsByClassName(mainClass)[0].clientHeight;
     var reduceHeight = 0;
     orderClass.filter(v=>{
-        reduceHeight += document.getElementsByClassName(v)[0].clientHeight;
+        reduceHeight += document.getElementsByClassName(v).length > 0 && document.getElementsByClassName(v)[0].clientHeight;
     })
     return mainHeight - reduceHeight - parseInt(orderNum);
 }

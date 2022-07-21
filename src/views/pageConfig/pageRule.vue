@@ -6,7 +6,7 @@
 
 <script>
 import pageConfigApi from "@/api/pageConfigApi"
-import {deleteApiRequest,apiRequest,apiRequestParams,apiRequestOpration} from "@/api/commonApi";
+import {deleteApiRequest,apiRequest,apiRequestParams,apiRequestTable} from "@/api/commonApi";
 import _ from "lodash";
 import { resizeObserver,resetObj,getVueComponent } from '@/utils/index'
 import { htmlData } from "./pageRuleHtmlData";
@@ -199,12 +199,12 @@ export default {
     getDataList() {
       var that = this;
       that.tableData = [];
-      apiRequestParams(that,pageConfigApi,'getDynamicListPaging',that.pageAttribute,function (res) {
+      apiRequestTable(that,pageConfigApi,'getDynamicListPaging','',function (res) {
         that.tableData = res.items;
         that.pageAttribute.current = parseInt(res.current);
         that.pageAttribute.size = res.size;
         that.pageAttribute.total = res.total;
-      });
+      },that.searchForm,that.pageAttribute.current,that.pageAttribute.size);
     },
 
     handleSizeChange(val) {

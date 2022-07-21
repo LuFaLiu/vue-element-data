@@ -8,7 +8,9 @@ export default {
     name: 'ElCombination',
     props:{
         node:{
-            type:Object
+            default:function () {
+                return {}
+            }
         }
     },
     render(h){
@@ -125,7 +127,7 @@ export default {
                             } 
                             : item,  
                         on:{
-                            click:function (e) {
+                            '&click':function (e) {
                                 switch (item.componentName) {
                                     case "elButton" :
                                         const elButtonParent = that.$parent;
@@ -138,6 +140,9 @@ export default {
                             },
                             'selection-change':function (e) {
                                 that.selectChange(e,item);
+                            },
+                            'current-change':function (e) {
+                                that.superParams[item.currentChangeName](e);
                             },
                             input: function (event) { //v-model
                                 if(typeof event == 'string'){

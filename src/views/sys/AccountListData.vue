@@ -83,11 +83,11 @@ export default {
   created() {
     var that = this;
     that.getDataList();
-    //get parent dom
   },
   mounted() {
     var that = this;
     that.openFullScreen();
+    //get parent dom
     if(!that.appParams.pageData){
       that.appParams['getPageNodeMethod'](that.$route.name); 
     }

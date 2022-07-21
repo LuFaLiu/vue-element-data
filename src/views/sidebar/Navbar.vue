@@ -15,10 +15,12 @@
             <el-avatar size="medium" :src="require('@/assets/avatar.png')" />
           </div>
           <el-dropdown-menu slot="dropdown" class="dropdownClass">
+            <!--
             <el-dropdown-item>
               <i class="font_family icon-user" />
-              <router-link :to="{name: 'sys:userpersonal:list'}" class="userCenter">{{ this.$t('navbar.userCenter') }}</router-link>
+              <router-link :to="{name: 'personalInfo'}" class="userCenter">{{ this.$t('navbar.userCenter') }}</router-link>
             </el-dropdown-item>
+            -->
             <el-dropdown-item @click.native="showChangePasswordDialog">
               <i class="font_family icon-password" />{{ this.$t('navbar.changePassword') }}
             </el-dropdown-item>

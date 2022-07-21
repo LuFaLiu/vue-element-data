@@ -376,14 +376,6 @@ const dynamicData = Mock.mock({
       componentName: 'elPagination',
       childrenNode:[
         {
-          id: 47,
-          parentId:46,
-          attributeName:'sizeChangeName',
-          attributeType:'ruleInput',
-          attributeLabel:'pageRule.componentName',
-          attributeModel:'componentName'
-        },
-        {
           id: 48,
           parentId:46,
           attributeName:'currentChangeName',

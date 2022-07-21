@@ -1,6 +1,7 @@
 import sysMenuApi from '@/api/sysMenuApi'
 import store from '../store'
 import router from '../router'
+import VueRouter from 'vue-router'
 import { Message } from 'element-ui';
 import _ from "lodash";
 
@@ -37,9 +38,11 @@ export function getSysMenu(hasRoute){ //Get menus and permissions
               })
             }
         })
-
+        
         menuListIndex = Array.from(new Set(menuListIndex)); //A route uniquely identifies deduplication
-        router.addRoutes(newRoutes);
+
+        router.addRoutes(newRoutes)
+
         hasRoute = true;
         store.commit('changeRouteStatus', hasRoute);
     })

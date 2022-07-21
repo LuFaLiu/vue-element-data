@@ -98,20 +98,6 @@ export default {
     }
   },
   watch:{
-    option: {  
-      handler(newVal, oldVal) {
-        if (this.myChart) {
-          if (newVal) {
-            this.myChart.setOption(newVal);
-          } else {
-            this.myChart.setOption(oldVal);
-          }
-        } else {
-          this.init();
-        }
-      },
-      deep: true 
-    },
     'userDetails.globalUserPercent':{
       handler(newVal) {
         this.drawLineChart();
@@ -132,11 +118,6 @@ export default {
     this.chart = null
   },
   methods: {
-
-    init(){
-      var myChart = this.$echarts.init(document.getElementById('myQueueEchart'))
-      myChart.setOption(this.option,true)
-    },
 
     customColorMethod(percentage) {
       if (percentage < 30) {
@@ -230,20 +211,20 @@ export default {
           },
           symbol:'circle',
           symbolSize:10,
-          itemStyle:{ 
-            normal: { 
-              color: "#88CCFF", 
-            },
-            emphasis:{
+          emphasis:{
+            itemStyle:{
               color:'#336FF6',
               borderColor:'#FFFFFF',
               borderWidth:1,
               shadowColor:'#336FF6',
               shadowBlur:5,
-              lineStyle:{
-                color:'#336FF6'
-              }
             },
+            lineStyle:{
+              color:'#336FF6'
+            }
+          },
+          itemStyle:{ 
+            color: "#88CCFF", 
           },
           areaStyle:{
             color:{
@@ -272,20 +253,20 @@ export default {
           },
           symbol:'circle',
           symbolSize:10,
-          itemStyle:{ 
-            normal: { 
-              color: "#88CCFF", 
-            },
-            emphasis:{ 
+          emphasis:{ 
+            itemStyle:{
               color:'#336FF6',
               borderColor:'#FFFFFF',
               borderWidth:1,
               shadowColor:'#336FF6',
               shadowBlur:5,
-              lineStyle:{
-                color:'#336FF6'
-              }
             },
+            lineStyle:{
+              color:'#336FF6'
+            }
+          },
+          itemStyle:{ 
+            color: "#88CCFF", 
           },
           areaStyle:{
             color:{
@@ -364,7 +345,6 @@ export default {
     myqueEcharts(newData) {
       var that = this;
       var chartDom = document.getElementById('myQueueEchart');
-      
       var myChart = that.$echarts.init(chartDom);
       
       var countryColors = {};
@@ -558,7 +538,7 @@ export default {
           }) || {}
         ).code;
       }
-      
+
       that.option && myChart.setOption(that.option,true);
 
       window.addEventListener('resize',function(){
