@@ -145,7 +145,7 @@ export default {
                                 }
                             }
                         },
-                        key:Math.random(),
+                        key:Math.random(), //elTable required
                         ref:item.refName || '',
                         scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' && !item.operation && {
                             default: props => h('Template',{props,item}) //通过单文件组件展示对应的信息(组件需要的一切都是通过 context 参数传递)
