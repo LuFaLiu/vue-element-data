@@ -6,7 +6,7 @@ function resolve(dir) {
 
 const name = 'Vue Element Data' // Page title
 module.exports = {
-  publicPath: '/vue-element-data/', 
+  publicPath: './', 
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: false, 
