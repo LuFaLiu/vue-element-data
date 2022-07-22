@@ -20,22 +20,22 @@ const paramsList = Mock.mock({
                     "id":5,"status":1,"parentId":4,"title":"menu.accountManage","path":"/sys/accountListData","name":"sys:account:listData","component":"sys/AccountListData","type":2,"icon":"el-icon-s-order","orderNum":5,
                     "children":[
                         {
-                            "id":6,"status":1,"parentId":5,"title":"menu.addAccount","path":"/sys/addAccountData","name":"sys:account:addData","component":"sys/addAccountData","type":3,"icon":null,"orderNum":1,"children":[]
+                            "id":6,"status":1,"parentId":5,"title":"menu.addAccount","path":"/sys/addAccountData","name":"sys:account:addData","component":"sys/addAccountData","type":3,"icon":null,"orderNum":1,"children":[],
                         }
                     ]
                 },
-                /*
                 {
+                    "id":9,"status":1,"parentId":4,"title":"menu.rightsManagement","path":"/sys/role","name":"sys:account:role","component":"sys/role","type":4,"icon":"el-icon-s-order","orderNum":6,"children":[],
+                    /*
                     "id":10,"status":1,"parentId":4,"title":"menu.roleManage","path":"/roleManage/role","name":"role:manage:list","component":"roleManage/role","type":2,"icon":"el-icon-s-order","orderNum":6,
                     "children":[]
+                    */
                 }
-                */
             ]
         },
         {"id":7,"name":"sys:tools","title":"menu.systemTools","icon":"icon-tool","path":"","component":null,"type":1,
             "children":[
-                {"id":8,"parentId":7,"name":"systools:menu:manage","title":"menu.menuManage","icon":"el-icon-menu","path":"/systools/menus","component":"systools/Menu","children":[]},
-                {"id":9,"parentId":7,"name":"systools:menu:role","title":"menu.rightsManagement","icon":"el-icon-menu","path":"/systools/role","component":"systools/role","children":[]}
+                {"id":8,"parentId":7,"name":"systools:menu:manage","title":"menu.menuManage","icon":"el-icon-menu","path":"/systools/menus","component":"systools/Menu","children":[]}
             ]
         }
     ]

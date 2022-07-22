@@ -86,7 +86,6 @@ export default {
   },
   mounted() {
     var that = this;
-    that.openFullScreen();
     //get parent dom
     if(!that.appParams.pageData){
       that.appParams['getPageNodeMethod'](that.$route.name); 
@@ -96,17 +95,6 @@ export default {
     })
   },
   methods: {
-    openFullScreen() {
-      const loading = this.$loading({
-        lock: true,
-        text: 'Loading',
-        spinner: 'el-icon-loading',
-        background: 'rgba(0, 0, 0, 0.7)'
-      });
-      setTimeout(() => {
-        loading.close();
-      }, 1000);
-    },
     onResize() {
       this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
     },

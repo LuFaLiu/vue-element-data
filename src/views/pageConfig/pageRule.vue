@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <elComponent :node="appParams.pageData" v-resize="onResize" v-cloak/>
-  </div>
+    <elComponent :node="appParams.pageData" v-resize="onResize"/>
 </template>
 
 <script>
@@ -9,7 +7,6 @@ import pageConfigApi from "@/api/pageConfigApi"
 import {deleteApiRequest,apiRequest,apiRequestParams,apiRequestTable} from "@/api/commonApi";
 import _ from "lodash";
 import { resizeObserver,resetObj,getVueComponent } from '@/utils/index'
-import { htmlData } from "./pageRuleHtmlData";
 import elComponent from '@/components/elComponent/index'
 
 export default {
@@ -76,10 +73,7 @@ export default {
       referenceName:'',
       btnLoading:false, //Prevent multiple clicks
       delBtlStatu:true,
-
       tableData: [],
-
-
       paramsDataRules: {
         attributeName: [
           { required: true, validator:validateAttributeName, trigger: "blur" }
@@ -108,9 +102,6 @@ export default {
         pageSize:[10, 20, 50, 100],
         className:["account-bottom"]
       },
-      
-      htmlData:htmlData,
-      
       levelSelectList:[],
       levelSelectListCount:0,
       num: 0
@@ -119,16 +110,13 @@ export default {
   created() {
     var that = this;
     that.getDataList();
-    
   },
   mounted() {
     var that = this;
     that.getTypeList();
-    that.openFullScreen();
     if(!that.appParams.pageData){
       that.appParams['getPageNodeMethod'](that.$route.name);
     }
-
     //Set a fixed height when mounting the interface
     that.$nextTick(function () {
       that.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
@@ -144,17 +132,6 @@ export default {
   },
   
   methods: {
-    openFullScreen() {
-      const loading = this.$loading({
-        lock: true,
-        text: 'Loading',
-        spinner: 'el-icon-loading',
-        background: 'rgba(0, 0, 0, 0.7)'
-      });
-      setTimeout(() => {
-        loading.close();
-      }, 1000);
-    },
     onResize() {
       this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
     },

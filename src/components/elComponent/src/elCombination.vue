@@ -32,7 +32,6 @@ export default {
                 },
                 this.deepChildrenComponent(node,h)
             )
-            
         }
     },
     components:{
@@ -75,7 +74,7 @@ export default {
                                 model:item.model ? that.superParams[item.model] : {},
                                 class:item.class,
                                 rules:item.formRule ? that.superParams[item.formRule] : {},
-                                'label-width':item.labelWidth  || '',
+                                'label-width':item.labelWidth,
                                 'label-position':item.labelPosition || 'right',
                             } : item.componentName == 'elFormItem' ? 
                             {
@@ -83,7 +82,7 @@ export default {
                                 prop:item.prop
                             } : item.componentName == 'elButton' ? 
                             {
-                                type:item.btnType || '',
+                                type:item.btnType,
                                 icon:item.icon,
                                 class:item.class,
                                 disabled:item.btnCondition ? (that.getValue() ? true : false) : false,
@@ -91,12 +90,11 @@ export default {
                             } : item.componentName == 'elInput' ? 
                             {
                                 type:item.inputType,
-                                value:that.vModelVal(item), //必须值
+                                value: that.vModelVal(item), //必须值
                                 disabled:item.inputCondition ? (that.superParams[item.inputCondition] ? true : false) : item.disabled,
                                 clearable:true
                             } : item.componentName == 'elTable' ? 
                             {
-                                loading:that.loading,
                                 class:item.class,
                                 data:that.superParams[item.tableDataName],
                                 tooltipEffect:item.tooltipEffect,
@@ -150,6 +148,12 @@ export default {
                                 }
                             }
                         },
+                        directives: [
+                            {
+                                name: 'loading',
+                                value: item.componentName == 'elTable' ? that.tableLoading : false
+                            }
+                        ],
                         key:Math.random(), //elTable required
                         ref:item.refName || '',
                         scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' && !item.operation && {
@@ -214,10 +218,16 @@ export default {
     },
     data(){
         return {
-            loading:true,
+            tableLoading:true,
             domList:[]
         }
     },
+    mounted(){
+        var that = this;
+        setTimeout(() => {
+            that.tableLoading = false;
+        }, 1500);
+    }
 }
 </script>
 <style lang="scss" scoped>
