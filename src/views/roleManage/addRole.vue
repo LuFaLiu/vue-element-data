@@ -1,90 +1,22 @@
 <template>
-    <el-row class="addRole" v-resize="onResize">
-        <el-col class="roleCondition" :span="24">
-            <div class="dataCout_title" v-if="viewType == 0">新增角色</div>
-            <div class="dataCout_title" v-else>{{roleType}}</div>
-            <el-form ref="editForm" :model="editForm" :rules="editFormRules" class="demo-editForm">
-
-                <div class="editForm_left">
-                    <el-form-item label="昵称" prop="name" label-width="53px">
-                        <el-input v-model="editForm.name" placeholder="请输入昵称" autocomplete="off" :disabled="viewType == 1 ? true : false" />
-                    </el-form-item>
-
-                    <el-form-item label="状态" prop="status" label-width="70px">
-                        <el-select v-model="editForm.status" placeholder="请选择" :disabled="viewType == 1 ? true : false">
-                            <el-option
-                            v-for="item in roleStatus"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                    
-
-                    <el-form-item label="角色描述" label-width="145px">
-                        <el-input v-model="editForm.remark" placeholder="请输入描述内容" autocomplete="off" :disabled="viewType == 1 ? true : false" />
-                    </el-form-item>
-
-                    
-                    <div class="adminConfig_tip" v-if="viewType == 0">提示：请给角色配置权限哦</div>
-                </div>
-                <div class="editForm_right" v-if="viewType == 0">
-                    <el-form-item>
-                        <el-button @click="resetForm('editForm')">取消</el-button>
-                        <el-button type="primary" @click="submitForm('editForm')">保存</el-button>
-                    </el-form-item>
-                </div>
-            </el-form>
-
-        </el-col>
-
-        
-        <el-col>
-           
-            <el-table
-                :data="permTreeData"
-                border
-                style="width: 100%"
-                class="config_table"
-                :height="tableHeight">
-                    
-                    <el-table-column
-                    prop="name"
-                    label="一级菜单"
-                    width="180"
-                    align="center">
-                        <template slot-scope="scope">
-                            <el-checkbox  v-model="scope.row.checked" @change="checkMenu(scope.row)" :disabled="viewType == 1 ? true : false">{{scope.row.name}}</el-checkbox>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                    prop="address"
-                    label="二级菜单"
-                    width="300">
-                        <template slot-scope="scope">
-                            <el-checkbox v-for="(item,index) in  searchCurrentMenu(scope.row.id)" :key="index" v-model="item.checked" @change="checkMenu(item)" :disabled="viewType == 1 ? true : false">{{item.name}}</el-checkbox>
-                        </template>
-                    </el-table-column>
-                    <el-table-column
-                    prop="address"
-                    label="三级菜单">
-                        <template slot-scope="scope">
-                            <el-checkbox v-for="(item,index) in searchCurrentMenu(scope.row.id,scope.row.children)" :key="index" v-model="item.checked" @change="checkMenu(item)" :disabled="viewType == 1 ? true : false">{{item.name}}</el-checkbox>
-                        </template>
-                    </el-table-column>
-            </el-table>
-
-
-        </el-col>
-    </el-row>
+    <elComponent :node="appParams.pageData" v-resize="onResize" v-cloak/>
 </template>
 <script>
 import sysRoleApi from '@/api/sysRoleApi'
 import sysMenuApi from '@/api/sysMenuApi'
 import { convertPinyin } from '@/utils/convertPinYin'
 import { resizeObserver } from '@/utils/index'
+import elComponent from '@/components/elComponent/index'
 export default {
+    provide(){
+        return {
+            superParams:this
+        }
+    },
+    inject:['appParams'],
+    components: {
+        elComponent
+    },
     data(){
         return {
             checked:false,
@@ -92,12 +24,12 @@ export default {
                 name:'',
                 code:'',
                 remark:'',
-                status:1,
+                status:'',
                 menuIds:[]
             },
             roleStatus:[               
-                {value:1,label:'启用'},
-                {value:0,label:'禁用'}
+                {value:1,label:'form.enable'},
+                {value:2,label:'form.disable'}
             ],
             editFormRules: {
                 name: [
@@ -120,19 +52,23 @@ export default {
         }else {
             this.viewType = 0;
         }
-        this.getRoleManageList();
+        //this.getRoleManageList();
     },
     mounted() {
         var that = this;
+        //get parent dom
+        if(!that.appParams.pageData){
+            that.appParams['getPageNodeMethod'](that.$route.name); 
+        }
         //界面挂载时设置固定高度
         that.$nextTick(function () {
-        that.tableHeight = resizeObserver("el-main",["roleCondition"],110);
+            //that.tableHeight = resizeObserver("el-main",["roleCondition"],110);
         })
     },
     methods:{
         //监听浏览器窗口变化
         onResize() {
-            this.tableHeight = resizeObserver("el-main",["roleCondition"],110);
+            //this.tableHeight = resizeObserver("el-main",["roleCondition"],110);
         },
         getRoleMenuInfo(id){
             sysRoleApi.getRoleMenuInfo(id).then(res => {
@@ -343,6 +279,9 @@ export default {
         padding: 20px;
         border-radius: 8px;
         background: #FFFFFF;
+    }
+    ::v-deep {
+        
         .adminConfig_tip{
             margin-top: 20px;
             width: fit-content;
@@ -361,56 +300,59 @@ export default {
             .editForm_left{
                 width: 80%;
                 display: flex;
+                flex-wrap: wrap;
                 align-items: center;
-               .adminConfig_tip{
-                   margin-top: 0;
-                   margin-left: 40px;
-               }
+                .adminConfig_tip{
+                    margin-top: 0;
+                    margin-left: 40px;
+                }
             }
             .editForm_right{
-               float: right;
+                float: right;
+                .el-form-item__content {
+                    margin-left: 0px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    .el-button {
+                        margin-bottom: 15px;
+                    }
+                }
             }
-            ::v-deep{
-                .el-select{
-                    width: 100px;
-                }
-                .el-form-item{
-                    margin-bottom: 0;
-                }
-                .el-button{
-                    padding: 10px 32px;
-                    margin-left: 20px;
-                    border-radius: 5px 5px 5px 5px;
-                    font-size: 16px;
-                    line-height: 15px;
-                }
+           
+            .el-select{
+                width: 100px;
+            }
+            .el-form-item{
+                margin-bottom: 15px;
+            }
+            .el-button{
+                padding: 10px 32px;
+                margin-left: 20px;
+                border-radius: 5px 5px 5px 5px;
+                font-size: 16px;
+                line-height: 15px;
+            }
 
-                .el-button--default{
-                    border: 1px solid #336FF6;
-                    color: #336FF6;
-                }
+            .el-button--default{
+                border: 1px solid #336FF6;
+                color: #336FF6;
+            }
 
-                .el-button--default:hover{
-                 background-color: transparent;
-                }
+            .el-button--default:hover{
+            background-color: transparent;
+            }
 
-                .el-button--primary{
-                    background: #336FF6;
-                    border: 1px solid #336FF6;
-                }
+            .el-button--primary{
+                background: #336FF6;
+                border: 1px solid #336FF6;
             }
 
         }
 
         .config_table{
-
             margin-top: 27px;
-
-            
         }
-    }
 
-    ::v-deep {
         .el-tree-node /*,.el-tree-node.is-expanded>.el-tree-node__children*/{
             display: flex;
         }

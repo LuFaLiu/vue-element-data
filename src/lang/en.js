@@ -9,7 +9,8 @@ export default {
     systemTools:'System Tools',
     menuManage:'Menu Management',
     rightsManagement:'Rights Management',
-    roleManage:'Role Management'
+    roleManage:'Role Management',
+    addRole:'Add Role'
   },
   languageSelect: {
     switchLanguage: 'Language Changed Success'
@@ -25,9 +26,12 @@ export default {
   login:{
     logPlatform:'Log In The Platform',
     welcomeLogin:'Welcome To Login',
-    login:'Login'
+    login:'Login',
+    wrongAccount:'Wrong Account Or Password!',
   },
   common:{
+    admin:'Admin',
+    developer:'Developer',
     cancel:'Cancel',
     confirm:'Confirm',
     originalPass: 'Original Pass',
@@ -97,7 +101,8 @@ export default {
     lightType:'Light Type',
     questionRemark:'Question Remark',
     selectFile:'Select The File',
-    autoForward:'Auto Forward'
+    autoForward:'Auto Forward',
+    roleRemark:'Role Remark'
   },
   form:{
     descModule:'Describe Module',
@@ -201,7 +206,8 @@ export default {
     logAgain:'Please Log In Again.',
     beenCancelled:'Has Been Cancelled Disabled',
     disableRole:'Confirm The User That You Want To Disable For This Role?',
-    enableRole:'Identify The User To Enable The Role?'
+    enableRole:'Identify The User To Enable The Role?',
+    permissionModified:'This Permission Is The Highest By Default And Cannot Be Edited Or Modified',
   },
   pageRule:{
     preview:'Preview',
@@ -218,6 +224,7 @@ export default {
     refName:'RefName',
     selectionEvent:'Selection Event',
     inputType:'Input Type',
+    inputText:'Content',
     
 
     componentType:'Component Type',

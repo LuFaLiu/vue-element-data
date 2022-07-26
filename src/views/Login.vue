@@ -54,8 +54,13 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           userApi.login(this.loginForm).then(res => {
-            this.$store.commit('SET_TOKEN', res.data.data.token);
-            this.$router.push('/index');
+            if(res.data.code == 200){
+              this.$store.commit('SET_TOKEN', res.data.data.token);
+              this.$store.commit('SET_USERINFO', res.data.data);
+              this.$router.push('/index');
+            }else {
+              this.$message.error(this.$t(res.data.data.msg));
+            }
           })
         } else {
           return false

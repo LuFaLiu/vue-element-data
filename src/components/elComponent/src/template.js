@@ -12,8 +12,10 @@ export default {
                 : item.value 
                     ?  item.formatDate 
                         ? <span>{ parent.formatDate(parent.getObjKey(row,item.value)) }</span>
-                            :   <span>{ parent.getObjKey(row,item.value) }</span>
-                                         :  <span>operation</span>
+                            : item.tableColumnType == 'multiple' 
+                                ?   <span>{ row.status === 1 ? parent.$t('form.normal') : parent.$t('form.disable') }</span>
+                                    :  <span>{ row.i18n ? parent.$t(parent.getObjKey(row,item.value)) : parent.getObjKey(row,item.value) }</span>
+                                            :  <span>operation</span>
         )
     },
     data(){

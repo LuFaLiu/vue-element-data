@@ -66,18 +66,15 @@ request.interceptors.response.use(
     if (response.config.showLoading) {
       tryHideFullScreenLoading()
     }
-    const res = response.data
-
+    const res = response.data;
     if (res.code === 200) {
       return response;
-    } else if (res.code === 401) {
+    } else {
       sessionStorage.removeItem('token');
       router.push('/login');
-      Element.Message.error(!res.msg ? 'System Exception' : res.msg);
-      return Promise.reject(response.data.msg);
-    } else {
-      Element.Message.error(!res.msg ? 'System Exception' : res.msg);
-      return  Promise.reject(response.data.msg);
+      //Element.Message.error(!res.data.msg ? 'System Exception' : res.data.msg);
+      //return Promise.reject(response.data.data.msg);
+      return response;
     }
   },
   error => {

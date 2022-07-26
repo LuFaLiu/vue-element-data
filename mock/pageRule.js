@@ -552,6 +552,15 @@ const defaultData = Mock.mock({
           childrenNode:[{
             value:''
           }]
+        },
+        {
+          attributeName:'title',
+          attributeType:'ruleDynamicInput',
+          attributeLabel:'pageRule.title',
+          childrenNode:[{
+            id:'@id',
+            value:''
+          }]
         }
       ]
      

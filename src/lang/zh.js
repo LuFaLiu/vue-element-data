@@ -9,7 +9,8 @@ export default {
     systemTools:'系统工具',
     menuManage:'菜单管理',
     rightsManagement:'权限管理',
-    roleManage:'角色管理'
+    roleManage:'角色管理',
+    addRole:'新增角色'
   },
   languageSelect: {
     switchLanguage: '语言切换成功'
@@ -25,9 +26,12 @@ export default {
   login:{
     logPlatform:'登录平台',
     welcomeLogin:'欢迎登录',
-    login:'登录'
+    login:'登录',
+    wrongAccount:'账户或者密码错误！',
   },
   common:{
+    admin:'超级管理员',
+    developer:'开发者',
     cancel:'取消',
     confirm:'确认',
     originalPass: '旧密码',
@@ -98,7 +102,8 @@ export default {
     lightType:'灯光型号',
     questionRemark:'问题备注',
     selectFile:'选取文件',
-    autoForward:'是否自动跳转'
+    autoForward:'是否自动跳转',
+    roleRemark:'角色备注'
   },
   form:{
     descModule:'描述模块',
@@ -200,8 +205,8 @@ export default {
     logAgain:'请重新登录！',
     beenCancelled:'已取消禁用',
     disableRole:'确认要禁用该角色的用户？',
-    enableRole:'确认要开启该角色的用户？'
-
+    enableRole:'确认要开启该角色的用户？',
+    permissionModified:'系统默认最高权限，不可以编辑和任意修改',
   },
   pageRule:{
     preview:'预览效果',
@@ -218,6 +223,7 @@ export default {
     refName:'ref名称',
     selectionEvent:'选择事件',
     inputType:'输入框类型',
+    inputText:'内容',
 
     //elContainer
     elContainerTitle:'内容',

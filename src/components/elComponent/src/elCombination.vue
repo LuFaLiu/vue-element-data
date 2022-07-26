@@ -59,7 +59,7 @@ export default {
                     {
                         'class':item.class,
                         attrs: {
-                            placeholder: item.componentName == 'elInput' && that.filteri18n(item.placeholder) || ''
+                            placeholder: (item.componentName == 'elInput' || item.componentName == 'elSelect') && that.filteri18n(item.placeholder) || ''
                         },
                         props: //compontent attribute
                             item.componentName == 'elPagination' ? 
@@ -111,6 +111,11 @@ export default {
                                 label:that.$t(item.label),
                                 width:item.width,
                                 align:'center'
+                            } : item.componentName == 'elSelect' ? 
+                            {
+                                parentNode:item,
+                                value: that.vModelVal(item),
+                                'popper-append-to-body':false,
                             }  : item.componentName == 'elLevelSelect' ? 
                             {
                                 parentNode:item,
@@ -139,14 +144,24 @@ export default {
                             'selection-change':function (e) {
                                 that.selectChange(e,item);
                             },
-                            'current-change':function (e) {
-                                that.superParams[item.currentChangeName](e);
+                            'current-change':function (e) { //table row select
+                                that.superParams[item.selectionEvent](e);
                             },
                             input: function (event) { //v-model
                                 if(typeof event == 'string'){
                                     dynamicvModel(that.superParams,item.vModel,event,'set');
                                 }
-                            }
+                            },
+                            change: function (event) { //v-model
+                                switch (item.componentName) {
+                                    case "elSelect" :
+                                        dynamicvModel(that.superParams,item.vModel,event,'set');
+                                        break;
+                                
+                                    default:
+                                        break;
+                                }
+                            },
                         },
                         directives: [
                             {
@@ -162,8 +177,9 @@ export default {
                     },
                     item.childrenNode && item.childrenNode.length > 0  
                         ? that.deepChildrenComponent(item,h) 
-                            : item.componentName == 'elButton'
+                            : item.componentName == 'elButton' || (item.componentName == 'elContainer' && item.title)
                                 ? [h('span',that.filteri18n(item.title))] 
+                                    : item.componentName == 'elSelect' ? that.superParams[item.elOptionList].map((v,index) => [h('el-option',{props:{label:that.$t(v.label),key:v.value,value:v.value}})] )
                                         : that.$slots.default
                 )
            })

@@ -7,6 +7,7 @@ const page = require('./page')
 const menu = require('./menu')
 const home = require('./home')
 const accountList = require('./accountList')
+const roleList = require('./roleList')
 
 const mocks = [
   ...user,
@@ -14,7 +15,8 @@ const mocks = [
   ...menu,
   ...home,
   ...pageRule,
-  ...accountList
+  ...accountList,
+  ...roleList
 ]
 
 // for front mock

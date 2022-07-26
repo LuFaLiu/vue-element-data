@@ -1,10 +1,15 @@
 
+const vue = require('vue');
 const tokens = {
   admin: {
-    token: 'adminToken'
+    token: 'adminToken',
+    permissions:'admin',
+    userName:'admin',
   },
   developer: {
-    token: 'developerToken'
+    token: 'developerToken',
+    permissions:'developer',
+    userName:'developer',
   }
 }
 
@@ -15,13 +20,13 @@ module.exports = [
     url: '/vue-element-data/user/login',
     type: 'post',
     response: config => {
-      const { username } = config.body
-      const token = tokens[username]
-
+      const { username } = config.body;
+      const token = tokens[username];
       return {
-        code: 200,
-        data: token
-      }
+          code:token ? 200 : 401,
+          data: token ? token : { msg:'login.wrongAccount'}
+      };
+
     }
   },
 

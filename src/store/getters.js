@@ -6,6 +6,7 @@ const getters = {
   permList: state => state.menus.permList,
   hasRoutes: state => state.menus.hasRoutes,
   environment: state => state.environment,
-  btnListMap: state => state.menus.btnListMap
+  btnListMap: state => state.menus.btnListMap,
+  userInfo: state => state.userInfo
 }
 export default getters

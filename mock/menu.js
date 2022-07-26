@@ -25,9 +25,11 @@ const paramsList = Mock.mock({
                     ]
                 },
                 {
-                    "id":9,"status":1,"parentId":4,"title":"menu.rightsManagement","path":"/sys/role","name":"sys:account:role","component":"sys/role","type":4,"icon":"el-icon-s-order","orderNum":6,"children":[],
-                    /*"id":10,"status":1,"parentId":4,"title":"menu.roleManage","path":"/roleManage/role","name":"role:manage:list","component":"roleManage/role","type":2,"icon":"el-icon-s-order","orderNum":6,
-                    "children":[]*/
+                    "id":9,"status":1,"parentId":4,"title":"menu.roleManage","path":"/roleManage/role","name":"sys:roleManage:role","component":"roleManage/role","type":4,"icon":"el-icon-s-order","orderNum":6,"children":[
+                        {
+                            "id":10,"status":1,"parentId":9,"title":"menu.addRole","path":"/roleManage/addRole","name":"sys:roleManage:addRole","component":"roleManage/addRole","type":4,"icon":null,"orderNum":7,"children":[],
+                        }
+                    ]
                 }
             ]
         },

@@ -96,7 +96,7 @@ export default {
     return {
       userInfo: {
         accountId: '',
-        nickName: 'developer',
+        nickName: '',
         avatar: ''
       },
       test:null,
@@ -123,6 +123,9 @@ export default {
       },
       formLabelWidth: '130px'
     }
+  },
+  mounted(){
+    this.userInfo.nickName = this.$store.getters.userInfo.userName;
   },
   methods: {
     currentMenuInfo(info){

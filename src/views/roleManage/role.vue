@@ -1,11 +1,14 @@
 <template>
-  <div v-resize="onResize">
-  </div>
+  <elComponent :node="appParams.pageData" v-resize="onResize" v-cloak/>
 </template>
 
 <script>
 import sysRoleApi from '@/api/sysRoleApi'
-import { resizeObserver } from '@/utils/auth'
+import { resizeObserver } from '@/utils/index'
+import _ from 'lodash'
+import {deleteApiRequest,apiRequest,apiRequestTable,apiRequestList,apiRequestParams} from "@/api/commonApi";
+import elComponent from '@/components/elComponent/index'
+
 export default {
   provide(){
     return {
@@ -14,78 +17,89 @@ export default {
   },
   inject:['appParams'],
   components: {
-    
+    elComponent
   },
   data() {
     return {
-      searchForm: {},
       delBtlStatu: true,
-
-      total: 0,
-      size: 10,
-      current: 1,
+      pageAttribute:{
+        total: 0,
+        size: 10,
+        current: 1,
+      },
+      
 
       dialogVisible: false,
       editForm: {
-
+        
       },
-
       tableData: [],
 
+      radioList:[
+        {
+          lable:0,
+          name:'form.disable'
+        },
+        {
+          lable:1,
+          name:'form.normal'
+        }
+      ],
       editFormRules: {
-        name: [
-          { required: true, message:this.$t('placeholder.pleaseEnter') + this.$t('routerMenu.roleName'), trigger: 'blur' }
+        nickName: [
+          { required: true, message: this.$t('placeholder.pleaseEnter') + this.$t('form.nickName'), trigger: 'blur' }
         ],
-        code: [
-          { required: true, message:this.$t('placeholder.pleaseEnter') + this.$t('form.onlyCoding'), trigger: 'blur' }
+        email: [
+          { required: true, message: this.$t('placeholder.pleaseEnter') + this.$t('form.email'), trigger: 'blur' }
         ],
         status: [
-          { required: true, message:this.$t('placeholder.pleaseSelect') + this.$t('form.statu'), trigger: 'blur' }
+          { required: true, message: this.$t('placeholder.pleaseEnter') + this.$t('form.statu'), trigger: 'blur' }
         ]
       },
 
       multipleSelection: [],
 
+      roleDialogFormVisible: false,
       defaultProps: {
         children: 'children',
         label: 'name'
       },
-      tableHeight:0,
-
+      roleForm: {},
+      roleTreeData: [],
+      treeCheckedKeys: [],
+      checkStrictly: true,
+      editFormStatus:0,
+      exportLoading:false,
+      tableHeight:0
     }
   },
   created() {
-    //this.getRoleList();
-    //get parent dom
-    if(!this.appParams.pageData){
-      this.appParams['getPageNodeMethod'](this.$route.name);
-    }
+    var that = this;
+    that.getDataList();
   },
   mounted() {
-      var that = this;
-      that.$nextTick(function () {
-          //that.tableHeight = resizeObserver("el-main",["roleManage","account-bottom"],85);
-      })
+    var that = this;
+    //get parent dom
+    if(!that.appParams.pageData){
+      that.appParams['getPageNodeMethod'](that.$route.name); 
+    }
+    that.$nextTick(function () {
+      that.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85); //设置固定高度
+    })
   },
   methods: {
-    //Listen for browser window changes
     onResize() {
-        //this.tableHeight = resizeObserver("el-main",["roleManage","account-bottom"],85);
+      this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
     },
-    indexMethod(val){
-      if(val < 10){
-        val = '0' + (val+1);
+
+    indexMethod(index){
+      if(index < 9){
+        return '0' + (index+1); 
       }else {
-        val = (val+1)
+        return index+1;
       }
-      return val;
     },
-    addRole(){
-      this.$router.push({path:'/sys/roleManage/addRole'});
-    },
-    viewCurrentRole(id){
-      this.$router.push({path:'/sys/roleManage/addRole',query:{'id':id}});
-    },
+
     toggleSelection(rows) {
       if (rows) {
         rows.forEach(row => {
@@ -95,101 +109,61 @@ export default {
         this.$refs.multipleTable.clearSelection()
       }
     },
-    //To disable or enable users of this role
-    disableRoleAccount(row){
-      var title = '';
-      if(row.switchStatus){ 
-        title = this.$t('form.enable');
-      }else{ 
-        title = this.$t('form.disable');
+
+    addRole(){
+      if(this.appParams.selectPageMethod){ //app.vue
+        this.appParams.selectPageMethod('sys:roleManage:addRole',true);
+      }else{ //addPage.vue
+        this.$router.push({path:'/roleManage/addRole'})
       }
-
-      this.$confirm( row.switchStatus ? this.$t('tip.enableRole') : this.$t('tip.disableRole'),row.switchStatus ?  (this.$('form.sure') + this.$t('form.enable')) : (this.$('form.sure') + this.$t('form.disable')), {
-        confirmButtonText: this.$t('form.sure'),
-        cancelButtonText: this.$t('form.cancel'),
-        type: 'warning'
-      }).then(() => {
-        sysRoleApi.disableRole(row.id,row.switchStatus ? 1 : 0).then(res => {
-          if(res.data.code == 200){
-            this.$message({
-              showClose: true,
-              message: this.$t('tip.success'),
-              type: 'success',
-              duration:500,
-              onClose: () => {
-                this.getRoleList();
-              }
-            })
-          }
-        })
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: this.$t('tip.beenCancelled')
-        });   
-        this.getRoleList();    
-      });
-
-
     },
-    handleSelectionChange(val) {
-      this.multipleSelection = val
 
-      this.delBtlStatu = val.length === 0
+    handleSelectionChange(val) {
+      this.multipleSelection = val;
+      this.delBtlStatu = val.length === 0;
     },
 
     handleSizeChange(val) {
-      this.size = val
-      this.getRoleList();
+      this.pageAttribute.size = val
+      this.getDataList()
     },
     handleCurrentChange(val) {
-      this.current = val
-      this.getRoleList();
+      this.pageAttribute.current = val
+      this.getDataList()
     },
 
-    resetForm(formName) {
-      if (this.$refs[formName] !== undefined) {
-        this.$refs[formName].resetFields()
-      }
-      this.dialogVisible = false
-      this.editForm = {}
-    },
-    handleClose() {
-      this.resetForm('editForm')
+    paginationJumpMethod(val){
+      this.getDataList();
     },
 
-    getRoleList() {
-      sysRoleApi.getRoleList({
-        name: this.searchForm.name,
-        current: this.current,
-        size: this.size
-      }).then(res => {
-        this.tableData = res.data.data.records.filter(v=>{
-          this.$set(v,'switchStatus',v.status == 1 ? true : false);
-          return v;
-        })
-        this.size = res.data.data.size
-        this.current = res.data.data.current
-        this.total = res.data.data.total
-      })
+    getDataList() {
+      var that = this;
+      apiRequestTable(that,sysRoleApi,'getRoleList',that.pageAttribute,function (res) {
+
+        that.tableData = res.items;
+        that.pageAttribute.current = parseInt(res.current);
+        that.pageAttribute.size = res.size;
+        that.pageAttribute.total = res.total;
+      },{},that.pageAttribute.current,that.pageAttribute.size);
+      
     },
 
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          sysRoleApi.saveOrUpdateRole((this.editForm.id ? 'updateRole' : 'saveRole'), this.editForm)
+          sysRoleApi.saveOrUpdateUser((this.editForm.id ? 'updateUser' : 'saveUser'), this.editForm)
             .then(res => {
-              this.$message.success({
+              this.$message({
                 showClose: true,
                 message: this.$t('tip.success'),
+                type: 'success',
                 duration:500,
                 onClose: () => {
-                  this.getRoleList()
+                  this.getDataList()
                 }
               })
 
               this.dialogVisible = false
-              this.resetForm(formName)
             })
         } else {
           return false
@@ -197,96 +171,150 @@ export default {
       })
     },
     editHandle(id) {
-      sysRoleApi.getRoleMenuInfo(id).then(res => {
-        this.editForm = res.data.data
-        this.dialogVisible = true
-      })
+      this.editFormStatus = 0;
+      this.$router.push({path:'/sys/roleInfo/roleDetail',query:{'id':id}})
     },
-    delHandle(id) {
-      var ids = []
+    delHandle(roleId) {
 
-      if (id) {
-        ids.push(id)
+      var roleIds = []
+
+      if (roleId) {
+        roleIds.push(roleId)
       } else {
         this.multipleSelection.forEach(row => {
-          ids.push(row.id)
+          roleIds.push(row.id)
         })
       }
 
-      sysRoleApi.deleteSelectRole(ids).then(res => {
+      if(roleIds.length == 0){
         this.$message({
           showClose: true,
-          message: this.$t('tip.success'),
-          type: 'success',
-          duration:500,
-          onClose: () => {
-            this.getRoleList();
-          }
+          message: this.$t('placeholder.pleaseSelect') + this.$t('form.role'),
+          type: 'warning',
+          duration:1000
         })
+        return false;
+      }
+
+      this.$confirm(this.$t('tip.confirmDelete')+this.$t('tip.pieceData'), this.$t('tip.confirmDelete'), {
+        confirmButtonText: this.$t('form.sure'),
+        cancelButtonText: this.$t('form.cancel')
+        //type: 'warning'
+      }).then(() => {
+        sysRoleApi.deleteUser(roleIds).then(res => {
+          this.$message({
+            showClose: true,
+            message: this.$t('tip.success'),
+            type: 'success',
+            duration:500,
+            onClose: () => {
+              this.getDataList()
+            }
+          })
+        })
+
       })
     },
-
-    adminConfig(id){
-      this.$router.push({path:'/sys/roleManage/superAdministrator',query:{'id':id}})
+    repassHandle(roleId, nickName) {
+      this.$confirm(this.$t('tip.resetPassword'), this.$t('tip.submitReset'), {
+        confirmButtonText: this.$t('form.sure'),
+        cancelButtonText: this.$t('form.cancel')
+        //type: 'warning'
+      }).then(() => {
+        sysRoleApi.rePassword({'roleId':roleId}).then(res => {
+          this.$message({
+            showClose: true,
+            message: this.$t('tip.success'),
+            type: 'success',
+            duration:500,
+            onClose: () => {
+              this.getDataList();
+            }
+          })
+        })
+      })
     }
+
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  .accountList {
+    .el-row{
+      margin: 0!important;
+      padding: 20px;
+      width: auto;
+      background: #FFFFFF;
+      border-radius: 8px;
+    }
 
-  .viewButton{
-    margin-left: 30px;
-  }
-
-
-  .switchRole{
-    margin-left: 40px;
-  }
-
-  .roleManage{
-    padding: 17px 20px;
-    background: #FFFFFF;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .roleManage_right{
-      ::v-deep{
-        .el-button{
-          color: #FFFFFF;
-          border: none;
-          border-radius: 5px;
-        }
-        .addAccountBtn{
-          background: #20D4B1;
-        }
-
-        .el-pagination {
-          float: right;
-          margin-top: 22px;
+    .searchForm{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .search-left{
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        ::v-deep{
+          .el-form-item__content{
+            display: flex;
+          }
         }
       }
+
+      ::v-deep{
+        .el-form-item{
+          /*margin-bottom: 0px;*/
+          margin-right: 20px;
+          .el-form-item__content{
+            .el-input{
+              width: 145px;
+            }
+          }
+        }
+      }
+      
+      .el-button{
+        color: #FFFFFF;
+        border: none;
+        border-radius: 5px;
+      }
+      .addAccountBtn{
+        background: #20D4B1;
+      }
+      .searchAccount{
+        width: 150px;
+      }
+    }
+
+
+    .account-bottom{
+      margin-top: 25px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+      .export_data{
+        width: 115px;
+        color: #FFFFFF;
+        border: none;
+        margin-bottom: 15px;
+      }
+      .el-pagination {
+        margin-left: 20%;
+        margin-bottom: 15px;
+      }
+    }
+    
+    
+
+    .accountTable{
+      margin-top: 20px;
+      border-radius: 8px;
     }
   }
-
-  .roleManage_table{
-    margin-top: 20px;
-    border-radius: 8px;
-  }
-  
-  ::v-deep{
-    .el-pagination{
-      position: absolute;
-      left: 50%;
-      bottom: 32px;
-    }
-  }
-
-
-
-	
-
-  
 
 </style>
+

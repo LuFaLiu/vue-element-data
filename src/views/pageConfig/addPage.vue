@@ -301,7 +301,8 @@ export default {
               id: ''
             }
           ];
-        
+          //console.log("界面模块");
+          //console.log(JSON.stringify(res.data.data[0].node));
           var getSelectPageNode = that.conversionPageData(res.data.data[0].node,[])[0];
           if(getSelectPageNode.childrenNode){
             that.pageData = that.conversionPageData(res.data.data[0].node,[])[0].childrenNode[0];
@@ -656,6 +657,11 @@ export default {
 
 ::v-deep{
   .custom-tree-right-ctn{
+    .addRole {
+      position: fixed!important;
+      width: calc(53% - 40px)!important;
+      height: auto!important;
+    }
     .el-button{
       //pointer-events: none!important;//Do not operate the preview button
     }
