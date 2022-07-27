@@ -157,64 +157,7 @@ export default {
         componentClass:{},
         componentRule:{}
       },
-      componentSelectList:[
-        {
-          value:'elMain',
-          label:'elMain',
-        },
-        {
-          value:'elForm',
-          label:'elForm',
-        },
-        {
-          value:'elTable',
-          label:'elTable',
-        },
-        {
-          value:'elFormItem',
-          label:'elFormItem',
-        },
-        {
-          value:'elButton',
-          label:'elButton',
-        },
-        {
-          value:'elContainer',
-          label:'elContainer',
-        },
-        {
-          value:'customContent',
-          label:'customContent',
-        },
-        {
-          value:'elSelect',
-          label:'elSelect',
-        },
-        {
-          value:'elInput',
-          label:'elInput',
-        },
-        {
-          value:'elTableColumn',
-          label:'elTableColumn',
-        },
-        {
-          value:'elDialog',
-          label:'elDialog',
-        },
-        {
-          value:'elPagination',
-          label:'elPagination',
-        },
-        {
-          value:'elRadioGroup',
-          label:'elRadioGroup',
-        },
-        {
-          value:'elLevelSelect',
-          label:'elLevelSelect'
-        }
-      ],
+      componentSelectList:[],
       dynamicList:[],
       defaultList:[],
       allListParams:[],
@@ -245,17 +188,26 @@ export default {
   mounted(){
     var that = this;
     that.allListParams = [];
-    apiRequestAll(this,pageConfigApi,'getDefaultList','allDefaultListParams');
-    apiRequestAll(this,pageConfigApi,'getDefaultList','allListParams');
-    apiRequestAll(this,pageConfigApi,'getDynamicList','allListParams');
-
+    that.allDefaultListParams = [];
+    apiRequestAll(that,pageConfigApi,'getDefaultList','allDefaultListParams');
+    apiRequestAll(that,pageConfigApi,'getDefaultList','allListParams');
+    apiRequestAll(that,pageConfigApi,'getDynamicList','allListParams');
     that.form.webName = that.$route.name;
     that.routerList = [];
-    
+    that.getComponentSelectList();
     that.getRouterList();
   },
 
   methods: {
+    getComponentSelectList(){
+      var that = this;
+      that.componentSelectList = [];
+      apiRequestOpration(pageConfigApi,'getDefaultList',function (data) {
+        data.items.filter(v=>{
+          that.componentSelectList.push({lable:v.componentName,value:v.componentName});
+        })
+      }) 
+    },
     getRouterList(){
       var that = this;
       _.filter(_.filter(that.$router.options.routes[0].children,_.matches({name:'page:manage:add'}))[0].children,function (item) { 
@@ -301,8 +253,8 @@ export default {
               id: ''
             }
           ];
-          //console.log("界面模块");
-          //console.log(JSON.stringify(res.data.data[0].node));
+          console.log("界面模块");
+          console.log(JSON.stringify(res.data.data[0].node));
           var getSelectPageNode = that.conversionPageData(res.data.data[0].node,[])[0];
           if(getSelectPageNode.childrenNode){
             that.pageData = that.conversionPageData(res.data.data[0].node,[])[0].childrenNode[0];

@@ -897,6 +897,39 @@ const defaultData = Mock.mock({
           attributeModel:'elOptionList'
         }
       ]
+    },
+    {
+      id:'@id',
+      componentName:'elTableTree',
+      childrenNode:[
+        {
+          attributeName:'class',
+          attributeType:'ruleDynamicInput',
+          attributeLabel:'pageRule.class',
+          childrenNode:[{
+            value:''
+          }]
+        },
+        {
+          attributeName:'tableDataName',
+          attributeType:'ruleInput',
+          attributeLabel:'pageRule.tableDataName',
+          attributeModel:'tableDataName'
+        },
+        {
+          attributeName:'tableHeightName',
+          attributeType:'ruleInput',
+          attributeLabel:'pageRule.tableHeightName',
+          attributeModel:'tableHeightName'
+        },
+        {
+          attributeName:'vModel',
+          attributeType:'ruleInput',
+          attributeLabel:'pageRule.vModel',
+          attributeModel:'vModel'
+        },
+      ]
+      
     }
   ]
 })

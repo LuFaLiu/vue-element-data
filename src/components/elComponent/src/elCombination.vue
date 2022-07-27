@@ -3,6 +3,7 @@ import { filteri18n, dynamicvModel } from '@/utils/index'
 import Template from './template'
 import TraverseTemplate from './traverseTemplate'
 import elLevelSelect from '@/components/Page/elLevelSelect'
+import elTableTree from '@/components/Page/elTableTree'
 export default {
     inject: ['superParams'],
     name: 'ElCombination',
@@ -37,7 +38,8 @@ export default {
     components:{
         Template,
         TraverseTemplate,
-        elLevelSelect
+        elLevelSelect,
+        elTableTree
     },
     computed:{
         resetvModel:{
@@ -105,6 +107,9 @@ export default {
                                 rowKey:item.rowKey || '',
                                 defaultExpandAll:item.defaultExpandAll || '',
                                 treeProps:item.treeProp || '',
+                            } : item.componentName == 'elTableTree' ? 
+                            {
+                                parentNode:item,
                             } : item.componentName == 'elTableColumn' ? 
                             {
                                 type:item.type,

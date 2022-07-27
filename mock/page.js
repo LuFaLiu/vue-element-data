@@ -64,7 +64,7 @@ const paramsList = Mock.mock({
                 {
                     //account
                     "pageName": "sys:account:listData", 
-                    "node": [{"id":1,"label":"elMain",
+                    "node": [{"id":2,"label":"elMain",
                     "children":[{"id":1000,"label":"elMain","componentRule":{"class":["accountList","container"]},
                     "children":[{"id":1001,"label":"elForm","componentRule":{"class":["searchForm","searchUser"]},
                     "children":[{"id":1002,"label":"elContainer","componentRule":{"class":["search-left","search-right"]},
@@ -96,7 +96,7 @@ const paramsList = Mock.mock({
                 {
                     //addAccount
                     pageName:'sys:account:addData',
-                    node:[{"id":1,"label":"elMain",
+                    node:[{"id":3,"label":"elMain",
                     "children":[{"id":1655518567184,"label":"elForm","componentRule":{"class":["demo-ruleForm"],"model":"ruleForm","labelWidth":"100px","refName":"ruleForm","formRule":"rules","labelPosition":"top"},
                     "children":[{"id":1655518666352,"label":"elFormItem","componentRule":{"label":"form.name","prop":"nickName"},
                     "children":[{"id":1655518862544,"label":"elInput","componentRule":{"inputType":"","label":"","prop":"","autocomplete":"","vModel":"ruleForm.nickName","placeholder":[""],"clearable":"true"},
@@ -116,7 +116,7 @@ const paramsList = Mock.mock({
                     //role
                     pageName:'sys:roleManage:role',
                     node:[{
-                        "id":1,"label":"elMain",
+                        "id":4,"label":"elMain",
                         "children":[{"id":1658802148702,"label":"elMain","componentRule":{"class":["accountList","container"]},
                         "children":[{"id":1658802161166,"label":"elForm","componentRule":{"class":["searchForm","searchUser"]},
                         "children":[{"id":1658802191134,"label":"elContainer","componentRule":{"class":["search-left"]},
@@ -141,7 +141,7 @@ const paramsList = Mock.mock({
                 {
                    //addRole
                    pageName:'sys:roleManage:addRole',
-                   node:[{"id":1,"label":"elMain",
+                   node:[{"id":5,"label":"elMain",
                    "children":[{"id":1658817202087,"label":"elMain","componentRule":{"class":["addRole"]},
                    "children":[{"id":1658817217239,"label":"elContainer","componentRule":{"title":["menu.addRole"],"class":["dataCout_title"]},"children":[]},
                    {"id":1658817365424,"label":"elForm","componentRule":{"class":["demo-editForm"],"model":"editForm","labelWidth":"100px","refName":"editForm","formRule":"editFormRules"},
@@ -155,8 +155,10 @@ const paramsList = Mock.mock({
                    {"id":1658817900103,"label":"elContainer","componentRule":{"class":["editForm_right"]},
                    "children":[{"id":1658817907823,"label":"elFormItem","componentRule":{},"children":[
                     {"id":1658817962199,"label":"elButton","componentRule":{"class":[""],"btnType":"primary","event":"resetForm","title":["form.cancel"]},"children":[]},
-                    {"id":1658818020495,"label":"elButton","componentRule":{"class":[""],"btnType":"primary","event":"submitForm","title":["form.save"],"ref":""},"children":[]}
-                    ]}]}]}]}]}]
+                    {"id":1658818020495,"label":"elButton","componentRule":{"class":[""],"btnType":"primary","event":"submitForm","title":["form.save"],"ref":""},"children":[]},
+                    ]}]}]},
+                    {"id":1658885457735,"label":"elTableTree","componentRule":{"class":["test"],"tableDataName":"tableTreeData","tableHeightName":"tableHeight","vModel":"tets"},"children":[]}
+                    ]}]}]
                 }
             ]
 })
@@ -191,6 +193,16 @@ module.exports = [
                 data: _.filter(paramsList.list, function (item) {
                     return item.pageName == config.query[0];
                 })
+            }
+        }
+    },
+    { 
+        url: '/page/getPageList',
+        type: 'get',
+        response: config => {
+            return {
+                code: 200,
+                data: paramsList.list
             }
         }
     }

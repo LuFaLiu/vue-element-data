@@ -57,6 +57,14 @@ export default {
         params,
         showLoading: false
       })
+    },
+
+    getPageList() {
+      return request({
+        url: '/page/getPageList',
+        method: 'get',
+        showLoading: false
+      })
     }
 
 } 

@@ -2,11 +2,14 @@
     <elComponent :node="appParams.pageData" v-resize="onResize" v-cloak/>
 </template>
 <script>
+import { apiRequestOpration } from "@/api/commonApi"
 import sysRoleApi from '@/api/sysRoleApi'
 import sysMenuApi from '@/api/sysMenuApi'
+import pageConfigApi from '@/api/pageConfigApi'
 import { convertPinyin } from '@/utils/convertPinYin'
 import { resizeObserver } from '@/utils/index'
 import elComponent from '@/components/elComponent/index'
+import _ from 'lodash'
 export default {
     provide(){
         return {
@@ -43,7 +46,14 @@ export default {
             deepPermTreeData:[],
             viewType:0,
             roleType:'',
-            tableHeight:0
+            tableHeight:0,
+            tableTreeData:[]
+        }
+    },
+    watch:{
+        '$i18n.locale':function (val) {
+            this.tableTreeData = [];
+            this.getPageList();
         }
     },
     created(){
@@ -52,14 +62,13 @@ export default {
         }else {
             this.viewType = 0;
         }
+        
+        this.getPageList();
         //this.getRoleManageList();
     },
     mounted() {
         var that = this;
         //get parent dom
-        if(!that.appParams.pageData){
-            that.appParams['getPageNodeMethod'](that.$route.name); 
-        }
         //界面挂载时设置固定高度
         that.$nextTick(function () {
             //that.tableHeight = resizeObserver("el-main",["roleCondition"],110);
@@ -69,6 +78,21 @@ export default {
         //监听浏览器窗口变化
         onResize() {
             //this.tableHeight = resizeObserver("el-main",["roleCondition"],110);
+        },
+        getPageList(){
+            var that = this;
+            that.tableTreeData = [];
+            var routerList = that.$router.options.routes[0].children;
+            apiRequestOpration(pageConfigApi,'getPageList',function (data) {
+                let list = [];
+                data.filter(v=>{
+                    var routerName = _.filter(routerList,['name',v.pageName])[0].meta.title;
+                    v.node[0].label = that.$t(routerName);
+                    //that.tableTreeData.push(v.node[0]);
+                    list.push(v.node[0]);
+                })
+                that.tableTreeData = list;
+            }) 
         },
         getRoleMenuInfo(id){
             sysRoleApi.getRoleMenuInfo(id).then(res => {
