@@ -6,7 +6,6 @@
 
 <script>
 import _ from 'lodash'
-import TemplateScoped from './templateScoped'
 export default{
     inject: ['superParams'],
     props:{
@@ -17,7 +16,6 @@ export default{
         }
     },
     components:{
-        TemplateScoped,
         TableColumn:{
             props:{
                 node:{
@@ -32,20 +30,29 @@ export default{
                 },
             },
             render(h){
+                const superParams = this.$parent.superParams;
+                const parent = this.$parent;
                 const node = this.node;
                 const num = this.num;
-                console.log(node);
+                let tableRowList = []; //防止重复数据
+                let rowIdList = [];
+                const renderContent = (row, column, cellValue, index) => { //格式化内容
+                    //()=>parent.checkMenu(row) 防止立刻触发
+                    cellValue && cellValue.filter(v=>{
+                        if(rowIdList.indexOf(v.id) == -1){
+                            rowIdList.push(v.id);
+                            tableRowList.push(v);
+                        }
+                    })
+                    return cellValue && cellValue.map((item,index) => <el-checkbox v-on:change={()=>superParams.checkMenu(item,tableRowList)} v-model={item.checked}>{item.label}</el-checkbox>)
+                }
                 const templateNode =  
-                 <el-table data={node} border height={500}>
+                 <el-table data={node} border height={600}>
                     {
-                        num.map((v,index)=> 
-                        <el-table-column prop={'level'+v} label={v+'级菜单'} key={index}> 
-                            {
-                                h({scopedSlots:{ default: props => h('templateScoped',{props:{node:props}}) }})
-                            }
-                        </el-table-column>)
+                        num.map((v,index)=> <el-table-column width={v > 2 ? 350 : 180} prop={'level'+v} label={'level'+v} key={index} formatter={renderContent} />)
                     }
                 </el-table>
+
                 return (templateNode);
             }
         }
@@ -54,7 +61,7 @@ export default{
         return {
             tableData:this.superParams[this.parentNode.tableDataName],
             num:0,
-            index: '',
+            index: '', //自定义列内容出现index未定义报错，需加上index参数
             numberList:[],
             columnData:[],
             levelObj:{}
@@ -67,20 +74,7 @@ export default{
        }
     },
     methods:{
-        deepTableDataOrderLevel(data,num,id){ //setting order level
-            var that = this;
-            if(that.numberList.indexOf(num) == -1){
-                that.numberList.push(num);
-            }
-            data.filter(v=>{
-                that.$set(v,'level',num);
-                that.$set(v,'parentId',id);
-                if(v.children && v.children.length > 0){
-                    that.deepTableDataOrderLevel(v.children,(num+1),v.id)
-                }
-            })
-        },
-        deepTableDataFirstLevel(data){ //setting first level
+        deepTableDataFirstLevel(data){ //setting first level 第一层
             var that = this;
             that.num ++;
             if(that.numberList.indexOf(that.num) == -1){
@@ -94,7 +88,21 @@ export default{
                 }
             })
         },
-        handleTable(data){
+        deepTableDataOrderLevel(data,num,id){ //setting order level 其他层级
+            var that = this;
+            if(that.numberList.indexOf(num) == -1){
+                that.numberList.push(num);
+            }
+            data.filter(v=>{
+                that.$set(v,'level',num);
+                that.$set(v,'parentId',id);
+                if(v.children && v.children.length > 0){
+                    that.deepTableDataOrderLevel(v.children,(num+1),v.id)
+                }
+            })
+        },
+
+        handleTable(data){ //setting first level 第一层
             var that = this;
             that.columnData = [];
             that.levelObj = {};
@@ -105,17 +113,18 @@ export default{
                     that.numberList.filter(n=>{
                         that.levelObj[('level'+n)] = [];
                     })
-                    that.$set(that.columnData[index],'level1',[{label:v.label,value:v.id,id:v.id,parentId:v.parentId}]);
+                    that.$set(that.columnData[index],'level1',[{label:v.label,value:v.id,id:v.id,parentId:v.parentId,checked:false}]);
                     that.deepTableList(v.children,index);
                 }
             })
 
         },
-        deepTableList(data,num){
+
+        deepTableList(data,num){ //setting order level 其他层级
             var that = this;
             data.filter(v=>{
                 if(that.numberList.indexOf(v.level) > -1){
-                    that.levelObj['level'+v.level].push({label:v.label,value:v.id,id:v.id,parentId:v.parentId});
+                    that.levelObj['level'+v.level].push({label:v.label,value:v.id,id:v.id,parentId:v.parentId,checked:false});
                     that.$set(that.columnData[num],'level'+v.level,that.levelObj['level'+v.level]);
                 }
                 if(v.children && v.children.length > 0){
@@ -131,22 +140,6 @@ export default{
     .tableTree{
         border: 1px solid #CCCCCC;
         border-radius: 8px;
-        /*
-        .tableTree-column {
-            ::v-deep {
-                .tableTree-row{
-                    width: max-content;
-                    border-bottom: 1px solid #CCCCCC;
-                    padding: 34px 37px 34px 37px;
-                    border-right: 1px solid #CCCCCC;
-                    &:last-child {
-                        border-bottom: none;
-                    }
-                }
-            }
-        }
-        */
-        
     }
     
 </style>

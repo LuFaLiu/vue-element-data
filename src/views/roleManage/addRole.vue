@@ -1,5 +1,5 @@
 <template>
-    <elComponent :node="appParams.pageData" v-resize="onResize" v-cloak/>
+    <elComponent v-if="appParams.pageData.componentName" :node="appParams.pageData" v-resize="onResize"/>
 </template>
 <script>
 import { apiRequestOpration } from "@/api/commonApi"
@@ -47,7 +47,8 @@ export default {
             viewType:0,
             roleType:'',
             tableHeight:0,
-            tableTreeData:[]
+            tableTreeData:[],
+            rowTree:[]
         }
     },
     watch:{
@@ -68,6 +69,10 @@ export default {
     },
     mounted() {
         var that = this;
+        //if(!that.appParams.pageData){
+            that.appParams.getPageNodeMethod(that.$route.name); 
+        //}
+        
         //get parent dom
         //界面挂载时设置固定高度
         that.$nextTick(function () {
@@ -93,69 +98,6 @@ export default {
                 })
                 that.tableTreeData = list;
             }) 
-        },
-        getRoleMenuInfo(id){
-            sysRoleApi.getRoleMenuInfo(id).then(res => {
-                if(res.status == 200)
-                this.editForm = res.data.data;
-                this.roleType = res.data.data.name;
-                this.deepPermTreeData.filter(v=>{
-                    if(_.includes(res.data.data.menuIds, v.id)){ //用值去匹配集合里面的值
-                        this.$set(v,'checked',true);
-                    }else {
-                        this.$set(v,'checked',false);
-                    }
-                    return v;
-                });
-            })
-        },
-        searchCurrentMenu(id,list){ //目前菜单只有两个三层
-            //children,type,parentId 下级永远拥有一个父级（parentId）指向父级
-            var menuList = [];
-            if(list){
-                list.filter(v=>{
-                    this.deepPermTreeData.filter(p=>{
-                        if(v.id == p.parentId){
-                            menuList.push(p);
-                        }
-                    })
-                })
-            }else {
-                this.deepPermTreeData.filter(v=>{
-                    if(v.parentId == id){
-                        menuList.push(v);
-                    }
-                })
-            }
-            return menuList;
-        },
-        getRoleManageList(){
-            sysMenuApi.getMenuList().then(res => {
-                this.permTreeData = res.data.data;
-                this.deepPermTreeData = [];
-                this.deepMenuList(res.data.data);
-                if(this.viewType == 1){
-                    this.getRoleMenuInfo(this.$route.query.id);
-                }
-            })
-        },
-        deepMenuList(data){
-            data.filter(v=>{
-                this.$set(v,'checked',false);
-                this.deepPermTreeData.push(v);
-                if(v.children){ //不能添加v.children.length > 0否则会跳过后面的执行
-                    this.deepMenuList(v.children);
-                }
-            })
-        },
-        checkMenu(row){
-            this.editForm.menuIds = [];
-            this.searchParent(row);
-            this.deepPermTreeData.filter(v=>{
-                if(v.checked){
-                    this.editForm.menuIds.push(v.id);
-                }
-            })
         },
         resetForm(formName) {
             if (this.$refs[formName] !== undefined) {
@@ -194,11 +136,26 @@ export default {
             })
         },
 
+        
+        //选中勾选框
+        checkMenu(row,tableRowList){ //id必须唯一（否则会出现无法关联的问题）
+            this.editForm.menuIds = [];
+            this.tableRowTree(tableRowList);
+            this.deepPermTreeData = tableRowList;
+            this.searchParent(row);
+            tableRowList = this.rowTree;
+            //对已有的数据进行回显
+            this.deepPermTreeData.filter(v=>{
+                if(v.checked){
+                    this.editForm.menuIds.push(v.id);
+                }
+            })
+            //console.log(this.editForm.menuIds);
+        },
+
         //查找父级id
         searchParent(row){
-            //this.$set(v,'checked',false);
             this.deepPermTreeData.filter(v=>{
-
                     if(row.parentId == 0){ //当前级别为最高级别
                         if(row.id == v.parentId){ //当前最高级别的子级
                             if(row.checked){ //当前元素为勾选状态
@@ -232,10 +189,7 @@ export default {
                         }
                 
                     }
-
             })
-            
-            
         },
         //勾选对应的权限
         checkedRoleList(idList){
@@ -285,10 +239,36 @@ export default {
         },
         //勾选子列表
         deepCheckedChildList(row){
-            row.filter(v=>{
-                this.checkList.push(v.id);
+            if(row && row.length > 0){
+                row.filter(v=>{
+                    this.checkList.push(v.id);
+                    if(v.children){
+                        this.deepCheckedChildList(v.children);
+                    }
+                })
+            }
+        },
+        //初始化树形结构
+        tableRowTree(list){
+            var that = this;
+            that.rowTree = [];
+            list.filter(v=>{
+                if(v.parentId == 0){
+                    that.rowTree.push(v);
+                }
+            })
+            that.tableRowChildrenTree(that.rowTree,list);
+            list = that.rowTree;
+        },
+        //扁平化结构转为树形结构
+        tableRowChildrenTree(data,list){ 
+            var that = this;
+            data.filter(v=>{
+                if(_.filter(list,['parentId',v.id]).length > 0){
+                    that.$set(v,'children',_.filter(list,['parentId',v.id]));
+                }
                 if(v.children){
-                    this.deepCheckedChildList(v.children);
+                    that.tableRowChildrenTree(v.children,list);
                 }
             })
         }

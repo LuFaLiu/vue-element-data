@@ -253,8 +253,8 @@ export default {
               id: ''
             }
           ];
-          console.log("界面模块");
-          console.log(JSON.stringify(res.data.data[0].node));
+          //console.log("界面模块");
+          //console.log(JSON.stringify(res.data.data[0].node));
           var getSelectPageNode = that.conversionPageData(res.data.data[0].node,[])[0];
           if(getSelectPageNode.childrenNode){
             that.pageData = that.conversionPageData(res.data.data[0].node,[])[0].childrenNode[0];
