@@ -31,6 +31,7 @@ export default{
             },
             render(h){
                 const superParams = this.$parent.superParams;
+                const parentNode = this.$parent.parentNode;
                 const parent = this.$parent;
                 const node = this.node;
                 const num = this.num;
@@ -47,7 +48,7 @@ export default{
                     return cellValue && cellValue.map((item,index) => <el-checkbox v-on:change={()=>superParams.checkMenu(item,tableRowList)} v-model={item.checked}>{item.label}</el-checkbox>)
                 }
                 const templateNode =  
-                 <el-table data={node} border height={600}>
+                 <el-table data={node} border height={superParams[parentNode.tableHeightName]}>
                     {
                         num.map((v,index)=> <el-table-column width={v > 2 ? 350 : 180} prop={'level'+v} label={'level'+v} key={index} formatter={renderContent} />)
                     }
@@ -137,9 +138,5 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-    .tableTree{
-        border: 1px solid #CCCCCC;
-        border-radius: 8px;
-    }
     
 </style>

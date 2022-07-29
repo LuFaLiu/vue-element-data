@@ -1,7 +1,7 @@
 <template>
     <div :style="{ 'text-indent':(node.level * 20) + 'px' }">
         <el-option :node="node"></el-option>
-        <template-list class="123456" v-for="(item,index) in node.childrenNode" :node="item" :key="index" />
+        <template-list v-for="(item,index) in node.childrenNode" :node="item" :key="index" />
     </div>
 </template>
 <script type="text/jsx">

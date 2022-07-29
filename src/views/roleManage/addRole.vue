@@ -47,6 +47,7 @@ export default {
             viewType:0,
             roleType:'',
             tableHeight:0,
+            levelParentIdList:[],
             tableTreeData:[],
             rowTree:[]
         }
@@ -76,13 +77,13 @@ export default {
         //get parent dom
         //界面挂载时设置固定高度
         that.$nextTick(function () {
-            //that.tableHeight = resizeObserver("el-main",["roleCondition"],110);
+            that.tableHeight = resizeObserver("el-main",["demo-editForm"],130);
         })
     },
     methods:{
         //监听浏览器窗口变化
         onResize() {
-            //this.tableHeight = resizeObserver("el-main",["roleCondition"],110);
+            this.tableHeight = resizeObserver("el-main",["demo-editForm"],130);
         },
         getPageList(){
             var that = this;
@@ -142,6 +143,7 @@ export default {
             this.editForm.menuIds = [];
             this.tableRowTree(tableRowList);
             this.deepPermTreeData = tableRowList;
+            this.$set(row,'firstSelect',row.id);
             this.searchParent(row);
             tableRowList = this.rowTree;
             //对已有的数据进行回显
@@ -174,9 +176,12 @@ export default {
                         if(v.id == row.parentId){ //当前级别不是最高级别/当前元素父级
                             if(row.checked){ //当前元素已勾选
                                 this.$set(v,'checked',true); //勾选父级
-                                var idList = [];
-                                idList.push(v.parentId);
-                                this.checkedRoleList(idList);
+                                this.levelParentIdList = [];
+                                this.searchLevelParent(this.deepPermTreeData,v.parentId);
+                                //var idList = [];
+                                //idList.push(v.parentId);
+                                //this.checkedRoleList(idList);
+                                this.checkedRoleList(this.levelParentIdList);
                                 this.checkList = [];
                                 this.deepCheckedChildList(row.children);
                                 this.checkedRoleList(this.checkList);
@@ -191,6 +196,18 @@ export default {
                     }
             })
         },
+        //逆向查找各层父节点
+        searchLevelParent(data,parentId){
+            var that = this;
+            data.filter(v=>{
+                if(v.id == parentId){
+                    that.levelParentIdList.push(v.id);
+                    that.searchLevelParent(data,v.parentId); //存在上一层则继续查找父级
+                }else if(v.children && v.children.length > 0){
+                    that.searchLevelParent(v.children,parentId);
+                }
+            })
+        },
         //勾选对应的权限
         checkedRoleList(idList){
             this.deepPermTreeData.filter(v=>{
@@ -203,6 +220,7 @@ export default {
         unCheckedRoleList(idList){
             this.deepPermTreeData.filter(v=>{
                 if(idList.indexOf(v.id) > -1){
+                    this.$set(v,'firstSelect','');
                     this.$set(v,'checked',false); 
                 }
             })
@@ -248,6 +266,8 @@ export default {
                 })
             }
         },
+
+
         //初始化树形结构
         tableRowTree(list){
             var that = this;
@@ -314,7 +334,7 @@ export default {
             .editForm_right{
                 float: right;
                 .el-form-item__content {
-                    margin-left: 0px;
+                    margin-left: 0px!important;
                     display: flex;
                     flex-wrap: wrap;
                     .el-button {
