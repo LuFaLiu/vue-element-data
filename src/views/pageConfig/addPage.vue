@@ -135,6 +135,7 @@ export default {
       superAddPageParams: this.form.componentRule
     };
   },
+  inject:['appParams'],
   components:{
     ruleInput,
     ruleParamsInput,

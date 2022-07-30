@@ -4,19 +4,22 @@ import Template from './template'
 import TraverseTemplate from './traverseTemplate'
 import elLevelSelect from '@/components/Page/elLevelSelect'
 import elTableTree from '@/components/Page/elTableTree'
+import _ from 'lodash'
 export default {
     inject: ['superParams'],
     name: 'ElCombination',
-    props:{
-        node:{
-            default:function () {
-                return {}
-            }
-        }
-    },
     render(h){
         const node = this.node;
-        if(!!node){
+        const pageName = this.route;
+
+        if(this.$parent.$route){
+            if(this.$parent.$route.path.indexOf('/pageConfig/addPage') > -1){ //addRole children router
+                this.$set(node,'pageName', pageName ? pageName :this.$parent.$route.name);
+            }
+        }
+
+        if(!!node && node.pageName == pageName){ //filter old node 过滤掉旧数据
+
             return h(
                 node.componentName,
                 {
@@ -33,6 +36,18 @@ export default {
                 },
                 this.deepChildrenComponent(node,h)
             )
+        }
+    },
+    props:{
+        node:{
+            default:function () {
+                return {}
+            }
+        },
+        route:{
+            default:function () {
+                return {}
+            }
         }
     },
     components:{
@@ -55,7 +70,7 @@ export default {
         filteri18n,
         deepChildrenComponent(node,h){
            var that = this;
-           return node.childrenNode.map(function (item) {
+           return node && node.childrenNode.length > 0 && node.childrenNode.map(function (item) {
                 return h(
                     item.componentName == 'elContainer' ? 'div' : item.componentName,
                     {
@@ -64,13 +79,13 @@ export default {
                             placeholder: (item.componentName == 'elInput' || item.componentName == 'elSelect') && that.filteri18n(item.placeholder) || ''
                         },
                         props: //compontent attribute
-                            item.componentName == 'elPagination' ? 
+                            item.componentName === 'elPagination' ? 
                             {
-                                layout:item.layout,
-                                'page-sizes':item.pageSize,
-                                'current-page': that.superParams[item.params]['current'],
-                                'page-size':that.superParams[item.params]['size'],
-                                total:that.superParams[item.params]['total'],
+                                layout:item.layout && item.layout,
+                                'page-sizes':item.pageSize && item.pageSize,
+                                'current-page': item.params && that.superParams[item.params] && that.superParams[item.params]['current'],
+                                'page-size': item.params && that.superParams[item.params] && that.superParams[item.params]['size'],
+                                total: that.superParams[item.params] && that.superParams[item.params]['total'],
                             } : item.componentName == 'elForm' ? 
                             {
                                 model:item.model ? that.superParams[item.model] : {},
@@ -118,7 +133,7 @@ export default {
                                 align:'center'
                             } : item.componentName == 'elSelect' ? 
                             {
-                                parentNode:item,
+                                parentNode:item && item,
                                 value: that.vModelVal(item),
                                 'popper-append-to-body':false,
                             }  : item.componentName == 'elLevelSelect' ? 
@@ -180,8 +195,7 @@ export default {
                             default: props => h('Template',{props,item}) //通过单文件组件展示对应的信息(组件需要的一切都是通过 context 参数传递)
                         } || item.componentName == 'elRadioGroup' && { default: props => h('TraverseTemplate',{props:{node:item,parent:that}})  } //非单文件组件
                     },
-                    item.childrenNode && item.childrenNode.length > 0  
-                        ? that.deepChildrenComponent(item,h) 
+                    item && item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) 
                             : item.componentName == 'elButton' || (item.componentName == 'elContainer' && item.title)
                                 ? [h('span',that.filteri18n(item.title))] 
                                     : item.componentName == 'elSelect' ? that.superParams[item.elOptionList].map((v,index) => [h('el-option',{props:{label:that.$t(v.label),key:v.value,value:v.value}})] )

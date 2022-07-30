@@ -1,5 +1,5 @@
 <template>
-    <elComponent :node="appParams.pageData" v-resize="onResize"/>
+    <elComponent v-if="appParams.pageData" :node="appParams.pageData" :route="$route.name" v-resize="onResize"/>
 </template>
 
 <script>
@@ -114,9 +114,6 @@ export default {
   mounted() {
     var that = this;
     that.getTypeList();
-    if(!that.appParams.pageData){
-      that.appParams['getPageNodeMethod'](that.$route.name);
-    }
     //Set a fixed height when mounting the interface
     that.$nextTick(function () {
       that.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);

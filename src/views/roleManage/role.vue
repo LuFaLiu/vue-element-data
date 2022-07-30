@@ -1,5 +1,5 @@
 <template>
-  <elComponent :node="appParams.pageData" v-resize="onResize" v-cloak/>
+  <elComponent v-if="appParams.pageData" :node="appParams.pageData" :route="$route.name" v-resize="onResize" v-cloak/>
 </template>
 
 <script>
@@ -70,19 +70,15 @@ export default {
       checkStrictly: true,
       editFormStatus:0,
       exportLoading:false,
-      tableHeight:0
+      tableHeight:0,
+      node:''
     }
   },
   created() {
-    var that = this;
-    that.getDataList();
+    this.getDataList();
   },
   mounted() {
     var that = this;
-    //get parent dom
-    if(!that.appParams.pageData){
-      that.appParams['getPageNodeMethod'](that.$route.name); 
-    }
     that.$nextTick(function () {
       that.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85); //设置固定高度
     })

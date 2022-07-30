@@ -1,5 +1,5 @@
 <template>
-    <elComponent v-if="appParams.pageData.componentName" :node="appParams.pageData" v-resize="onResize"/>
+    <elComponent v-if="appParams.pageData" :route="$route.name" :node="appParams.pageData" v-resize="onResize"/>
 </template>
 <script>
 import { apiRequestOpration } from "@/api/commonApi"
@@ -64,15 +64,11 @@ export default {
         }else {
             this.viewType = 0;
         }
-        
         this.getPageList();
         //this.getRoleManageList();
     },
     mounted() {
         var that = this;
-        //if(!that.appParams.pageData){
-            that.appParams.getPageNodeMethod(that.$route.name); 
-        //}
         
         //get parent dom
         //界面挂载时设置固定高度

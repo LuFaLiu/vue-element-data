@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view/>
+      <router-view/>
   </div>
 </template>
 
@@ -43,14 +43,13 @@ export default {
     this.$store.dispatch('setLanguage', lang);
   },
   methods:{
-    getPageNodeMethod(val){
+    async getPageNodeMethod(val){
       var that = this;
-      let pageData = '';
-      pageConfigApi.getPageNode(val).then(res=>{
+      await pageConfigApi.getPageNode(val).then(res=>{
         if(res.data.data.length > 0){
-          //console.log(JSON.stringify(res.data.data[0].node));
-          pageData = that.conversionPageData(res.data.data[0].node,[])[0].childrenNode[0];
-          that.pageData = pageData;
+          that.pageData = that.conversionPageData(res.data.data[0].node,[])[0].childrenNode[0];
+          that.pageData.pageName = res.data.data[0].pageName;
+          //console.log(that.pageData);
         }
       })
     },

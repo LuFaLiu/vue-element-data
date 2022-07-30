@@ -3,7 +3,7 @@
         <div class="dataCout_title">{{$t('form.add')}}{{$t('form.account')}}</div>
         <div class="addAccount_title">{{$t('form.personalData')}}</div>
         <el-col :span="5">
-            <elComponent :node="appParams.pageData" />
+            <elComponent v-if="appParams.pageData" :node="appParams.pageData" :route="$route.name" />
         </el-col>
     </el-row>
     
@@ -114,12 +114,6 @@
           ]
         }
       };
-    },
-    created(){
-        var that = this;
-        if(!that.appParams.pageData){
-            that.appParams['getPageNodeMethod'](that.$route.name);
-        }
     },
     methods: {
       submitForm(formName) {
