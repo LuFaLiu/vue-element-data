@@ -1,5 +1,5 @@
 <template>
-  <elComponent v-if="appParams.pageData" :node="appParams.pageData" :route="$route.name" v-resize="onResize" v-cloak/>
+  <elComponent v-if="appParams.pageData" :node="appParams.pageData" :route="$route.name"/>
 </template>
 
 <script>
@@ -77,24 +77,15 @@ export default {
       checkStrictly: true,
       editFormStatus:0,
       exportLoading:false,
-      tableHeight:0
+      tableHeight:0,
+      renderStatu:false
     }
   },
   created() {
     var that = this;
     that.getDataList();
   },
-  mounted() {
-    var that = this;
-    that.$nextTick(function () {
-      that.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85); //设置固定高度
-    })
-  },
   methods: {
-    onResize() {
-      this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
-    },
-
     indexMethod(index){
       if(index < 9){
         return '0' + (index+1); 
@@ -147,6 +138,7 @@ export default {
         that.pageAttribute.size = res.size;
         that.pageAttribute.total = res.total;
       },that.searchForm,that.pageAttribute.current,that.pageAttribute.size);
+      
       
     },
 

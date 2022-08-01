@@ -1,5 +1,5 @@
 <script type="text/jsx">
-import { filteri18n, dynamicvModel } from '@/utils/index'
+import { filteri18n, dynamicvModel, resizeObserver } from '@/utils/index'
 import Template from './template'
 import TraverseTemplate from './traverseTemplate'
 import elLevelSelect from '@/components/Page/elLevelSelect'
@@ -20,23 +20,29 @@ export default {
 
         if(!!node && node.pageName == pageName){ //filter old node 过滤掉旧数据
 
-            return h(
-                node.componentName,
-                {
-                    'class': node.class,
-                    props: node.componentName == 'elForm' ? 
-                            {
-                                model:node.model ? this.superParams[node.model] : {},
-                                class:node.class,
-                                rules:node.formRule ? this.superParams[node.formRule] : {},
-                                'label-width':node.labelWidth  || '',
-                                'label-position':node.labelPosition || 'right',
-                            } : node,
-                    ref:node.refName  || '',       
-                },
-                this.deepChildrenComponent(node,h)
-            )
+            const renderDom = () => {
+                return h(
+                    node.componentName,
+                    {
+                        'class': node.class,
+                        props: node.componentName == 'elForm' ? 
+                                {
+                                    model:node.model ? this.superParams[node.model] : {},
+                                    class:node.class,
+                                    rules:node.formRule ? this.superParams[node.formRule] : {},
+                                    'label-width':node.labelWidth  || '',
+                                    'label-position':node.labelPosition || 'right',
+                                } : node,
+                        ref:node.refName  || '',       
+                    },
+                    this.deepChildrenComponent(node,h)
+                )
+
+            }
+
+            return renderDom();
         }
+        
     },
     props:{
         node:{
@@ -117,7 +123,7 @@ export default {
                                 tooltipEffect:item.tooltipEffect,
                                 style:[item.style],
                                 stripe:item.stripe,
-                                height:that.superParams[item.tableHeightName],
+                                height:that.tableHeight,
                                 defaultSort:item.defaultSort || '',
                                 rowKey:item.rowKey || '',
                                 defaultExpandAll:item.defaultExpandAll || '',
@@ -187,10 +193,14 @@ export default {
                             {
                                 name: 'loading',
                                 value: item.componentName == 'elTable' ? that.tableLoading : false
+                            },
+                            {
+                                name: 'show',
+                                value: item.componentName !== 'elPagination' ? true : that.showPage ? true : false //elPagination loading success to show / 等待表格高度赋值完成才可以显示elPagination
                             }
                         ],
                         key:Math.random(), //elTable required
-                        ref:item.refName || '',
+                        ref:item.refName,
                         scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' && !item.operation && {
                             default: props => h('Template',{props,item}) //通过单文件组件展示对应的信息(组件需要的一切都是通过 context 参数传递)
                         } || item.componentName == 'elRadioGroup' && { default: props => h('TraverseTemplate',{props:{node:item,parent:that}})  } //非单文件组件
@@ -249,19 +259,42 @@ export default {
         },
         beforeClose(item){
           this.superParams[item.closeMethodName]();
-        }
+        },
+        onResize() {
+            //page:role,accountListData
+            this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],130);
+        },
     },
     data(){
         return {
             tableLoading:true,
-            domList:[]
+            domList:[],
+            tableHeight:0,
+            timer:null,
+            showPage:false
         }
     },
     mounted(){
         var that = this;
+
+        that.timer = setInterval(() => { //dom更新存在延迟
+            var dom = document.getElementsByClassName('searchUser');
+            if(dom.length !== 0){
+                that.onResize();
+                clearInterval(that.timer);
+                that.showPage = true;
+            }else {
+                that.showPage = false;
+            }
+        }, 1);
+
+        window.addEventListener('resize',function (e) {
+            that.onResize();
+        })
+        
         setTimeout(() => {
             that.tableLoading = false;
-        }, 1500);
+        }, 1000);
     }
 }
 </script>

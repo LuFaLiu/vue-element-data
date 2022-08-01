@@ -23,6 +23,7 @@ import _ from "lodash";
 const { mockXHR } = require('../mock')
 mockXHR()
 
+
 Vue.directive('resize',{
   bind(el, binding) {
     if(!!binding.value){
@@ -34,6 +35,7 @@ Vue.directive('resize',{
           }
           width = style.width;
           height = style.height;
+          return width,height;
       }
       el.__vueSetInterval__ = setInterval(isReize, 500);
     }
