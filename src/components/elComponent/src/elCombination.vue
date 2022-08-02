@@ -12,6 +12,7 @@ export default {
         const node = this.node;
         const pageName = this.route;
 
+        //console.log(node);
         if(this.$parent.$route){
             if(this.$parent.$route.path.indexOf('/pageConfig/addPage') > -1){ //addRole children router
                 this.$set(node,'pageName', pageName ? pageName :this.$parent.$route.name);
@@ -131,6 +132,7 @@ export default {
                             } : item.componentName == 'elTableTree' ? 
                             {
                                 parentNode:item,
+                                tableHeight:that.tableHeight
                             } : item.componentName == 'elTableColumn' ? 
                             {
                                 type:item.type,
@@ -152,7 +154,7 @@ export default {
                                 visible:that.superParams[item.dialogShowName], //官方:visible.sync
                                 width:item.width,
                                 'before-close':()=>that.beforeClose(item), //匿名函数阻止首次执行（非直接调用）
-                                center:item.center,
+                                center:item.center
                             } 
                             : item,  
                         on:{
@@ -196,7 +198,7 @@ export default {
                             },
                             {
                                 name: 'show',
-                                value: item.componentName !== 'elPagination' ? true : that.showPage ? true : false //elPagination loading success to show / 等待表格高度赋值完成才可以显示elPagination
+                                value: (that.node.pageName == 'page:manage:rule' && item.componentName == 'elDialog')  ? that.superParams.addContentDialog : item.componentName !== 'elPagination' ? true : that.showPage ? true : false //elPagination loading success to show / 等待表格高度赋值完成才可以显示elPagination
                             }
                         ],
                         key:Math.random(), //elTable required
@@ -261,8 +263,26 @@ export default {
           this.superParams[item.closeMethodName]();
         },
         onResize() {
-            //page:role,accountListData
-            this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],130);
+            //console.log("onResize======>");
+            //console.log(this.node);
+            let classList = [];
+            switch (this.node.pageName) {
+                case 'sys:account:listData':
+                    classList = ["searchUser","account-bottom"];
+                    break;
+                case 'sys:roleManage:role':
+                    classList = ["searchUser","account-bottom"];
+                    break;
+                case 'page:manage:rule':
+                    classList = ["searchUser","account-bottom"];
+                    break;    
+                case 'sys:roleManage:addRole':
+                    classList = ["demo-editForm"];
+                    break;    
+                default:
+                    break;
+            }
+            this.tableHeight = resizeObserver("el-main",classList,130);
         },
     },
     data(){
@@ -278,7 +298,7 @@ export default {
         var that = this;
 
         that.timer = setInterval(() => { //dom更新存在延迟
-            var dom = document.getElementsByClassName('searchUser');
+            var dom = document.getElementsByClassName(that.node.pageName == 'sys:roleManage:addRole' ? 'demo-editForm' : 'searchUser');
             if(dom.length !== 0){
                 that.onResize();
                 clearInterval(that.timer);
@@ -287,6 +307,7 @@ export default {
                 that.showPage = false;
             }
         }, 1);
+
 
         window.addEventListener('resize',function (e) {
             that.onResize();

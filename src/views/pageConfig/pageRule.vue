@@ -1,12 +1,12 @@
 <template>
-    <elComponent v-if="appParams.pageData" :node="appParams.pageData" :route="$route.name" v-resize="onResize"/>
+    <elComponent v-if="appParams.pageData" :node="appParams.pageData" :route="$route.name"/>
 </template>
 
 <script>
 import pageConfigApi from "@/api/pageConfigApi"
-import {deleteApiRequest,apiRequest,apiRequestParams,apiRequestTable} from "@/api/commonApi";
+import {deleteApiRequest,apiRequestParams,apiRequestTable} from "@/api/commonApi";
 import _ from "lodash";
-import { resizeObserver,resetObj,getVueComponent } from '@/utils/index'
+import { resetObj,getVueComponent } from '@/utils/index'
 import elComponent from '@/components/elComponent/index'
 
 export default {
@@ -115,9 +115,6 @@ export default {
     var that = this;
     that.getTypeList();
     //Set a fixed height when mounting the interface
-    that.$nextTick(function () {
-      that.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
-    })
 
     pageConfigApi.getDynamicList().then(res =>{
       that.levelSelectList = res.data.data.items;
@@ -129,9 +126,6 @@ export default {
   },
   
   methods: {
-    onResize() {
-      this.tableHeight = resizeObserver("el-main",["searchUser","account-bottom"],85);
-    },
 
     deepList(list) {
       var that = this;

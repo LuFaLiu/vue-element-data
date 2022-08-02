@@ -40,13 +40,11 @@
 </template>
 
 <script>
-import userManageApi from '@/api/userManageApi'
 import globalAnalysis from '@/components/home/global-analysis'
 import authApi from '@/api/authApi'
 import LangFlag from 'vue-lang-code-flags'
 import {countryList} from '@/utils/allCountry.js';
 import {countryNameList} from '@/utils/countryName.js';
-import LoginVue from './Login.vue'
 
 export default {
   name: 'Index',

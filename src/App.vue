@@ -49,7 +49,6 @@ export default {
         if(res.data.data.length > 0){
           that.pageData = that.conversionPageData(res.data.data[0].node,[])[0].childrenNode[0];
           that.pageData.pageName = res.data.data[0].pageName;
-          //console.log(that.pageData);
         }
       })
     },

@@ -1,6 +1,6 @@
 <template>
     <div class="tableTree">
-        <table-column :node="columnData" :num="numberList" :key="index" />
+        <table-column v-if="tableData.length > 0" :node="columnData" :num="numberList" :key="index" />
     </div>
 </template>
 
@@ -12,6 +12,11 @@ export default{
         parentNode:{
             default(){
                 return {}
+            }
+        },
+        tableHeight:{
+            default(){
+                return 0
             }
         }
     },
@@ -48,7 +53,7 @@ export default{
                     return cellValue && cellValue.map((item,index) => <el-checkbox v-on:change={()=>superParams.checkMenu(item,tableRowList)} v-model={item.checked}>{item.label}</el-checkbox>)
                 }
                 const templateNode =  
-                 <el-table data={node} border height={superParams[parentNode.tableHeightName]}>
+                 <el-table data={node} border height={parent.tableHeight}>
                     {
                         num.map((v,index)=> <el-table-column width={v > 2 ? 350 : 180} prop={'level'+v} label={'level'+v} key={index} formatter={renderContent} />)
                     }
@@ -69,10 +74,11 @@ export default{
         }
     },
     mounted(){
-       if(this.tableData && this.tableData.length > 0){
-            this.deepTableDataFirstLevel(this.tableData);
-            this.handleTable(this.tableData);
-       }
+        var that = this;
+        if(that.tableData && that.tableData.length > 0){
+            that.deepTableDataFirstLevel(that.tableData);
+            that.handleTable(that.tableData);
+        }
     },
     methods:{
         deepTableDataFirstLevel(data){ //setting first level 第一层

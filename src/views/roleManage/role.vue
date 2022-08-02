@@ -4,9 +4,8 @@
 
 <script>
 import sysRoleApi from '@/api/sysRoleApi'
-import { resizeObserver } from '@/utils/index'
 import _ from 'lodash'
-import {deleteApiRequest,apiRequest,apiRequestTable,apiRequestList,apiRequestParams} from "@/api/commonApi";
+import {apiRequestTable} from "@/api/commonApi";
 import elComponent from '@/components/elComponent/index'
 
 export default {

@@ -1,13 +1,11 @@
 <template>
-    <elComponent v-if="appParams.pageData" :route="$route.name" :node="appParams.pageData" v-resize="onResize"/>
+    <elComponent v-if="appParams.pageData && showPage" :route="$route.name" :node="appParams.pageData" />
 </template>
 <script>
 import { apiRequestOpration } from "@/api/commonApi"
 import sysRoleApi from '@/api/sysRoleApi'
-import sysMenuApi from '@/api/sysMenuApi'
 import pageConfigApi from '@/api/pageConfigApi'
 import { convertPinyin } from '@/utils/convertPinYin'
-import { resizeObserver } from '@/utils/index'
 import elComponent from '@/components/elComponent/index'
 import _ from 'lodash'
 export default {
@@ -49,7 +47,9 @@ export default {
             tableHeight:0,
             levelParentIdList:[],
             tableTreeData:[],
-            rowTree:[]
+            rowTree:[],
+            timer:null,
+            showPage:false
         }
     },
     watch:{
@@ -67,20 +67,20 @@ export default {
         this.getPageList();
         //this.getRoleManageList();
     },
-    mounted() {
+    mounted(){
         var that = this;
-        
-        //get parent dom
-        //界面挂载时设置固定高度
-        that.$nextTick(function () {
-            that.tableHeight = resizeObserver("el-main",["demo-editForm"],130);
-        })
+        that.timer = setInterval(() => { //dom更新存在延迟
+            var pageData = this.appParams.pageData;
+            if(pageData.length !== 0){
+                that.appParams.getPageNodeMethod(that.$route.name);
+                clearInterval(that.timer);
+                that.showPage = true;
+            }else {
+                that.showPage = false;
+            }
+        }, 1);
     },
     methods:{
-        //监听浏览器窗口变化
-        onResize() {
-            this.tableHeight = resizeObserver("el-main",["demo-editForm"],130);
-        },
         getPageList(){
             var that = this;
             that.tableTreeData = [];
