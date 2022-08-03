@@ -1,5 +1,7 @@
 <template>
-  <elComponent v-if="appParams.pageData" :node="appParams.pageData" :route="$route.name"/>
+  <div>
+    <elComponent v-if="appParams.pageData" :node="appParams.pageData" :route="$route.name"/>
+  </div>
 </template>
 
 <script>
@@ -20,6 +22,7 @@ export default {
   },
   data() {
     return {
+      value:'',
       searchForm: {
         accountId:'',
         nickName:'',
