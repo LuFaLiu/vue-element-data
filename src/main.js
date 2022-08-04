@@ -19,7 +19,6 @@ import LangFlag from 'vue-lang-code-flags'
 import './static/font/iconfont.css'
 import _ from "lodash";
 
-
 const { mockXHR } = require('../mock')
 mockXHR()
 

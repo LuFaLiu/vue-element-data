@@ -5,29 +5,21 @@ import TraverseTemplate from './traverseTemplate'
 import elLevelSelect from '@/components/Page/elLevelSelect'
 import elTableTree from '@/components/Page/elTableTree'
 import _ from 'lodash'
-import Vue from 'vue';
-let templateUid = '';
 export default {
     inject: ['superParams'],
     name: 'ElCombination',
     render(h){
-        
         const node = this.node;
         const pageName = this.route;
-
-        console.log(node);
-        console.log(this.superParams);
-        console.log(this);
-       
         
+        //console.log(node);
         if(this.$parent.$route){
             if(this.$parent.$route.path.indexOf('/pageConfig/addPage') > -1){ //addRole children router
                 this.$set(node,'pageName', pageName ? pageName :this.$parent.$route.name);
             }
         }
 
-        if(!!node && node.pageName == pageName && !templateUid){ //filter old node 过滤掉旧数据
-            templateUid = this._uid;
+        if(!!node && node.pageName == pageName){ //filter old node 过滤掉旧数据
             const renderDom = () => {
                 return h(
                     node.componentName,
@@ -49,13 +41,6 @@ export default {
 
             return renderDom();
 
-        }else {
-            console.log(templateUid);
-            console.log(this.superParams.$vnode);
-            console.log(Vue.prototype);
-            this.$set(this.superParams.$options,'abstract',true)
-            //this.superParams.$parent.$options.abstract = true;
-            Vue.prototype._update(this.superParams.$vnode, false);
         }
         
     },
@@ -85,24 +70,7 @@ export default {
             set(val){
                 dynamicvModel(this.superParams,this.parentNode.vModel,val,'set');
             }
-        },
-        inputListenersComputed: function(){
-            var vm = this;
-            return Object.assign({},
-                this.$listeners,
-                {
-                    input: function (event) {
-                        console.log(event);
-                        vm.$emit('input',event.target.value);
-                    }
-                }
-            )
         }
-    },
-    beforeCreate(){
-        console.log("dom更新前");
-        console.log(this);
-       //return resetVue(this,templateUid);
     },
     methods:{
         filteri18n,
@@ -114,7 +82,6 @@ export default {
                     {
                         'class':item.class,
                         attrs: {
-                            data: JSON.stringify(item) ,
                             placeholder: (item.componentName == 'elInput' || item.componentName == 'elSelect') && that.filteri18n(item.placeholder) || ''
                         },
                         props: //compontent attribute
