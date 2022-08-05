@@ -22,7 +22,6 @@ import _ from "lodash";
 const { mockXHR } = require('../mock')
 mockXHR()
 
-
 Vue.directive('resize',{
   bind(el, binding) {
     if(!!binding.value){

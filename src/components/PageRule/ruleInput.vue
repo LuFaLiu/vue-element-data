@@ -1,6 +1,6 @@
 <template>
-    <el-form-item :label="$t(parentNode.attributeLabel)">
-        <el-input type="text" v-model="parentNode[parentNode.attributeModel]"  />
+    <el-form-item :label="parentNode.attributeName">
+        <el-input type="text" v-model="parentNode[parentNode.attributeModel]" :placeholder="parentNode.inputFormat"  />
     </el-form-item>
 </template>
 <script>
@@ -14,6 +14,9 @@ export default{
     },
     methods:{
         filteri18n
+    },
+    mounted(){
+        console.log(this.parentNode);
     }
 }
 </script>

@@ -57,23 +57,31 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <div v-if="defaultList.length > 0">
-            <div v-for="(item,index) in defaultList[0].childrenNode" :key="index">
+          <div v-if="componentProps.length > 0">
+            <div v-for="(item,index) in componentProps" :key="index">
               <div v-if="item.attributeType == 'ruleDynamicInput'">
                 <el-form-item
                   v-for="(defaultItem, defaultIndex) in item.childrenNode"
-                  :label="$t(item.attributeLabel) + (defaultIndex+1)"
-                  :key="defaultItem.key"
+                  :label="defaultItem.name"
+                  :key="defaultIndex"
                 >
-                  <el-input v-model="defaultItem.value"></el-input><el-button @click.prevent="deleteDefaultItem(item.attributeLabel,defaultIndex)">{{$t('form.delete')}}</el-button>
-                  
+                  <div v-if="defaultItem.attributeType == 'ruleDynamicInput'">
+                    <div v-for="(defaultItem2,index2) in defaultItem.childrenNode" :key="index2">
+                      <el-input v-model="defaultItem2.key" placeholder="key"></el-input>
+                      <el-input v-model="defaultItem2.value" placeholder="value"></el-input>
+                      <el-button @click.prevent="deleteDefaultItem(defaultItem2,index2)">{{$t('form.delete')}}</el-button>
+                      <el-button @click="addDefaultItem(defaultItem2.attributeLabel)">{{$t('form.add')}}{{defaultItem2.attributeLabel}}</el-button>
+                    </div>
+                  </div>
+                  <div v-else>
+                    <el-input v-model="item.value" placeholder="value"></el-input>
+                  </div>
                 </el-form-item>
-                <el-button @click="addDefaultItem(item.attributeLabel)">{{$t('form.add')}}{{$t(item.attributeLabel)}}</el-button>
               </div>
             
               <div v-else>
                 <component :parentNode="item" :is="item.attributeType" />
-              </div>
+              </div>  
             </div>
           </div>
           
@@ -118,6 +126,7 @@
   </div>
 </template>
 <script>
+import Vue from 'vue';
 import _ from "lodash";
 import pageConfigApi from "@/api/pageConfigApi"
 import ruleInput from "@/components/PageRule/ruleInput"
@@ -172,7 +181,11 @@ export default {
       routerList:[],
       pageData:'',
       viewPageRoute:'',
-      viewChangePage:false
+      viewChangePage:false,
+      elementUIPlugin:Vue.prototype.constructor._installedPlugins[5],
+      componentList:[],
+      componentSelectList:[],
+      componentProps:[]
     };
   },
   computed: {
@@ -195,20 +208,23 @@ export default {
     apiRequestAll(that,pageConfigApi,'getDynamicList','allListParams');
     that.form.webName = that.$route.name;
     that.routerList = [];
-    that.getComponentSelectList();
     that.getRouterList();
+
+    console.log(that.elementUIPlugin);
+    that.componentList = [];
+    that.componentSelectList = [];
+    for(var i in that.elementUIPlugin){
+      if(/^[A-Z]/.test(i) && that.elementUIPlugin[i].name){
+        that.componentList.push({name:that.elementUIPlugin[i].name,props:that.elementUIPlugin[i].props ? that.elementUIPlugin[i].props : {}});
+        that.componentSelectList.push({lable:that.elementUIPlugin[i].name,value:that.elementUIPlugin[i].name});
+      }
+    }
+
+    console.log(that.componentList);
+    console.log(that.componentSelectList);
   },
 
   methods: {
-    getComponentSelectList(){
-      var that = this;
-      that.componentSelectList = [];
-      apiRequestOpration(pageConfigApi,'getDefaultList',function (data) {
-        data.items.filter(v=>{
-          that.componentSelectList.push({lable:v.componentName,value:v.componentName});
-        })
-      }) 
-    },
     getRouterList(){
       var that = this;
       _.filter(_.filter(that.$router.options.routes[0].children,_.matches({name:'page:manage:add'}))[0].children,function (item) { 
@@ -348,6 +364,52 @@ export default {
     },
 
     selectComponent(val){
+      console.log(val);
+      var componentInfo = _.filter(this.componentList,['name',val])[0].props;
+      console.log(componentInfo);
+      this.componentProps = [];
+      if(val == "ElInput"){
+        this.componentProps.push({attributeName:'placeholder',attributeLabel:'placeholder',attributeModel:'', attributeType: 'ruleInput'})
+      }
+      for(var i in componentInfo){
+        var type = componentInfo[i].type 
+            ? componentInfo[i].type.length && componentInfo[i].type.length > 1 
+              ? 'Array' 
+                : typeof componentInfo[i].type() 
+                  : componentInfo[i].default 
+                    ? 'boolean' 
+                      : 'string';
+
+        var attributeVal = (
+          componentInfo[i].default 
+            ? type == 'object' 
+              ? componentInfo[i].default().toString() 
+                : componentInfo[i].default 
+                  : type == 'boolean' 
+                    ? false 
+                    : ''
+          );
+        
+        var supportedTypes = '';
+        if(componentInfo[i].type && componentInfo[i].type.length && componentInfo[i].type.length > 1){
+          componentInfo[i].type.filter((v,index)=>{
+            supportedTypes += ((typeof v()) +  ((index !== componentInfo[i].type.length -1) ? '/' : '') );
+          })
+        }else {
+          supportedTypes = type;
+        }
+
+        if(i == 'treeProps'){
+          console.log(i);
+          console.log(attributeVal);
+          console.log(componentInfo[i].default());
+        }
+
+        this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: typeof attributeVal == 'boolean' ? attributeVal.toString() : i == 'treeProps' ? JSON.stringify({ hasChildren: 'hasChildren', children: 'children' }) : attributeVal ,inputFormat:supportedTypes, attributeType: type == 'boolean' ? 'ruleRadio' : 'ruleInput'})
+        
+      }
+      
+      console.log(this.componentProps);
       this.getDefaultList(val);
     },
 

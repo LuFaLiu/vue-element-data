@@ -43,7 +43,6 @@ request.interceptors.request.use(config => {
 let loading
 let needLoadingRequestCount = 0
 
-
 export function showFullScreenLoading() {
   if (needLoadingRequestCount === 0) {
     startLoading()
@@ -81,6 +80,7 @@ request.interceptors.response.use(
     if (error.config.showLoading) {
       tryHideFullScreenLoading()
     }
+
     if (error.response.data) {
       error.massage = error.response.data.msg
     }

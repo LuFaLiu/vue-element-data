@@ -5,14 +5,16 @@ import TraverseTemplate from './traverseTemplate'
 import elLevelSelect from '@/components/Page/elLevelSelect'
 import elTableTree from '@/components/Page/elTableTree'
 import _ from 'lodash'
+import Vue from 'vue';
 export default {
     inject: ['superParams'],
     name: 'ElCombination',
     render(h){
         const node = this.node;
         const pageName = this.route;
-        
-        //console.log(node);
+
+        console.log(Vue.prototype.constructor._installedPlugins[5]);
+        console.log(node);
         if(this.$parent.$route){
             if(this.$parent.$route.path.indexOf('/pageConfig/addPage') > -1){ //addRole children router
                 this.$set(node,'pageName', pageName ? pageName :this.$parent.$route.name);
@@ -114,6 +116,7 @@ export default {
                             {
                                 type:item.inputType,
                                 value: that.vModelVal(item), //必须值
+                                ref:'input',
                                 disabled:item.inputCondition ? (that.superParams[item.inputCondition] ? true : false) : item.disabled,
                                 clearable:true
                             } : item.componentName == 'elTable' ? 
