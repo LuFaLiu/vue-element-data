@@ -48,7 +48,7 @@
       >
         <el-form ref="form" :model="form" label-width="180px">
           <el-form-item :label="$t('pageRule.componentName')">
-            <el-select v-model="form.componentName" :placeholder="$t('placeholder.pleaseSelect') + $t('pageRule.componentName')" @change="selectComponent">
+            <el-select v-model="form.componentName" :placeholder="$t('placeholder.pleaseSelect') + $t('pageRule.componentName')" @change="selectComponent" :popper-append-to-body="false">
               <el-option
                 v-for="item in componentSelectList"
                 :key="item.value"
@@ -88,7 +88,7 @@
         </el-form>
         <span slot="footer" class="dialog-footer">
           <el-button @click="addRuleParams">{{$t('form.addRuleParameters')}}</el-button>
-          <el-button @click="dialogVisible = false">{{$t('form.cancel')}}</el-button>
+          <el-button @click="cancelDialog">{{$t('form.cancel')}}</el-button>
           <el-button type="primary" @click="addChildrenThree">{{$t('form.sure')}}</el-button>
         </span>
       </el-dialog>
@@ -387,7 +387,7 @@ export default {
                 : componentInfo[i].default 
                   : type == 'boolean' 
                     ? false 
-                    : ''
+                      : ''
           );
         
         var supportedTypes = '';
@@ -638,7 +638,12 @@ export default {
       children.splice(index, 1);
       this.submitParamsRule(); //Update parameter rule tree
     },
+    cancelDialog(){
+      this.dialogVisible = false;
+      this.componentProps = [];
+    },
     handleClose(done) {
+      this.componentProps = [];
       done();
     }
   },
