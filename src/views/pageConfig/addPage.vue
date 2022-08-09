@@ -372,43 +372,43 @@ export default {
         this.componentProps.push({attributeName:'placeholder',attributeLabel:'placeholder',attributeModel:'', attributeType: 'ruleInput'})
       }
       for(var i in componentInfo){
-        var type = componentInfo[i].type 
-            ? componentInfo[i].type.length && componentInfo[i].type.length > 1 
-              ? 'Array' 
-                : typeof componentInfo[i].type() 
-                  : componentInfo[i].default 
-                    ? 'boolean' 
-                      : 'string';
 
-        var attributeVal = (
+        var paramType = typeof componentInfo[i].type;
+        var type = paramType == 'function' ? typeof componentInfo[i].type() : paramType ;
+
+        console.log(i+"开始===>");
+        console.log(componentInfo[i].default);
+        console.log(typeof componentInfo[i].default);
+        console.log(type);
+        var attributeVal = 
           componentInfo[i].default 
-            ? type == 'object' 
-              ? componentInfo[i].default().toString() 
-                : componentInfo[i].default 
-                  : type == 'boolean' 
-                    ? false 
-                      : ''
-          );
-        
+            ? typeof componentInfo[i].default == 'function' 
+                ? (type == 'boolean' ? componentInfo[i].default() : componentInfo[i].default().toString()) 
+                        : type == 'object' ? typeof componentInfo[i].default == 'undefined' ? '' : componentInfo[i].default.toString() : componentInfo[i].default 
+                          : type == 'object' ? typeof componentInfo[i].default == 'undefined' ? '' :  componentInfo[i].default.toString() :  componentInfo[i].default 
+                            ? type == 'string' ? '' : false 
+                              :  componentInfo[i].default ? componentInfo[i].default : '';
+
+        console.log(i,paramType,type,componentInfo[i].default ? typeof componentInfo[i].default : '为空componentInfo[i].default' ,componentInfo[i],attributeVal);
+
+
         var supportedTypes = '';
         if(componentInfo[i].type && componentInfo[i].type.length && componentInfo[i].type.length > 1){
           componentInfo[i].type.filter((v,index)=>{
             supportedTypes += ((typeof v()) +  ((index !== componentInfo[i].type.length -1) ? '/' : '') );
           })
         }else {
-          supportedTypes = type;
+          if(type == 'function'){
+            supportedTypes = 'string';
+          }else {
+            supportedTypes = type;
+          }
         }
 
-        if(i == 'treeProps'){
-          console.log(i);
-          console.log(attributeVal);
-          console.log(componentInfo[i].default());
-        }
-
-        this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: typeof attributeVal == 'boolean' ? attributeVal.toString() : i == 'treeProps' ? JSON.stringify({ hasChildren: 'hasChildren', children: 'children' }) : attributeVal ,inputFormat:supportedTypes, attributeType: type == 'boolean' ? 'ruleRadio' : 'ruleInput'})
+        this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]:  i == 'treeProps' ? JSON.stringify({ hasChildren: 'hasChildren', children: 'children' }) : attributeVal ,inputFormat:supportedTypes, attributeType: type == 'boolean' ? 'ruleRadio' : 'ruleInput'})
         
       }
-      
+      console.log("componentProps=======>");
       console.log(this.componentProps);
       this.getDefaultList(val);
     },
