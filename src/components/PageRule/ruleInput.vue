@@ -14,9 +14,6 @@ export default{
     },
     methods:{
         filteri18n
-    },
-    mounted(){
-        console.log(this.parentNode);
     }
 }
 </script>

@@ -364,9 +364,8 @@ export default {
     },
 
     selectComponent(val){
-      console.log(val);
+      console.log(val,componentInfo);
       var componentInfo = _.filter(this.componentList,['name',val])[0].props;
-      console.log(componentInfo);
       this.componentProps = [];
       if(val == "ElInput"){
         this.componentProps.push({attributeName:'placeholder',attributeLabel:'placeholder',attributeModel:'', attributeType: 'ruleInput'})
@@ -376,20 +375,17 @@ export default {
         var paramType = typeof componentInfo[i].type;
         var type = paramType == 'function' ? typeof componentInfo[i].type() : paramType ;
 
-        console.log(i+"开始===>");
-        console.log(componentInfo[i].default);
-        console.log(typeof componentInfo[i].default);
-        console.log(type);
         var attributeVal = 
           componentInfo[i].default 
-            ? typeof componentInfo[i].default == 'function' 
-                ? (type == 'boolean' ? componentInfo[i].default() : componentInfo[i].default().toString()) 
-                        : type == 'object' ? typeof componentInfo[i].default == 'undefined' ? '' : componentInfo[i].default.toString() : componentInfo[i].default 
+            ? typeof componentInfo[i].default == 'function'
+                ? type == 'function' ? '' : (()=>{ return '' })
+                 (type == 'boolean' ? componentInfo[i].default() : type == 'object' ? '' : componentInfo[i].default().toString()) 
+                        : type == 'object' ? typeof componentInfo[i].default == 'undefined' ? '' : componentInfo[i].default.toString() : type == 'undefined' ? componentInfo[i].default.toString() : componentInfo[i].default 
                           : type == 'object' ? typeof componentInfo[i].default == 'undefined' ? '' :  componentInfo[i].default.toString() :  componentInfo[i].default 
                             ? type == 'string' ? '' : false 
                               :  componentInfo[i].default ? componentInfo[i].default : '';
 
-        console.log(i,paramType,type,componentInfo[i].default ? typeof componentInfo[i].default : '为空componentInfo[i].default' ,componentInfo[i],attributeVal);
+        //console.log(i,paramType,type,componentInfo[i].default ? typeof componentInfo[i].default : 'null' ,componentInfo[i],attributeVal);
 
 
         var supportedTypes = '';
