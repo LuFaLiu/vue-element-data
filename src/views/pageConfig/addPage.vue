@@ -87,33 +87,10 @@
           
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button @click="addRuleParams">{{$t('form.addRuleParameters')}}</el-button>
           <el-button @click="cancelDialog">{{$t('form.cancel')}}</el-button>
           <el-button type="primary" @click="addChildrenThree">{{$t('form.sure')}}</el-button>
         </span>
       </el-dialog>
-      <el-drawer
-        :title="$t('form.addRuleParameters')"
-        :visible.sync="drawer"
-        size="50%"
-        direction="rtl"
-        :before-close="handleClose"
-      >
-        <el-transfer
-          v-model="transferDataValue"
-          :titles="[$t('form.ruleParametersLibrary'), $t('form.addRuleParameters')]"
-          :props="{
-            key: 'value',
-            label: 'label',
-          }"
-          :data="transferData"
-        >
-        </el-transfer>
-        <span class="drawer-footer">
-          <el-button @click="drawer = false">{{$t('form.cancel')}}</el-button>
-          <el-button type="primary" @click="submitRuleParameterList(transferDataValue)">{{$t('form.sure')}}</el-button>
-        </span>
-      </el-drawer>
     </div>
     <div class="custom-tree-right">
       <el-button type="primary" @click="viewChangePageMethod">{{$t('pageRule.preview')}}</el-button>
@@ -159,7 +136,6 @@ export default {
     ];
     return {
       data: JSON.parse(JSON.stringify(data)),
-      drawer: false,
       dialogVisible: false,
       form: {
         webName:"",
@@ -170,8 +146,6 @@ export default {
       componentSelectList:[],
       dynamicList:[],
       defaultList:[],
-      allListParams:[],
-      allDefaultListParams:[],
       paramsData: {},
       transferData: [],
       transferDataValue: [],
@@ -201,11 +175,6 @@ export default {
   },
   mounted(){
     var that = this;
-    that.allListParams = [];
-    that.allDefaultListParams = [];
-    apiRequestAll(that,pageConfigApi,'getDefaultList','allDefaultListParams');
-    apiRequestAll(that,pageConfigApi,'getDefaultList','allListParams');
-    apiRequestAll(that,pageConfigApi,'getDynamicList','allListParams');
     that.form.webName = that.$route.name;
     that.routerList = [];
     that.getRouterList();
@@ -214,9 +183,11 @@ export default {
     that.componentList = [];
     that.componentSelectList = [];
     for(var i in that.elementUIPlugin){
-      if(/^[A-Z]/.test(i) && that.elementUIPlugin[i].name){
-        that.componentList.push({name:that.elementUIPlugin[i].name,props:that.elementUIPlugin[i].props ? that.elementUIPlugin[i].props : {}});
-        that.componentSelectList.push({lable:that.elementUIPlugin[i].name,value:that.elementUIPlugin[i].name});
+      if(i.indexOf('Option') == -1){ //屏蔽Option
+        if(/^[A-Z]/.test(i) && that.elementUIPlugin[i].name && that.elementUIPlugin[i].props){
+          that.componentList.push({name:that.elementUIPlugin[i].name,props:that.elementUIPlugin[i].props ? that.elementUIPlugin[i].props : {}});
+          that.componentSelectList.push({lable:that.elementUIPlugin[i].name,value:that.elementUIPlugin[i].name});
+        }
       }
     }
 
@@ -240,10 +211,10 @@ export default {
     selectPageMethod(val,showType){
       var that = this;
       that.viewChangePage = false;
-      var selectRouteName = _.filter(that.$router.options.routes[0].children,_.matches({name:val}))[0].path.split('/'); //router info 
+      var selectRouteName = _.filter(that.$router.options.routes[0].children,_.matches({name:val}))[0].path.split('/'); //路由信息 
 
       _.filter(_.filter(that.$router.options.routes[0].children,_.matches({name:'page:manage:add'}))[0].children,function (item) {
-        if(item.path == selectRouteName[selectRouteName.length - 1]){ //current page router info 
+        if(item.path == selectRouteName[selectRouteName.length - 1]){ //当前页面路由信息
           that.viewPageRoute =  '/pageConfig/addPage/' + item.path;
         }
       })
@@ -311,42 +282,12 @@ export default {
       //console.log(val);
     },
 
-    getDynamicList(type) {
-      var that = this;
-      that.dynamicList = [];
-      that.transferData = [];
-      apiRequestOpration(pageConfigApi,'getDynamicList',function (data) {
-        _.filter(_.filter(data.items,_.matches({'componentName':type})),function (v) {
-          that.dynamicList.push(v);
-          var hasParamsList = _.map(that.defaultList[0].childrenNode,'attributeName'); //get default rule object name
-          v.childrenNode.filter(node=>{
-            that.transferData.push({ //left data
-              value: node.attributeModel,
-              label: that.$t(node.attributeLabel) 
-            });
-            if(hasParamsList.indexOf(node.attributeName) > -1){ //left to right
-              that.transferDataValue.push(node.attributeModel); //cumulative rule
-            }
-          })
-        })
-      }) 
-    },
-
-    getDefaultList(type) {
-      var that = this;
-      that.dynamicList = []; 
-      that.form.componentRule = {}; 
-      apiRequestOpration(pageConfigApi,'getDefaultList',function (data) {
-        that.defaultList = _.filter(_.filter(data.items,_.matches({'componentName':type})));
-      })
-    },
-
     addDefaultItem(attributeLabel){
       
       var that = this;
        _.filter(_.filter(that.defaultList[0].childrenNode,_.matches({'attributeLabel':attributeLabel})),function (v,index) {
           v.childrenNode.push({
-            [`value${index+Date.now()}`]: '', //[`value${index+Date.now()}`] Dynamic properties facilitate traversal of different values
+            [`value${index+Date.now()}`]: '', //[`value${index+Date.now()}`] 动态属性便于遍历不同的值
             key: Date.now()
           })
        })
@@ -364,12 +305,8 @@ export default {
     },
 
     selectComponent(val){
-      console.log(val,componentInfo);
       var componentInfo = _.filter(this.componentList,['name',val])[0].props;
       this.componentProps = [];
-      if(val == "ElInput"){
-        this.componentProps.push({attributeName:'placeholder',attributeLabel:'placeholder',attributeModel:'', attributeType: 'ruleInput'})
-      }
       for(var i in componentInfo){
 
         var paramType = typeof componentInfo[i].type;
@@ -401,47 +338,35 @@ export default {
           }
         }
 
-        this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]:  i == 'treeProps' ? JSON.stringify({ hasChildren: 'hasChildren', children: 'children' }) : attributeVal ,inputFormat:supportedTypes, attributeType: type == 'boolean' ? 'ruleRadio' : 'ruleInput'})
+        //特殊属性作处理
+        if(i == 'modal' || i == 'showClose'){
+          this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
+        }else {
+          this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]:  i == 'treeProps' ? JSON.stringify({ hasChildren: 'hasChildren', children: 'children' }) : attributeVal ,inputFormat:supportedTypes, attributeType: type == 'boolean' ? 'ruleRadio' : 'ruleInput'})
+        }
+        
         
       }
-      console.log("componentProps=======>");
-      console.log(this.componentProps);
-      this.getDefaultList(val);
-    },
 
-    addRuleParams(){
-      var that = this;
-      if(!that.form.componentName){
-        that.$message({
-          message: this.$t('pageRule.selectPageComponent'),
-          type: 'warning'
-        });
-      }else {
-        that.getDynamicList(that.form.componentName);
-        that.drawer = true;
+      //添加自定义属性
+      switch (val) {
+        case 'ElSelect':
+          this.componentProps.push({attributeName:'ElOptionListName',attributeLabel:'ElOptionListName',attributeModel:'ElOptionListName',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;
+        case 'ElButton':
+          this.componentProps.push({attributeName:'vModelName',attributeLabel:'vModelName',attributeModel:'vModelName',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;
+        case 'ElInput':
+          this.componentProps.push({attributeName:'placeholder',attributeLabel:'placeholder',attributeModel:'placeholder',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;
+        default:
+          break;
       }
       
-    },
-
-    submitRuleParameterList(val){
-      var that = this;
-      if(val.length == 0){
-        that.$message({
-          message: this.$t('pageRule.addPageRuleParams'),
-          type: 'warning'
-        });
-      }else {
-        var defaultList = _.map(that.defaultList[0].childrenNode,'attributeName'); //Default rule parameters
-        val.forEach(e => {
-          that.dynamicList[0].childrenNode.filter(v=>{
-            if(v.attributeName == e && defaultList.indexOf(v.attributeName) == -1){ //The rule parameter library matches the new rule parameter and does not exist in the right drawer accumulation rule
-              that.$set(v,v.attributeName,v.attributeType == 'ruleInput' ? '' : false); // Adds rule parameters to the current object for dynamic value passing
-              that.defaultList[0].childrenNode.push(v);
-              that.drawer = false;
-            }
-          })
-        });
-      }
+      
+      console.log(val,componentInfo);
+      console.log("componentProps=======>");
+      console.log(this.componentProps);
     },
 
     addChildrenThree(){
@@ -456,31 +381,31 @@ export default {
         return;
       }
 
-      _.filter(that.defaultList[0].childrenNode,function (param) { //Adds the rule parameter list parameter to form.componentRule Facilitate the value of subcomponents
+      _.filter(that.defaultList[0].childrenNode,function (param) { //将规则参数列表参数添加到form.componentRule便于子组件的值
         if(param.attributeType == "ruleDynamicInput"){
           that.$set(that.form.componentRule,param.attributeName,{});
-          param.childrenNode.filter((v,index)=>{ //Gets the child node parameters
+          param.childrenNode.filter((v,index)=>{ //获取子节点参数
             if(that.editThreeStatus == 0){ //Add
               that.$set(that.form.componentRule[param.attributeName],_.keys(v)[0],v.value);
             }else{ //Edit
-              that.$set(that.form.componentRule[param.attributeName],_.keys(param.childrenNode)[index],v.value); //Dynamically set multiple child elements key、value
+              that.$set(that.form.componentRule[param.attributeName],_.keys(param.childrenNode)[index],v.value); //动态设置多个子元素key、value
             }
           })
         }else if(param.attributeType == "ruleParamsInput"){
           that.$set(that.form.componentRule,param.attributeName,{});
-          param.childrenNode.filter(v=>{ //Gets the child node parameters
+          param.childrenNode.filter(v=>{ //获取子节点参数
             if(that.editThreeStatus == 0){ //Add
               that.$set(that.form.componentRule[param.attributeModel],v.attributeModel,v[v.attributeModel]);
             }else{ //Edit
-              that.$set(that.form.componentRule[param.attributeModel],v.attributeModel,v[v.attributeModel]); //Dynamically set multiple child elements key、value
+              that.$set(that.form.componentRule[param.attributeModel],v.attributeModel,v[v.attributeModel]); //动态设置多个子元素key、value
             }
           })
         } else{
-          that.$set(that.form.componentRule,param.attributeModel,param[param.attributeModel]); //Gets the dynamic property value assigned to that.form.componentRule
+          that.$set(that.form.componentRule,param.attributeModel,param[param.attributeModel]); //获取分配给该form.componentrule的动态属性值
         }
       })
 
-      //Convert a parameter object to its initial value
+      //将参数对象转换为其初始值
       var componentRule = {};
       _.forEach(that.form.componentRule, function(value, key) { 
           if(key == 'class' || key == 'placeholder' || key == 'title' || key == 'pageSize'){
@@ -494,7 +419,7 @@ export default {
       });
 
       if(that.editThreeStatus == 0){
-        const newChild = { id: Date.now(), label: that.form.componentName,componentRule:componentRule, children: [] }; //Assigned to the tree
+        const newChild = { id: Date.now(), label: that.form.componentName,componentRule:componentRule, children: [] }; //分配给树
         if (!that.appendData.children) {
           that.$set(that.appendData, 'children', []);
         }
@@ -504,23 +429,23 @@ export default {
       }
 
       that.dialogVisible = false;
-      that.submitParamsRule(); //Update parameter rule tree
+      that.submitParamsRule(); //更新参数规则树
     },
 
-    //Drag and drop tree nodes
+    //拖放树节点
     handleDrop(){
-      this.submitParamsRule(); //Update parameter rule tree
+      this.submitParamsRule(); //更新参数规则树
     },
 
-    //Click the Add child button
+    //单击Add子按钮
     append(data) {
       this.dialogVisible = true;
       this.editThreeStatus = 0;
-      this.form = resetObj(this.form); //Reset the current Form object
+      this.form = resetObj(this.form); //重置当前Form对象
       this.transferData = [];
       this.transferDataValue = [];
       this.appendData = data; 
-      //Resets existing default rule parameters
+      //重置现有的默认规则参数
       this.defaultList = [
         {
           childrenNode:[],
@@ -530,20 +455,20 @@ export default {
       ]; 
     },
 
-    //Edit current node parameters
+    //编辑当前节点参数
     editNode(data){
       var that = this;
       that.dialogVisible = true;
-      that.appendData = data; //Assign to the current click tree node
+      that.appendData = data; //分配给当前的单击树节点
 
       that.editThreeStatus = 1;
-      let paramKey = _.keys(data.componentRule); //Gets the current rule parameter
+      let paramKey = _.keys(data.componentRule); //获取当前规则参数
       that.form.componentName = data.label;
-      //Reset default rule parameters
-      that.defaultList[0].childrenNode = []; //Reset an existing node
+      //重置默认规则参数
+      that.defaultList[0].childrenNode = []; //重置已存在节点
 
-      //Take the parameter rule from the default list and remove the existing parameter rule
-      _.filter(_.filter(that.allDefaultListParams,_.matches({'componentName':that.appendData.label})),function (node) {
+      //从默认列表中获取参数规则并删除现有的参数规则
+      _.filter(_.filter(that.componentList,_.matches({'componentName':that.appendData.label})),function (node) {
         _.filter(node.childrenNode,function (attribute) {
           if(paramKey.indexOf(attribute.attributeName) == -1){
             that.$set(attribute,attribute.attributeName,attribute.attributeType == 'ruleInput' ? '' : false);
@@ -552,14 +477,14 @@ export default {
         })
       });
 
-     //Matches an existing parameter rule in all parameter rule lists
+     //匹配所有参数规则列表中已存在的参数规则
      filterCondition(that,that.allListParams,'componentName',that.appendData.label,paramKey,function (childrenNode) {
 
         if(childrenNode.attributeName == 'class' || childrenNode.attributeName == 'placeholder' || childrenNode.attributeName == 'title' || childrenNode.attributeName == 'pageSize'){ //class
           childrenNode.childrenNode = [];
-          for(var classVal of that.appendData.componentRule[childrenNode.attributeName]){ //Gets the assigned rule parameter value assigned to that.defaultList[0].childrenNode
+          for(var classVal of that.appendData.componentRule[childrenNode.attributeName]){ //获取分配给defaultlist [0].childrenNode的已分配规则参数值
             childrenNode.childrenNode.push({
-              value:classVal, //Assign a value to dynamic value
+              value:classVal, //将值赋给动态值
             })
           } 
         }else{
@@ -569,16 +494,16 @@ export default {
               that.$set(v,v.attributeModel,that.appendData.componentRule[childrenNode.attributeName][v.attributeModel]);
             })
           }else {
-            that.$set(childrenNode,childrenNode.attributeName,that.appendData.componentRule[childrenNode.attributeName]); //Assign to the original rule parameter
+            that.$set(childrenNode,childrenNode.attributeName,that.appendData.componentRule[childrenNode.attributeName]); //对原始规则参数赋值
           }
         }
         that.defaultList[0].childrenNode.push(childrenNode);
      }); 
 
-     //that.submitParamsRule(); //Update parameter rule tree
+     //that.submitParamsRule(); //更新参数规则树
     },
 
-    //Submit parameter rule tree
+    //提交参数规则树
     submitParamsRule(){
       var that = this;
       pageConfigApi.saveComponent({pageName:that.selectPage,node:that.data}).then(res=>{
@@ -597,13 +522,13 @@ export default {
         that.viewChangePage = false; //test
         /*
         if(that.viewChangePage){
-          that.$router.push({path:that.viewPageRoute}); //Display it after modification
+          that.$router.push({path:that.viewPageRoute}); //修改后显示
         }
         */
       })
     },
 
-    //Transform list tree
+    //转换列表树
     conversionPageData(list,item){
       var that = this;
       list.filter(v=>{
@@ -626,13 +551,13 @@ export default {
       return item;
     },
 
-    //Remove the child
+    //移除子节点
     remove(node, data) {
       const parent = node.parent;
       const children = parent.data.children || parent.data;
       const index = children.findIndex((d) => d.id === data.id);
       children.splice(index, 1);
-      this.submitParamsRule(); //Update parameter rule tree
+      this.submitParamsRule(); //更新参数规则树
     },
     cancelDialog(){
       this.dialogVisible = false;
