@@ -339,9 +339,11 @@ export default {
         }
 
         //特殊属性作处理
-        if(i == 'modal' || i == 'showClose'){
+        if(i == 'modal'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
-        }else {
+        }else if(i == 'showClose' || i == 'disabled'){
+          this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i].default ,inputFormat:typeof componentInfo[i].type(), attributeType: 'ruleRadio'})
+        } else {
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]:  i == 'treeProps' ? JSON.stringify({ hasChildren: 'hasChildren', children: 'children' }) : attributeVal ,inputFormat:supportedTypes, attributeType: type == 'boolean' ? 'ruleRadio' : 'ruleInput'})
         }
         
@@ -369,6 +371,7 @@ export default {
       console.log(this.componentProps);
     },
 
+    //提交添加
     addChildrenThree(){
         
       var that = this;
@@ -380,8 +383,8 @@ export default {
         });
         return;
       }
-
-      _.filter(that.defaultList[0].childrenNode,function (param) { //将规则参数列表参数添加到form.componentRule便于子组件的值
+      that.form.componentRule = {};
+      _.filter(that.componentProps,function (param) { //将规则参数列表参数添加到form.componentRule便于子组件的值
         if(param.attributeType == "ruleDynamicInput"){
           that.$set(that.form.componentRule,param.attributeName,{});
           param.childrenNode.filter((v,index)=>{ //获取子节点参数
@@ -405,7 +408,10 @@ export default {
         }
       })
 
+      console.log(that.form.componentRule);
+
       //将参数对象转换为其初始值
+      /*
       var componentRule = {};
       _.forEach(that.form.componentRule, function(value, key) { 
           if(key == 'class' || key == 'placeholder' || key == 'title' || key == 'pageSize'){
@@ -430,6 +436,7 @@ export default {
 
       that.dialogVisible = false;
       that.submitParamsRule(); //更新参数规则树
+      */
     },
 
     //拖放树节点
