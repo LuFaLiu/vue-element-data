@@ -241,8 +241,9 @@ export default {
               id: ''
             }
           ];
-          //console.log("界面模块");
-          //console.log(JSON.stringify(res.data.data[0].node));
+          //需选择下拉框
+          console.log("界面模块");
+          console.log(JSON.stringify(res.data.data[0].node));
           var getSelectPageNode = that.conversionPageData(res.data.data[0].node,[])[0];
           if(getSelectPageNode.childrenNode){
             that.pageData = that.conversionPageData(res.data.data[0].node,[])[0].childrenNode[0];
@@ -305,6 +306,7 @@ export default {
     },
 
     selectComponent(val){
+
       var componentInfo = _.filter(this.componentList,['name',val])[0].props;
       this.componentProps = [];
       for(var i in componentInfo){
@@ -343,6 +345,8 @@ export default {
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
         }else if(i == 'showClose' || i == 'disabled'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i].default ,inputFormat:typeof componentInfo[i].type(), attributeType: 'ruleRadio'})
+        }else if(i == 'pageSizes'){
+          this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '[10, 20, 30, 40, 50, 100]',inputFormat:'Array', attributeType: 'ruleInput'})
         } else {
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]:  i == 'treeProps' ? JSON.stringify({ hasChildren: 'hasChildren', children: 'children' }) : attributeVal ,inputFormat:supportedTypes, attributeType: type == 'boolean' ? 'ruleRadio' : 'ruleInput'})
         }
@@ -364,8 +368,7 @@ export default {
         default:
           break;
       }
-      
-      
+
       console.log(val,componentInfo);
       console.log("componentProps=======>");
       console.log(this.componentProps);
@@ -385,6 +388,7 @@ export default {
       }
       that.form.componentRule = {};
       _.filter(that.componentProps,function (param) { //将规则参数列表参数添加到form.componentRule便于子组件的值
+        console.log(param);
         if(param.attributeType == "ruleDynamicInput"){
           that.$set(that.form.componentRule,param.attributeName,{});
           param.childrenNode.filter((v,index)=>{ //获取子节点参数
@@ -411,9 +415,10 @@ export default {
       console.log(that.form.componentRule);
 
       //将参数对象转换为其初始值
-      /*
       var componentRule = {};
       _.forEach(that.form.componentRule, function(value, key) { 
+          componentRule[key] = value;
+          /*
           if(key == 'class' || key == 'placeholder' || key == 'title' || key == 'pageSize'){
             componentRule[key] = [];
             _.forEach(that.form.componentRule[key], function(value2) {
@@ -422,6 +427,7 @@ export default {
           }else{
             componentRule[key] = value;
           }
+          */
       });
 
       if(that.editThreeStatus == 0){
@@ -436,7 +442,8 @@ export default {
 
       that.dialogVisible = false;
       that.submitParamsRule(); //更新参数规则树
-      */
+
+
     },
 
     //拖放树节点
@@ -464,14 +471,29 @@ export default {
 
     //编辑当前节点参数
     editNode(data){
+      console.log("点击编辑");
+      console.log(data);
       var that = this;
       that.dialogVisible = true;
       that.appendData = data; //分配给当前的单击树节点
 
       that.editThreeStatus = 1;
       let paramKey = _.keys(data.componentRule); //获取当前规则参数
+
       that.form.componentName = data.label;
+      this.componentProps = [];
+      let componentInfo = data.componentRule;
+      for(var i in componentInfo){
+        var paramType = typeof componentInfo[i];
+        if(paramType == 'boolean') {
+          this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i] ,inputFormat:'boolean', attributeType: 'ruleRadio'})
+        }else {
+          this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i] ,inputFormat:'string', attributeType: 'ruleInput'})
+        }
+      }
+      
       //重置默认规则参数
+      /*
       that.defaultList[0].childrenNode = []; //重置已存在节点
 
       //从默认列表中获取参数规则并删除现有的参数规则
@@ -506,8 +528,11 @@ export default {
         }
         that.defaultList[0].childrenNode.push(childrenNode);
      }); 
+     */
 
      //that.submitParamsRule(); //更新参数规则树
+     
+
     },
 
     //提交参数规则树

@@ -87,7 +87,6 @@ Vue.prototype.$formatDate = function(value) {
   }
 }
 
-
 Vue.config.productionTip = false
 new Vue({
   router,

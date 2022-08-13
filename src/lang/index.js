@@ -25,7 +25,8 @@ const i18n = new VueI18n({
   //locale: Cookies.get('language') || 'en',
   locale: Cookies.get('language') || 'zh',//默认中文
   // set locale messages
-  messages
+  messages,
+  silentTranslationWarn: true, //去掉vue-i18n警告
 })
 
 export default i18n

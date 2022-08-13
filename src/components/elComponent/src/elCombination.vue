@@ -5,7 +5,6 @@ import TraverseTemplate from './traverseTemplate'
 import elLevelSelect from '@/components/Page/elLevelSelect'
 import elTableTree from '@/components/Page/elTableTree'
 import _ from 'lodash'
-import Vue from 'vue';
 export default {
     inject: ['superParams'],
     name: 'ElCombination',
@@ -13,8 +12,6 @@ export default {
         const node = this.node;
         const pageName = this.route;
 
-        console.log(Vue.prototype.constructor._installedPlugins[5]);
-        console.log(node);
         if(this.$parent.$route){
             if(this.$parent.$route.path.indexOf('/pageConfig/addPage') > -1){ //addRole children router
                 this.$set(node,'pageName', pageName ? pageName :this.$parent.$route.name);
@@ -27,15 +24,7 @@ export default {
                     node.componentName,
                     {
                         'class': node.class,
-                        props: node.componentName == 'elForm' ? 
-                                {
-                                    model:node.model ? this.superParams[node.model] : {},
-                                    class:node.class,
-                                    rules:node.formRule ? this.superParams[node.formRule] : {},
-                                    'label-width':node.labelWidth  || '',
-                                    'label-position':node.labelPosition || 'right',
-                                } : node,
-                        ref:node.refName  || '',       
+                        props: this.conversionProps(node),   
                     },
                     this.deepChildrenComponent(node,h)
                 )
@@ -86,79 +75,7 @@ export default {
                         attrs: {
                             placeholder: (item.componentName == 'elInput' || item.componentName == 'elSelect') && that.filteri18n(item.placeholder) || ''
                         },
-                        props: //compontent attribute
-                            item.componentName === 'elPagination' ? 
-                            {
-                                layout:item.layout && item.layout,
-                                'page-sizes':item.pageSize && item.pageSize,
-                                'current-page': item.params && that.superParams[item.params] && that.superParams[item.params]['current'],
-                                'page-size': item.params && that.superParams[item.params] && that.superParams[item.params]['size'],
-                                total: that.superParams[item.params] && that.superParams[item.params]['total'],
-                            } : item.componentName == 'elForm' ? 
-                            {
-                                model:item.model ? that.superParams[item.model] : {},
-                                class:item.class,
-                                rules:item.formRule ? that.superParams[item.formRule] : {},
-                                'label-width':item.labelWidth,
-                                'label-position':item.labelPosition || 'right',
-                            } : item.componentName == 'elFormItem' ? 
-                            {
-                                label:that.$t(item.label),
-                                prop:item.prop
-                            } : item.componentName == 'elButton' ? 
-                            {
-                                type:item.btnType,
-                                icon:item.icon,
-                                class:item.class,
-                                disabled:item.btnCondition ? (that.getValue() ? true : false) : false,
-                                loading:item.loading ? that.superParams.btnLoading : false,
-                            } : item.componentName == 'elInput' ? 
-                            {
-                                type:item.inputType,
-                                value: that.vModelVal(item), //必须值
-                                ref:'input',
-                                disabled:item.inputCondition ? (that.superParams[item.inputCondition] ? true : false) : item.disabled,
-                                clearable:true
-                            } : item.componentName == 'elTable' ? 
-                            {
-                                class:item.class,
-                                data:that.superParams[item.tableDataName],
-                                tooltipEffect:item.tooltipEffect,
-                                style:[item.style],
-                                stripe:item.stripe,
-                                height:that.tableHeight,
-                                defaultSort:item.defaultSort || '',
-                                rowKey:item.rowKey || '',
-                                defaultExpandAll:item.defaultExpandAll || '',
-                                treeProps:item.treeProp || '',
-                            } : item.componentName == 'elTableTree' ? 
-                            {
-                                parentNode:item,
-                                tableHeight:that.tableHeight
-                            } : item.componentName == 'elTableColumn' ? 
-                            {
-                                type:item.type,
-                                label:that.$t(item.label),
-                                width:item.width,
-                                align:'center'
-                            } : item.componentName == 'elSelect' ? 
-                            {
-                                parentNode:item && item,
-                                value: that.vModelVal(item),
-                                'popper-append-to-body':false,
-                            }  : item.componentName == 'elLevelSelect' ? 
-                            {
-                                parentNode:item,
-                            }   : item.componentName == 'elDialog' ? 
-                            {
-                                ref:item.refName || '',
-                                title:that.filteri18n(item.title),
-                                visible:that.superParams[item.dialogShowName], //官方:visible.sync
-                                width:item.width,
-                                'before-close':()=>that.beforeClose(item), //匿名函数阻止首次执行（非直接调用）
-                                center:item.center
-                            } 
-                            : item,   
+                        props:that.conversionProps(item),
                         on:{
                             '&click':function (e) {
                                 switch (item.componentName) {
@@ -179,7 +96,9 @@ export default {
                             },
                             input: function (event) { //v-model
                                 if(typeof event == 'string'){
-                                    dynamicvModel(that.superParams,item.vModel,event,'set');
+                                    //dynamicvModel(that.superParams,item.vModel,event,'set');
+                                    that.superParams.value = event;
+                                    item.value = event;
                                 }
                             },
                             change: function (event) { //v-model
@@ -203,7 +122,7 @@ export default {
                                 value: (that.node.pageName == 'page:manage:rule' && item.componentName == 'elDialog')  ? that.superParams.addContentDialog : item.componentName !== 'elPagination' ? true : that.showPage ? true : false //elPagination loading success to show / 等待表格高度赋值完成才可以显示elPagination
                             }
                         ],
-                        key:Math.random(), //elTable required
+                        //key:Math.random(), //v-model响应数据时会触发render函数，需将key关闭，否则会重新渲染组件
                         ref:item.refName,
                         scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' && !item.operation && {
                             default: props => h('Template',{props,item}) //通过单文件组件展示对应的信息(组件需要的一切都是通过 context 参数传递)
@@ -286,6 +205,24 @@ export default {
             }
             this.tableHeight = resizeObserver("el-main",classList,130);
         },
+        //转化props属性
+        conversionProps(item){
+            var that = this;
+            for(var i in item){
+                if(i !== 'componentName' || i !== 'pageName'){
+                    //console.log(item[i]);
+                    //console.log(typeof item[i]);
+                    //console.log(new Boolean(item[i]));
+                    if(i == 'readonly'){
+                        item[i] = false;
+                    }else {
+                        item[i] = (i == item[i] ? that.superParams[i] : item[i])
+                    }
+                }
+            }
+            
+            return item;
+        }
     },
     data(){
         return {

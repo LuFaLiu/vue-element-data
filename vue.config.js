@@ -9,7 +9,7 @@ module.exports = {
   publicPath: './', 
   outputDir: 'dist',
   assetsDir: 'static',
-  lintOnSave: false, 
+  lintOnSave: false, //严格模式
   productionSourceMap: false,
   devServer: {
     port: 8089,

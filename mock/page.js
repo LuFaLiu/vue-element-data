@@ -159,6 +159,11 @@ const paramsList = Mock.mock({
                     ]}]}]},
                     {"id":1658885457735,"label":"elTableTree","componentRule":{"class":["test"],"tableDataName":"tableTreeData","tableHeightName":"tableHeight","vModel":"tets"},"children":[]}
                     ]}]}]
+                },
+                {
+                    //测试
+                    pageName:'systools:menu:menutest',
+                    node:[{"id":1,"label":"elMain","children":[{"id":1660353557977,"label":"ElForm","componentRule":{"model":"model","rules":"rules","labelPosition":"","labelWidth":"","labelSuffix":"","inline":"","inlineMessage":"","statusIcon":"","showMessage":true,"size":"","validateOnRuleChange":true,"hideRequiredAsterisk":""},"children":[{"id":1660353568656,"label":"ElFormItem","componentRule":{"label":"测试","labelWidth":"200","prop":"","required":"","rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":""},"children":[{"id":1660353576322,"label":"ElInput","componentRule":{"value":"value","size":"","resize":"","form":"","readonly":"","type":"text","autosize":"autosize","autocomplete":"off","autoComplete":"","validateEvent":true,"suffixIcon":"","prefixIcon":"","label":"","clearable":"","showPassword":"","showWordLimit":"","tabindex":""},"children":[]}]}]}]}]
                 }
             ]
 })
