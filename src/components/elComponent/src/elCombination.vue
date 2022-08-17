@@ -207,6 +207,7 @@ export default {
         },
         //转化props属性
         conversionProps(item){
+            
             var that = this;
             for(var i in item){
                 if(i !== 'componentName' || i !== 'pageName'){

@@ -347,6 +347,8 @@ export default {
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i].default ,inputFormat:typeof componentInfo[i].type(), attributeType: 'ruleRadio'})
         }else if(i == 'pageSizes'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '[10, 20, 30, 40, 50, 100]',inputFormat:'Array', attributeType: 'ruleInput'})
+        }else if(i == 'clearable'){
+          this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: false ,inputFormat:typeof componentInfo[i].type(), attributeType: 'ruleRadio'})
         } else {
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]:  i == 'treeProps' ? JSON.stringify({ hasChildren: 'hasChildren', children: 'children' }) : attributeVal ,inputFormat:supportedTypes, attributeType: type == 'boolean' ? 'ruleRadio' : 'ruleInput'})
         }
