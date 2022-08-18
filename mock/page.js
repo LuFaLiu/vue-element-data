@@ -185,7 +185,7 @@ const paramsList = Mock.mock({
                         "children":[{"id":1660791853396,"label":"ElRadio","componentRule":{"value":"value","label":"title1","disabled":false,"name":"title","border":false,"size":""},
                         "children":[]},{"id":1660791875075,"label":"ElRadio","componentRule":{"value":"value","label":"title2","disabled":false,"name":"1","border":false,"size":""},
                         "children":[]}]},{"id":1660791948900,"label":"ElFormItem","componentRule":{"label":"Checkbox","labelWidth":"100px","prop":"","required":"","rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":""},
-                        "children":[{"id":1660792026716,"label":"ElCheckbox","componentRule":{"value":"value","label":"title","indeterminate":false,"disabled":false,"checked":false,"name":"1","trueLabel":"","falseLabel":"","id":"","controls":"","border":false,"size":""},
+                        "children":[{"id":1660792026716,"label":"ElCheckbox","componentRule":{"value":"value","label":"title","indeterminate":false,"disabled":false,"checked":false,"name":"2","trueLabel":"","falseLabel":"","id":"","controls":"","border":false,"size":""},
                         "children":[]}]}]}]}]
                 }
             ]
