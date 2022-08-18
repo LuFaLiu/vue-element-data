@@ -129,8 +129,9 @@ export default {
                         } || item.componentName == 'elRadioGroup' && { default: props => h('TraverseTemplate',{props:{node:item,parent:that}})  } //非单文件组件
                     },
                     item && item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) 
-                            : item.componentName == 'elButton' || (item.componentName == 'elContainer' && item.title)
-                                ? [h('span',that.filteri18n(item.title))] 
+                            : item.componentName == 'ElButton' || (item.componentName == 'elContainer' && item.title) || item.componentName == 'ElLink' || item.componentName == 'ElHeader' || item.componentName == 'ElFooter'
+                                //? [h('span',that.filteri18n(item.title))] 
+                                ? [h('span',that.$t(item.title))] 
                                     : item.componentName == 'elSelect' ? that.superParams[item.elOptionList].map((v,index) => [h('el-option',{props:{label:that.$t(v.label),key:v.value,value:v.value}})] )
                                         : that.$slots.default
                 )

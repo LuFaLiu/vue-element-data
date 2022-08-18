@@ -7,7 +7,8 @@ const paramsList = Mock.mock({
             [
                 {
                     pageName:'page:manage:rule',
-                    "node":[{"id":1,"label":"elMain","children":[{"id":1658282536249,"label":"elMain","componentRule":{"class":["accountList","container"]},
+                    "node":[{"id":1,"label":"elMain",
+                    "children":[{"id":1658282536249,"label":"elMain","componentRule":{"class":["accountList","container"]},
                     "children":[
                     {
                         "id":1658282549986,"label":"elForm","componentRule":{"class":["searchForm","searchUser"]},
@@ -163,7 +164,29 @@ const paramsList = Mock.mock({
                 {
                     //测试
                     pageName:'systools:menu:menutest',
-                    node:[{"id":1,"label":"elMain","children":[{"id":1660353557977,"label":"ElForm","componentRule":{"model":"model","rules":"rules","labelPosition":"","labelWidth":"","labelSuffix":"","inline":"","inlineMessage":"","statusIcon":"","showMessage":true,"size":"","validateOnRuleChange":true,"hideRequiredAsterisk":""},"children":[{"id":1660353568656,"label":"ElFormItem","componentRule":{"label":"测试","labelWidth":"200","prop":"","required":"","rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":""},"children":[{"id":1660353576322,"label":"ElInput","componentRule":{"value":"value","size":"","resize":"","form":"","readonly":"","type":"text","autosize":"autosize","autocomplete":"off","autoComplete":"","validateEvent":true,"suffixIcon":"","prefixIcon":"","label":"","clearable":"","showPassword":"","showWordLimit":"","tabindex":""},"children":[]}]}]}]}]
+                    node:[{"id":1,"label":"elMain",
+                        "children":[{"id":1660353557977,"label":"ElForm","componentRule":{"model":"model","rules":"rules","labelPosition":"","labelWidth":"","labelSuffix":"","inline":"","inlineMessage":"","statusIcon":"","showMessage":true,"size":"","validateOnRuleChange":true,"hideRequiredAsterisk":""},
+                        "children":[{"id":1660353568656,"label":"ElFormItem","componentRule":{"label":"Button","labelWidth":"100px","prop":"","required":"","rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":""},
+                        "children":[{"id":1660783994487,"label":"ElButton","componentRule":{"type":"primary","size":"","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":false,"round":false,"circle":false,"title":"componentInfo.title","vModelName":"value"},
+                        "children":[]},{"id":1660788326173,"label":"ElButton","componentRule":{"type":"success","size":"","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":false,"round":false,"circle":false,"title":"componentInfo.title"},
+                        "children":[]},{"id":1660788477109,"label":"ElButton","componentRule":{"type":"default","size":"","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":true,"autofocus":false,"round":false,"circle":false,"title":"componentInfo.title"},
+                        "children":[]},{"id":1660788515750,"label":"ElButton","componentRule":{"type":"primary","size":"","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":false,"round":true,"circle":false,"title":"componentInfo.title"},
+                        "children":[]},{"id":1660788549773,"label":"ElButton","componentRule":{"type":"warning","size":"","icon":"","nativeType":"button","loading":true,"disabled":false,"plain":false,"autofocus":false,"round":false,"circle":false,"title":"componentInfo.title"},
+                        "children":[]},{"id":1660788575333,"label":"ElButton","componentRule":{"type":"info","size":"","icon":"","nativeType":"button","loading":false,"disabled":true,"plain":false,"autofocus":false,"round":false,"circle":false,"title":"componentInfo.title"},
+                        "children":[]}]},{"id":1660789004789,"label":"ElFormItem","componentRule":{"label":"Link","labelWidth":"100px","prop":"","required":"","rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":""},
+                        "children":[{"id":1660789048677,"label":"ElLink","componentRule":{"type":"primary","underline":true,"disabled":false,"href":"","icon":"","title":"componentInfo.title"},
+                        "children":[]},{"id":1660789657405,"label":"ElLink","componentRule":{"type":"success","underline":true,"disabled":false,"href":"","icon":"","title":"componentInfo.title"},
+                        "children":[]},{"id":1660789734429,"label":"ElLink","componentRule":{"type":"info","underline":true,"disabled":true,"href":"","icon":"","title":"componentInfo.title"},
+                        "children":[]}]},{"id":1660789817261,"label":"ElFormItem","componentRule":{"label":"Container","labelWidth":"100px","prop":"","required":"","rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":""},
+                        "children":[{"id":1660789854011,"label":"ElContainer","componentRule":{"direction":""},
+                        "children":[{"id":1660789866867,"label":"ElHeader","componentRule":{"height":"60px","title":"componentInfo.title"},
+                        "children":[]},{"id":1660789934012,"label":"ElFooter","componentRule":{"height":"60px","title":"componentInfo.title"},
+                        "children":[]}]}]},{"id":1660791806365,"label":"ElFormItem","componentRule":{"label":"Radio","labelWidth":"100px","prop":"","required":"","rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":""},
+                        "children":[{"id":1660791853396,"label":"ElRadio","componentRule":{"value":"value","label":"title1","disabled":false,"name":"title","border":false,"size":""},
+                        "children":[]},{"id":1660791875075,"label":"ElRadio","componentRule":{"value":"value","label":"title2","disabled":false,"name":"1","border":false,"size":""},
+                        "children":[]}]},{"id":1660791948900,"label":"ElFormItem","componentRule":{"label":"Checkbox","labelWidth":"100px","prop":"","required":"","rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":""},
+                        "children":[{"id":1660792026716,"label":"ElCheckbox","componentRule":{"value":"value","label":"title","indeterminate":false,"disabled":false,"checked":false,"name":"1","trueLabel":"","falseLabel":"","id":"","controls":"","border":false,"size":""},
+                        "children":[]}]}]}]}]
                 }
             ]
 })

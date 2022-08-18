@@ -343,7 +343,7 @@ export default {
         //特殊属性作处理
         if(i == 'modal'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
-        }else if(i == 'showClose' || i == 'disabled'){
+        }else if(i == 'showClose' || i == 'disabled' || i == 'showPassword' || i == 'clearable' || i== 'loading' || i == 'autosize' || i == 'border'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i].default ,inputFormat:typeof componentInfo[i].type(), attributeType: 'ruleRadio'})
         }else if(i == 'pageSizes'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '[10, 20, 30, 40, 50, 100]',inputFormat:'Array', attributeType: 'ruleInput'})
@@ -362,8 +362,18 @@ export default {
           this.componentProps.push({attributeName:'ElOptionListName',attributeLabel:'ElOptionListName',attributeModel:'ElOptionListName',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;
         case 'ElButton':
+          this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
           this.componentProps.push({attributeName:'vModelName',attributeLabel:'vModelName',attributeModel:'vModelName',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;
+        case 'ElLink':
+          this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break; 
+        case 'ElHeader':
+          this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;
+        case 'ElFooter':
+          this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;     
         case 'ElInput':
           this.componentProps.push({attributeName:'placeholder',attributeLabel:'placeholder',attributeModel:'placeholder',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;
@@ -455,6 +465,8 @@ export default {
 
     //单击Add子按钮
     append(data) {
+
+      this.componentProps = []; //清空已存在的组件属性
       this.dialogVisible = true;
       this.editThreeStatus = 0;
       this.form = resetObj(this.form); //重置当前Form对象
@@ -606,7 +618,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .custom-tree-container{
   display: flex;
   justify-content: space-between;
@@ -631,6 +642,18 @@ export default {
 
 
 ::v-deep{
+
+  .el-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .el-footer, .el-header {
+      background-color: #b3c0d1;
+      color: #333;
+      line-height: 60px;
+  }
+
   .custom-tree-right-ctn{
     .addRole {
       position: fixed!important;

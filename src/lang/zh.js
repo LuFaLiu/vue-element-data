@@ -209,6 +209,7 @@ export default {
     permissionModified:'系统默认最高权限，不可以编辑和任意修改',
   },
   pageRule:{
+    componentPreview:'组件预览',
     preview:'预览效果',
     configureInterfaceModule:'选择界面后方可配置界面模块',
     addChild:'添加子级',
@@ -321,6 +322,10 @@ export default {
     whetherDeleteModule:'是否删除当前模块？',
     deleteModule:'删除当前模块',
     incorrectFile:'文件格式有误，请重新上传！',
+  },
+  componentInfo:{
+    button:'按钮',
+    title:'标题'
   }
 
 

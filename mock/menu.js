@@ -36,7 +36,7 @@ const paramsList = Mock.mock({
         {"id":7,"name":"sys:tools","title":"menu.systemTools","icon":"icon-tool","path":"","component":null,"type":1,
             "children":[
                 {"id":8,"parentId":7,"name":"systools:menu:manage","title":"menu.menuManage","icon":"el-icon-menu","path":"/systools/menus","component":"systools/Menu","children":[]},
-                {"id":11,"parentId":7,"name":"systools:menu:menutest","title":"menu.menutest","icon":"el-icon-menu","path":"/systools/menutest","component":"systools/menutest","children":[]}
+                {"id":11,"parentId":7,"name":"systools:menu:menutest","title":"pageRule.componentPreview","icon":"el-icon-menu","path":"/systools/menutest","component":"systools/menutest","children":[]}
             ]
         }
     ]

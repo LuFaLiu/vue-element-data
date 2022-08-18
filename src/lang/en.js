@@ -210,6 +210,7 @@ export default {
     permissionModified:'This Permission Is The Highest By Default And Cannot Be Edited Or Modified',
   },
   pageRule:{
+    componentPreview:'Component Preview',
     preview:'Preview',
     configureInterfaceModule:'You Can Configure The Interface Module After Selecting The Interface',
     addChild:'Add A Child',
@@ -321,6 +322,10 @@ export default {
     whetherDeleteModule:'Whether To Delete The Current Module?',
     deleteModule:'Delete The Current Module',
     incorrectFile:'Incorrect file format, please re-upload!',
+  },
+  componetnInfo:{
+    button:'Button',
+    title:'Title'
   }
 
 
