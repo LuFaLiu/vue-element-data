@@ -323,7 +323,7 @@ export default {
     deleteModule:'Delete The Current Module',
     incorrectFile:'Incorrect file format, please re-upload!',
   },
-  componetnInfo:{
+  componentInfo:{
     button:'Button',
     title:'Title'
   }

@@ -22,10 +22,29 @@ export default {
   },
   data(){
     return {
-        model:{},
-        rules:{},
-        autosize:{},
-        value:'test'
+        elform:{
+          model:{},
+          rules:{},
+        },
+        elformitem:{
+          rules:{}
+        },
+        elinput:{
+          value:'title',
+          autosize:{},
+        },
+        elcheckbox:{
+          value:false
+        },
+        elradiogroup:{
+          value:''
+        },
+        elradio:{
+          value:''
+        },
+        elinputnumber:{
+          value:12
+        },
     }
   }
 }

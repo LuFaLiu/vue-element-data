@@ -344,11 +344,11 @@ export default {
         if(i == 'modal'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
         }else if(i == 'showClose' || i == 'disabled' || i == 'showPassword' || i == 'clearable' || i== 'loading' || i == 'autosize' || i == 'border'){
-          this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i].default ,inputFormat:typeof componentInfo[i].type(), attributeType: 'ruleRadio'})
+          this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i].default ,inputFormat:'text', attributeType: 'ruleRadio'})
         }else if(i == 'pageSizes'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '[10, 20, 30, 40, 50, 100]',inputFormat:'Array', attributeType: 'ruleInput'})
         }else if(i == 'clearable'){
-          this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: false ,inputFormat:typeof componentInfo[i].type(), attributeType: 'ruleRadio'})
+          this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: false ,inputFormat: typeof componentInfo[i].type(), attributeType: 'ruleRadio'})
         } else {
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]:  i == 'treeProps' ? JSON.stringify({ hasChildren: 'hasChildren', children: 'children' }) : attributeVal ,inputFormat:supportedTypes, attributeType: type == 'boolean' ? 'ruleRadio' : 'ruleInput'})
         }
@@ -373,7 +373,10 @@ export default {
           break;
         case 'ElFooter':
           this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
-          break;     
+          break;
+        case 'ElRadio':
+          this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;        
         case 'ElInput':
           this.componentProps.push({attributeName:'placeholder',attributeLabel:'placeholder',attributeModel:'placeholder',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;

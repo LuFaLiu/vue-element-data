@@ -24,7 +24,7 @@ export default {
                     node.componentName,
                     {
                         'class': node.class,
-                        props: this.conversionProps(node),   
+                        props: this.conversionProps(node,node.componentName),   
                     },
                     this.deepChildrenComponent(node,h)
                 )
@@ -68,6 +68,7 @@ export default {
         deepChildrenComponent(node,h){
            var that = this;
            return node && node.childrenNode.length > 0 && node.childrenNode.map(function (item) {
+                var componentNameParams = item.componentName.toLowerCase();
                 return h(
                     item.componentName == 'elContainer' ? 'div' : item.componentName,
                     {
@@ -75,7 +76,7 @@ export default {
                         attrs: {
                             placeholder: (item.componentName == 'elInput' || item.componentName == 'elSelect') && that.filteri18n(item.placeholder) || ''
                         },
-                        props:that.conversionProps(item),
+                        props:that.conversionProps(item,componentNameParams),
                         on:{
                             '&click':function (e) {
                                 switch (item.componentName) {
@@ -96,12 +97,20 @@ export default {
                             },
                             input: function (event) { //v-model
                                 if(typeof event == 'string'){
-                                    //dynamicvModel(that.superParams,item.vModel,event,'set');
-                                    that.superParams.value = event;
+                                    dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
                                     item.value = event;
+                                    /*
+                                    that.superParams[componentNameParams].value = event;
+                                    item.value = event;
+                                    */
                                 }
-                            },
-                            change: function (event) { //v-model
+                            }, 
+                            change: function (event) { //v-modelx
+                                console.log(event);
+                                dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
+                                console.log(event);
+                                console.log(that.superParams[`${componentNameParams}`].value);
+                                /*
                                 switch (item.componentName) {
                                     case "elSelect" :
                                         dynamicvModel(that.superParams,item.vModel,event,'set');
@@ -110,6 +119,7 @@ export default {
                                     default:
                                         break;
                                 }
+                                */
                             }
                         },
                         directives: [
@@ -129,7 +139,7 @@ export default {
                         } || item.componentName == 'elRadioGroup' && { default: props => h('TraverseTemplate',{props:{node:item,parent:that}})  } //非单文件组件
                     },
                     item && item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) 
-                            : item.componentName == 'ElButton' || (item.componentName == 'elContainer' && item.title) || item.componentName == 'ElLink' || item.componentName == 'ElHeader' || item.componentName == 'ElFooter'
+                            : item.componentName == 'ElButton' || (item.componentName == 'elContainer' && item.title) || item.componentName == 'ElLink' || item.componentName == 'ElHeader' || item.componentName == 'ElFooter' || item.componentName == 'ElRadio'
                                 //? [h('span',that.filteri18n(item.title))] 
                                 ? [h('span',that.$t(item.title))] 
                                     : item.componentName == 'elSelect' ? that.superParams[item.elOptionList].map((v,index) => [h('el-option',{props:{label:that.$t(v.label),key:v.value,value:v.value}})] )
@@ -145,9 +155,10 @@ export default {
             }
         },
         vModelVal(item){
-            if(typeof item == 'object'){
-                return dynamicvModel(this.superParams,item.vModel,'','get');
-            }
+            console.log(item);
+            //if(typeof item == 'object'){
+                return dynamicvModel(this.superParams,item,'','get');
+            //}
         },
         sizeChange(val){
             this.superParams[this.parentNode.sizeChangeName](val);
@@ -207,8 +218,7 @@ export default {
             this.tableHeight = resizeObserver("el-main",classList,130);
         },
         //转化props属性
-        conversionProps(item){
-            
+        conversionProps(item,componentNameParams){
             var that = this;
             for(var i in item){
                 if(i !== 'componentName' || i !== 'pageName'){
@@ -218,11 +228,11 @@ export default {
                     if(i == 'readonly'){
                         item[i] = false;
                     }else {
-                        item[i] = (i == item[i] ? that.superParams[i] : item[i])
+                        item[i] = ((i == item[i] ? that.vModelVal(`${componentNameParams}.${i}`) : i == 'max' || i == 'min' || i == 'precision' ? Number(item[i]) : item[i]))
                     }
                 }
             }
-            
+            console.log(item);
             return item;
         }
     },
