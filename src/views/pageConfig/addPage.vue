@@ -185,7 +185,11 @@ export default {
     for(var i in that.elementUIPlugin){
       if(i.indexOf('Option') == -1){ //屏蔽Option
         if(/^[A-Z]/.test(i) && that.elementUIPlugin[i].name && that.elementUIPlugin[i].props){
-          that.componentList.push({name:that.elementUIPlugin[i].name,props:that.elementUIPlugin[i].props ? that.elementUIPlugin[i].props : {}});
+          if(i == 'TimePicker'){
+            that.componentList.push({name:that.elementUIPlugin[i].name,props:that.elementUIPlugin[i].mixins[0].props});
+          }else {
+            that.componentList.push({name:that.elementUIPlugin[i].name,props:that.elementUIPlugin[i].props ? that.elementUIPlugin[i].props : {}});
+          }
           that.componentSelectList.push({lable:that.elementUIPlugin[i].name,value:that.elementUIPlugin[i].name});
         }
       }
@@ -308,6 +312,7 @@ export default {
     selectComponent(val){
 
       var componentInfo = _.filter(this.componentList,['name',val])[0].props;
+
       this.componentProps = [];
       for(var i in componentInfo){
 
@@ -339,12 +344,16 @@ export default {
             supportedTypes = type;
           }
         }
-
+        if(i == 'disabled'){
+          console.log("i == 'disabled'");
+          console.log(componentInfo.componentName);
+          console.log(componentInfo);
+        }
         //特殊属性作处理
         if(i == 'modal'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
-        }else if(i == 'showClose' || i == 'disabled' || i == 'showPassword' || i == 'clearable' || i== 'loading' || i == 'autosize' || i == 'border'){
-          this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i].default ,inputFormat:'text', attributeType: 'ruleRadio'})
+        }else if(i == 'showClose' || i == 'disabled' || i == 'showPassword' || i == 'clearable' || i== 'loading' || i == 'autosize' || i == 'border' || i == 'vertical'){
+          this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i].default ? componentInfo[i].default : false ,inputFormat:'text', attributeType: 'ruleRadio'})
         }else if(i == 'pageSizes'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '[10, 20, 30, 40, 50, 100]',inputFormat:'Array', attributeType: 'ruleInput'})
         }else if(i == 'clearable'){

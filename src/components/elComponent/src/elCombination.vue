@@ -19,12 +19,13 @@ export default {
         }
 
         if(!!node && node.pageName == pageName){ //filter old node 过滤掉旧数据
+            var componentNameParams = node.componentName.toLowerCase();
             const renderDom = () => {
                 return h(
                     node.componentName,
                     {
                         'class': node.class,
-                        props: this.conversionProps(node,node.componentName),   
+                        props: this.conversionProps(node,componentNameParams),   
                     },
                     this.deepChildrenComponent(node,h)
                 )
@@ -99,15 +100,20 @@ export default {
                                 if(typeof event == 'string'){
                                     dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
                                     item.value = event;
-                                    /*
-                                    that.superParams[componentNameParams].value = event;
-                                    item.value = event;
-                                    */
                                 }
                             }, 
-                            change: function (event) { //v-modelx
+                            change: function (event) { //v-model
                                 console.log(event);
-                                dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
+                                console.log(item);
+                                console.log(componentNameParams);
+                                if(componentNameParams == 'elcheckbox'){
+                                    that.superParams[`${componentNameParams}`].value = !that.superParams[`${componentNameParams}`].value;
+                                    item.value = !that.superParams[`${componentNameParams}`].value;
+                                }else {
+                                    dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
+                                    item.value = event;
+                                }
+                                
                                 console.log(event);
                                 console.log(that.superParams[`${componentNameParams}`].value);
                                 /*
@@ -142,7 +148,7 @@ export default {
                             : item.componentName == 'ElButton' || (item.componentName == 'elContainer' && item.title) || item.componentName == 'ElLink' || item.componentName == 'ElHeader' || item.componentName == 'ElFooter' || item.componentName == 'ElRadio'
                                 //? [h('span',that.filteri18n(item.title))] 
                                 ? [h('span',that.$t(item.title))] 
-                                    : item.componentName == 'elSelect' ? that.superParams[item.elOptionList].map((v,index) => [h('el-option',{props:{label:that.$t(v.label),key:v.value,value:v.value}})] )
+                                    : item.componentName == 'ElSelect' ? that.superParams[componentNameParams]['ElOptionListName'].map((v,index) => [h('el-option',{props:{label:that.$t(v.label),key:v.value,value:v.value}})] )
                                         : that.$slots.default
                 )
            })
@@ -227,12 +233,14 @@ export default {
                     //console.log(new Boolean(item[i]));
                     if(i == 'readonly'){
                         item[i] = false;
-                    }else {
-                        item[i] = ((i == item[i] ? that.vModelVal(`${componentNameParams}.${i}`) : i == 'max' || i == 'min' || i == 'precision' ? Number(item[i]) : item[i]))
+                    }else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip'){
+                        item[i] = that.superParams[i];
+                    } else {
+                        item[i] = ((i == item[i] ? that.vModelVal(`${componentNameParams}.${i}`) : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' ? Number(item[i]) : item[i]))
                     }
                 }
             }
-            console.log(item);
+            //console.log(item);
             return item;
         }
     },
