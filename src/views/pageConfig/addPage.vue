@@ -352,7 +352,7 @@ export default {
         //特殊属性作处理
         if(i == 'modal'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
-        }else if(i == 'showClose' || i == 'disabled' || i == 'showPassword' || i == 'clearable' || i== 'loading' || i == 'autosize' || i == 'border' || i == 'vertical'){
+        }else if(i == 'showClose' || i == 'disabled' || i == 'showPassword' || i == 'clearable' || i== 'loading' || i == 'autosize' || i == 'border' || i == 'vertical' || i == 'readonly'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i].default ? componentInfo[i].default : false ,inputFormat:'text', attributeType: 'ruleRadio'})
         }else if(i == 'pageSizes'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '[10, 20, 30, 40, 50, 100]',inputFormat:'Array', attributeType: 'ruleInput'})

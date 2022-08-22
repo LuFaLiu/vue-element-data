@@ -272,13 +272,16 @@ export default {
           marks:{}
         },
         eltimepicker:{
-          value:'',
+          value:new Date(2016, 9, 10, 18, 40),
           pickerOptions:{
-            start: '08:30',
-            step: '00:15',
-            end: '18:30'
+            selectableRange: '18:30:00 - 20:30:00'
           }
         }
+    }
+  },
+  watch:{
+    'eltimepicker.value':function (val,oldVal) {
+      console.log(val,oldVal);
     }
   },
   methods:{

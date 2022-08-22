@@ -80,6 +80,7 @@ export default {
                         props:that.conversionProps(item,componentNameParams),
                         on:{
                             '&click':function (e) {
+                                console.log(e);
                                 switch (item.componentName) {
                                     case "elButton" :
                                         const elButtonParent = that.$parent;
