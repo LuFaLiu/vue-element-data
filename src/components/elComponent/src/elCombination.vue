@@ -92,16 +92,26 @@ export default {
                                 }
                             },
                             'selection-change':function (e) {
+                                console.log(e);
                                 that.selectChange(e,item);
                             },
                             'current-change':function (e) { //table row select
                                 that.superParams[item.selectionEvent](e);
                             },
                             input: function (event) { //v-model
+                                //console.log(event);
+                                dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
+                                item.value = event;
+                                /*
                                 if(typeof event == 'string'){
                                     dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
                                     item.value = event;
+                                }else if(componentNameParams == 'eltimepicker'){
+                                    console.log(event);
+                                    dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
+                                    item.value = event;
                                 }
+                                */
                             }, 
                             change: function (event) { //v-model
                                 console.log(event);

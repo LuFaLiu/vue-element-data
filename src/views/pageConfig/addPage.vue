@@ -185,7 +185,7 @@ export default {
     for(var i in that.elementUIPlugin){
       if(i.indexOf('Option') == -1){ //屏蔽Option
         if(/^[A-Z]/.test(i) && that.elementUIPlugin[i].name && that.elementUIPlugin[i].props){
-          if(i == 'TimePicker'){
+          if(i == 'TimePicker' || i == 'TimeSelect'){
             that.componentList.push({name:that.elementUIPlugin[i].name,props:that.elementUIPlugin[i].mixins[0].props});
           }else {
             that.componentList.push({name:that.elementUIPlugin[i].name,props:that.elementUIPlugin[i].props ? that.elementUIPlugin[i].props : {}});

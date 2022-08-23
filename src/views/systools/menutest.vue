@@ -276,12 +276,15 @@ export default {
           pickerOptions:{
             selectableRange: '18:30:00 - 20:30:00'
           }
-        }
-    }
-  },
-  watch:{
-    'eltimepicker.value':function (val,oldVal) {
-      console.log(val,oldVal);
+        },
+        eltimeselect:{
+          value:'',
+          pickerOptions:{
+            start: '08:30',
+            step: '00:15',
+            end: '18:30'
+          }
+        },
     }
   },
   methods:{
@@ -310,6 +313,9 @@ export default {
   ::v-deep {
     .el-slider {
       width: 500px;
+      margin-left: 20px;
+    }
+    .el-date-editor--time-select {
       margin-left: 20px;
     }
   }
