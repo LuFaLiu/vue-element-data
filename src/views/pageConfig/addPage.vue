@@ -185,7 +185,7 @@ export default {
     for(var i in that.elementUIPlugin){
       if(i.indexOf('Option') == -1){ //屏蔽Option
         if(/^[A-Z]/.test(i) && that.elementUIPlugin[i].name && that.elementUIPlugin[i].props){
-          if(i == 'TimePicker' || i == 'TimeSelect'){
+          if(i == 'TimePicker' || i == 'TimeSelect' || i == 'DatePicker'){
             that.componentList.push({name:that.elementUIPlugin[i].name,props:that.elementUIPlugin[i].mixins[0].props});
           }else {
             that.componentList.push({name:that.elementUIPlugin[i].name,props:that.elementUIPlugin[i].props ? that.elementUIPlugin[i].props : {}});
@@ -389,10 +389,16 @@ export default {
         case 'ElInput':
           this.componentProps.push({attributeName:'placeholder',attributeLabel:'placeholder',attributeModel:'placeholder',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;
+        case 'ElTimePicker':
+          this.componentProps.push({attributeName:'isRange',attributeLabel:'isRange',attributeModel:'isRange','isRange': false ,inputFormat:'boolean', attributeType: 'ruleRadio'})
+          this.componentProps.push({attributeName:'arrowControl',attributeLabel:'arrowControl',attributeModel:'arrowControl','arrowControl': false ,inputFormat:'boolean', attributeType: 'ruleRadio'})
+          break; 
+        case 'ElDatePicker':
+          this.componentProps.push({attributeName:'type',attributeLabel:'type',attributeModel:'type','type': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;   
         default:
           break;
       }
-
       console.log(val,componentInfo);
       console.log("componentProps=======>");
       console.log(this.componentProps);

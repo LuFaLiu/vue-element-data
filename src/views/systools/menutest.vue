@@ -272,7 +272,8 @@ export default {
           marks:{}
         },
         eltimepicker:{
-          value:new Date(2016, 9, 10, 18, 40),
+          //value:new Date(2016, 9, 10, 18, 40),
+          value:[new Date(2016, 9, 10, 8, 40), new Date(2016, 9, 10, 9, 40)],
           pickerOptions:{
             selectableRange: '18:30:00 - 20:30:00'
           }
@@ -285,6 +286,35 @@ export default {
             end: '18:30'
           }
         },
+        eldatepicker:{
+          value:'',
+          pickerOptions: {
+            disabledDate(time) {
+              return time.getTime() > Date.now();
+            },
+            shortcuts: [{
+              text: 'Today',
+              onClick(picker) {
+                picker.$emit('pick', new Date());
+              }
+            }, {
+              text: 'Yesterday',
+              onClick(picker) {
+                const date = new Date();
+                date.setTime(date.getTime() - 3600 * 1000 * 24);
+                picker.$emit('pick', date);
+              }
+            }, {
+              text: 'A week ago',
+              onClick(picker) {
+                const date = new Date();
+                date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                picker.$emit('pick', date);
+              }
+            }]
+          },
+        }
+
     }
   },
   methods:{
