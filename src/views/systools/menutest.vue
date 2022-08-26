@@ -319,6 +319,15 @@ export default {
           headers:{},
           limit:3,
           data:{}
+        },
+        customcontent:{
+          attribute:{
+            'class': 'el-upload__tip',
+            props: {
+              slot: 'tip'
+            },
+            text:'jpg/png files with a size less than 500kb'
+          }
         }
 
     }

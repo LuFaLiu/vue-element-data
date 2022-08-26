@@ -195,6 +195,10 @@ export default {
       }
     }
 
+    //添加自定义组件
+    that.componentList.push({name:'customContent',props:{'componentName':'','attribute':{}}})
+    that.componentSelectList.push({lable:'customContent',value:'customContent'});
+
     console.log(that.componentList);
     console.log(that.componentSelectList);
   },
@@ -352,7 +356,7 @@ export default {
         //特殊属性作处理
         if(i == 'modal'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
-        }else if(i == 'showClose' || i == 'disabled' || i == 'showPassword' || i == 'clearable' || i== 'loading' || i == 'autosize' || i == 'border' || i == 'vertical' || i == 'readonly'){
+        }else if(i == 'showClose' || i == 'disabled' || i == 'showPassword' || i == 'clearable' || i== 'loading' || i == 'autosize' || i == 'border' || i == 'vertical' || i == 'readonly' || i == 'drag'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i].default ? componentInfo[i].default : false ,inputFormat:'text', attributeType: 'ruleRadio'})
         }else if(i == 'pageSizes'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '[10, 20, 30, 40, 50, 100]',inputFormat:'Array', attributeType: 'ruleInput'})
@@ -725,7 +729,12 @@ export default {
     }
   }
 
-  .el-tree {
+
+  .el-form {
+    height: 90vh!important;
+  }
+
+  .el-tree,.el-form {
     height: 70vh;
     padding-bottom: 20px;
     overflow-y: scroll;

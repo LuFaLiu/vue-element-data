@@ -2,6 +2,7 @@
 import { filteri18n, dynamicvModel, resizeObserver } from '@/utils/index'
 import Template from './template'
 import TraverseTemplate from './traverseTemplate'
+import CustomContent from './customContent'
 import elLevelSelect from '@/components/Page/elLevelSelect'
 import elTableTree from '@/components/Page/elTableTree'
 import _ from 'lodash'
@@ -51,6 +52,7 @@ export default {
     components:{
         Template,
         TraverseTemplate,
+        CustomContent,
         elLevelSelect,
         elTableTree
     },
@@ -71,7 +73,7 @@ export default {
            return node && node.childrenNode.length > 0 && node.childrenNode.map(function (item) {
                 var componentNameParams = item.componentName.toLowerCase();
                 return h(
-                    item.componentName == 'elContainer' ? 'div' : item.componentName,
+                    item.componentName,
                     {
                         'class':item.class,
                         attrs: {
