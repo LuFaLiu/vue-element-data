@@ -1,18 +1,23 @@
+import { dynamicvModel} from '@/utils/index'
 export default {
+    inject: ['superParams'],
     props:{
-        componentName:{
+        attributeName:{
             type:String
-        },
-        attribute:{
-            type:Object
         }
     },
     name:'CustomContent',
     render(h){
+        console.log(this.attributeName);
+        console.log(this.superParams.customcontent[this.attributeName]);
+        const node = this.superParams.customcontent[this.attributeName];
         return h(
-            this.componentName,
-            this.attribute,
-            this.attribute.text ? [h('span',this.attribute.text)] : that.$slots.default
+            node.condition ? (this.vModelVal(node.condition) ? node.tag : node.tag ) : node.tag,
+            {
+               class:node.class,
+               props:node.props 
+            },
+            node.text ? [h('span',node.text)] : node.childrenNode && node.childrenNode.length > 0 ? this.deepChildrenComponent(node,h) : this.$slots.default
         )
     },
     methods:{
@@ -25,7 +30,11 @@ export default {
                     item && item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) : that.$slots.default
                 )
             })
-         },
+        },
+        vModelVal(item){
+            console.log(item);
+            return dynamicvModel(this.superParams,item,'','get');
+        },
     }
 
 }

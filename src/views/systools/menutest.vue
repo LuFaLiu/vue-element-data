@@ -318,16 +318,32 @@ export default {
           fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}, {name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}],
           headers:{},
           limit:3,
-          data:{}
+          data:{},
+          imageUrl:''
         },
         customcontent:{
-          attribute:{
-            'class': 'el-upload__tip',
+          attributeName:'',
+          tipAttribute:{
+            tag:'div',
+            class: ['el-upload__tip'],
             props: {
               slot: 'tip'
             },
             text:'jpg/png files with a size less than 500kb'
-          }
+          },
+          imageAttribute:{
+            tag:'img',
+            condition:'imageAttribute.props.src',
+            class: ['avatar'],
+            props: {
+              src:''
+            }
+          },
+          iconAttribute:{
+            tag:'i',
+            condition:'imageAttribute.props.src',
+            class: ['el-icon-plus','avatar-uploader-icon']
+          },
         }
 
     }
@@ -360,14 +376,23 @@ export default {
     httpRequest(){
 
     },
-    beforeUpload(){
+    beforeUpload(file){
+      const isJPG = file.type === 'image/jpeg';
+        const isLt2M = file.size / 1024 / 1024 < 2;
 
+        if (!isJPG) {
+          this.$message.error('上传头像图片只能是 JPG 格式!');
+        }
+        if (!isLt2M) {
+          this.$message.error('上传头像图片大小不能超过 2MB!');
+        }
+        return isJPG && isLt2M;
     },
     onChange(){
 
     },
-    onSuccess(){
-
+    onSuccess(res, file){
+      this.imageAttribute.props.src = URL.createObjectURL(file.raw);
     },
     onProgress(){
 

@@ -196,7 +196,7 @@ export default {
     }
 
     //添加自定义组件
-    that.componentList.push({name:'customContent',props:{'componentName':'','attribute':{}}})
+    that.componentList.push({name:'customContent',props:{'componentName':'','tag':'','attributeName':''}})
     that.componentSelectList.push({lable:'customContent',value:'customContent'});
 
     console.log(that.componentList);
@@ -734,7 +734,9 @@ export default {
     height: 90vh!important;
   }
 
-  .el-tree,.el-form {
+  
+
+  .el-tree,.custom-tree-right-ctn .el-form {
     height: 70vh;
     padding-bottom: 20px;
     overflow-y: scroll;
