@@ -321,6 +321,7 @@ export default {
           data:{},
           imageUrl:''
         },
+        imageUrl:'',
         customcontent:{
           attributeName:'',
           tipAttribute:{
@@ -332,16 +333,18 @@ export default {
             text:'jpg/png files with a size less than 500kb'
           },
           imageAttribute:{
+            condition:'imageUrl',
+            conditionVal:true,
             tag:'img',
-            condition:'imageAttribute.props.src',
             class: ['avatar'],
             props: {
-              src:''
+              src:'imageUrl'
             }
           },
           iconAttribute:{
+            conditionVal:false,
+            condition:'imageUrl',
             tag:'i',
-            condition:'imageAttribute.props.src',
             class: ['el-icon-plus','avatar-uploader-icon']
           },
         }
@@ -388,11 +391,16 @@ export default {
         }
         return isJPG && isLt2M;
     },
-    onChange(){
-
+    onChange(file){
+      console.log(file);
+      console.log('change方法');
+      this.imageUrl = URL.createObjectURL(file.raw);
+      this.customcontent.imageAttribute.props.src = URL.createObjectURL(file.raw);
+      console.log(this.imageUrl);
     },
     onSuccess(res, file){
-      this.imageAttribute.props.src = URL.createObjectURL(file.raw);
+      console.log(file);
+      this.imageUrl = URL.createObjectURL(file.raw);
     },
     onProgress(){
 
@@ -417,6 +425,33 @@ export default {
     }
     .el-date-editor--time-select {
       margin-left: 20px;
+    }
+    .upload-demo {
+      float: left;
+    }
+    .avatar-uploader { 
+      float: left;
+      margin-left: 30px;
+      .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }  
+      .avatar-uploader-icon {
+          font-size: 28px;
+          color: #8c939d;
+          width: 178px;
+          height: 178px;
+          line-height: 178px;
+          text-align: center;
+      }
+      .avatar {
+          width: 178px;
+          height: 178px;
+          display: block;
+      }
     }
   }
 </style>

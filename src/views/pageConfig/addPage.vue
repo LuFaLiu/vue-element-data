@@ -401,6 +401,7 @@ export default {
           this.componentProps.push({attributeName:'type',attributeLabel:'type',attributeModel:'type','type': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;   
         default:
+          this.componentProps.push({attributeName:'class',attributeLabel:'class',attributeModel:'class','class': '' ,inputFormat:'list', attributeType: 'ruleInput'})
           break;
       }
       console.log(val,componentInfo);
