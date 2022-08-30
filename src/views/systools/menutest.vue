@@ -347,6 +347,13 @@ export default {
             tag:'i',
             class: ['el-icon-plus','avatar-uploader-icon']
           },
+        },
+        elrate:{
+          value:0,
+          value2:null,
+          colors:['#F7BA2A', '#F7BA2A', '#F7BA2A'],
+          texts:['Very poor ',' disappointed ', 'average ',' satisfied ', 'surprised'],
+          iconClasses:['el-icon-star-on', 'el-icon-star-on','el-icon-star-on']
         }
 
     }

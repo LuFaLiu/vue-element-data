@@ -211,7 +211,10 @@ const paramsList = Mock.mock({
                     "children":[]}]},{"id":1661569548236,"label":"ElUpload","componentRule":{"action":"https://jsonplaceholder.typicode.com/posts/","headers":"headers","data":"data","multiple":"","name":"file","drag":false,"dragger":"","withCredentials":"","showFileList":false,"accept":"","type":"select","beforeUpload":"beforeUpload","beforeRemove":"beforeRemove","onRemove":"onRemove","onChange":"onChange","onPreview":"onPreview","onSuccess":"onSuccess","onProgress":"onProgress","onError":"onError","fileList":"fileList","autoUpload":true,"listType":"text","httpRequest":"","disabled":false,"limit":"limit","onExceed":"onExceed","class":"avatar-uploader"},
                     "children":[{"id":1661569727299,"label":"customContent","componentRule":{"componentName":"customContent","tag":"img","attributeName":"imageAttribute"},
                     "children":[]},{"id":1661569742386,"label":"customContent","componentRule":{"componentName":"customContent","tag":"i","attributeName":"iconAttribute"},
-                    "children":[]}]}]}]}]}]
+                    "children":[]}]}]},{"id":1661819632972,"label":"ElFormItem","componentRule":{"label":"Rate","labelWidth":"100px","prop":"prop","required":"","rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","class":""},
+                    "children":[{"id":1661819668884,"label":"ElRate","componentRule":{"value":"value","lowThreshold":2,"highThreshold":4,"max":5,"colors":"colors","voidColor":"#C6D1DE","disabledVoidColor":"#EFF2F7","iconClasses":"iconClasses","voidIconClass":"el-icon-star-off","disabledVoidIconClass":"el-icon-star-on","disabled":false,"allowHalf":"","showText":false,"showScore":false,"textColor":"#1f2d3d","texts":"texts","scoreTemplate":"{value}","class":""},
+                    "children":[]},{"id":1661820612211,"label":"ElRate","componentRule":{"value":"value","lowThreshold":2,"highThreshold":4,"max":5,"colors":"colors","voidColor":"#C6D1DE","disabledVoidColor":"#EFF2F7","iconClasses":"iconClasses","voidIconClass":"el-icon-star-off","disabledVoidIconClass":"el-icon-star-on","disabled":false,"allowHalf":"","showText":true,"showScore":false,"textColor":"#1f2d3d","texts":"texts","scoreTemplate":"{value}","class":""},
+                    "children":[]}]}]}]}]
                 }
             ]
 })
