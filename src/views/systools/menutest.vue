@@ -354,6 +354,9 @@ export default {
           colors:['#F7BA2A', '#F7BA2A', '#F7BA2A'],
           texts:['Very poor ',' disappointed ', 'average ',' satisfied ', 'surprised'],
           iconClasses:['el-icon-star-on', 'el-icon-star-on','el-icon-star-on']
+        },
+        elavatar:{
+          
         }
 
     }
@@ -459,6 +462,23 @@ export default {
           height: 178px;
           display: block;
       }
+    }
+
+    .el-avatar {
+      display: inline-block;
+      box-sizing: border-box;
+      text-align: center;
+      overflow: hidden;
+      color: #fff;
+      background: #c0c4cc!important;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+    }
+
+    .el-avatar--circle:last-child {
+      margin-left: 15px;
     }
   }
 </style>
