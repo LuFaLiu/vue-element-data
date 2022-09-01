@@ -217,7 +217,26 @@ const paramsList = Mock.mock({
                     "children":[]}]},{"id":1661905717547,"label":"ElFormItem","componentRule":{"label":"Avatar","labelWidth":"100px","prop":"prop","required":"","rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","class":""},
                     "children":[{"id":1661905765786,"label":"ElAvatar","componentRule":{"size":"large","shape":"circle","icon":"el-icon-user-solid","src":"","alt":"","srcSet":"","error":"error","fit":"cover","class":""},
                     "children":[]},{"id":1661906109683,"label":"ElAvatar","componentRule":{"size":"large","shape":"circle","icon":"","src":"https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png","alt":"","srcSet":"","error":"error","fit":"cover","class":""},
-                    "children":[]}]}]}]}]
+                    "children":[]}]},{"id":1661992547866,"label":"ElFormItem","componentRule":{"label":"Skeleton","labelWidth":"100px","prop":"prop","required":"","rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","class":""},
+                    "children":[{"id":1661994152409,"label":"ElContainer","componentRule":{"direction":"","class":""},
+                    "children":[{"id":1661994312545,"label":"ElButton","componentRule":{"type":"default","size":"","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"reload","event":"setLoading"},
+                    "children":[]}]},{"id":1661992633641,"label":"ElSkeleton","componentRule":{"animated":true,"count":"1","rows":4,"loading":"loading","throttle":"0","class":"skeleton"},
+                    "children":[{"id":1662014796144,"label":"customTemplate","componentRule":{"componentName":"template","slot":"template","class":""},
+                    "children":[{"id":1661992719697,"label":"ElSkeletonItem","componentRule":{"variant":"image","class":"skeletonItemImage"},
+                    "children":[]},{"id":1662014910688,"label":"customTag","componentRule":{"componentName":"div","class":"skeletonttemList"},
+                    "children":[{"id":1661993699290,"label":"ElSkeletonItem","componentRule":{"variant":"h3","class":"skeletonItemh3"},
+                    "children":[]},{"id":1662015010825,"label":"customTag","componentRule":{"componentName":"div","class":"skeletonItemTextList"},
+                    "children":[{"id":1661993918705,"label":"ElSkeletonItem","componentRule":{"variant":"text","class":"skeletonItemRight-2"},
+                    "children":[]},{"id":1661993883649,"label":"ElSkeletonItem","componentRule":{"variant":"text","class":"skeletonItemRight-1"},
+                    "children":[]}]}]}]},{"id":1662016415607,"label":"customTemplate","componentRule":{"componentName":"template","slot":"","class":""},
+                    "children":[{"id":1661998562656,"label":"ElCard","componentRule":{"header":"","bodyStyle":"bodyStyle","shadow":"","class":""},
+                    "children":[{"id":1662016350823,"label":"customTag","componentRule":{"componentName":"img","attrs":"attrs","class":"image"},
+                    "children":[]},{"id":1662016531023,"label":"customTag","componentRule":{"componentName":"div","attrs":"","class":"skeletonCardCtn"},
+                    "children":[{"id":1662016595303,"label":"customContent","componentRule":{"componentName":"customContent","tag":"span","attributeName":"test","class":""},
+                    "children":[]},{"id":1662016614303,"label":"customTag","componentRule":{"componentName":"div","attrs":"","class":"bottom card-header"},
+                    "children":[{"id":1662016685359,"label":"customContent","componentRule":{"componentName":"customContent","tag":"span","attributeName":"test2","class":"time"},
+                    "children":[]},{"id":1662016729640,"label":"ElButton","componentRule":{"type":"text","size":"","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":"","autofocus":"","round":false,"circle":"","title":"oprationBtn","event":""},
+                    "children":[]}]}]}]}]}]}]}]}]}]
                 }
             ]
 })

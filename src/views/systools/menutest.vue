@@ -347,6 +347,21 @@ export default {
             tag:'i',
             class: ['el-icon-plus','avatar-uploader-icon']
           },
+          templateAttribute:{
+            slot:"template"
+          },
+          skeletonItemDiv:{
+            style:{
+              padding:'14px'
+            }
+          },
+          skeletonItemRight:{
+            display: 'flex',
+            alignItems: 'center',
+            justifyItems: 'space-between',
+            marginTop: '16px',
+            height: '16px'
+          }
         },
         elrate:{
           value:0,
@@ -357,9 +372,25 @@ export default {
         },
         elavatar:{
           
+        },
+        elcard:{
+          bodyStyle:{ padding: '0px', marginBottom: '1px' },
+        },
+        elskeleton:{
+          loading:false,
+        },
+        img:{
+          attrs:{
+            src:'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
+          }
         }
+        
+        
 
     }
+  },
+  mounted(){
+    this.elskeleton.loading = false;
   },
   methods:{
     remoteMethod(){
@@ -417,6 +448,11 @@ export default {
     },
     onError(){
 
+    },
+    setLoading() {
+      console.log("123456");
+      this.elskeleton.loading = true
+      setTimeout(() => (this.elskeleton.loading = false), 2000)
     }
   }
 }
@@ -480,5 +516,47 @@ export default {
     .el-avatar--circle:last-child {
       margin-left: 15px;
     }
+
+    //.skeletonContainer {
+      flex-direction: column;
+      .skeleton {
+        .el-skeleton{
+          width: 240px;
+          margin-top: 30px;
+          .skeletonItemImage {
+            width: 400px; 
+            height: 267px;
+          }
+          .skeletonttemList {
+            padding: 14px;
+            .skeletonItemh3 {
+              width: 50%;
+            }
+            .skeletonItemTextList {
+              display: flex; 
+              align-items: center; 
+              justify-items: space-between; 
+              margin-top: 16px; 
+              height: 16px;
+              
+              .skeletonItemRight-1 {
+                margin-right: 16px;
+              }
+              .skeletonItemRight-2 {
+                width: 30%;
+              }
+            }
+          }
+
+          .skeletonCardCtn {
+            padding: 14px;
+          }
+        }
+      }
+      
+    //}
+
+    
+    
   }
 </style>

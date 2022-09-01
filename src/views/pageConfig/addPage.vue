@@ -199,6 +199,14 @@ export default {
     that.componentList.push({name:'customContent',props:{'componentName':'','tag':'','attributeName':''}})
     that.componentSelectList.push({lable:'customContent',value:'customContent'});
 
+    //添加自定义标签组件
+    that.componentList.push({name:'customTag',props:{'componentName':'','attrs':''}});
+    that.componentSelectList.push({lable:'customTag',value:'customTag'});
+
+    //添加自定义template标签
+    that.componentList.push({name:'customTemplate',props:{'componentName':'','slot':''}});
+    that.componentSelectList.push({lable:'customTemplate',value:'customTemplate'});
+
     console.log(that.componentList);
     console.log(that.componentSelectList);
   },
@@ -353,10 +361,17 @@ export default {
           console.log(componentInfo.componentName);
           console.log(componentInfo);
         }
+
+        console.log(componentInfo.componentName);
+        if(componentInfo.componentName == 'ElSkeleton'){
+          console.log("componentInfo.componentName == 'ElSkeleton'");
+          console.log(componentInfo);
+        }
+        
         //特殊属性作处理
         if(i == 'modal'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
-        }else if(i == 'showClose' || i == 'disabled' || i == 'showPassword' || i == 'clearable' || i== 'loading' || i == 'autosize' || i == 'border' || i == 'vertical' || i == 'readonly' || i == 'drag' || i == 'showScore'){
+        }else if(i == 'showClose' || i == 'disabled' || i == 'showPassword' || i == 'clearable' || i== 'loading' || i == 'autosize' || i == 'border' || i == 'vertical' || i == 'readonly' || i == 'drag' || i == 'showScore' || i == 'round'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i].default ? componentInfo[i].default : false ,inputFormat:'text', attributeType: 'ruleRadio'})
         }else if(i == 'pageSizes'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '[10, 20, 30, 40, 50, 100]',inputFormat:'Array', attributeType: 'ruleInput'})
@@ -377,6 +392,7 @@ export default {
         case 'ElButton':
           this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
           this.componentProps.push({attributeName:'vModelName',attributeLabel:'vModelName',attributeModel:'vModelName',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          this.componentProps.push({attributeName:'event',attributeLabel:'event',attributeModel:'event','event': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;
         case 'ElLink':
           this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
@@ -399,11 +415,27 @@ export default {
           break; 
         case 'ElDatePicker':
           this.componentProps.push({attributeName:'type',attributeLabel:'type',attributeModel:'type','type': '' ,inputFormat:'string', attributeType: 'ruleInput'})
-          break;   
+          break;     
         default:
           this.componentProps.push({attributeName:'class',attributeLabel:'class',attributeModel:'class','class': '' ,inputFormat:'list', attributeType: 'ruleInput'})
           break;
       }
+
+
+      if(val == 'ElSkeleton'){
+        componentInfo[i].inputFormat = 'string';
+        componentInfo[i].attributeType = 'ruleInput';
+        componentInfo[i].loading = '';
+        this.componentProps.filter(v=>{
+          if(v.attributeLabel == 'loading'){
+            v.inputFormat = 'string';
+            v.attributeType = 'ruleInput';
+            v.loading = '';
+          }
+        })
+      }
+
+
       console.log(val,componentInfo);
       console.log("componentProps=======>");
       console.log(this.componentProps);

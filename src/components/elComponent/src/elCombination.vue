@@ -73,22 +73,20 @@ export default {
            return node && node.childrenNode.length > 0 && node.childrenNode.map(function (item) {
                 var componentNameParams = item.componentName.toLowerCase();
                 return h(
-                    item.componentName,
+                    item.componentName == 'div' ? 'div' : item.componentName == 'img' ? 'img' : item.componentName == 'span' ? 'span' : item.componentName == 'template' ? 'template' : item.componentName,
                     {
                         'class':item.class,
-                        attrs: {
+                        attrs: item.attrs ? that.superParams[item.attrs] : {
                             placeholder: (item.componentName == 'elInput' || item.componentName == 'elSelect') && that.filteri18n(item.placeholder) || ''
                         },
                         props:that.conversionProps(item,componentNameParams),
                         on:{
                             '&click':function (e) {
-                                console.log(e);
                                 switch (item.componentName) {
-                                    case "elButton" :
+                                    case "ElButton" :
                                         const elButtonParent = that.$parent;
                                         that.btnClick(item);
                                         break;
-                                
                                     default:
                                         break;
                                 }
@@ -152,6 +150,7 @@ export default {
                             }
                         ],
                         //key:Math.random(), //v-model响应数据时会触发render函数，需将key关闭，否则会重新渲染组件
+                        slot: item.slot ? item.slot : that.$slots.default,
                         ref:item.refName,
                         scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' && !item.operation && {
                             default: props => h('Template',{props,item}) //通过单文件组件展示对应的信息(组件需要的一切都是通过 context 参数传递)
@@ -175,7 +174,9 @@ export default {
             }
         },
         vModelVal(item){
+            console.log("vModelVal======>");
             console.log(item);
+            console.log(dynamicvModel(this.superParams,item,'','get'));
             //if(typeof item == 'object'){
                 return dynamicvModel(this.superParams,item,'','get');
             //}
@@ -187,6 +188,7 @@ export default {
             this.superParams[this.parentNode.currentChangeName](val);
         },
         btnClick(item){
+            console.log(item);
             if(item.params){
                 this.superParams[item.event](item.paramsName);
             }else if(item.tableParams){
@@ -247,10 +249,19 @@ export default {
                     //console.log(new Boolean(item[i]));
                     if(i == 'readonly'){
                         item[i] = false;
-                    }else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error'){
+                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error'){
                         item[i] = that.superParams[i];
                     } else {
-                        item[i] = ((i == item[i] ? that.vModelVal(`${componentNameParams}.${i}`) : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' ? Number(item[i]) : item[i]))
+
+                        if(i == item[i]){
+                            console.log(componentNameParams);
+                            console.log(i);
+                            console.log(item[i]);
+                            console.log(that.vModelVal('elskeleton.loading'));
+                            console.log(that.superParams.elskeleton.loading);
+                        }
+
+                        item[i] = ((i == item[i] ? that.vModelVal(`${componentNameParams}.${i}`) : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' ? Number(item[i]) : item[i]))
                     }
                 }
             }
@@ -269,7 +280,6 @@ export default {
     },
     mounted(){
         var that = this;
-
         that.timer = setInterval(() => { //dom更新存在延迟
             var dom = document.getElementsByClassName(that.node.pageName == 'sys:roleManage:addRole' ? 'demo-editForm' : 'searchUser');
             if(dom.length !== 0){
