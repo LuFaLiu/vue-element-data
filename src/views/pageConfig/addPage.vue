@@ -200,11 +200,11 @@ export default {
     that.componentSelectList.push({lable:'customContent',value:'customContent'});
 
     //添加自定义标签组件
-    that.componentList.push({name:'customTag',props:{'componentName':'','attrs':''}});
+    that.componentList.push({name:'customTag',props:{'componentName':'','attrs':'',props:''}});
     that.componentSelectList.push({lable:'customTag',value:'customTag'});
 
-    //添加自定义template标签
-    that.componentList.push({name:'customTemplate',props:{'componentName':'','slot':''}});
+    //添加自定义template标签 (默认为default)
+    that.componentList.push({name:'customTemplate',props:{'componentName':'','slot':'default'}});
     that.componentSelectList.push({lable:'customTemplate',value:'customTemplate'});
 
     console.log(that.componentList);

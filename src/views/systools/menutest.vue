@@ -361,6 +361,14 @@ export default {
             justifyItems: 'space-between',
             marginTop: '16px',
             height: '16px'
+          },
+          elcartTitle:{
+            tag:'span',
+            text:'Delicious hamberger'
+          },
+          elcartTime:{
+            tag:'span',
+            text:'2021-06-01'
           }
         },
         elrate:{
@@ -377,10 +385,13 @@ export default {
           bodyStyle:{ padding: '0px', marginBottom: '1px' },
         },
         elskeleton:{
-          loading:false,
+          elskeletonLoading:false,
         },
         img:{
           attrs:{
+            src:'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
+          },
+          props:{
             src:'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
           }
         }
@@ -390,7 +401,7 @@ export default {
     }
   },
   mounted(){
-    this.elskeleton.loading = false;
+    this.elskeleton.elskeletonLoading = false;
   },
   methods:{
     remoteMethod(){
@@ -451,8 +462,8 @@ export default {
     },
     setLoading() {
       console.log("123456");
-      this.elskeleton.loading = true
-      setTimeout(() => (this.elskeleton.loading = false), 2000)
+      this.elskeleton.elskeletonLoading = true
+      setTimeout(() => (this.elskeleton.elskeletonLoading = false), 2000)
     }
   }
 }
@@ -520,6 +531,7 @@ export default {
     //.skeletonContainer {
       flex-direction: column;
       .skeleton {
+        margin-top: 30px;
         .el-skeleton{
           width: 240px;
           margin-top: 30px;
@@ -548,9 +560,20 @@ export default {
             }
           }
 
+        }
+        .el-card__body {
+          .image {
+            width: 400px;
+            height: 267px;
+          }
           .skeletonCardCtn {
             padding: 14px;
           }
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
       }
       

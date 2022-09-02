@@ -72,14 +72,19 @@ export default {
            var that = this;
            return node && node.childrenNode.length > 0 && node.childrenNode.map(function (item) {
                 var componentNameParams = item.componentName.toLowerCase();
+                if(componentNameParams == 'img'){
+                    console.log("componentNameParams == 'img'");
+                    console.log(item);
+                    console.log(that.superParams[componentNameParams][item.props]);
+                }
                 return h(
                     item.componentName == 'div' ? 'div' : item.componentName == 'img' ? 'img' : item.componentName == 'span' ? 'span' : item.componentName == 'template' ? 'template' : item.componentName,
                     {
                         'class':item.class,
-                        attrs: item.attrs ? that.superParams[item.attrs] : {
+                        attrs: item.attrs ? that.superParams[componentNameParams][item.attrs] : {
                             placeholder: (item.componentName == 'elInput' || item.componentName == 'elSelect') && that.filteri18n(item.placeholder) || ''
                         },
-                        props:that.conversionProps(item,componentNameParams),
+                        props: item.props ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
                         on:{
                             '&click':function (e) {
                                 switch (item.componentName) {
@@ -253,15 +258,13 @@ export default {
                         item[i] = that.superParams[i];
                     } else {
 
-                        if(i == item[i]){
-                            console.log(componentNameParams);
+                        if(componentNameParams == 'elskeleton' && i == 'loading'){
                             console.log(i);
                             console.log(item[i]);
-                            console.log(that.vModelVal('elskeleton.loading'));
-                            console.log(that.superParams.elskeleton.loading);
+                            item[i] = that.superParams.elskeleton.elskeletonLoading;
+                        }else {
+                            item[i] = ((i == item[i] ? that.vModelVal(`${componentNameParams}.${i}`) : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' ? Number(item[i]) : item[i]))
                         }
-
-                        item[i] = ((i == item[i] ? that.vModelVal(`${componentNameParams}.${i}`) : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' ? Number(item[i]) : item[i]))
                     }
                 }
             }
