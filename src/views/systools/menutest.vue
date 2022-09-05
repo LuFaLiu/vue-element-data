@@ -369,6 +369,26 @@ export default {
           elcartTime:{
             tag:'span',
             text:'2021-06-01'
+          },
+          descriptionsItemTitle1:{
+            tag:'span',
+            text:'kooriookami'
+          },
+          descriptionsItemTitle2:{
+            tag:'span',
+            text:'18100000000'
+          },
+          descriptionsItemTitle3:{
+            tag:'span',
+            text:'Suzhou'
+          },
+          descriptionsItemTitle5:{
+            tag:'span',
+            text:'No.1188, Wuzhong Avenue, Wuzhong District, Suzhou, Jiangsu Province'
+          },
+          descriptionsItemElTagTitle:{
+            tag:'span',
+            text:'School'
           }
         },
         elrate:{
@@ -394,6 +414,10 @@ export default {
           props:{
             src:'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png'
           }
+        },
+        eldescriptions:{
+          labelStyle:{},
+          contentStyle:{}
         }
         
         
@@ -476,6 +500,9 @@ export default {
   }
 
   ::v-deep {
+    .el-form-item{
+      display: flex;
+    }
     .el-slider {
       width: 500px;
       margin-left: 20px;
@@ -579,7 +606,10 @@ export default {
       
     //}
 
-    
+    .el-descriptions {
+      padding: 20px;
+      background-color: #fff;
+    }
     
   }
 </style>
