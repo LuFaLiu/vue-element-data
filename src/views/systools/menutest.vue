@@ -418,6 +418,10 @@ export default {
         eldescriptions:{
           labelStyle:{},
           contentStyle:{}
+        },
+        elcolorpicker:{
+          value:'#409EFF',
+          predefine:[]
         }
         
         
