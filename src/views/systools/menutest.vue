@@ -3,10 +3,7 @@
 </template>
 
 <script>
-import pageConfigApi from "@/api/pageConfigApi"
-import {deleteApiRequest,apiRequestParams,apiRequestTable} from "@/api/commonApi";
 import _ from "lodash";
-import { resetObj,getVueComponent } from '@/utils/index'
 import elComponent from '@/components/elComponent/index'
 
 export default {
@@ -21,6 +18,19 @@ export default {
     elComponent
   },
   data(){
+    const generateData = _ => {
+      const data = [];
+      for (let i = 1; i <= 15; i++) {
+        data.push({
+          key: i,
+          label: `Option ${ i }`,
+          disabled: i % 4 === 0
+        });
+      }
+      console.log("generateData=========>");
+      console.log(data);
+      return data;
+    };
     return {
         elform:{
           model:{},
@@ -422,6 +432,26 @@ export default {
         elcolorpicker:{
           value:'#409EFF',
           predefine:[]
+        },
+        eltransfer:{
+          data: generateData(),
+          value: [],
+          buttonTexts:[],
+          titles:[],
+          leftDefaultChecked:[],
+          rightDefaultChecked:[],
+          format:{},
+          props:{
+            label: 'label',
+            key: 'key',
+            disabled: 'disabled'
+          }, //必须
+          defaultChecked:[2, 3],
+          renderContent(h, option) {
+            console.log("renderContent=========>");
+            console.log(option);
+            return <span>123456</span>;
+          }
         }
         
         

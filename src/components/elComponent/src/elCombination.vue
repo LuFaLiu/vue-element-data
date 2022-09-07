@@ -72,6 +72,7 @@ export default {
            var that = this;
            return node && node.childrenNode.length > 0 && node.childrenNode.map(function (item) {
                 var componentNameParams = item.componentName.toLowerCase();
+                
                 if(componentNameParams == 'img'){
                     console.log("componentNameParams == 'img'");
                     console.log(item);
@@ -84,7 +85,7 @@ export default {
                         attrs: item.attrs ? that.superParams[componentNameParams][item.attrs] : {
                             placeholder: (item.componentName == 'elInput' || item.componentName == 'elSelect') && that.filteri18n(item.placeholder) || ''
                         },
-                        props: item.props ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
+                        props: item.props && componentNameParams !== 'eltransfer' ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
                         on:{
                             '&click':function (e) {
                                 switch (item.componentName) {
@@ -247,23 +248,30 @@ export default {
         //转化props属性
         conversionProps(item,componentNameParams){
             var that = this;
+
+             if(componentNameParams == 'eltransfer'){
+                console.log("componentNameParams == 'eltransfer'===================>");
+                console.log(componentNameParams);
+                console.log(item);
+            }
             for(var i in item){
                 if(i !== 'componentName' || i !== 'pageName'){
                     //console.log(item[i]);
                     //console.log(typeof item[i]);
                     //console.log(new Boolean(item[i]));
-                    if(i == 'readonly'){
-                        item[i] = false;
-                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error'){
-                        item[i] = that.superParams[i];
-                    } else {
-
-                        if(componentNameParams == 'elskeleton' && i == 'loading'){
-                            console.log(i);
-                            console.log(item[i]);
-                            item[i] = that.superParams.elskeleton.elskeletonLoading;
-                        }else {
-                            item[i] = ((i == item[i] ? that.vModelVal(`${componentNameParams}.${i}`) : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' ? Number(item[i]) : item[i]))
+                    if(i == 'renderContent' || i == 'format'){ //删除相关属性
+                        delete item[i]
+                    }else {
+                        if(i == 'readonly'){
+                            item[i] = false;
+                        } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error'){
+                            item[i] = that.superParams[i];
+                        } else {
+                            if(componentNameParams == 'elskeleton' && i == 'loading'){
+                                item[i] = that.superParams.elskeleton.elskeletonLoading;
+                            }else {
+                                item[i] = ((i == item[i] ? that.vModelVal(`${componentNameParams}.${i}`) : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' ? Number(item[i]) : item[i]))
+                            }
                         }
                     }
                 }

@@ -87,4 +87,6 @@
 "children":[{"id":1662340023573,"label":"customContent","componentRule":{"componentName":"customContent","tag":"span","attributeName":"descriptionsItemTitle5","class":""},
 "children":[]}]}]}]},{"id":1662424859234,"label":"ElFormItem","componentRule":{"label":"ColorPicker","labelWidth":"100px","prop":"prop","required":"","rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","class":""},
 "children":[{"id":1662424980218,"label":"ElColorPicker","componentRule":{"value":"value","showAlpha":"","colorFormat":"","disabled":false,"size":"","popperClass":"","predefine":"predefine","class":""},
+"children":[]}]},{"id":1662511598849,"label":"ElFormItem","componentRule":{"label":"Transfer","labelWidth":"100px","prop":"prop","required":"","rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","class":""},
+"children":[{"id":1662511655985,"label":"ElTransfer","componentRule":{"data":"data","titles":"","buttonTexts":"buttonTexts","filterPlaceholder":"","filterMethod":"","leftDefaultChecked":"leftDefaultChecked","rightDefaultChecked":"rightDefaultChecked","renderContent":"renderContent","value":"value","format":"format","filterable":"","props":"props","targetOrder":"original","class":""},
 "children":[]}]}]}]}]
