@@ -259,19 +259,15 @@ export default {
                     //console.log(item[i]);
                     //console.log(typeof item[i]);
                     //console.log(new Boolean(item[i]));
-                    if(i == 'renderContent' || i == 'format'){ //删除相关属性
-                        delete item[i]
-                    }else {
-                        if(i == 'readonly'){
-                            item[i] = false;
-                        } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error'){
-                            item[i] = that.superParams[i];
-                        } else {
-                            if(componentNameParams == 'elskeleton' && i == 'loading'){
-                                item[i] = that.superParams.elskeleton.elskeletonLoading;
-                            }else {
-                                item[i] = ((i == item[i] ? that.vModelVal(`${componentNameParams}.${i}`) : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' ? Number(item[i]) : item[i]))
-                            }
+                    if(i == 'readonly'){
+                        item[i] = false;
+                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error'){
+                        item[i] = that.superParams[i];
+                    } else {
+                        if(componentNameParams == 'elskeleton' && i == 'loading'){
+                            item[i] = that.superParams.elskeleton.elskeletonLoading;
+                        }else {
+                            item[i] = ((i == item[i] ? that.vModelVal(`${componentNameParams}.${i}`) : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' ? Number(item[i]) : item[i]))
                         }
                     }
                 }

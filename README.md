@@ -47,3 +47,14 @@ Modern browsers and Internet Explorer 10+.
 [MIT](https://github.com/LuFaLiu/vue-element-data/blob/master/LICENSE) license.
 
 Copyright (c) 2022-present LuFaLiu
+
+
+
+## Data structure
+
+```bash
+
+Notice:
+The filterMethod method must be added for the Transfer component
+
+```

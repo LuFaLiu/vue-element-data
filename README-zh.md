@@ -111,5 +111,10 @@ componentListName 组件列表名称
 componentSlot 组件内是否有插槽
 params 弹框是否需要带参
 btnFormConditon 按钮根据表单条件是否展示
+
+
+注意：
+为Transfer组件时必须添加filterMethod方法
+
 ```
 

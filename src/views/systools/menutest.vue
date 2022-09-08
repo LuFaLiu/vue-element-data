@@ -399,7 +399,11 @@ export default {
           descriptionsItemElTagTitle:{
             tag:'span',
             text:'School'
+          },
+          transferAttribute:{
+            scopedSlots:true
           }
+
         },
         elrate:{
           value:0,
@@ -448,9 +452,7 @@ export default {
           }, //必须
           defaultChecked:[2, 3],
           renderContent(h, option) {
-            console.log("renderContent=========>");
-            console.log(option);
-            return <span>123456</span>;
+            return <span>{ option.key } - { option.label }</span>;
           }
         }
         
@@ -466,7 +468,7 @@ export default {
 
     },
     filterMethod(){
-      
+      return true; //为Transfer组件时必须返回真值才能回显数据
     },
     beforeFilter(){
 

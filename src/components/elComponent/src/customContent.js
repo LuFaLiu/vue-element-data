@@ -17,14 +17,14 @@ export default {
             return h(
                 node.condition ? (Boolean(this.superParams[node.condition]) == node.conditionVal && node.tag)  : node.tag,
                 {
-                class:node.class,
-                style:node.style || {},
-                props:{
-                    slot:node.props && node.props.slot || '',
-                },
-                attrs: {
-                    src:node.props && node.props.src || '',
-                },
+                    class:node.class || '',
+                    style:node.style || {},
+                    props:{
+                        slot:node.props && node.props.slot || '',
+                    },
+                    attrs: {
+                        src:node.props && node.props.src || '',
+                    }
                 },
                 node.text ? [h('span',node.text)] : node.childrenNode && node.childrenNode.length > 0 ? this.deepChildrenComponent(node,h) : this.$slots.default
             )
