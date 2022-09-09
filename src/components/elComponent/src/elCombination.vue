@@ -261,13 +261,13 @@ export default {
                     //console.log(new Boolean(item[i]));
                     if(i == 'readonly'){
                         item[i] = false;
-                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error'){
+                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error' || i == 'load' || i == 'renderHeader' || i == 'formatter' || i == 'selectable' || i == 'remote'){
                         item[i] = that.superParams[i];
                     } else {
                         if(componentNameParams == 'elskeleton' && i == 'loading'){
                             item[i] = that.superParams.elskeleton.elskeletonLoading;
                         }else {
-                            item[i] = ((i == item[i] ? that.vModelVal(`${componentNameParams}.${i}`) : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' ? Number(item[i]) : item[i]))
+                            item[i] = ((i == item[i] ? that.vModelVal(`${componentNameParams}.${i}`) : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' ? Number(item[i]) : item[i]))
                         }
                     }
                 }
