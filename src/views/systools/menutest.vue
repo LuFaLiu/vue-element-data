@@ -407,7 +407,6 @@ export default {
         },
         elrate:{
           value:0,
-          value2:null,
           colors:['#F7BA2A', '#F7BA2A', '#F7BA2A'],
           texts:['Very poor ',' disappointed ', 'average ',' satisfied ', 'surprised'],
           iconClasses:['el-icon-star-on', 'el-icon-star-on','el-icon-star-on']
@@ -488,11 +487,73 @@ export default {
           filteredValue:[],
           filters:[],
           sortOrders:['ascending', 'descending', null],
+        },
+        elformList:{
+          model: {
+            name: '',
+            region: '',
+            date1: '',
+            date2: '',
+            delivery: false,
+            type: [],
+            resource: '',
+            desc: ''
+          },
+          rules: {
+            name: [
+              { required: true, message: 'Please input Activity name', trigger: 'blur' },
+              { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' }
+            ],
+            region: [
+              { required: true, message: 'Please select Activity zone', trigger: 'change' }
+            ],
+            date1: [
+              { type: 'date', required: true, message: 'Please pick a date', trigger: 'change' }
+            ],
+            date2: [
+              { type: 'date', required: true, message: 'Please pick a time', trigger: 'change' }
+            ],
+            type: [
+              { type: 'array', required: true, message: 'Please select at least one activity type', trigger: 'change' }
+            ],
+            resource: [
+              { required: true, message: 'Please select activity resource', trigger: 'change' }
+            ],
+            desc: [
+              { required: true, message: 'Please input activity form', trigger: 'blur' }
+            ]
+          },
+
+        },
+        elselectForm:{
+          ElOptionListName:[{
+            value: 'shanghai',
+            label: 'Zone one'
+          }, {
+            value: 'beijing',
+            label: 'Zone two'
+          }]
+        },
+        elcol:{
+          offset:0,
+          pull:0,
+          push:0,
+          xs:0,
+          sm:0,
+          md:0,
+          lg:0,
+          xl:0
         }
 
         
         
 
+    }
+  },
+  watch:{
+    'elformList.model.region':function (val,oldVal) {
+      console.log("elformList.model.region====>");
+      console.log(val,oldVal);
     }
   },
   mounted(){
@@ -506,13 +567,9 @@ export default {
       return column.label;
     },
     formatter(row, column, cellValue, index){
-      console.log(row, column, cellValue, index);
       return cellValue;
     },
     selectable(){
-
-    },
-    remote(){
 
     },
     filterMethod(){
@@ -568,10 +625,19 @@ export default {
     onError(){
 
     },
+    rowKey(){
+      return row.staffTypeId;
+    },
     setLoading() {
       console.log("123456");
       this.elskeleton.elskeletonLoading = true
       setTimeout(() => (this.elskeleton.elskeletonLoading = false), 2000)
+    },
+    formSubmit(){
+      console.log('submit!');
+    },
+    formCancel(){
+      console.log('cancel!');
     }
   }
 }
@@ -584,6 +650,14 @@ export default {
   }
 
   ::v-deep {
+    .demo-ruleForm {
+      .el-form-item {
+        margin-top: 30px;
+      }
+      .el-date-editor--time {
+        margin-left: 20px;
+      }
+    }
     .el-form-item{
       display: flex;
     }

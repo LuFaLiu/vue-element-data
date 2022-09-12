@@ -5,7 +5,8 @@ import TraverseTemplate from './traverseTemplate'
 import CustomContent from './customContent'
 import elLevelSelect from '@/components/Page/elLevelSelect'
 import elTableTree from '@/components/Page/elTableTree'
-import _ from 'lodash'
+import _ from 'lodash';
+let inputVal = '';
 export default {
     inject: ['superParams'],
     name: 'ElCombination',
@@ -72,12 +73,6 @@ export default {
            var that = this;
            return node && node.childrenNode.length > 0 && node.childrenNode.map(function (item) {
                 var componentNameParams = item.componentName.toLowerCase();
-                
-                if(componentNameParams == 'img'){
-                    console.log("componentNameParams == 'img'");
-                    console.log(item);
-                    console.log(that.superParams[componentNameParams][item.props]);
-                }
                 return h(
                     item.componentName == 'div' ? 'div' : item.componentName == 'img' ? 'img' : item.componentName == 'span' ? 'span' : item.componentName == 'template' ? 'template' : item.componentName,
                     {
@@ -105,44 +100,83 @@ export default {
                                 that.superParams[item.selectionEvent](e);
                             },
                             input: function (event) { //v-model
-                                //console.log(event);
-                                dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
-                                item.value = event;
-                                /*
+                                var hasVal = false;
                                 if(typeof event == 'string'){
-                                    dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
-                                    item.value = event;
-                                }else if(componentNameParams == 'eltimepicker'){
-                                    console.log(event);
-                                    dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
-                                    item.value = event;
+                                    if(event){
+                                        hasVal = true;
+                                    }
+                                }else {
+                                    if(event.length > 0){
+                                        hasVal = true;
+                                    }
                                 }
-                                */
+                                if(hasVal){
+                                    var customVal = '';
+                                    var hasUniqueIdentifier = '';
+                                    var paramsList = _.keysIn(item);
+                                    if(paramsList.indexOf('customVal') > -1){
+                                        if(item['customVal']){
+                                            customVal = item['customVal'];
+                                        }
+                                    }
+                                    if(paramsList.indexOf('uniqueIdentifier') > -1){
+                                        if(item['uniqueIdentifier']){
+                                            hasUniqueIdentifier = item['uniqueIdentifier'];
+                                        }
+                                    }
+                                    if(customVal) {
+                                        dynamicvModel(that.superParams,customVal,event,'set');
+                                        item.value = event;
+                                        inputVal = event;
+                                    }else {
+                                        dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
+                                        item.value = event;
+                                        inputVal = event;
+                                    }   
+                                }
+                                
                             }, 
                             change: function (event) { //v-model
                                 console.log(event);
                                 console.log(item);
                                 console.log(componentNameParams);
-                                if(componentNameParams == 'elcheckbox'){
-                                    that.superParams[`${componentNameParams}`].value = !that.superParams[`${componentNameParams}`].value;
-                                    item.value = !that.superParams[`${componentNameParams}`].value;
+                                var hasVal = false;
+                                if(typeof event == 'string'){
+                                    if(event){
+                                        hasVal = true;
+                                    }
                                 }else {
-                                    dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
-                                    item.value = event;
+                                    if(event.length > 0){
+                                        hasVal = true;
+                                    }
                                 }
-                                
-                                console.log(event);
-                                console.log(that.superParams[`${componentNameParams}`].value);
-                                /*
-                                switch (item.componentName) {
-                                    case "elSelect" :
-                                        dynamicvModel(that.superParams,item.vModel,event,'set');
-                                        break;
-                                
-                                    default:
-                                        break;
+                                if(hasVal){
+                                    if(componentNameParams == 'elcheckbox'){
+                                        that.superParams[`${componentNameParams}`].value = !that.superParams[`${componentNameParams}`].value;
+                                        item.value = !that.superParams[`${componentNameParams}`].value;
+                                    }else {
+                                        var customVal = '';
+                                        var hasUniqueIdentifier = '';
+                                        var paramsList = _.keysIn(item);
+                                        if(paramsList.indexOf('customVal') > -1){
+                                            if(item['customVal']){
+                                                customVal = item['customVal'];
+                                            }
+                                        }
+                                        if(paramsList.indexOf('uniqueIdentifier') > -1){
+                                            if(item['uniqueIdentifier']){
+                                                hasUniqueIdentifier = item['uniqueIdentifier'];
+                                            }
+                                        }
+                                        if(customVal) {
+                                            dynamicvModel(that.superParams,customVal,event,'set');
+                                            item.value = event;
+                                        }else {
+                                            dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
+                                            item.value = event;
+                                        } 
+                                    }
                                 }
-                                */
                             }
                         },
                         directives: [
@@ -167,7 +201,7 @@ export default {
                             : item.componentName == 'ElButton' || (item.componentName == 'elContainer' && item.title) || item.componentName == 'ElLink' || item.componentName == 'ElHeader' || item.componentName == 'ElFooter' || item.componentName == 'ElRadio'
                                 //? [h('span',that.filteri18n(item.title))] 
                                 ? [h('span',that.$t(item.title))] 
-                                    : item.componentName == 'ElSelect' ? that.superParams[componentNameParams]['ElOptionListName'].map((v,index) => [h('el-option',{props:{label:that.$t(v.label),key:v.value,value:v.value}})] )
+                                    : item.componentName == 'ElSelect' ? that.superParams[item.uniqueIdentifier ? (componentNameParams + item.uniqueIdentifier) : componentNameParams]['ElOptionListName'].map((v,index) => [h('el-option',{props:{label:that.$t(v.label),key:v.value,value:v.value}})] )
                                         : that.$slots.default
                 )
            })
@@ -180,12 +214,10 @@ export default {
             }
         },
         vModelVal(item){
-            console.log("vModelVal======>");
             console.log(item);
-            console.log(dynamicvModel(this.superParams,item,'','get'));
-            //if(typeof item == 'object'){
+            if(item){
                 return dynamicvModel(this.superParams,item,'','get');
-            //}
+            }
         },
         sizeChange(val){
             this.superParams[this.parentNode.sizeChangeName](val);
@@ -248,26 +280,46 @@ export default {
         //转化props属性
         conversionProps(item,componentNameParams){
             var that = this;
-
-             if(componentNameParams == 'eltransfer'){
-                console.log("componentNameParams == 'eltransfer'===================>");
-                console.log(componentNameParams);
+            var customVal = '';
+            var hasUniqueIdentifier = '';
+            var paramsList = _.keysIn(item);
+            if(paramsList.indexOf('customVal') > -1){
+                if(item['customVal']){
+                    customVal = item['customVal'];
+                }
+            }
+            if(paramsList.indexOf('uniqueIdentifier') > -1){
+                if(item['uniqueIdentifier']){
+                    hasUniqueIdentifier = item['uniqueIdentifier'];
+                }
+            }
+            if(componentNameParams == 'elrate'){
+                console.log('componentNameParams == elrate');
                 console.log(item);
             }
             for(var i in item){
                 if(i !== 'componentName' || i !== 'pageName'){
-                    //console.log(item[i]);
-                    //console.log(typeof item[i]);
-                    //console.log(new Boolean(item[i]));
                     if(i == 'readonly'){
                         item[i] = false;
-                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error' || i == 'load' || i == 'renderHeader' || i == 'formatter' || i == 'selectable' || i == 'remote'){
+                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error' || i == 'load' || i == 'renderHeader' || i == 'formatter' || i == 'selectable' || i == 'rowKey'){
                         item[i] = that.superParams[i];
                     } else {
                         if(componentNameParams == 'elskeleton' && i == 'loading'){
                             item[i] = that.superParams.elskeleton.elskeletonLoading;
                         }else {
-                            item[i] = ((i == item[i] ? that.vModelVal(`${componentNameParams}.${i}`) : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' ? Number(item[i]) : item[i]))
+                            if(i == item[i]){
+                                console.log("i == item[i]");
+                                console.log(i,item[i]);
+                            }
+                            item[i] = (
+                                        i == item[i] 
+                                            ? that.vModelVal(`${hasUniqueIdentifier ? (componentNameParams + hasUniqueIdentifier) : componentNameParams}.${i}`) 
+                                                : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span'
+                                                    ? Number(item[i]) 
+                                                        : item[i]  == 'orderVal' //customVal exist   
+                                                            ?  customVal && item[i] && that.vModelVal(customVal)
+                                                                : item[i]
+                                      )
                         }
                     }
                 }
