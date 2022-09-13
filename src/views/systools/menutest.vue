@@ -533,18 +533,7 @@ export default {
             value: 'beijing',
             label: 'Zone two'
           }]
-        },
-        elcol:{
-          offset:0,
-          pull:0,
-          push:0,
-          xs:0,
-          sm:0,
-          md:0,
-          lg:0,
-          xl:0
         }
-
         
         
 
@@ -625,7 +614,7 @@ export default {
     onError(){
 
     },
-    rowKey(){
+    rowKey(row){
       return row.staffTypeId;
     },
     setLoading() {

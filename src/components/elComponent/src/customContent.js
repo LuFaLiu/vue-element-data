@@ -7,13 +7,13 @@ export default {
     },
     name:'CustomContent',
     render(h){
-        console.log(this.attributeName);
-        console.log(this.superParams.customcontent[this.attributeName]);
+        //console.log(this.attributeName);
+        //console.log(this.superParams.customcontent[this.attributeName]);
         const node = this.superParams.customcontent[this.attributeName];
         if(node){
-            console.log(node);
-            console.log(node.tag == 'img' ? node.props.src : '');
-            console.log(Boolean(this.superParams[node.condition]));
+            //console.log(node);
+            //console.log(node.tag == 'img' ? node.props.src : '');
+            //console.log(Boolean(this.superParams[node.condition]));
             return h(
                 node.condition ? (Boolean(this.superParams[node.condition]) == node.conditionVal && node.tag)  : node.tag,
                 {

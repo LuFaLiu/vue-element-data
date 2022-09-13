@@ -101,12 +101,14 @@ export default {
                             },
                             input: function (event) { //v-model
                                 var hasVal = false;
-                                if(typeof event == 'string'){
-                                    if(event){
+                                console.log("hasVal");
+                                console.log(event);
+                                if(typeof event == 'Array'){
+                                    if(event.length > 0){
                                         hasVal = true;
                                     }
                                 }else {
-                                    if(event.length > 0){
+                                    if(event){
                                         hasVal = true;
                                     }
                                 }
@@ -214,7 +216,6 @@ export default {
             }
         },
         vModelVal(item){
-            console.log(item);
             if(item){
                 return dynamicvModel(this.superParams,item,'','get');
             }
@@ -286,17 +287,18 @@ export default {
             if(paramsList.indexOf('customVal') > -1){
                 if(item['customVal']){
                     customVal = item['customVal'];
+                }else {
+                    customVal = '';
                 }
             }
             if(paramsList.indexOf('uniqueIdentifier') > -1){
                 if(item['uniqueIdentifier']){
                     hasUniqueIdentifier = item['uniqueIdentifier'];
+                }else {
+                    hasUniqueIdentifier = '';
                 }
             }
-            if(componentNameParams == 'elrate'){
-                console.log('componentNameParams == elrate');
-                console.log(item);
-            }
+
             for(var i in item){
                 if(i !== 'componentName' || i !== 'pageName'){
                     if(i == 'readonly'){
@@ -307,19 +309,20 @@ export default {
                         if(componentNameParams == 'elskeleton' && i == 'loading'){
                             item[i] = that.superParams.elskeleton.elskeletonLoading;
                         }else {
-                            if(i == item[i]){
-                                console.log("i == item[i]");
+                            if(componentNameParams == 'elrate' && i == 'value'){
+                                console.log("componentNameParams == 'elrate'=============>");
                                 console.log(i,item[i]);
+                                console.log(i == item[i]);
                             }
-                            item[i] = (
-                                        i == item[i] 
-                                            ? that.vModelVal(`${hasUniqueIdentifier ? (componentNameParams + hasUniqueIdentifier) : componentNameParams}.${i}`) 
-                                                : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span'
-                                                    ? Number(item[i]) 
-                                                        : item[i]  == 'orderVal' //customVal exist   
-                                                            ?  customVal && item[i] && that.vModelVal(customVal)
-                                                                : item[i]
-                                      )
+                            item[i] =   ( 
+                                            i == item[i] 
+                                                ? that.vModelVal(`${hasUniqueIdentifier ? (componentNameParams + hasUniqueIdentifier) : componentNameParams}.${i}`) && console.log("i==item[i]",i,item[i],componentNameParams)
+                                                    : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl'
+                                                        ? Number(item[i]) 
+                                                            : item[i] == 'orderVal' && customVal //customVal exist   
+                                                                ? that.vModelVal(customVal)
+                                                                    : item[i]
+                                        )
                         }
                     }
                 }
