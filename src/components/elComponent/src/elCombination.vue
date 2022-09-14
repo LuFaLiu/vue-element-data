@@ -73,6 +73,10 @@ export default {
            var that = this;
            return node && node.childrenNode.length > 0 && node.childrenNode.map(function (item) {
                 var componentNameParams = item.componentName.toLowerCase();
+                if(componentNameParams == 'elform'){
+                    console.log("componentNameParams == 'elform'");
+                    console.log(item);
+                }
                 return h(
                     item.componentName == 'div' ? 'div' : item.componentName == 'img' ? 'img' : item.componentName == 'span' ? 'span' : item.componentName == 'template' ? 'template' : item.componentName,
                     {
@@ -101,8 +105,6 @@ export default {
                             },
                             input: function (event) { //v-model
                                 var hasVal = false;
-                                console.log("hasVal");
-                                console.log(event);
                                 if(typeof event == 'Array'){
                                     if(event.length > 0){
                                         hasVal = true;
@@ -171,6 +173,8 @@ export default {
                                             }
                                         }
                                         if(customVal) {
+                                            console.log("customVal存在");
+                                            console.log(customVal);
                                             dynamicvModel(that.superParams,customVal,event,'set');
                                             item.value = event;
                                         }else {
@@ -309,14 +313,9 @@ export default {
                         if(componentNameParams == 'elskeleton' && i == 'loading'){
                             item[i] = that.superParams.elskeleton.elskeletonLoading;
                         }else {
-                            if(componentNameParams == 'elrate' && i == 'value'){
-                                console.log("componentNameParams == 'elrate'=============>");
-                                console.log(i,item[i]);
-                                console.log(i == item[i]);
-                            }
                             item[i] =   ( 
                                             i == item[i] 
-                                                ? that.vModelVal(`${hasUniqueIdentifier ? (componentNameParams + hasUniqueIdentifier) : componentNameParams}.${i}`) && console.log("i==item[i]",i,item[i],componentNameParams)
+                                                ? that.vModelVal(`${hasUniqueIdentifier ? (componentNameParams + hasUniqueIdentifier) : componentNameParams}.${i}`)
                                                     : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl'
                                                         ? Number(item[i]) 
                                                             : item[i] == 'orderVal' && customVal //customVal exist   
@@ -327,7 +326,6 @@ export default {
                     }
                 }
             }
-            //console.log(item);
             return item;
         }
     },

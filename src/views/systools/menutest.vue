@@ -5,6 +5,7 @@
 <script>
 import _ from "lodash";
 import elComponent from '@/components/elComponent/index'
+import { resetObj,getVueComponent } from '@/utils/index'
 
 export default {
  
@@ -37,7 +38,7 @@ export default {
           rules:{},
         },
         elformitem:{
-          rules:{}
+          rules:[]
         },
         elinput:{
           value:'title',
@@ -543,7 +544,12 @@ export default {
     'elformList.model.region':function (val,oldVal) {
       console.log("elformList.model.region====>");
       console.log(val,oldVal);
-    }
+    },
+    'elformList.model.type':function (val,oldVal) {
+      console.log("elformList.model.type====>");
+      console.log(val,oldVal);
+      console.log(Array.isArray(val));
+    },
   },
   mounted(){
     this.elskeleton.elskeletonLoading = false;
@@ -622,11 +628,21 @@ export default {
       this.elskeleton.elskeletonLoading = true
       setTimeout(() => (this.elskeleton.elskeletonLoading = false), 2000)
     },
-    formSubmit(){
-      console.log('submit!');
+    formSubmit(formName) {
+      var resetForm = getVueComponent(this,'$children','$refs',formName);
+      resetForm.validate((valid) => {
+        console.log(valid);
+        if (valid) {
+          alert('submit!');
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
     },
-    formCancel(){
-      console.log('cancel!');
+    formCancel(formName) {
+      var resetForm = getVueComponent(this,'$children','$refs',formName);
+      resetForm.resetFields();
     }
   }
 }

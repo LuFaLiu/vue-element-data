@@ -115,6 +115,8 @@ btnFormConditon 按钮根据表单条件是否展示
 
 注意：
 为Transfer组件时必须添加filterMethod方法
+为ElForm组件时需要把ElForm添加在ELContainer里面
+为ElFormItem组件时rules必须为数组类型，默认为[]
 
 ```
 

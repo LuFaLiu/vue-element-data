@@ -404,7 +404,16 @@ export default {
           break; 
         case 'ElDatePicker':
           this.componentProps.push({attributeName:'type',attributeLabel:'type',attributeModel:'type','type': '' ,inputFormat:'string', attributeType: 'ruleInput'})
-          break;     
+          break;  
+        case 'ElForm':
+          this.componentProps.push({attributeName:'refName',attributeLabel:'refName',attributeModel:'refName','refName': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;
+        case 'ElCheckboxGroup':
+          this.componentProps.push({attributeName:'indeterminate',attributeLabel:'indeterminate',attributeModel:'indeterminate','indeterminate': false ,inputFormat:'boolean', attributeType: 'ruleRadio'})
+          break;        
+        case 'ElFormItem':
+          this.componentProps.push({attributeName:'inline',attributeLabel:'inline',attributeModel:'inline','inline': false ,inputFormat:'boolean', attributeType: 'ruleRadio'})
+          break; 
         default: 
           this.componentProps.push({attributeName:'class',attributeLabel:'class',attributeModel:'class','class': '' ,inputFormat:'list', attributeType: 'ruleInput'})
           break;
