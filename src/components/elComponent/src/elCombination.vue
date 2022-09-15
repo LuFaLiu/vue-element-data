@@ -84,7 +84,7 @@ export default {
                         attrs: item.attrs ? that.superParams[componentNameParams][item.attrs] : {
                             placeholder: (item.componentName == 'elInput' || item.componentName == 'elSelect') && that.filteri18n(item.placeholder) || ''
                         },
-                        props: item.props && componentNameParams !== 'eltransfer' ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
+                        props: item.props && componentNameParams !== 'eltransfer' && componentNameParams !== 'eltree' ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
                         on:{
                             '&click':function (e) {
                                 switch (item.componentName) {
@@ -284,6 +284,7 @@ export default {
         },
         //转化props属性
         conversionProps(item,componentNameParams){
+            console.log(item,componentNameParams);
             var that = this;
             var customVal = '';
             var hasUniqueIdentifier = '';
@@ -302,12 +303,12 @@ export default {
                     hasUniqueIdentifier = '';
                 }
             }
-
+        
             for(var i in item){
                 if(i !== 'componentName' || i !== 'pageName'){
                     if(i == 'readonly'){
                         item[i] = false;
-                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error' || i == 'load' || i == 'renderHeader' || i == 'formatter' || i == 'selectable' || i == 'rowKey'){
+                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error' || i == 'load' || i == 'renderHeader' || i == 'formatter' || i == 'selectable' || i == 'rowKey' || i == 'renderContent' || i == 'allowDrag' || i == 'allowDrop'){
                         item[i] = that.superParams[i];
                     } else {
                         if(componentNameParams == 'elskeleton' && i == 'loading'){

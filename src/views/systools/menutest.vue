@@ -534,6 +534,49 @@ export default {
             value: 'beijing',
             label: 'Zone two'
           }]
+        },
+        eltree:{
+          data: [{
+            label: '一级 1',
+            children: [{
+              label: '二级 1-1',
+              children: [{
+                label: '三级 1-1-1'
+              }]
+            }]
+          }, {
+            label: '一级 2',
+            children: [{
+              label: '二级 2-1',
+              children: [{
+                label: '三级 2-1-1'
+              }]
+            }, {
+              label: '二级 2-2',
+              children: [{
+                label: '三级 2-2-1'
+              }]
+            }]
+          }, {
+            label: '一级 3',
+            children: [{
+              label: '二级 3-1',
+              children: [{
+                label: '三级 3-1-1'
+              }]
+            }, {
+              label: '二级 3-2',
+              children: [{
+                label: '三级 3-2-1'
+              }]
+            }]
+          }],
+          defaultProps: {
+            children: 'children',
+            label: 'label'
+          },
+          defaultCheckedKeys:[],
+          defaultExpandedKeys:[],
         }
         
         
@@ -643,6 +686,25 @@ export default {
     formCancel(formName) {
       var resetForm = getVueComponent(this,'$children','$refs',formName);
       resetForm.resetFields();
+    },
+    filterNodeMethod(){
+      return true;
+    },
+    renderContent(h, { node, data, store }) {
+      return (
+        <span class="custom-tree-node">
+          <span>{node.label}</span>
+          <span>
+            <el-button size="mini" type="text" on-click={ () => this.append(data) }>Append</el-button>
+            <el-button size="mini" type="text" on-click={ () => this.remove(node, data) }>Delete</el-button>
+          </span>
+        </span>);
+    },
+    allowDrag(draggingNode) {
+      return draggingNode.data.label.indexOf('三级 3-2-2') === -1;
+    },
+    allowDrop(){
+
     }
   }
 }
@@ -656,6 +718,7 @@ export default {
 
   ::v-deep {
     .demo-ruleForm {
+      height: 62vh!important;
       .el-form-item {
         margin-top: 30px;
       }
