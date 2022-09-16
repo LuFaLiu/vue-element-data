@@ -577,6 +577,16 @@ export default {
           },
           defaultCheckedKeys:[],
           defaultExpandedKeys:[],
+        },
+        elprogress:{
+          percentage: 10,
+          colors: [
+            {color: '#f56c6c', percentage: 20},
+            {color: '#e6a23c', percentage: 40},
+            {color: '#5cb87a', percentage: 60},
+            {color: '#1989fa', percentage: 80},
+            {color: '#6f7ad3', percentage: 100}
+          ]
         }
         
         
@@ -690,7 +700,7 @@ export default {
     filterNodeMethod(){
       return true;
     },
-    renderContent(h, { node, data, store }) {
+    renderContentTree(h, { node, data, store }) {
       return (
         <span class="custom-tree-node">
           <span>{node.label}</span>
@@ -705,6 +715,25 @@ export default {
     },
     allowDrop(){
 
+    },
+    formatPercentage(percentage) {
+      console.log("format方法");
+      console.log(percentage);
+      return percentage === 100 ? 'Full' : `${percentage}%`;
+    },
+    increase() {
+      console.log(this.elprogress.percentage );
+      this.elprogress.percentage += 10;
+      if (this.elprogress.percentage > 100) {
+        this.elprogress.percentage = 100;
+      }
+    },
+    decrease() {
+      console.log(this.elprogress.percentage );
+      this.elprogress.percentage -= 10;
+      if (this.elprogress.percentage < 0) {
+        this.elprogress.percentage = 0;
+      }
     }
   }
 }
@@ -717,6 +746,13 @@ export default {
   }
 
   ::v-deep {
+    .el-progress{
+      width: 350px;
+      margin-top: 12px;
+    }
+    .el-progress--dashboard {
+        width: 126px!important;
+    }
     .demo-ruleForm {
       height: 62vh!important;
       .el-form-item {

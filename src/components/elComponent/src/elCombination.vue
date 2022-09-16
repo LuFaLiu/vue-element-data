@@ -74,8 +74,8 @@ export default {
            return node && node.childrenNode.length > 0 && node.childrenNode.map(function (item) {
                 var componentNameParams = item.componentName.toLowerCase();
                 if(componentNameParams == 'elform'){
-                    console.log("componentNameParams == 'elform'");
-                    console.log(item);
+                    //console.log("componentNameParams == 'elform'");
+                    //console.log(item);
                 }
                 return h(
                     item.componentName == 'div' ? 'div' : item.componentName == 'img' ? 'img' : item.componentName == 'span' ? 'span' : item.componentName == 'template' ? 'template' : item.componentName,
@@ -86,6 +86,10 @@ export default {
                         },
                         props: item.props && componentNameParams !== 'eltransfer' && componentNameParams !== 'eltree' ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
                         on:{
+                            percentage:function (val) {
+                                console.log("percentage方法");
+                                console.log(val);
+                            },
                             '&click':function (e) {
                                 switch (item.componentName) {
                                     case "ElButton" :
@@ -284,7 +288,7 @@ export default {
         },
         //转化props属性
         conversionProps(item,componentNameParams){
-            console.log(item,componentNameParams);
+            //console.log(item,componentNameParams);
             var that = this;
             var customVal = '';
             var hasUniqueIdentifier = '';
@@ -308,7 +312,7 @@ export default {
                 if(i !== 'componentName' || i !== 'pageName'){
                     if(i == 'readonly'){
                         item[i] = false;
-                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error' || i == 'load' || i == 'renderHeader' || i == 'formatter' || i == 'selectable' || i == 'rowKey' || i == 'renderContent' || i == 'allowDrag' || i == 'allowDrop'){
+                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error' || i == 'load' || i == 'renderHeader' || i == 'formatter' || i == 'selectable' || i == 'rowKey' || item[i] == 'renderContentTree' || i == 'allowDrag' || i == 'allowDrop' || item[i] == 'formatPercentage' || i == 'increase' || i == 'decrease'){
                         item[i] = that.superParams[i];
                     } else {
                         if(componentNameParams == 'elskeleton' && i == 'loading'){
