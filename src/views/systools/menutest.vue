@@ -587,6 +587,9 @@ export default {
             {color: '#1989fa', percentage: 80},
             {color: '#6f7ad3', percentage: 100}
           ]
+        },
+        elpagination:{
+          pageSizes:[100, 200, 300, 400]
         }
         
         
@@ -602,6 +605,10 @@ export default {
       console.log("elformList.model.type====>");
       console.log(val,oldVal);
       console.log(Array.isArray(val));
+    },
+    'elprogress.percentage':function (val,oldVal) {
+      console.log("elprogress.percentage====>");
+      console.log(val,oldVal);
     },
   },
   mounted(){

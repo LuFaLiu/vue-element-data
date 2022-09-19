@@ -297,7 +297,9 @@ const paramsList = Mock.mock({
                     "children":[]},{"id":1663293487015,"label":"ElContainer","componentRule":{"direction":"","class":"","customVal":"","uniqueIdentifier":""},
                     "children":[{"id":1663293518233,"label":"ElButton","componentRule":{"type":"default","size":"","icon":"el-icon-minus","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"event":"decrease","customVal":"","uniqueIdentifier":""},
                     "children":[]},{"id":1663293534280,"label":"ElButton","componentRule":{"type":"default","size":"","icon":"el-icon-plus","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"event":"increase","customVal":"","uniqueIdentifier":""},
-                    "children":[]}]}]}]}]}]
+                    "children":[]}]}]},{"id":1663547977836,"label":"ElFormItem","componentRule":{"label":"Pagination","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1663548052851,"label":"ElPagination","componentRule":{"pageSize":10,"small":"","total":"400","pageCount":"400","pagerCount":7,"currentPage":1,"layout":"prev, pager, next, jumper, total","pageSizes":"pageSizes","popperClass":"","prevText":"","nextText":"","background":"","disabled":false,"hideOnSinglePage":"","class":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]}]}]}]}]
                 }
             ]
 })
