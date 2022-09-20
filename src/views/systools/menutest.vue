@@ -590,6 +590,9 @@ export default {
         },
         elpagination:{
           pageSizes:[100, 200, 300, 400]
+        },
+        elbadge:{
+          value:12
         }
         
         

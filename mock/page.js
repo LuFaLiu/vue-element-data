@@ -299,7 +299,10 @@ const paramsList = Mock.mock({
                     "children":[]},{"id":1663293534280,"label":"ElButton","componentRule":{"type":"default","size":"","icon":"el-icon-plus","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"event":"increase","customVal":"","uniqueIdentifier":""},
                     "children":[]}]}]},{"id":1663547977836,"label":"ElFormItem","componentRule":{"label":"Pagination","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
                     "children":[{"id":1663548052851,"label":"ElPagination","componentRule":{"pageSize":10,"small":"","total":"400","pageCount":"400","pagerCount":7,"currentPage":1,"layout":"prev, pager, next, jumper, total","pageSizes":"pageSizes","popperClass":"","prevText":"","nextText":"","background":"","disabled":false,"hideOnSinglePage":"","class":"","customVal":"","uniqueIdentifier":""},
-                    "children":[]}]}]}]}]
+                    "children":[]}]},{"id":1663655708906,"label":"ElFormItem","componentRule":{"label":"Badge","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1663655756049,"label":"ElBadge","componentRule":{"value":"value","max":"99","isDot":false,"hidden":false,"type":"primary","class":"item","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1663655839481,"label":"ElButton","componentRule":{"type":"default","size":"small","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"comments","event":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]}]}]}]}]}]
                 }
             ]
 })
