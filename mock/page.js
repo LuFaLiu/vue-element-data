@@ -304,6 +304,8 @@ const paramsList = Mock.mock({
                     "children":[{"id":1663655839481,"label":"ElButton","componentRule":{"type":"default","size":"small","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"comments","event":"","customVal":"","uniqueIdentifier":""},
                     "children":[]}]},{"id":1663720987749,"label":"ElBadge","componentRule":{"value":"","max":"","isDot":true,"hidden":false,"type":"","class":"item","customVal":"","uniqueIdentifier":""},
                     "children":[{"id":1663721028132,"label":"ElButton","componentRule":{"type":"primary","size":"","icon":"el-icon-share","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"event":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]}]},{"id":1663806828591,"label":"ElBadge","componentRule":{"value":"new","max":"","isDot":false,"hidden":false,"type":"","class":"item","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1663806856895,"label":"ElButton","componentRule":{"type":"default","size":"small","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"comments","event":"","customVal":"","uniqueIdentifier":""},
                     "children":[]}]}]}]}]}]
                 }
             ]

@@ -756,8 +756,8 @@ export default {
   }
 
   ::v-deep {
-    .el-badge:last-child {
-      margin-left: 30px;
+    .el-badge {
+      margin-right: 30px;
     }
     .el-progress{
       width: 350px;
