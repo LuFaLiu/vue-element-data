@@ -140,4 +140,6 @@
 "children":[{"id":1663721028132,"label":"ElButton","componentRule":{"type":"primary","size":"","icon":"el-icon-share","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"event":"","customVal":"","uniqueIdentifier":""},
 "children":[]}]},{"id":1663806828591,"label":"ElBadge","componentRule":{"value":"new","max":"","isDot":false,"hidden":false,"type":"","class":"item","customVal":"","uniqueIdentifier":""},
 "children":[{"id":1663806856895,"label":"ElButton","componentRule":{"type":"default","size":"small","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"comments","event":"","customVal":"","uniqueIdentifier":""},
-"children":[]}]}]}]}]}]
+"children":[]}]}]},{"id":1663893468993,"label":"ElFormItem","componentRule":{"label":"Avatar","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+"children":[{"id":1663893515264,"label":"ElAvatar","componentRule":{"size":"size","shape":"circle","icon":"","src":"src","alt":"","srcSet":"","error":"","fit":"cover","class":"","customVal":"","uniqueIdentifier":""},
+"children":[]}]}]}]}]
