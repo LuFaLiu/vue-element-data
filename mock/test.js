@@ -142,4 +142,5 @@
 "children":[{"id":1663806856895,"label":"ElButton","componentRule":{"type":"default","size":"small","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"comments","event":"","customVal":"","uniqueIdentifier":""},
 "children":[]}]}]},{"id":1663893468993,"label":"ElFormItem","componentRule":{"label":"Avatar","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
 "children":[{"id":1663893515264,"label":"ElAvatar","componentRule":{"size":"size","shape":"circle","icon":"","src":"src","alt":"","srcSet":"","error":"","fit":"cover","class":"","customVal":"","uniqueIdentifier":""},
+"children":[]},{"id":1663981393699,"label":"ElAvatar","componentRule":{"size":"size","shape":"square","icon":"","src":"src","alt":"","srcSet":"","error":"","fit":"cover","class":"","customVal":"","uniqueIdentifier":""},
 "children":[]}]}]}]}]

@@ -834,6 +834,10 @@ export default {
       margin-left: 15px;
     }
 
+    .el-avatar--square {
+      margin-left: 15px;
+    }
+
     //.skeletonContainer {
       flex-direction: column;
       .skeleton {
