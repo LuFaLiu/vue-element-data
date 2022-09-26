@@ -140,7 +140,8 @@
 "children":[{"id":1663721028132,"label":"ElButton","componentRule":{"type":"primary","size":"","icon":"el-icon-share","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"event":"","customVal":"","uniqueIdentifier":""},
 "children":[]}]},{"id":1663806828591,"label":"ElBadge","componentRule":{"value":"new","max":"","isDot":false,"hidden":false,"type":"","class":"item","customVal":"","uniqueIdentifier":""},
 "children":[{"id":1663806856895,"label":"ElButton","componentRule":{"type":"default","size":"small","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"comments","event":"","customVal":"","uniqueIdentifier":""},
-"children":[]}]}]},{"id":1663893468993,"label":"ElFormItem","componentRule":{"label":"Avatar","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
-"children":[{"id":1663893515264,"label":"ElAvatar","componentRule":{"size":"size","shape":"circle","icon":"","src":"src","alt":"","srcSet":"","error":"","fit":"cover","class":"","customVal":"","uniqueIdentifier":""},
-"children":[]},{"id":1663981393699,"label":"ElAvatar","componentRule":{"size":"size","shape":"square","icon":"","src":"src","alt":"","srcSet":"","error":"","fit":"cover","class":"","customVal":"","uniqueIdentifier":""},
-"children":[]}]}]}]}]
+"children":[]}]}]},{"id":1664153913559,"label":"ElFormItem","componentRule":{"label":"Result","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+"children":[{"id":1664155027020,"label":"ElResult","componentRule":{"title":"Success Tip","subTitle":"Please follow the instructions","icon":"success","class":"","customVal":"","uniqueIdentifier":""},
+"children":[{"id":1664155047772,"label":"customTemplate","componentRule":{"componentName":"template","slot":"extra","class":"","customVal":"","uniqueIdentifier":""},
+"children":[{"id":1664155122708,"label":"ElButton","componentRule":{"type":"primary","size":"medium","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"Back","event":"","customVal":"","uniqueIdentifier":""},
+"children":[]}]}]}]}]}]}]
