@@ -760,6 +760,10 @@ export default {
   }
 
   ::v-deep {
+    .el-result {
+      float: left;
+      margin-right: 30px;
+    }
     .el-badge {
       margin-right: 30px;
     }

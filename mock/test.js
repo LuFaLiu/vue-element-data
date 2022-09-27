@@ -144,4 +144,9 @@
 "children":[{"id":1664155027020,"label":"ElResult","componentRule":{"title":"Success Tip","subTitle":"Please follow the instructions","icon":"success","class":"","customVal":"","uniqueIdentifier":""},
 "children":[{"id":1664155047772,"label":"customTemplate","componentRule":{"componentName":"template","slot":"extra","class":"","customVal":"","uniqueIdentifier":""},
 "children":[{"id":1664155122708,"label":"ElButton","componentRule":{"type":"primary","size":"medium","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"Back","event":"","customVal":"","uniqueIdentifier":""},
+"children":[]}]}]},{"id":1664239693391,"label":"ElResult","componentRule":{"title":"404","subTitle":"Sorry, request error","icon":"info","class":"","customVal":"","uniqueIdentifier":""},
+"children":[{"id":1664239708423,"label":"customTemplate","componentRule":{"componentName":"template","slot":"icon","class":"","customVal":"","uniqueIdentifier":""},
+"children":[{"id":1664239751265,"label":"ElImage","componentRule":{"src":"https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png","fit":"","lazy":false,"scrollContainer":"","previewSrcList":"","zIndex":2000,"class":"","customVal":"","uniqueIdentifier":""},
+"children":[]}]},{"id":1664239765743,"label":"customTemplate","componentRule":{"componentName":"template","slot":"extra","class":"","customVal":"","uniqueIdentifier":""},
+"children":[{"id":1664239789370,"label":"ElButton","componentRule":{"type":"primary","size":"medium","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"Back","event":"","customVal":"","uniqueIdentifier":""},
 "children":[]}]}]}]}]}]}]
