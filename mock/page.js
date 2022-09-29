@@ -317,6 +317,7 @@ const paramsList = Mock.mock({
                     "children":[{"id":1664239789370,"label":"ElButton","componentRule":{"type":"primary","size":"medium","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"Back","event":"","customVal":"","uniqueIdentifier":""},
                     "children":[]}]}]}]},{"id":1664325933818,"label":"ElFormItem","componentRule":{"label":"Alert","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
                     "children":[{"id":1664325957243,"label":"ElAlert","componentRule":{"title":"success alert","description":"","type":"success","closable":true,"closeText":"","showIcon":"","center":"","effect":"light","class":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1664412331758,"label":"ElAlert","componentRule":{"title":"success alert","description":"","type":"success","closable":true,"closeText":"","showIcon":"","center":"","effect":"dark","class":"","customVal":"","uniqueIdentifier":""},
                     "children":[]}]}]}]}]
                 }
             ]

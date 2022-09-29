@@ -760,6 +760,13 @@ export default {
   }
 
   ::v-deep {
+    .el-alert {
+      width: 500px;
+      padding: 8px 16px;
+    }
+    .is-dark {
+      margin-top: 20px;
+    }
     .el-result {
       float: left;
       margin-right: 30px;
@@ -786,6 +793,11 @@ export default {
     .el-form-item{
       display: flex;
     }
+
+    .el-form-item__content {
+      line-height: 1 !important;
+    }
+
     .el-slider {
       width: 500px;
       margin-left: 20px;
