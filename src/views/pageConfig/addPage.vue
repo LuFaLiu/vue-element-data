@@ -414,6 +414,9 @@ export default {
         case 'ElFormItem':
           this.componentProps.push({attributeName:'inline',attributeLabel:'inline',attributeModel:'inline','inline': false ,inputFormat:'boolean', attributeType: 'ruleRadio'})
           break; 
+        case 'ElTable':
+          this.componentProps.push({attributeName:'loading',attributeLabel:'loading',attributeModel:'loading','loading':false ,inputFormat:'boolean', attributeType: 'ruleRadio'})
+          break; 
         default: 
           this.componentProps.push({attributeName:'class',attributeLabel:'class',attributeModel:'class','class': '' ,inputFormat:'list', attributeType: 'ruleInput'})
           break;

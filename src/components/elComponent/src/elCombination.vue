@@ -73,9 +73,9 @@ export default {
            var that = this;
            return node && node.childrenNode.length > 0 && node.childrenNode.map(function (item) {
                 var componentNameParams = item.componentName.toLowerCase();
-                if(componentNameParams == 'elform'){
-                    //console.log("componentNameParams == 'elform'");
-                    //console.log(item);
+                if(componentNameParams == 'eltable'){
+                    console.log("componentNameParams == 'eltable'");
+                    console.log(item);
                 }
                 return h(
                     item.componentName == 'div' ? 'div' : item.componentName == 'img' ? 'img' : item.componentName == 'span' ? 'span' : item.componentName == 'template' ? 'template' : item.componentName,
@@ -192,7 +192,7 @@ export default {
                         directives: [
                             {
                                 name: 'loading',
-                                value: item.componentName == 'elTable' ? that.tableLoading : false
+                                value: item.componentName == "ElTable" ? item.loading : false
                             },
                             {
                                 name: 'show',
@@ -362,7 +362,7 @@ export default {
         })
         
         setTimeout(() => {
-            that.tableLoading = false;
+            //that.tableLoading = false;
         }, 1000);
     }
 }
