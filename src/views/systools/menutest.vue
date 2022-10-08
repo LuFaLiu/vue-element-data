@@ -804,6 +804,20 @@ export default {
           message: 'action: ' + action
         });
       });
+    },
+    openNotification1(){
+      const h = this.$createElement;
+      this.$notify({
+        title: 'Title',
+        message: h('i', { style: 'color: teal' }, 'This is a reminder')
+      });
+    },
+    openNotification2() {
+      this.$notify({
+        title: 'Prompt',
+        message: 'This is a message that does not automatically close',
+        duration: 0
+      });
     }
   }
 }
