@@ -597,6 +597,9 @@ export default {
         elavatar:{
           size:"",
           src: "https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png",
+        },
+        elmenu:{
+          defaultActive:'1'
         }
         
         
@@ -830,6 +833,26 @@ export default {
   }
 
   ::v-deep {
+    .el-link--inner {
+      span {
+        width: auto !important;
+        height: auto !important;
+        overflow: auto !important;
+        height: auto !important;
+      }
+    }
+    .el-menu {
+      width: 100%;
+    }
+    .el-menu-item,.el-submenu {
+      span {
+        width: auto !important;
+        height: auto !important;
+        overflow: auto !important;
+        color: #909399 !important;
+        visibility: initial !important;
+      }
+    }
     .el-alert {
       width: 500px;
       padding: 8px 16px;

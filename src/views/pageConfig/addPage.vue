@@ -417,6 +417,12 @@ export default {
         case 'ElTable':
           this.componentProps.push({attributeName:'loading',attributeLabel:'loading',attributeModel:'loading','loading':false ,inputFormat:'boolean', attributeType: 'ruleRadio'})
           break; 
+        case 'ElMenuItem':
+          this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title','title': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break; 
+        case 'customTemplate':
+          this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title','title': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;    
         default: 
           this.componentProps.push({attributeName:'class',attributeLabel:'class',attributeModel:'class','class': '' ,inputFormat:'list', attributeType: 'ruleInput'})
           break;

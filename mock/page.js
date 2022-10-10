@@ -332,7 +332,23 @@ const paramsList = Mock.mock({
                     "children":[]}]},{"id":1665196720532,"label":"ElFormItem","componentRule":{"label":"Notification","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
                     "children":[{"id":1665196804083,"label":"ElButton","componentRule":{"type":"default","size":"","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":true,"autofocus":"","round":false,"circle":false,"title":"Closes automatically","event":"openNotification1","customVal":"","uniqueIdentifier":""},
                     "children":[]},{"id":1665196888011,"label":"ElButton","componentRule":{"type":"default","size":"","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":true,"autofocus":"","round":false,"circle":false,"title":"Won't close automatically","vModelName":"","event":"openNotification2","customVal":"","uniqueIdentifier":""},
-                    "children":[]}]}]}]}]
+                    "children":[]}]},{"id":1665362681689,"label":"ElFormItem","componentRule":{"label":"NavMenu","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1665362790992,"label":"ElMenu","componentRule":{"mode":"horizontal","defaultActive":"defaultActive","defaultOpeneds":"","uniqueOpened":"","router":"","menuTrigger":"hover","collapse":"","backgroundColor":"","textColor":"","activeTextColor":"","collapseTransition":true,"class":"el-menu-demo","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1665363276960,"label":"ElMenuItem","componentRule":{"index":"1","route":"","disabled":false,"title":"Processing Center","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1665363305784,"label":"ElSubmenu","componentRule":{"index":"2","showTimeout":300,"hideTimeout":300,"popperClass":"","disabled":false,"popperAppendToBody":"","class":"","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1665363539169,"label":"customTemplate","componentRule":{"componentName":"template","slot":"title","title":"Workspace","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1665363947610,"label":"ElMenuItem","componentRule":{"index":"2-1","route":"","disabled":false,"title":"item one","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1665363973537,"label":"ElMenuItem","componentRule":{"index":"2-2","route":"","disabled":false,"title":"item two","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1665364018472,"label":"ElMenuItem","componentRule":{"index":"2-3","route":"","disabled":false,"title":"item three","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1665364039329,"label":"ElSubmenu","componentRule":{"index":"2-4","showTimeout":300,"hideTimeout":300,"popperClass":"","disabled":false,"popperAppendToBody":"","class":"","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1665364065496,"label":"customTemplate","componentRule":{"componentName":"template","slot":"title","title":"item four","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1665364085728,"label":"ElMenuItem","componentRule":{"index":"2-4-1","route":"","disabled":false,"title":"item one","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1665364098488,"label":"ElMenuItem","componentRule":{"index":"2-4-2","route":"","disabled":false,"title":"item two","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1665364114224,"label":"ElMenuItem","componentRule":{"index":"2-4-3","route":"","disabled":false,"title":"item three","customVal":"","uniqueIdentifier":""},
+                    "children":[]}]}]},{"id":1665364144896,"label":"ElMenuItem","componentRule":{"index":"3","route":"","disabled":true,"title":"Info","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1665364157704,"label":"ElMenuItem","componentRule":{"index":"4","route":"","disabled":false,"title":"","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1665365350231,"label":"ElLink","componentRule":{"type":"default","underline":true,"disabled":false,"href":"https://www.ele.me","icon":"","title":"Orders","customVal":"","uniqueIdentifier":""},
+                    "children":[]}]}]}]}]}]}]
                 }
             ]
 })
