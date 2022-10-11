@@ -833,6 +833,9 @@ export default {
   }
 
   ::v-deep {
+    .el-menu-vertical-demo {
+      margin-top: 15px;
+    }
     .el-link--inner {
       span {
         width: auto !important;

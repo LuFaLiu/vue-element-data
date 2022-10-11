@@ -136,7 +136,7 @@ export function dynamicvModel(obj,str,val,type) {
     str = str.replace(/\[(\w+)\]/g, ".$1"); // handler arr index
     let arr = str.split(".");
     for (let i in arr) {
-        obj = obj[arr[i]] || "";
+        obj = obj[arr[i]] || ''; //obj[arr[i]]为0时默认会被转为false所以不能在后面加(或条件)
         if(type == 'set' && Object.keys(obj).indexOf(arr[arr.length - 1])>-1){ //key
             obj[arr[arr.length - 1]] = val; //set obj value
         }else if(type == 'set' && arr.length == 1){
