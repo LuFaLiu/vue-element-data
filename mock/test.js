@@ -197,4 +197,10 @@
 "children":[]}]}]},{"id":1665364144896,"label":"ElMenuItem","componentRule":{"index":"3","route":"","disabled":true,"title":"Info","customVal":"","uniqueIdentifier":""},
 "children":[]},{"id":1665364157704,"label":"ElMenuItem","componentRule":{"index":"4","route":"","disabled":false,"title":"","customVal":"","uniqueIdentifier":""},
 "children":[{"id":1665365350231,"label":"ElLink","componentRule":{"type":"default","underline":true,"disabled":false,"href":"https://www.ele.me","icon":"","title":"Orders","customVal":"","uniqueIdentifier":""},
-"children":[]}]}]}]}]}]}]
+"children":[]}]}]}]},{"id":1665565057840,"label":"ElFormItem","componentRule":{"label":"Tabs","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+"children":[{"id":1665565109190,"label":"ElTabs","componentRule":{"type":"","activeName":"activeName","closable":false,"addable":false,"value":"","editable":false,"tabPosition":"top","beforeLeave":"","stretch":"","class":"","customVal":"","uniqueIdentifier":""},
+"children":[{"id":1665565201615,"label":"ElTabPane","componentRule":{"label":"User","labelContent":"","name":"first","closable":false,"disabled":false,"lazy":false,"title":"User","customVal":"","uniqueIdentifier":""},
+"children":[]},{"id":1665565253871,"label":"ElTabPane","componentRule":{"label":"Config","labelContent":"","name":"second","closable":false,"disabled":false,"lazy":false,"title":"Config","customVal":"","uniqueIdentifier":""},
+"children":[]},{"id":1665565266126,"label":"ElTabPane","componentRule":{"label":"Role","labelContent":"","name":"third","closable":false,"disabled":false,"lazy":false,"title":"Role","customVal":"","uniqueIdentifier":""},
+"children":[]},{"id":1665565279367,"label":"ElTabPane","componentRule":{"label":"Task","labelContent":"","name":"fourth","closable":false,"disabled":false,"lazy":false,"title":"Task","customVal":"","uniqueIdentifier":""},
+"children":[]}]}]}]}]}]

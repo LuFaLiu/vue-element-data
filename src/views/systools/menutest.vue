@@ -600,6 +600,9 @@ export default {
         },
         elmenu:{
           defaultActive:'1'
+        },
+        eltabs:{
+          activeName: 'second'
         }
         
         
