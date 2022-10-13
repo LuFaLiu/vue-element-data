@@ -203,4 +203,9 @@
 "children":[]},{"id":1665565253871,"label":"ElTabPane","componentRule":{"label":"Config","labelContent":"","name":"second","closable":false,"disabled":false,"lazy":false,"title":"Config","customVal":"","uniqueIdentifier":""},
 "children":[]},{"id":1665565266126,"label":"ElTabPane","componentRule":{"label":"Role","labelContent":"","name":"third","closable":false,"disabled":false,"lazy":false,"title":"Role","customVal":"","uniqueIdentifier":""},
 "children":[]},{"id":1665565279367,"label":"ElTabPane","componentRule":{"label":"Task","labelContent":"","name":"fourth","closable":false,"disabled":false,"lazy":false,"title":"Task","customVal":"","uniqueIdentifier":""},
+"children":[]}]},{"id":1665654096144,"label":"ElTabs","componentRule":{"type":"border-card","activeName":"","closable":false,"addable":false,"value":"","editable":false,"tabPosition":"top","beforeLeave":"","stretch":"","class":"","customVal":"","uniqueIdentifier":""},
+"children":[{"id":1665654111298,"label":"ElTabPane","componentRule":{"label":"Route","labelContent":"","name":"","closable":false,"disabled":false,"lazy":false,"title":"Route","customVal":"","uniqueIdentifier":""},
+"children":[]},{"id":1665654192952,"label":"ElTabPane","componentRule":{"label":"Config","labelContent":"","name":"","closable":false,"disabled":false,"lazy":false,"title":"Config","customVal":"","uniqueIdentifier":""},
+"children":[]},{"id":1665654208524,"label":"ElTabPane","componentRule":{"label":"Role","labelContent":"","name":"","closable":false,"disabled":false,"lazy":false,"title":"Role","customVal":"","uniqueIdentifier":""},
+"children":[]},{"id":1665654216208,"label":"ElTabPane","componentRule":{"label":"Task","labelContent":"","name":"","closable":false,"disabled":false,"lazy":false,"title":"Task","customVal":"","uniqueIdentifier":""},
 "children":[]}]}]}]}]}]

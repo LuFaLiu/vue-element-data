@@ -403,6 +403,9 @@ export default {
           },
           transferAttribute:{
             scopedSlots:true
+          },
+          tabPaneText:{
+            text:'Route'
           }
 
         },
@@ -836,6 +839,9 @@ export default {
   }
 
   ::v-deep {
+    .el-tabs--border-card {
+      margin-top: 15px;
+    }
     .el-menu-vertical-demo {
       margin-top: 15px;
     }
