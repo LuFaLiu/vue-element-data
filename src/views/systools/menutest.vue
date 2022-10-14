@@ -606,7 +606,8 @@ export default {
         },
         eltabs:{
           activeName: 'second'
-        }
+        },
+       
         
         
 

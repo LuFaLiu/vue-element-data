@@ -208,7 +208,7 @@ export default {
                         
                     },
                     item && item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) 
-                            : item.componentName == 'ElButton' || (item.componentName == 'elContainer' && item.title) || item.componentName == 'ElLink' || item.componentName == 'ElHeader' || item.componentName == 'ElFooter' || item.componentName == 'ElRadio' || item.componentName == 'ElMenuItem' || (item.componentName == 'template' && item.title) || (item.componentName == 'ElTabPane' && item.title)
+                            : item.componentName == 'ElButton' || (item.componentName == 'elContainer' && item.title) || item.componentName == 'ElLink' || item.componentName == 'ElHeader' || item.componentName == 'ElFooter' || item.componentName == 'ElRadio' || item.componentName == 'ElMenuItem' || (item.componentName == 'template' && item.title) || (item.componentName == 'ElTabPane' && item.title) || (item.componentName == 'ElBreadcrumbItem' && item.title)
                                 //? [h('span',that.filteri18n(item.title))] 
                                 ? [h('span',that.$t(item.title))] 
                                     : item.componentName == 'ElSelect' ? that.superParams[item.uniqueIdentifier ? (componentNameParams + item.uniqueIdentifier) : componentNameParams]['ElOptionListName'].map((v,index) => [h('el-option',{props:{label:that.$t(v.label),key:v.value,value:v.value}})] )
