@@ -214,4 +214,6 @@
 "children":[]},{"id":1665708207854,"label":"ElBreadcrumbItem","componentRule":{"to":"","replace":false,"title":"promotion management","customVal":"","uniqueIdentifier":""},
 "children":[]},{"id":1665708256326,"label":"ElBreadcrumbItem","componentRule":{"to":"","replace":false,"title":"promotion list","customVal":"","uniqueIdentifier":""},
 "children":[]},{"id":1665708265741,"label":"ElBreadcrumbItem","componentRule":{"to":"","replace":false,"title":"promotion detail","customVal":"","uniqueIdentifier":""},
-"children":[]}]}]}]}]}]
+"children":[]}]}]},{"id":1665967706843,"label":"ElFormItem","componentRule":{"label":"PageHeader","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+"children":[{"id":1665967749569,"label":"ElPageHeader","componentRule":{"title":"Back","content":"detail","class":"","customVal":"","uniqueIdentifier":""},
+"children":[]}]}]}]}]
