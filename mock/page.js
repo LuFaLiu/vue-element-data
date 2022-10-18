@@ -382,7 +382,16 @@ const paramsList = Mock.mock({
                     "children":[]},{"id":1665708265741,"label":"ElBreadcrumbItem","componentRule":{"to":"","replace":false,"title":"promotion detail","customVal":"","uniqueIdentifier":""},
                     "children":[]}]}]},{"id":1665967706843,"label":"ElFormItem","componentRule":{"label":"PageHeader","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
                     "children":[{"id":1665967749569,"label":"ElPageHeader","componentRule":{"title":"Back","content":"detail","class":"","customVal":"","uniqueIdentifier":""},
-                    "children":[]}]}]}]}]
+                    "children":[]}]},{"id":1666053264931,"label":"ElFormItem","componentRule":{"label":"Dropdown","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1666053307499,"label":"ElDropdown","componentRule":{"trigger":"hover","type":"","size":"","splitButton":"","hideOnClick":true,"placement":"bottom-end","visibleArrow":"true","showTimeout":250,"hideTimeout":150,"tabindex":"","disabled":false,"class":"","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1666053423714,"label":"customContent","componentRule":{"componentName":"customContent","tag":"span","attributeName":"elDropdownLink","class":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1666053622274,"label":"ElDropdownMenu","componentRule":{"visibleArrow":true,"arrowOffset":"","slot":"dropdown","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1666053813186,"label":"ElDropdownItem","componentRule":{"command":"","disabled":false,"divided":false,"icon":"","title":"Action 1","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1666053894273,"label":"ElDropdownItem","componentRule":{"command":"","disabled":false,"divided":false,"icon":"","title":"Action 2","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1666053901017,"label":"ElDropdownItem","componentRule":{"command":"","disabled":false,"divided":false,"icon":"","title":"Action 3","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1666053910225,"label":"ElDropdownItem","componentRule":{"command":"","disabled":false,"divided":false,"icon":"","title":"Action 4","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1666053917634,"label":"ElDropdownItem","componentRule":{"command":"","disabled":false,"divided":false,"icon":"","title":"Action 5","customVal":"","uniqueIdentifier":""},
+                    "children":[]}]}]}]}]}]}]
                 }
             ]
 })

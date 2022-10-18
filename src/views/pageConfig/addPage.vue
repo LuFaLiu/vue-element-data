@@ -360,7 +360,7 @@ export default {
         //特殊属性作处理
         if(i == 'modal'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
-        }else if(i == 'showClose' || i == 'disabled' || i == 'showPassword' || i == 'clearable' || i== 'loading' || i == 'autosize' || i == 'border' || i == 'vertical' || i == 'readonly' || i == 'drag' || i == 'showScore' || i == 'round' || i == 'plain' || i == 'circle' || i == 'filterable' || i == 'showSummary' || i == 'remote' || i == 'multiple' || i == 'required' || i == 'lazy' || i == 'textInside' || i == 'hidden' || i == 'isDot' || i == 'closable'){
+        }else if(i == 'showClose' || i == 'disabled' || i == 'showPassword' || i == 'clearable' || i== 'loading' || i == 'autosize' || i == 'border' || i == 'vertical' || i == 'readonly' || i == 'drag' || i == 'showScore' || i == 'round' || i == 'plain' || i == 'circle' || i == 'filterable' || i == 'showSummary' || i == 'remote' || i == 'multiple' || i == 'required' || i == 'lazy' || i == 'textInside' || i == 'hidden' || i == 'isDot' || i == 'closable' || i == 'divided'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i].default ? componentInfo[i].default : false ,inputFormat:'text', attributeType: 'ruleRadio'})
         }else if(i == 'pageSizes'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '[10, 20, 30, 40, 50, 100]',inputFormat:'Array', attributeType: 'ruleInput'})
@@ -428,6 +428,12 @@ export default {
           break;    
         case 'ElBreadcrumbItem':
           this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title','title': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;  
+        case 'ElDropdownItem':
+          this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title','title': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;  
+        case 'ElDropdownMenu':
+          this.componentProps.push({attributeName:'slot',attributeLabel:'slot',attributeModel:'slot','slot': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;  
         default: 
           this.componentProps.push({attributeName:'class',attributeLabel:'class',attributeModel:'class','class': '' ,inputFormat:'list', attributeType: 'ruleInput'})

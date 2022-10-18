@@ -406,6 +406,10 @@ export default {
           },
           tabPaneText:{
             text:'Route'
+          },
+          elDropdownLink:{
+            tag:'span',
+            text:'Dropdown List'
           }
 
         },
