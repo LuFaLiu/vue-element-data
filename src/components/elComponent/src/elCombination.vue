@@ -321,7 +321,7 @@ export default {
                             item[i] =   ( 
                                             i == item[i] 
                                                 ? that.vModelVal(`${hasUniqueIdentifier ? (componentNameParams + hasUniqueIdentifier) : componentNameParams}.${i}`)
-                                                    : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl' || i == 'pageCount' || i == 'total'
+                                                    : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl' || i == 'pageCount' || i == 'total' || i == 'active'
                                                         ? Number(item[i]) 
                                                             : item[i] == 'orderVal' && customVal //customVal exist   
                                                                 ? that.vModelVal(customVal)

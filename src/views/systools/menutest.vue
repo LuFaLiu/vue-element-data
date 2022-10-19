@@ -611,6 +611,9 @@ export default {
         eltabs:{
           activeName: 'second'
         },
+        elsteps:{
+          active:0
+        }
        
         
         
@@ -832,6 +835,10 @@ export default {
         message: 'This is a message that does not automatically close',
         duration: 0
       });
+    },
+    stepNext(){
+      console.log("stepNext=========>");
+      if (this.elsteps.active++ > 2) this.elsteps.active = 0;
     }
   }
 }
@@ -844,6 +851,9 @@ export default {
   }
 
   ::v-deep {
+    .el-steps {
+      width: 500px;
+    }
     .el-tabs--border-card {
       margin-top: 15px;
     }

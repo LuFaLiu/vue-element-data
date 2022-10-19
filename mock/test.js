@@ -225,4 +225,10 @@
 "children":[]},{"id":1666053901017,"label":"ElDropdownItem","componentRule":{"command":"","disabled":false,"divided":false,"icon":"","title":"Action 3","customVal":"","uniqueIdentifier":""},
 "children":[]},{"id":1666053910225,"label":"ElDropdownItem","componentRule":{"command":"","disabled":false,"divided":false,"icon":"","title":"Action 4","customVal":"","uniqueIdentifier":""},
 "children":[]},{"id":1666053917634,"label":"ElDropdownItem","componentRule":{"command":"","disabled":false,"divided":false,"icon":"","title":"Action 5","customVal":"","uniqueIdentifier":""},
-"children":[]}]}]}]}]}]}]
+"children":[]}]}]}]},{"id":1666140963882,"label":"ElFormItem","componentRule":{"label":"Steps","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+"children":[{"id":1666140990888,"label":"ElSteps","componentRule":{"space":"","active":"active","direction":"horizontal","alignCenter":"","simple":"","finishStatus":"success","processStatus":"","class":"","customVal":"","uniqueIdentifier":""},
+"children":[{"id":1666141005968,"label":"ElStep","componentRule":{"title":"Step 1","icon":"","description":"","status":"","class":"","customVal":"","uniqueIdentifier":""},
+"children":[]},{"id":1666141016432,"label":"ElStep","componentRule":{"title":"Step 2","icon":"","description":"","status":"","class":"","customVal":"","uniqueIdentifier":""},
+"children":[]},{"id":1666141024472,"label":"ElStep","componentRule":{"title":"Step 3","icon":"","description":"","status":"","class":"","customVal":"","uniqueIdentifier":""},
+"children":[]}]},{"id":1666141063311,"label":"ElButton","componentRule":{"type":"default","size":"","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"Next step","event":"stepNext","customVal":"","uniqueIdentifier":""},
+"children":[]}]}]}]}]
