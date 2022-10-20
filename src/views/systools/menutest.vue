@@ -1,11 +1,11 @@
 <template>
-    <elComponent v-if="appParams.pageData" :node="appParams.pageData" :route="$route.name"/>
+    <elComponent v-if="appParams.pageData" ref="menutest" :node="appParams.pageData" :route="$route.name"/>
 </template>
 
 <script>
 import _ from "lodash";
 import elComponent from '@/components/elComponent/index'
-import { resetObj,getVueComponent } from '@/utils/index'
+import { resetObj,getVueComponent,getVueComponentUid } from '@/utils/index'
 
 export default {
  
@@ -410,6 +410,10 @@ export default {
           elDropdownLink:{
             tag:'span',
             text:'Dropdown List'
+          },
+          eldialogContent:{
+            tag:'span',
+            text:'This is a message'
           }
 
         },
@@ -614,7 +618,6 @@ export default {
         elsteps:{
           active:0
         }
-       
         
         
 
@@ -837,9 +840,26 @@ export default {
       });
     },
     stepNext(){
-      console.log("stepNext=========>");
-      if (this.elsteps.active++ > 2) this.elsteps.active = 0;
-    }
+      var refComponent = getVueComponent(this,'$children','$refs','stepsRef');
+      if (refComponent.active++ > 2){
+        refComponent.active = 0;
+      } else {
+        refComponent.active ++;
+      }
+      
+    },
+    openDialog(){
+      var refComponent = getVueComponent(this,'$children','$refs','dialogRef');
+      refComponent.visible = true;
+    },
+    beforeClose(){
+      var refComponent = getVueComponent(this,'$children','$refs','dialogRef');
+      refComponent.visible = false;
+    },
+    cancelDialog(){
+      var refComponent = getVueComponent(this,'$children','$refs','dialogRef');
+      refComponent.visible = false;
+    },
   }
 }
 </script>
@@ -851,6 +871,14 @@ export default {
   }
 
   ::v-deep {
+    .el-dialog {
+      top: 20%;
+      width: 50% !important;
+      height: 50% !important;
+      .el-dialog__body {
+        height: 28%;
+      }
+    }
     .el-steps {
       width: 500px;
     }

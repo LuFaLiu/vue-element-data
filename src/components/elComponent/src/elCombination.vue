@@ -224,6 +224,7 @@ export default {
             }
         },
         vModelVal(item){
+            console.log(item);
             if(item){
                 return dynamicvModel(this.superParams,item,'','get');
             }
@@ -235,7 +236,6 @@ export default {
             this.superParams[this.parentNode.currentChangeName](val);
         },
         btnClick(item){
-            console.log(item);
             if(item.params){
                 this.superParams[item.event](item.paramsName);
             }else if(item.tableParams){
@@ -312,20 +312,21 @@ export default {
                 if(i !== 'componentName' || i !== 'pageName'){
                     if(i == 'readonly'){
                         item[i] = false;
-                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error' || i == 'load' || i == 'renderHeader' || i == 'formatter' || i == 'selectable' || i == 'rowKey' || item[i] == 'renderContentTree' || i == 'allowDrag' || i == 'allowDrop' || item[i] == 'formatPercentage' || i == 'increase' || i == 'decrease'){
+                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error' || i == 'load' || i == 'renderHeader' || i == 'formatter' || i == 'selectable' || i == 'rowKey' || item[i] == 'renderContentTree' || i == 'allowDrag' || i == 'allowDrop' || item[i] == 'formatPercentage' || i == 'increase' || i == 'decrease' || i == 'openDialog' || i == 'beforeClose' || i == 'cancelDialog'){
                         item[i] = that.superParams[i];
                     } else {
                         if(componentNameParams == 'elskeleton' && i == 'loading'){
                             item[i] = that.superParams.elskeleton.elskeletonLoading;
                         }else {
-                            item[i] =   ( 
+                            item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
+                                      ( 
                                             i == item[i] 
                                                 ? that.vModelVal(`${hasUniqueIdentifier ? (componentNameParams + hasUniqueIdentifier) : componentNameParams}.${i}`)
                                                     : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl' || i == 'pageCount' || i == 'total' || i == 'active'
                                                         ? Number(item[i]) 
-                                                            : item[i] == 'orderVal' && customVal //customVal exist   
-                                                                ? that.vModelVal(customVal)
-                                                                    : item[i]
+                                                                : item[i] == 'orderVal' && customVal //customVal exist   
+                                                                    ? that.vModelVal(customVal)
+                                                                        : item[i]
                                         )
                         }
                     }
