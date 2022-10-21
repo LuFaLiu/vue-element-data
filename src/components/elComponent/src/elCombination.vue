@@ -14,11 +14,14 @@ export default {
         const node = this.node;
         const pageName = this.route;
 
+        console.log("触发渲染函数更新");
+
         if(this.$parent.$route){
             if(this.$parent.$route.path.indexOf('/pageConfig/addPage') > -1){ //addRole children router
                 this.$set(node,'pageName', pageName ? pageName :this.$parent.$route.name);
             }
         }
+        
 
         if(!!node && node.pageName == pageName){ //filter old node 过滤掉旧数据
             var componentNameParams = node.componentName.toLowerCase();
@@ -86,9 +89,15 @@ export default {
                         },
                         props: item.props && componentNameParams !== 'eltransfer' && componentNameParams !== 'eltree' ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
                         on:{
-                            percentage:function (val) {
-                                console.log("percentage方法");
-                                console.log(val);
+                            changeValue:function (paramsName) {
+                                console.log("changeValue===>");
+                                console.log(paramsName);
+                                if(paramsName == 'percentage'){
+                                    item.percentage += 10;
+                                    if (item.percentage > 100) {
+                                        item.percentage = 100;
+                                    }
+                                }
                             },
                             '&click':function (e) {
                                 switch (item.componentName) {
@@ -224,10 +233,37 @@ export default {
             }
         },
         vModelVal(item){
-            console.log(item);
+            /*
+            console.log("vModelVal(item,paramsName)",item,paramsName);
+            if(paramsName && item.refName){
+                console.log(item);
+                let currentVueComponent = this.$refs[item.refName];
+                let params = paramsName.split('.')[paramsName.split('.').length -1];
+
+                console.log(params,dynamicvModel(this.superParams,paramsName,'','get'));
+                console.log(this);
+                console.log(currentVueComponent);
+                this.$set(this.params,params,dynamicvModel(this.superParams,paramsName,'','get'));
+                this.$set(currentVueComponent,params,this.params[params]);
+                console.log(currentVueComponent);
+                return this.params[params] = currentVueComponent[params];
+
+                
+                console.log("vModelVal(item,paramsName)",currentVueComponent,params);
+                console.log(currentVueComponent);
+                
+
+
+                
+            }
+            */
+
+            /*
             if(item){
                 return dynamicvModel(this.superParams,item,'','get');
             }
+            */
+           
         },
         sizeChange(val){
             this.superParams[this.parentNode.sizeChangeName](val);
@@ -241,7 +277,7 @@ export default {
             }else if(item.tableParams){
                 this.superParams[item.event](this.rowData);  
             } else{
-                this.superParams[item.event]();  
+                this.superParams[item.event](this);  
             }
         },
         selectChange(val,item){ 
@@ -322,7 +358,7 @@ export default {
                                       ( 
                                             i == item[i] 
                                                 ? that.vModelVal(`${hasUniqueIdentifier ? (componentNameParams + hasUniqueIdentifier) : componentNameParams}.${i}`)
-                                                    : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl' || i == 'pageCount' || i == 'total' || i == 'active'
+                                                    : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl' || i == 'pageCount' || i == 'total' || i == 'active' || i == 'percentage'
                                                         ? Number(item[i]) 
                                                                 : item[i] == 'orderVal' && customVal //customVal exist   
                                                                     ? that.vModelVal(customVal)
@@ -341,7 +377,8 @@ export default {
             domList:[],
             tableHeight:0,
             timer:null,
-            showPage:false
+            showPage:false,
+            params:{}
         }
     },
     mounted(){

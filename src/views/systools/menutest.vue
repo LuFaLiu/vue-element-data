@@ -755,19 +755,53 @@ export default {
       console.log(percentage);
       return percentage === 100 ? 'Full' : `${percentage}%`;
     },
-    increase() {
-      console.log(this.elprogress.percentage );
-      this.elprogress.percentage += 10;
-      if (this.elprogress.percentage > 100) {
-        this.elprogress.percentage = 100;
+    increase(componentData) {
+      
+      /*
+      console.log(percentageVal);
+      console.log(componentData);
+      let percentageVal = componentData.params
+      percentageVal.percentage += 10;
+      if (percentageVal.percentage > 100) {
+        percentageVal.percentage = 100;
       }
+      console.log(this.getVueComponentName('elProgressBar'));
+      */
+
+      //let percentageVal = this.getVueComponentName('elProgressBar');
+      //this.$set(this.params,params,dynamicvModel(this.superParams,paramsName,'','get'));
+      //this.$set(currentVueComponent,params,this.params[params]);
+      
+      /*
+      let currentVueComponent = this.getVueComponentName('elProgressBar');
+      console.log(currentVueComponent); 
+      currentVueComponent._self.percentage += 10;
+      if (currentVueComponent._self.percentage > 100) {
+        currentVueComponent._self.percentage = 100;
+      }
+      */
+
+      let currentVueComponent = this.getVueComponentName('elProgressBar');
+      console.log(currentVueComponent); 
+
+      currentVueComponent._events.changeValue[0]('percentage');
+
+
+
     },
-    decrease() {
-      console.log(this.elprogress.percentage );
-      this.elprogress.percentage -= 10;
-      if (this.elprogress.percentage < 0) {
-        this.elprogress.percentage = 0;
+    decrease(componentData) {
+      //let percentageVal = this.getVueComponentName('elProgressBar');
+      let percentageVal = componentData.params;
+      console.log(percentageVal);
+      console.log(componentData);
+      percentageVal.percentage -= 10;
+      if (percentageVal.percentage < 0) {
+        percentageVal.percentage = 0;
       }
+      
+      console.log(percentageVal);
+      //this.$set(componentData.params,'percentage',)
+      console.log(this.getVueComponentName('elProgressBar'));
     },
     open() {
       this.$message('This is a message.');
@@ -849,17 +883,18 @@ export default {
       
     },
     openDialog(){
-      var refComponent = getVueComponent(this,'$children','$refs','dialogRef');
-      refComponent.visible = true;
+      this.getVueComponentName('dialogRef').visible = true;
     },
     beforeClose(){
-      var refComponent = getVueComponent(this,'$children','$refs','dialogRef');
-      refComponent.visible = false;
+      this.getVueComponentName('dialogRef').visible = false;
     },
     cancelDialog(){
-      var refComponent = getVueComponent(this,'$children','$refs','dialogRef');
-      refComponent.visible = false;
+      this.getVueComponentName('dialogRef').visible = false;
     },
+    getVueComponentName(refName){
+      var refComponent = getVueComponent(this,'$children','$refs',refName);
+      return refComponent;
+    }
   }
 }
 </script>
