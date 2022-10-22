@@ -755,53 +755,37 @@ export default {
       console.log(percentage);
       return percentage === 100 ? 'Full' : `${percentage}%`;
     },
-    increase(componentData) {
-      
-      /*
-      console.log(percentageVal);
-      console.log(componentData);
-      let percentageVal = componentData.params
+    increase() {
+
+      let percentageVal = this.elprogress;
       percentageVal.percentage += 10;
       if (percentageVal.percentage > 100) {
         percentageVal.percentage = 100;
       }
-      console.log(this.getVueComponentName('elProgressBar'));
-      */
 
-      //let percentageVal = this.getVueComponentName('elProgressBar');
-      //this.$set(this.params,params,dynamicvModel(this.superParams,paramsName,'','get'));
-      //this.$set(currentVueComponent,params,this.params[params]);
+      let currentVueComponent = this.getVueComponentName('elProgressBar');
+      currentVueComponent._events.changeValue[0]('percentage',percentageVal.percentage);
+
       
-      /*
-      let currentVueComponent = this.getVueComponentName('elProgressBar');
-      console.log(currentVueComponent); 
-      currentVueComponent._self.percentage += 10;
-      if (currentVueComponent._self.percentage > 100) {
-        currentVueComponent._self.percentage = 100;
-      }
-      */
-
-      let currentVueComponent = this.getVueComponentName('elProgressBar');
-      console.log(currentVueComponent); 
-
-      currentVueComponent._events.changeValue[0]('percentage');
+      console.log(currentVueComponent,percentageVal.percentage); 
+      
 
 
 
     },
-    decrease(componentData) {
-      //let percentageVal = this.getVueComponentName('elProgressBar');
-      let percentageVal = componentData.params;
-      console.log(percentageVal);
-      console.log(componentData);
+    decrease() {
+
+      let percentageVal = this.elprogress;
       percentageVal.percentage -= 10;
       if (percentageVal.percentage < 0) {
         percentageVal.percentage = 0;
       }
       
-      console.log(percentageVal);
-      //this.$set(componentData.params,'percentage',)
-      console.log(this.getVueComponentName('elProgressBar'));
+      let currentVueComponent = this.getVueComponentName('elProgressBar');
+      currentVueComponent._events.changeValue[0]('percentage',percentageVal.percentage);
+
+      
+      console.log(currentVueComponent,percentageVal.percentage); 
     },
     open() {
       this.$message('This is a message.');

@@ -1,5 +1,5 @@
 <script type="text/jsx">
-import { filteri18n, dynamicvModel, resizeObserver } from '@/utils/index'
+import { filteri18n, dynamicvModel, resizeObserver, getVueComponent } from '@/utils/index'
 import Template from './template'
 import TraverseTemplate from './traverseTemplate'
 import CustomContent from './customContent'
@@ -30,7 +30,7 @@ export default {
                     node.componentName,
                     {
                         'class': node.class,
-                        props: this.conversionProps(node,componentNameParams),   
+                        props: this.conversionProps(node,componentNameParams)
                     },
                     this.deepChildrenComponent(node,h)
                 )
@@ -66,6 +66,7 @@ export default {
                 return dynamicvModel(this.superParams,this.parentNode.vModel,'','get');
             },
             set(val){
+                console.log(val);
                 dynamicvModel(this.superParams,this.parentNode.vModel,val,'set');
             }
         }
@@ -89,14 +90,13 @@ export default {
                         },
                         props: item.props && componentNameParams !== 'eltransfer' && componentNameParams !== 'eltree' ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
                         on:{
-                            changeValue:function (paramsName) {
+                            changeValue:function (paramsName,val) {
                                 console.log("changeValue===>");
                                 console.log(paramsName);
+                                console.log(that);
+                                console.log(item);
                                 if(paramsName == 'percentage'){
-                                    item.percentage += 10;
-                                    if (item.percentage > 100) {
-                                        item.percentage = 100;
-                                    }
+                                    item.percentage = val;
                                 }
                             },
                             '&click':function (e) {
@@ -233,37 +233,14 @@ export default {
             }
         },
         vModelVal(item){
-            /*
-            console.log("vModelVal(item,paramsName)",item,paramsName);
-            if(paramsName && item.refName){
-                console.log(item);
-                let currentVueComponent = this.$refs[item.refName];
-                let params = paramsName.split('.')[paramsName.split('.').length -1];
-
-                console.log(params,dynamicvModel(this.superParams,paramsName,'','get'));
-                console.log(this);
-                console.log(currentVueComponent);
-                this.$set(this.params,params,dynamicvModel(this.superParams,paramsName,'','get'));
-                this.$set(currentVueComponent,params,this.params[params]);
-                console.log(currentVueComponent);
-                return this.params[params] = currentVueComponent[params];
-
-                
-                console.log("vModelVal(item,paramsName)",currentVueComponent,params);
-                console.log(currentVueComponent);
-                
-
-
-                
-            }
-            */
-
-            /*
             if(item){
                 return dynamicvModel(this.superParams,item,'','get');
             }
-            */
-           
+        },
+        getVueComponentName(refName){
+            var refComponent = getVueComponent(this,'$children','$refs',refName);
+            console.log(refName,refComponent);
+            return refComponent;
         },
         sizeChange(val){
             this.superParams[this.parentNode.sizeChangeName](val);
@@ -277,7 +254,7 @@ export default {
             }else if(item.tableParams){
                 this.superParams[item.event](this.rowData);  
             } else{
-                this.superParams[item.event](this);  
+                this.superParams[item.event]();  
             }
         },
         selectChange(val,item){ 
@@ -358,7 +335,7 @@ export default {
                                       ( 
                                             i == item[i] 
                                                 ? that.vModelVal(`${hasUniqueIdentifier ? (componentNameParams + hasUniqueIdentifier) : componentNameParams}.${i}`)
-                                                    : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl' || i == 'pageCount' || i == 'total' || i == 'active' || i == 'percentage'
+                                                    : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl' || i == 'pageCount' || i == 'total' || i == 'active'
                                                         ? Number(item[i]) 
                                                                 : item[i] == 'orderVal' && customVal //customVal exist   
                                                                     ? that.vModelVal(customVal)
@@ -378,7 +355,8 @@ export default {
             tableHeight:0,
             timer:null,
             showPage:false,
-            params:{}
+            params:{},
+            renderCompontentName:''
         }
     },
     mounted(){
