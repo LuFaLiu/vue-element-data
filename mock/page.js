@@ -404,7 +404,10 @@ const paramsList = Mock.mock({
                     "children":[]},{"id":1666227251973,"label":"customTemplate","componentRule":{"componentName":"customTemplate","slot":"footer","class":"dialog-footer","title":"","customVal":"","uniqueIdentifier":""},
                     "children":[{"id":1666227314244,"label":"ElButton","componentRule":{"type":"default","size":"","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"Cancel","event":"cancelDialog","customVal":"","uniqueIdentifier":""},
                     "children":[]},{"id":1666227338491,"label":"ElButton","componentRule":{"type":"primary","size":"","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"Confirm","event":"cancelDialog","customVal":"","uniqueIdentifier":""},
-                    "children":[]}]}]}]}]}]}]
+                    "children":[]}]}]}]},{"id":1666572406422,"label":"ElFormItem","componentRule":{"label":"Tooltip","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1666572677663,"label":"ElTooltip","componentRule":{"openDelay":"0","disabled":false,"manual":false,"effect":"dark","arrowOffset":"0","popperClass":"","content":"Bottom Center prompts info","visibleArrow":"true","transition":"el-fade-in-linear","popperOptions":"popperOptions","enterable":true,"hideAfter":"","tabindex":"","placement":"bottom","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1666572727862,"label":"ElButton","componentRule":{"type":"default","size":"","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"bottom","event":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]}]}]}]}]}]
                 }
             ]
 })
