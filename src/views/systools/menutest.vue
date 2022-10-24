@@ -617,6 +617,9 @@ export default {
         },
         elsteps:{
           active:0
+        },
+        eltooltip:{
+          popperOptions:{ boundariesElement: 'body', gpuAcceleration: false }
         }
         
         

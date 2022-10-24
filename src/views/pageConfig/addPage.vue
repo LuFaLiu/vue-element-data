@@ -438,6 +438,9 @@ export default {
         case 'ElDialog':
           this.componentProps.push({attributeName:'visible',attributeLabel:'visible',attributeModel:'visible','visible': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;  
+        case 'ElTooltip':
+          this.componentProps.push({attributeName:'placement',attributeLabel:'placement',attributeModel:'placement','placement': 'bottom' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;  
         default: 
           this.componentProps.push({attributeName:'class',attributeLabel:'class',attributeModel:'class','class': '' ,inputFormat:'list', attributeType: 'ruleInput'})
           this.componentProps.push({attributeName:'refName',attributeLabel:'refName',attributeModel:'refName','refName': '' ,inputFormat:'string', attributeType: 'ruleInput'})
