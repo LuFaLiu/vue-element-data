@@ -382,6 +382,7 @@ export default {
           this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
           this.componentProps.push({attributeName:'vModelName',attributeLabel:'vModelName',attributeModel:'vModelName',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
           this.componentProps.push({attributeName:'event',attributeLabel:'event',attributeModel:'event','event': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          this.componentProps.push({attributeName:'slot',attributeLabel:'slot',attributeModel:'slot','slot': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;
         case 'ElLink':
           this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
@@ -439,6 +440,9 @@ export default {
           this.componentProps.push({attributeName:'visible',attributeLabel:'visible',attributeModel:'visible','visible': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;  
         case 'ElTooltip':
+          this.componentProps.push({attributeName:'placement',attributeLabel:'placement',attributeModel:'placement','placement': 'bottom' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;  placement
+        case 'ElPopover':
           this.componentProps.push({attributeName:'placement',attributeLabel:'placement',attributeModel:'placement','placement': 'bottom' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;  
         default: 
