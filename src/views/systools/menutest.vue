@@ -5,7 +5,7 @@
 <script>
 import _ from "lodash";
 import elComponent from '@/components/elComponent/index'
-import { resetObj,getVueComponent,getVueComponentUid } from '@/utils/index'
+import { resetObj,getVueComponent} from '@/utils/index'
 
 export default {
  
@@ -38,7 +38,8 @@ export default {
           rules:{},
         },
         elformitem:{
-          rules:[]
+          rules:{},
+          prop:''
         },
         elinput:{
           value:'title',
@@ -775,28 +776,20 @@ export default {
       }
 
       let currentVueComponent = this.getVueComponentName('elProgressBar');
-      currentVueComponent._events.changeValue[0]('percentage',percentageVal.percentage);
-
-      
-      console.log(currentVueComponent,percentageVal.percentage); 
-      
-
-
+      currentVueComponent._events.changeValue[0]('percentage',percentageVal.percentage); //避免触发watch监听
 
     },
     decrease() {
-
+      
       let percentageVal = this.elprogress;
       percentageVal.percentage -= 10;
       if (percentageVal.percentage < 0) {
         percentageVal.percentage = 0;
       }
-      
-      let currentVueComponent = this.getVueComponentName('elProgressBar');
-      currentVueComponent._events.changeValue[0]('percentage',percentageVal.percentage);
 
-      
-      console.log(currentVueComponent,percentageVal.percentage); 
+      let currentVueComponent = this.getVueComponentName('elProgressBar');
+      currentVueComponent._events.changeValue[0]('percentage',percentageVal.percentage); //避免触发watch监听
+
     },
     open() {
       this.$message('This is a message.');
@@ -877,6 +870,15 @@ export default {
       }
       
     },
+    labelContent(){
+      return 'test';
+    },
+    beforeLeave(activeName, oldActiveName){
+      
+    },
+    elProgressFormat(percentage){
+      return percentage;
+    },
     openDialog(){
       this.getVueComponentName('dialogRef').visible = true;
     },
@@ -901,6 +903,11 @@ export default {
   }
 
   ::v-deep {
+    .skeleton {
+      .el-card {
+        width: 400px;
+      }
+    }
     .el-card {
       width: 500px;
       .el-button {

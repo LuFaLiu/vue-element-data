@@ -325,17 +325,27 @@ export default {
                 if(i !== 'componentName' || i !== 'pageName'){
                     if(i == 'readonly'){
                         item[i] = false;
-                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error' || i == 'load' || i == 'renderHeader' || i == 'formatter' || i == 'selectable' || i == 'rowKey' || item[i] == 'renderContentTree' || i == 'allowDrag' || i == 'allowDrop' || item[i] == 'formatPercentage' || i == 'increase' || i == 'decrease' || i == 'openDialog' || i == 'beforeClose' || i == 'cancelDialog'){
+                    } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error' || i == 'load' || i == 'renderHeader' || i == 'formatter' || i == 'selectable' || i == 'rowKey' || item[i] == 'renderContentTree' || i == 'allowDrag' || i == 'allowDrop' || item[i] == 'formatPercentage' || i == 'increase' || i == 'decrease' || i == 'openDialog' || i == 'beforeClose' || i == 'cancelDialog' || i == 'labelContent' || i == 'beforeLeave' || i == 'format'){
                         item[i] = that.superParams[i];
                     } else {
                         if(componentNameParams == 'elskeleton' && i == 'loading'){
-                            item[i] = that.superParams.elskeleton.elskeletonLoading;
-                        }else {
+                            item[i] = that.superParams.elskeleton.elskeletonLoading; 
+                        }else if((componentNameParams == 'elsubmenu' && i == 'index') || (componentNameParams == 'elmenuitem' && i == 'index')){
+                            item[i] = item[i];
+                        }else if(componentNameParams == 'elinput' && i == 'tabindex'){
+                            item[i] = item[i];
+                        }else if(componentNameParams == 'elrate' && i == 'value'){
+                            item[i] = Number(item[i]);
+                        }else if(item[i] == 'clear'){
+                            delete item[i]
+                        }else if(componentNameParams == 'elsteps' && i == 'active'){
+                            item[i] = that.superParams.elsteps.active; 
+                        } else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
                                             i == item[i] 
                                                 ? that.vModelVal(`${hasUniqueIdentifier ? (componentNameParams + hasUniqueIdentifier) : componentNameParams}.${i}`)
-                                                    : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl' || i == 'pageCount' || i == 'total' || i == 'active' || i == 'openDelay' || i == 'arrowOffset'
+                                                    : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl' || i == 'pageCount' || i == 'total' || i == 'active' || i == 'openDelay' || i == 'arrowOffset' || i == 'tabindex' || i == 'hideAfter' || i == 'percentage'
                                                         ? Number(item[i]) 
                                                                 : item[i] == 'orderVal' && customVal //customVal exist   
                                                                     ? that.vModelVal(customVal)

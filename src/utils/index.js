@@ -123,23 +123,6 @@ export function getVueComponent(obj,path,path2,refName,result = {}){
     return result;
 }
 
-export function getVueComponentUid(obj,path,path2,uidVal,result = {}){
-    var val = _.get(obj,path);
-    console.log(val);
-    if(_.isArray(val)){
-        _.filter(val,function (o) {
-            console.log(o);
-            console.log(_.includes(_.keys(o[path2]), uidVal));
-            if(_.includes(_.keys(o[path2]), uidVal)){
-                result = o[path2][uidVal]; 
-            }else {
-                result = getVueComponentUid(o,path,path2,uidVal,result,result);
-            }
-        });
-    }
-    return result;
-}
-
 /**
  * dynamic v-model
  * @param {object} obj 
