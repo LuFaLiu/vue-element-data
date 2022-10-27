@@ -414,6 +414,14 @@ export default {
           eldialogContent:{
             tag:'span',
             text:'This is a message'
+          },
+          elCardTitle:{
+            tag:'span',
+            text:'Card name'
+          },
+          elCardContent:{
+            tag:'div',
+            text:'List item 1'
           }
 
         },
@@ -893,6 +901,12 @@ export default {
   }
 
   ::v-deep {
+    .el-card {
+      width: 500px;
+      .el-button {
+        float: right; padding: 3px 0
+      }
+    }
     .el-dialog {
       top: 20%;
       width: 50% !important;
