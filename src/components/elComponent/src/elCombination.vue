@@ -91,13 +91,7 @@ export default {
                         props: item.props && componentNameParams !== 'eltransfer' && componentNameParams !== 'eltree' ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
                         on:{
                             changeValue:function (paramsName,val) {
-                                console.log("changeValue===>");
-                                console.log(paramsName);
-                                console.log(that);
-                                console.log(item);
-                                if(paramsName == 'percentage'){
-                                    item.percentage = val;
-                                }
+                                item[paramsName] = val;
                             },
                             '&click':function (e) {
                                 switch (item.componentName) {

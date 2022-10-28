@@ -629,6 +629,9 @@ export default {
         },
         eltooltip:{
           popperOptions:{ boundariesElement: 'body', gpuAcceleration: false }
+        },
+        eldialog:{
+          visible:false
         }
         
         
@@ -775,8 +778,7 @@ export default {
         percentageVal.percentage = 100;
       }
 
-      let currentVueComponent = this.getVueComponentName('elProgressBar');
-      currentVueComponent._events.changeValue[0]('percentage',percentageVal.percentage); //避免触发watch监听
+      this.getVueComponentName('elProgressBar','percentage',percentageVal.percentage);
 
     },
     decrease() {
@@ -787,8 +789,7 @@ export default {
         percentageVal.percentage = 0;
       }
 
-      let currentVueComponent = this.getVueComponentName('elProgressBar');
-      currentVueComponent._events.changeValue[0]('percentage',percentageVal.percentage); //避免触发watch监听
+      this.getVueComponentName('elProgressBar','percentage',percentageVal.percentage);
 
     },
     open() {
@@ -862,12 +863,25 @@ export default {
       });
     },
     stepNext(){
-      var refComponent = getVueComponent(this,'$children','$refs','stepsRef');
+      /*
+      该方法会直接修改VueComponent, error:Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "active"
+      var refComponent = getVueComponent(this,'$children','$refs','elsteps');
       if (refComponent.active++ > 2){
         refComponent.active = 0;
       } else {
         refComponent.active ++;
       }
+      */
+
+   
+      let elstepsVal = this.elsteps;
+      if (elstepsVal.active++ > 2){
+        elstepsVal.active = 0;
+      } else {
+        elstepsVal.active ++;
+      }
+
+      this.getVueComponentName('elsteps','active',elstepsVal.active);
       
     },
     labelContent(){
@@ -880,17 +894,23 @@ export default {
       return percentage;
     },
     openDialog(){
-      this.getVueComponentName('dialogRef').visible = true;
+      let visibleVal = this.eldialog;
+      visibleVal.visible = true;
+      this.getVueComponentName('eldialog','visible',visibleVal.visible);
     },
     beforeClose(){
-      this.getVueComponentName('dialogRef').visible = false;
+      let visibleVal = this.eldialog;
+      visibleVal.visible = false;
+      this.getVueComponentName('eldialog','visible',visibleVal.visible);
     },
     cancelDialog(){
-      this.getVueComponentName('dialogRef').visible = false;
+      let visibleVal = this.eldialog;
+      visibleVal.visible = false;
+      this.getVueComponentName('eldialog','visible',visibleVal.visible);
     },
-    getVueComponentName(refName){
+    getVueComponentName(refName,paramsName,paramsVal){
       var refComponent = getVueComponent(this,'$children','$refs',refName);
-      return refComponent;
+      refComponent._events.changeValue[0](paramsName,paramsVal); 
     }
   }
 }
