@@ -426,7 +426,22 @@ const paramsList = Mock.mock({
                     "children":[]},{"id":1667176978010,"label":"ElCarouselItem","componentRule":{"name":"item3","label":"","title":"item3","class":"","refName":"","customVal":"","uniqueIdentifier":""},
                     "children":[]},{"id":1667176985386,"label":"ElCarouselItem","componentRule":{"name":"item4","label":"","title":"item4","class":"","refName":"","customVal":"","uniqueIdentifier":""},
                     "children":[]},{"id":1667176994234,"label":"ElCarouselItem","componentRule":{"name":"item5","label":"","title":"item5","class":"","refName":"","customVal":"","uniqueIdentifier":""},
-                    "children":[]}]}]}]}]}]
+                    "children":[]}]}]},{"id":1667263218860,"label":"ElFormItem","componentRule":{"label":"Collapse","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1667263298181,"label":"ElCollapse","componentRule":{"accordion":"","value":"value","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1667263335939,"label":"ElCollapseItem","componentRule":{"title":"Consistency","name":"1","disabled":false,"class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1667263433148,"label":"customContent","componentRule":{"componentName":"customContent","tag":"div","attributeName":"elCollapseItemContent1","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1667263446324,"label":"customContent","componentRule":{"componentName":"customContent","tag":"div","attributeName":"elCollapseItemContent2","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]}]},{"id":1667263477236,"label":"ElCollapseItem","componentRule":{"title":"Feedback","name":"2","disabled":false,"class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1667263603724,"label":"customContent","componentRule":{"componentName":"customContent","tag":"div","attributeName":"elCollapseItemContent3","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1667263621420,"label":"customContent","componentRule":{"componentName":"customContent","tag":"div","attributeName":"elCollapseItemContent4","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]}]},{"id":1667263641772,"label":"ElCollapseItem","componentRule":{"title":"Efficiency","name":"3","disabled":false,"class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1667263657652,"label":"customContent","componentRule":{"componentName":"customContent","tag":"div","attributeName":"elCollapseItemContent5","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1667263669092,"label":"customContent","componentRule":{"componentName":"customContent","tag":"div","attributeName":"elCollapseItemContent6","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1667263681876,"label":"customContent","componentRule":{"componentName":"customContent","tag":"div","attributeName":"elCollapseItemContent7","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]}]},{"id":1667263697276,"label":"ElCollapseItem","componentRule":{"title":"Controllability","name":"4","disabled":false,"class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1667263711747,"label":"customContent","componentRule":{"componentName":"customContent","tag":"div","attributeName":"elCollapseItemContent8","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1667263724547,"label":"customContent","componentRule":{"componentName":"customContent","tag":"div","attributeName":"elCollapseItemContent9","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]}]}]}]}]}]}]
                 }
             ]
 })
