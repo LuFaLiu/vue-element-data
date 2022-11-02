@@ -441,7 +441,12 @@ const paramsList = Mock.mock({
                     "children":[]}]},{"id":1667263697276,"label":"ElCollapseItem","componentRule":{"title":"Controllability","name":"4","disabled":false,"class":"","refName":"","customVal":"","uniqueIdentifier":""},
                     "children":[{"id":1667263711747,"label":"customContent","componentRule":{"componentName":"customContent","tag":"div","attributeName":"elCollapseItemContent8","class":"","refName":"","customVal":"","uniqueIdentifier":""},
                     "children":[]},{"id":1667263724547,"label":"customContent","componentRule":{"componentName":"customContent","tag":"div","attributeName":"elCollapseItemContent9","class":"","refName":"","customVal":"","uniqueIdentifier":""},
-                    "children":[]}]}]}]}]}]}]
+                    "children":[]}]}]}]},{"id":1667350782683,"label":"ElFormItem","componentRule":{"label":"Timeline","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1667350826098,"label":"ElTimeline","componentRule":{"reverse":true,"class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1667351737580,"label":"ElTimelineItem","componentRule":{"timestamp":"2018-04-15","hideTimestamp":false,"placement":"bottom","type":"","color":"","size":"normal","icon":"","title":"Event start","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1667351758011,"label":"ElTimelineItem","componentRule":{"timestamp":"2018-04-13","hideTimestamp":false,"placement":"bottom","type":"","color":"","size":"normal","icon":"","title":"Approved","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1667351830924,"label":"ElTimelineItem","componentRule":{"timestamp":"2018-04-11","hideTimestamp":false,"placement":"bottom","type":"","color":"","size":"normal","icon":"","title":"Success","customVal":"","uniqueIdentifier":""},
+                    "children":[]}]}]}]}]}]
                 }
             ]
 })
