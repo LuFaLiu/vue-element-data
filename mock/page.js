@@ -446,7 +446,15 @@ const paramsList = Mock.mock({
                     "children":[{"id":1667351737580,"label":"ElTimelineItem","componentRule":{"timestamp":"2018-04-15","hideTimestamp":false,"placement":"bottom","type":"","color":"","size":"normal","icon":"","title":"Event start","customVal":"","uniqueIdentifier":""},
                     "children":[]},{"id":1667351758011,"label":"ElTimelineItem","componentRule":{"timestamp":"2018-04-13","hideTimestamp":false,"placement":"bottom","type":"","color":"","size":"normal","icon":"","title":"Approved","customVal":"","uniqueIdentifier":""},
                     "children":[]},{"id":1667351830924,"label":"ElTimelineItem","componentRule":{"timestamp":"2018-04-11","hideTimestamp":false,"placement":"bottom","type":"","color":"","size":"normal","icon":"","title":"Success","customVal":"","uniqueIdentifier":""},
-                    "children":[]}]}]}]}]}]
+                    "children":[]}]}]},{"id":1667436332970,"label":"ElFormItem","componentRule":{"label":"Divider","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1667436464314,"label":"customContent","componentRule":{"componentName":"customContent","tag":"span","attributeName":"elDividerContent1","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1667436535242,"label":"ElDivider","componentRule":{"direction":"horizontal","contentPosition":"left","title":"Rabindranath Tagore","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1667436555754,"label":"customContent","componentRule":{"componentName":"customContent","tag":"span","attributeName":"elDividerContent2","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1667436576066,"label":"ElDivider","componentRule":{"direction":"horizontal","contentPosition":"center","title":"","customVal":"","uniqueIdentifier":""},
+                    "children":[{"id":1667436598218,"label":"ElIcon","componentRule":{"name":"","class":"el-icon-star-on","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]}]},{"id":1667436613786,"label":"customContent","componentRule":{"componentName":"customContent","tag":"span","attributeName":"elDividerContent3","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+                    "children":[]},{"id":1667436629562,"label":"ElDivider","componentRule":{"direction":"horizontal","contentPosition":"right","title":"Rabindranath Tagore","customVal":"","uniqueIdentifier":""},
+                    "children":[]}]}]}]}]
                 }
             ]
 })

@@ -459,6 +459,18 @@ export default {
           elCollapseItemContent9:{
             tag:'div',
             text:'Controlled consequences: users should be granted the freedom to operate, including canceling, aborting or terminating current operation.'
+          },
+          elDividerContent1:{
+            tag:'span',
+            text:'What you are you do not see, what you see is your shadow. '
+          },
+          elDividerContent2:{
+            tag:'span',
+            text:'I cannot choose the best. The best chooses me.'
+          },
+          elDividerContent3:{
+            tag:'span',
+            text:'My wishes are fools, they shout across thy song, my Master. Let me but listen.'
           }
 
         },
