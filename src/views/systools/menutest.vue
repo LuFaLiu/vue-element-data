@@ -683,6 +683,9 @@ export default {
         },
         elcollapse:{
           value: ['1']
+        },
+        elcalendar:{
+          value: new Date()
         }
         
         

@@ -288,4 +288,6 @@
 "children":[{"id":1667436598218,"label":"ElIcon","componentRule":{"name":"","class":"el-icon-star-on","refName":"","customVal":"","uniqueIdentifier":""},
 "children":[]}]},{"id":1667436613786,"label":"customContent","componentRule":{"componentName":"customContent","tag":"span","attributeName":"elDividerContent3","class":"","refName":"","customVal":"","uniqueIdentifier":""},
 "children":[]},{"id":1667436629562,"label":"ElDivider","componentRule":{"direction":"horizontal","contentPosition":"right","title":"Rabindranath Tagore","customVal":"","uniqueIdentifier":""},
+"children":[]}]},{"id":1667522850330,"label":"ElFormItem","componentRule":{"label":"Calendar","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+"children":[{"id":1667522876714,"label":"ElCalendar","componentRule":{"value":"value","range":"","firstDayOfWeek":1,"class":"","refName":"","customVal":"","uniqueIdentifier":""},
 "children":[]}]}]}]}]
