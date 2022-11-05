@@ -290,4 +290,6 @@
 "children":[]},{"id":1667436629562,"label":"ElDivider","componentRule":{"direction":"horizontal","contentPosition":"right","title":"Rabindranath Tagore","customVal":"","uniqueIdentifier":""},
 "children":[]}]},{"id":1667522850330,"label":"ElFormItem","componentRule":{"label":"Calendar","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
 "children":[{"id":1667522876714,"label":"ElCalendar","componentRule":{"value":"value","range":"","firstDayOfWeek":1,"class":"","refName":"","customVal":"","uniqueIdentifier":""},
+"children":[]}]},{"id":1667611238095,"label":"ElFormItem","componentRule":{"label":"Image","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+"children":[{"id":1667611387103,"label":"ElImage","componentRule":{"src":"src","fit":"fit","lazy":false,"scrollContainer":"","previewSrcList":"previewSrcList","zIndex":2000,"class":"","refName":"","customVal":"","uniqueIdentifier":""},
 "children":[]}]}]}]}]
