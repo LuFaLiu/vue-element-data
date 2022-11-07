@@ -292,4 +292,7 @@
 "children":[{"id":1667522876714,"label":"ElCalendar","componentRule":{"value":"value","range":"","firstDayOfWeek":1,"class":"","refName":"","customVal":"","uniqueIdentifier":""},
 "children":[]}]},{"id":1667611238095,"label":"ElFormItem","componentRule":{"label":"Image","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
 "children":[{"id":1667611387103,"label":"ElImage","componentRule":{"src":"src","fit":"fit","lazy":false,"scrollContainer":"","previewSrcList":"previewSrcList","zIndex":2000,"class":"","refName":"","customVal":"","uniqueIdentifier":""},
+"children":[]}]},{"id":1667782581407,"label":"ElFormItem","componentRule":{"label":"Backtop","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+"children":[{"id":1667782613223,"label":"ElBacktop","componentRule":{"visibilityHeight":200,"target":".custom-tree-right-ctn .el-form","right":"40","bottom":"40","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+"children":[]},{"id":1667790571599,"label":"customContent","componentRule":{"componentName":"customContent","tag":"span","attributeName":"elbacktopText","class":"","refName":"","customVal":"","uniqueIdentifier":""},
 "children":[]}]}]}]}]

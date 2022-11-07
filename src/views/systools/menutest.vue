@@ -471,7 +471,12 @@ export default {
           elDividerContent3:{
             tag:'span',
             text:'My wishes are fools, they shout across thy song, my Master. Let me but listen.'
+          },
+          elbacktopText:{
+            tag:'span',
+            text:'Scroll down to see the bottom-right button.'
           }
+          
 
         },
         elrate:{
