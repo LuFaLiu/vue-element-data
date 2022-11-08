@@ -14,20 +14,32 @@ export default {
             //console.log(node);
             //console.log(node.tag == 'img' ? node.props.src : '');
             //console.log(Boolean(this.superParams[node.condition]));
-            return h(
-                node.condition ? (Boolean(this.superParams[node.condition]) == node.conditionVal && node.tag)  : node.tag,
-                {
-                    class:node.class || '',
-                    style:node.style || {},
-                    props:{
-                        slot:node.props && node.props.slot || '',
+            if(node.list && node.list.length > 0){
+                return (
+                    <div>
+                        {
+                            node.list.map((v,index) => <li style={node.style} key={index} class={node.class} >{v.label}</li>)
+                        }
+                    </div>
+                );
+            }else {
+                return h(
+                    node.condition ? (Boolean(this.superParams[node.condition]) == node.conditionVal && node.tag)  : node.tag,
+                    {
+                        class:node.class || '',
+                        style:node.style || {},
+                        props:{
+                            slot:node.props && node.props.slot || '',
+                        },
+                        attrs: {
+                            src:node.props && node.props.src || '',
+                        },
+                        directives: node.directives || ''
                     },
-                    attrs: {
-                        src:node.props && node.props.src || '',
-                    }
-                },
-                node.text ? [h('span',node.text)] : node.childrenNode && node.childrenNode.length > 0 ? this.deepChildrenComponent(node,h) : this.$slots.default
-            )
+                    node.text 
+                        ? [h('span',node.text)] : node.childrenNode && node.childrenNode.length > 0 ? this.deepChildrenComponent(node,h) : this.$slots.default
+                )
+            }
         }
     },
     methods:{

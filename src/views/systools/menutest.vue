@@ -475,6 +475,30 @@ export default {
           elbacktopText:{
             tag:'span',
             text:'Scroll down to see the bottom-right button.'
+          },
+          vInfiniteScrollTemplate:{
+            tag:'ul',
+            class:'infinite-list',
+            style:{'overflow':'auto'},
+            directives: [
+              {
+                name: 'infinite-scroll',
+                value: this.load
+              }
+            ]
+          },
+          infiniteListItem:{
+            tag:'li',
+            class:'infinite-list-item',
+            list:[
+              {id:1,label:1},
+              {id:2,label:2},
+              {id:3,label:3},
+              {id:4,label:4},
+              {id:5,label:5},
+              {id:6,label:6},
+              {id:7,label:7}
+            ]
           }
           
 
@@ -976,6 +1000,11 @@ export default {
     getVueComponentName(refName,paramsName,paramsVal){
       var refComponent = getVueComponent(this,'$children','$refs',refName);
       refComponent._events.changeValue[0](paramsName,paramsVal); 
+    },
+    load(){
+        var list = this.customcontent.infiniteListItem.list;
+        var lastItem = list[list.length-1];
+        list.push({id:lastItem.id+=1,label:lastItem.label+=1})
     }
   }
 }
@@ -988,6 +1017,22 @@ export default {
   }
 
   ::v-deep {
+    .infinite-list {
+      width: 500px;
+      height: 300px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      .infinite-list-item {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 50px;
+          background: #e8f3fe;
+          margin: 10px;
+          color: #7dbcfc;
+      }
+    }
     .el-collapse {
       width: 500px;
       .el-collapse-item__header,.el-collapse-item__content {

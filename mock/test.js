@@ -295,4 +295,7 @@
 "children":[]}]},{"id":1667782581407,"label":"ElFormItem","componentRule":{"label":"Backtop","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
 "children":[{"id":1667782613223,"label":"ElBacktop","componentRule":{"visibilityHeight":200,"target":".custom-tree-right-ctn .el-form","right":"40","bottom":"40","class":"","refName":"","customVal":"","uniqueIdentifier":""},
 "children":[]},{"id":1667790571599,"label":"customContent","componentRule":{"componentName":"customContent","tag":"span","attributeName":"elbacktopText","class":"","refName":"","customVal":"","uniqueIdentifier":""},
-"children":[]}]}]}]}]
+"children":[]}]},{"id":1667869921384,"label":"ElFormItem","componentRule":{"label":"InfiniteScroll","labelWidth":"100px","prop":"prop","required":false,"rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","inline":false,"customVal":"","uniqueIdentifier":""},
+"children":[{"id":1667874653121,"label":"customContent","componentRule":{"componentName":"customContent","tag":"ul","attributeName":"vInfiniteScrollTemplate","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+"children":[{"id":1667875024785,"label":"customContent","componentRule":{"componentName":"customContent","tag":"li","attributeName":"infiniteListItem","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+"children":[]}]}]}]}]}]
