@@ -988,9 +988,14 @@ export default {
       this.getVueComponentName('eldialog','visible',visibleVal.visible);
     },
     beforeClose(){
-      let visibleVal = this.eldialog;
-      visibleVal.visible = false;
-      this.getVueComponentName('eldialog','visible',visibleVal.visible);
+      //具备beforeClose方法的集合
+      var closeComponentRefList = ['elDrawerRef','eldialog'];
+      for(var i in closeComponentRefList){
+        var component = getVueComponent(this,'$children','$refs',closeComponentRefList[i]);
+        if(component.visible){ //为打开状态则关闭
+          this.getVueComponentName(closeComponentRefList[i],'visible',false);
+        }
+      }
     },
     cancelDialog(){
       let visibleVal = this.eldialog;
@@ -1005,6 +1010,14 @@ export default {
         var list = this.customcontent.infiniteListItem.list;
         var lastItem = list[list.length-1];
         list.push({id:lastItem.id+=1,label:lastItem.label+=1})
+    },
+    openDrawer(){
+      console.log("openDrawer");
+      this.getVueComponentName('elDrawerRef','visible',true);
+    },
+    elDrawerBeforeClose(){
+      console.log("close");
+      this.getVueComponentName('elDrawerRef','visible',false);
     }
   }
 }
