@@ -714,7 +714,8 @@ export default {
           value: ['1']
         },
         elcalendar:{
-          value: new Date()
+          value: new Date(),
+          range:['2019-03-04', '2019-03-24']
         },
         elimage:{
           src: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
