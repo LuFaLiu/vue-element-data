@@ -722,7 +722,8 @@ export default {
           previewSrcList: [
             'https://fuss10.elemecdn.com/8/27/f01c15bb73e1ef3793e64e6b7bbccjpeg.jpeg',
           ]
-        }
+        },
+
         
         
 
@@ -990,7 +991,7 @@ export default {
     },
     beforeClose(){
       //具备beforeClose方法的集合
-      var closeComponentRefList = ['elDrawerRef','eldialog'];
+      var closeComponentRefList = ['elDrawerRef','eldialog','elTableDrawerRef'];
       for(var i in closeComponentRefList){
         var component = getVueComponent(this,'$children','$refs',closeComponentRefList[i]);
         if(component.visible){ //为打开状态则关闭
@@ -1019,7 +1020,15 @@ export default {
     elDrawerBeforeClose(){
       console.log("close");
       this.getVueComponentName('elDrawerRef','visible',false);
-    }
+    },
+    openTableDrawer(){
+      console.log("elTableDrawerRef");
+      this.getVueComponentName('elTableDrawerRef','visible',true);
+    },
+    elDrawerTableBeforeClose(){
+      console.log("close");
+      this.getVueComponentName('elTableDrawerRef','visible',false);
+    },
   }
 }
 </script>
@@ -1031,6 +1040,11 @@ export default {
   }
 
   ::v-deep {
+    .el-drawer__body {
+      .el-table,.el-table__body,.el-table__fixed,.el-table__header {
+        width: 100% !important;
+      }
+    }
     .infinite-list {
       width: 500px;
       height: 300px;
