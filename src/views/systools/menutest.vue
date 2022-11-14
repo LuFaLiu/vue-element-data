@@ -499,6 +499,13 @@ export default {
               {id:6,label:6},
               {id:7,label:7}
             ]
+          },
+          elInnerDrawerText:{
+            tag:'p',
+            text:'_(:зゝ∠)_'
+          },
+          elDrawerCustomTag:{
+            tag:'div'
           }
           
 
@@ -990,10 +997,13 @@ export default {
       this.getVueComponentName('eldialog','visible',visibleVal.visible);
     },
     beforeClose(){
+      console.log("beforeClose======>");
+      console.log(this);
       //具备beforeClose方法的集合
-      var closeComponentRefList = ['elDrawerRef','eldialog','elTableDrawerRef'];
+      var closeComponentRefList = ['elDrawerRef','eldialog','elTableDrawerRef','elNestedDrawerRef','elInnerDrawerRef'];
       for(var i in closeComponentRefList){
         var component = getVueComponent(this,'$children','$refs',closeComponentRefList[i]);
+        console.log(component);
         if(component.visible){ //为打开状态则关闭
           this.getVueComponentName(closeComponentRefList[i],'visible',false);
         }
@@ -1014,21 +1024,33 @@ export default {
         list.push({id:lastItem.id+=1,label:lastItem.label+=1})
     },
     openDrawer(){
-      console.log("openDrawer");
       this.getVueComponentName('elDrawerRef','visible',true);
     },
     elDrawerBeforeClose(){
-      console.log("close");
       this.getVueComponentName('elDrawerRef','visible',false);
     },
     openTableDrawer(){
-      console.log("elTableDrawerRef");
       this.getVueComponentName('elTableDrawerRef','visible',true);
     },
     elDrawerTableBeforeClose(){
-      console.log("close");
       this.getVueComponentName('elTableDrawerRef','visible',false);
     },
+    openNestedDrawer(){
+      this.getVueComponentName('elNestedDrawerRef','visible',true);
+    },
+    elNestedDrawerBeforeClose(){
+      console.log("elNestedDrawerBeforeClose=====>");
+      this.getVueComponentName('elNestedDrawerRef','visible',false);
+    },
+    openInnerDrawer(){
+      this.getVueComponentName('elInnerDrawerRef','visible',true);
+    },
+    elInnerDrawerBeforeClose(type){
+      console.log("elInnerDrawerBeforeClose=====>");
+      if(type !== 'init'){
+        this.getVueComponentName('elInnerDrawerRef','visible',false);
+      }
+    }
   }
 }
 </script>
@@ -1040,10 +1062,15 @@ export default {
   }
 
   ::v-deep {
+
+    .el-button--text {
+      margin: 0 15px;
+    }
     .el-drawer__body {
       .el-table,.el-table__body,.el-table__fixed,.el-table__header {
         width: 100% !important;
       }
+      
     }
     .infinite-list {
       width: 500px;
