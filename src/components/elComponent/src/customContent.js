@@ -11,7 +11,7 @@ export default {
         //console.log(this.superParams.customcontent[this.attributeName]);
         const node = this.superParams.customcontent[this.attributeName];
         if(node){
-            //console.log(node);
+            console.log(node);
             //console.log(node.tag == 'img' ? node.props.src : '');
             //console.log(Boolean(this.superParams[node.condition]));
             if(node.list && node.list.length > 0){
@@ -23,18 +23,21 @@ export default {
                     </div>
                 );
             }else {
+
                 return h(
                     node.condition ? (Boolean(this.superParams[node.condition]) == node.conditionVal && node.tag)  : node.tag,
                     {
                         class:node.class || '',
                         style:node.style || {},
-                        props:{
+                        props:node.props ? node.props : {
                             slot:node.props && node.props.slot || '',
                         },
                         attrs: {
                             src:node.props && node.props.src || '',
                         },
-                        directives: node.directives || ''
+                        domProps: node.domProps || '',
+                        directives: node.directives || '',
+                        ref: node.refName || '',
                     },
                     node.text 
                         ? [h('span',node.text)] : node.childrenNode && node.childrenNode.length > 0 ? this.deepChildrenComponent(node,h) : this.$slots.default

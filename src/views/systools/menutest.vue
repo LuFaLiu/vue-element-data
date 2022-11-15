@@ -476,18 +476,75 @@ export default {
             tag:'span',
             text:'Scroll down to see the bottom-right button.'
           },
-          vInfiniteScrollTemplate:{
+          vInfiniteScrollTemplate_basicUsage:{
             tag:'ul',
             class:'infinite-list',
             style:{'overflow':'auto'},
             directives: [
               {
                 name: 'infinite-scroll',
-                value: this.load
+                value: this.loadBasicUsage
               }
             ]
           },
-          infiniteListItem:{
+          vInfiniteScrollTemplate_disableLoading:{
+            tag:'ul',
+            class:'infinite-list',
+            style:{'overflow':'auto'},
+            props: {
+              'infinite-scroll-disabled': this.disabledMethod
+            },
+            directives: [
+              {
+                name: 'infinite-scroll',
+                value: this.loadDisable
+              }
+            ]
+          },
+          infiniteScrollLoadingTag:{
+            tag:'p',
+            style:{
+              'text-align':'center',
+              'visibility':'hidden'
+            },
+            directives: [ //自定义指令无效
+              {
+                name: 'show',
+                value: false
+              }
+            ],
+            refName:'scrollLoadingTag',
+            text:'Loading...'
+          },
+          infiniteScrollDisableTag:{
+            tag:'p',
+            style:{
+              'text-align':'center',
+              'visibility':'hidden'
+            },
+            directives: [ //自定义指令无效
+              {
+                name: 'show',
+                value: false
+              }
+            ],
+            refName:'scrollDisableTag',
+            text:'No more'
+          },
+          infiniteListItem_basicUsage:{
+            tag:'li',
+            class:'infinite-list-item',
+            list:[
+              {id:1,label:1},
+              {id:2,label:2},
+              {id:3,label:3},
+              {id:4,label:4},
+              {id:5,label:5},
+              {id:6,label:6},
+              {id:7,label:7}
+            ]
+          },
+          infiniteListItem_disableLoading:{
             tag:'li',
             class:'infinite-list-item',
             list:[
@@ -1018,10 +1075,31 @@ export default {
       var refComponent = getVueComponent(this,'$children','$refs',refName);
       refComponent._events.changeValue[0](paramsName,paramsVal); 
     },
-    load(){
-        var list = this.customcontent.infiniteListItem.list;
+    loadBasicUsage(){
+        console.log("加载loadBasicUsage");
+        var list = this.customcontent.infiniteListItem_basicUsage.list;
         var lastItem = list[list.length-1];
-        list.push({id:lastItem.id+=1,label:lastItem.label+=1})
+        list.push({id:lastItem.id+1,label:lastItem.label+1})
+    },
+    loadDisable(){
+        console.log("加载loadDisable");
+        var scrollDisabledloading = getVueComponent(this,'$children','$refs','scrollLoadingTag');
+        var scrollDisableTag = getVueComponent(this,'$children','$refs','scrollDisableTag');
+        var list = this.customcontent.infiniteListItem_disableLoading.list;
+        var lastItem = list[list.length-1];
+        if(list.length < 20) {
+          scrollDisabledloading.style.visibility = 'visible';
+        }
+        setTimeout(() => {
+          if(list.length >= 20) {
+            scrollDisableTag.style.visibility = 'visible';
+            scrollDisabledloading.style.visibility = 'hidden';
+          }else {
+            list.push({id:lastItem.id+1,label:lastItem.label+1});
+            list = [...new Set(list)]
+            scrollDisableTag.style.visibility = 'hidden';
+          }
+        }, 2000)
     },
     openDrawer(){
       this.getVueComponentName('elDrawerRef','visible',true);
@@ -1088,6 +1166,19 @@ export default {
           color: #7dbcfc;
       }
     }
+
+    .infinite-list:last-child {
+      margin-top: 45px;
+      .infinite-list-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        background: #fff6f6;
+        color: #ff8484;
+      }
+    }
+
     .el-collapse {
       width: 500px;
       .el-collapse-item__header,.el-collapse-item__content {
