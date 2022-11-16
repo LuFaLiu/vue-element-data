@@ -476,6 +476,26 @@ export default {
             tag:'span',
             text:'Scroll down to see the bottom-right button.'
           },
+          elbacktopcustomizationsText:{
+            tag:'div',
+            style:{
+              'height': '100%',
+              'width': '100%',
+              'background-color': '#f2f5f6',
+              'box-shadow': '0 0 6px rgba(0,0,0, .12)',
+              'text-align': 'center',
+              'line-height': '40px',
+              'color': '#1989fa'
+            },
+            text:'UP'
+          },
+          elbacktopcustomizations:{
+            tag:'span',
+            style:{
+              'margin-left':'30px'
+            },
+            text:'Customizations Scroll down to see the bottom-right button.'
+          },
           vInfiniteScrollTemplate_basicUsage:{
             tag:'ul',
             class:'infinite-list',
