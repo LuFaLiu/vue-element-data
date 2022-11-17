@@ -22,7 +22,20 @@ export default {
                         }
                     </div>
                 );
-            }else {
+            }else if (node.type == 'elImageTraverse'){
+                return (
+                    <div>
+                        {
+                            node.fits.map((v,index) =>
+                                <div style={node.style} key={index}>
+                                    <span style="display: block;color: #8492a6;font-size: 14px;margin-bottom: 20px;">{ v }</span>
+                                    <el-image style="width: 100px; height: 100px" src={node.url} fit={v}></el-image>
+                                </div> 
+                            )
+                        }
+                    </div>
+                )
+            } else {
 
                 return h(
                     node.condition ? (Boolean(this.superParams[node.condition]) == node.conditionVal && node.tag)  : node.tag,
@@ -37,7 +50,9 @@ export default {
                         },
                         domProps: node.domProps || '',
                         directives: node.directives || '',
+                        slot: node.slot || '',
                         ref: node.refName || '',
+                        
                     },
                     node.text 
                         ? [h('span',node.text)] : node.childrenNode && node.childrenNode.length > 0 ? this.deepChildrenComponent(node,h) : this.$slots.default

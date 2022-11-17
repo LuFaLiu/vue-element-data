@@ -583,7 +583,31 @@ export default {
           },
           elDrawerCustomTag:{
             tag:'div'
-          }
+          },
+          imageFailedSlotAttribute:{
+            tag:'div',
+            slot: 'error',
+            class:'image-slot'
+          },
+          imageFailedIconAttribute:{
+            tag:'i',
+            class:'el-icon-picture-outline'
+          },
+          elImageTraverseAttribute:{
+            type:'elImageTraverse',
+            style:{
+              'padding': '30px 0',
+              'text-align': 'center',
+              'border-right': '1px solid #eff2f6',
+              'display': 'inline-block',
+              'width': '20%',
+              'box-sizing': 'border-box',
+              'vertical-align': 'top',
+              'margin-right': '20px'
+            },
+            fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
+            url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+          },
           
 
         },

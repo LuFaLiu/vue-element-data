@@ -206,7 +206,7 @@ export default {
     //添加自定义template标签 (默认为default)
     that.componentList.push({name:'customTemplate',props:{'componentName':'','slot':'default','class':''}});
     that.componentSelectList.push({lable:'customTemplate',value:'customTemplate'});
-
+    
     console.log(that.componentList);
     console.log(that.componentSelectList);
   },
