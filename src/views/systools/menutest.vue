@@ -593,6 +593,14 @@ export default {
             tag:'i',
             class:'el-icon-picture-outline'
           },
+          elImageTypeName1:{
+            tag:'p',
+            text:'Basic Usage'
+          },
+          elImageTypeName2:{
+            tag:'p',
+            text:'Placeholder'
+          },
           elImageTraverseAttribute:{
             type:'elImageTraverse',
             style:{
@@ -608,6 +616,105 @@ export default {
             fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
             url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
           },
+          elPlaceholderImageAttribute:{
+            tag:'div',
+            class:'demo-image__placeholder',
+            childrenNode:[
+              {
+                tag:'div',
+                style:{
+                  'padding': '30px 0',
+                  'text-align': 'center',
+                  'border-right': '1px solid #eff2f6',
+                  'display': 'inline-block',
+                  'width': '20%',
+                  'box-sizing': 'border-box',
+                  'vertical-align': 'top',
+                  'margin-right': '20px'
+                },
+                childrenNode:[
+                  {
+                    tag:'span',
+                    style:{
+                      'display': 'block',
+                      'color': '#8492a6',
+                      'font-size': '14px',
+                      'margin-bottom': '20px'
+                    },
+                    text:'Default'
+                  },
+                  {
+                    tag:'el-image',
+                    style:{
+                      'width':'100px',
+                      'height':'100px'
+                    },
+                    props:{
+                      src:'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg'
+                    }
+                    
+                  }
+                ]
+              },
+              {
+                tag:'div',
+                style:{
+                  'padding': '30px 0',
+                  'text-align': 'center',
+                  'border-right': '1px solid #eff2f6',
+                  'display': 'inline-block',
+                  'width': '20%',
+                  'box-sizing': 'border-box',
+                  'vertical-align': 'top',
+                  'margin-right': '20px'
+                },
+                childrenNode:[
+                  {
+                    tag:'span',
+                    style:{
+                      'display': 'block',
+                      'color': '#8492a6',
+                      'font-size': '14px',
+                      'margin-bottom': '20px'
+                    },
+                    text:'Custom'
+                  },
+                  {
+                    tag:'el-image',
+                    style:{
+                      'width':'100px',
+                      'height':'100px'
+                    },
+                    props:{
+                      src:'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg'
+                    },
+                    childrenNode:[
+                      {
+                        tag:'div',
+                        class:'image-slot',
+                        props:{
+                          slot:'placeholder'
+                        },
+                        slot:'placeholder',
+                        childrenNode:[
+                          {
+                            text:'Loading',
+                            childrenNode:[
+                              {
+                                tag:'span',
+                                class:'dot',
+                                text:'...'
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+            ]
+          }
           
 
         },

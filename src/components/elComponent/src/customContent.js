@@ -52,7 +52,6 @@ export default {
                         directives: node.directives || '',
                         slot: node.slot || '',
                         ref: node.refName || '',
-                        
                     },
                     node.text 
                         ? [h('span',node.text)] : node.childrenNode && node.childrenNode.length > 0 ? this.deepChildrenComponent(node,h) : this.$slots.default
@@ -61,13 +60,36 @@ export default {
         }
     },
     methods:{
-        deepChildrenComponent(node,h){
+        deepChildrenComponent(nodeList,h){
             var that = this;
-            return node && node.childrenNode.length > 0 && node.childrenNode.map(function (item) {
+            return nodeList && nodeList.childrenNode.length > 0 && nodeList.childrenNode.map(function (item) {
                 return h(
+                    
+                    //版本一
+                    /*
                     item.componentName,
                     item.attribute,
                     item && item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) : that.$slots.default
+                    */
+                    //版本二
+                    item.condition ? (Boolean(this.superParams[item.condition]) == item.conditionVal && item.tag)  : item.tag,
+                    {
+                        class:item.class || '',
+                        style:item.style || {},
+                        props:item.props ? item.props : {
+                            slot:item.props && item.props.slot || '',
+                        },
+                        attrs: {
+                            src:item.props && item.props.src || '',
+                        },
+                        domProps: item.domProps || '',
+                        directives: item.directives || '',
+                        slot: item.slot || '',
+                        ref: item.refName || '',
+                        
+                    },
+                    item.text 
+                        ? [h('span',item.text)] : item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) : that.$slots.default
                 )
             })
         }
