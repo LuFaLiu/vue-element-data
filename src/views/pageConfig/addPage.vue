@@ -45,6 +45,8 @@
         :visible.sync="dialogVisible"
         width="50%"
         :before-close="handleClose"
+        :close-on-click-modal="false"
+        :close-on-press-escape="false"
       >
         <el-form ref="form" :model="form" label-width="180px">
           <el-form-item :label="$t('pageRule.componentName')">

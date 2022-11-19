@@ -601,6 +601,10 @@ export default {
             tag:'p',
             text:'Placeholder'
           },
+          elImageTypeName3:{
+            tag:'p',
+            text:'Load Failed'
+          },
           elImageTraverseAttribute:{
             type:'elImageTraverse',
             style:{
@@ -710,6 +714,100 @@ export default {
                         ]
                       }
                     ]
+                  }
+                ]
+              },
+            ]
+          },
+          elLoadFailedImageAttribute:{
+            tag:'div',
+            class:'demo-image__placeholder',
+            childrenNode:[
+              {
+                tag:'div',
+                style:{
+                  'padding': '30px 0',
+                  'text-align': 'center',
+                  'border-right': '1px solid #eff2f6',
+                  'display': 'inline-block',
+                  'width': '20%',
+                  'box-sizing': 'border-box',
+                  'vertical-align': 'top',
+                  'margin-right': '20px'
+                },
+                childrenNode:[
+                  {
+                    tag:'span',
+                    style:{
+                      'display': 'block',
+                      'color': '#8492a6',
+                      'font-size': '14px',
+                      'margin-bottom': '20px'
+                    },
+                    text:'Default'
+                  },
+                  {
+                    tag:'el-image',
+                    style:{
+                      'width':'100px',
+                      'height':'100px'
+                    }
+                    
+                  }
+                ]
+              },
+              {
+                tag:'div',
+                style:{
+                  'padding': '30px 0',
+                  'text-align': 'center',
+                  'border-right': '1px solid #eff2f6',
+                  'display': 'inline-block',
+                  'width': '20%',
+                  'box-sizing': 'border-box',
+                  'vertical-align': 'top',
+                  'margin-right': '20px'
+                },
+                childrenNode:[
+                  {
+                    tag:'span',
+                    style:{
+                      'display': 'block',
+                      'color': '#8492a6',
+                      'font-size': '14px',
+                      'margin-bottom': '20px'
+                    },
+                    text:'Custom'
+                  },
+                  {
+                    tag:'el-image',
+                    style:{
+                      'width':'100px',
+                      'height':'100px'
+                    },
+                    childrenNode:[
+                      {
+                        tag:'div',
+                        slot:'error',
+                        style:{
+                          'display': 'flex',
+                          'justify-content': 'center',
+                          'align-items': 'center',
+                          'font-size': '30px',
+                          'width':'100%',
+                          'height':'100%',
+                          'background': '#f5f7fa',
+                          'color': '#909399'
+                        },
+                        childrenNode:[
+                          {
+                            tag:'i',
+                            class:'el-icon-picture-outline'
+                          }
+                        ]
+                      }
+                    ]
+                    
                   }
                 ]
               },
