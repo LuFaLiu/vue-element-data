@@ -491,9 +491,6 @@ export default {
           },
           elbacktopcustomizations:{
             tag:'span',
-            style:{
-              'margin-left':'30px'
-            },
             text:'Customizations Scroll down to see the bottom-right button.'
           },
           vInfiniteScrollTemplate_basicUsage:{
@@ -812,7 +809,35 @@ export default {
                 ]
               },
             ]
-          }
+          },
+          elBacktopType1:{
+              tag:'p',
+              text:'Basic usage'
+          },
+          elBacktopType2:{
+               tag:'p',
+               text:'Customizations'
+          },
+            elInfiniteScrollType1:{
+                tag:'p',
+                text:'Basic usage'
+            },
+            elInfiniteScrollType2:{
+                tag:'p',
+                text:'Disable Loading'
+            },
+            elDrawerlType1:{
+                tag:'p',
+                text:'Basic Usage'
+            },
+            elDrawerlType2:{
+                tag:'p',
+                text:'Customization Content'
+            },
+            elDrawerlType3:{
+                tag:'p',
+                text:'Nested Drawer'
+            }
           
 
         },
