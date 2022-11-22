@@ -837,6 +837,18 @@ export default {
             elDrawerlType3:{
                 tag:'p',
                 text:'Nested Drawer'
+            },
+            elCalendarType1:{
+              tag:'p',
+              text:'Basic'
+            },
+            elCalendarType2:{
+              tag:'p',
+              text:'Custom Content'
+            },
+            elCalendarCustomContent:{
+              tag:'p',
+              type:'customCalendar'
             }
           
 
@@ -1414,6 +1426,9 @@ export default {
   }
 
   ::v-deep {
+    .is-selected {
+      color: #1989FA;
+    }
 
     .el-button--text {
       margin: 0 15px;
