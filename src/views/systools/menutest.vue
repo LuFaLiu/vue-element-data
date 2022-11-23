@@ -846,6 +846,10 @@ export default {
               tag:'p',
               text:'Custom Content'
             },
+            elCalendarType3:{
+              tag:'p',
+              text:'Range'
+            },
             elCalendarCustomContent:{
               tag:'p',
               type:'customCalendar'
