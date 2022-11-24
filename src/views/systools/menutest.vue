@@ -853,6 +853,39 @@ export default {
             elCalendarCustomContent:{
               tag:'p',
               type:'customCalendar'
+            },
+            elDividerType1:{
+              tag:'p',
+              style:{
+                'margin':'20px 0'
+              },
+              text:'Basic usage'
+            },
+            elDividerType2:{
+              tag:'p',
+              style:{
+                'margin':'20px 0'
+              },
+              text:'Custom content'
+            },
+            elDividerType3:{
+              tag:'p',
+              style:{
+                'margin':'20px 0'
+              },
+              text:'Vertical divider'
+            },
+            elDividerVerticalDividertitle1:{
+              tag:'span',
+              text:'Rain'
+            },
+            elDividerVerticalDividertitle2:{
+              tag:'span',
+              text:'Home'
+            },
+            elDividerVerticalDividertitle3:{
+              tag:'span',
+              text:'Grass'
             }
           
 
