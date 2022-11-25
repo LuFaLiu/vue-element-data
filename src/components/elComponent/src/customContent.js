@@ -46,6 +46,26 @@ export default {
                     </template>
                 )
                 
+            }else if(node.type == 'elRadioGroup'){
+                const changeVal = () => {
+                    node.value = !node.value;
+                    this.superParams.changeElTimelineBasicUsageVal(node.value);
+                } 
+                return (
+                    <el-radio-group onChange={changeVal} style={node.style} value={node.value}  ref={node.refName}>
+                        {
+                            node.elRadiolist.map((v,index) => <el-radio ref={node.refName} label={v.value} key={index} >{v.label}</el-radio >)
+                        }
+                    </el-radio-group>
+                )
+            }else if(node.type == 'timelineCustom'){
+                return (
+                    <div>
+                        {
+                            node.timelineCustomList.map((v,index) => <el-timeline-item key={index} icon={v.icon} type={v.type} color={v.color} size={v.size} timestamp={v.timestamp} >{v.content}</el-timeline-item>)
+                        }
+                    </div>
+                )
             } else {
 
                 return h(
@@ -103,6 +123,11 @@ export default {
                         ? [h('span',item.text)] : item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) : that.$slots.default
                 )
             })
+        },
+        changeValMethod(refName){
+            if(refName == 'elRadioGroup') {
+                this.superParams.changeElTimelineGroupVal(refName);
+            }
         }
     }
 

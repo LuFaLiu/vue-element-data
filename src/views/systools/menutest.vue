@@ -886,6 +886,70 @@ export default {
             elDividerVerticalDividertitle3:{
               tag:'span',
               text:'Grass'
+            },
+            elTimelineType1:{
+              tag:'span',
+              style:{
+                'display': 'flex',
+                'margin-bottom': '20px'
+              },
+              text:'Basic usage'
+            },
+            elTimelineType2:{
+              tag:'span',
+              text:'Custom node'
+            },
+            elTimelineType3:{
+              tag:'span',
+              text:'Custom timestamp'
+            },
+            elTimelineOrder:{
+              tag:'div',
+              style:{
+                'float':'left',
+                'margin':'1px 0 20px 0'
+              },
+              text:'Order'
+            },
+            elTimelineGroup:{
+              type:'elRadioGroup',
+              refName:'elRadioGroup',
+              value:true,
+              style:{
+                'float':'left',
+                'margin':'0 0 20px 20px'
+              },
+              elRadiolist:[
+                {
+                  value:true,
+                  label:'descending'
+                },
+                {
+                  value:false,
+                  label:'ascending'
+                }
+              ]
+            },
+            elTimelineCustomNode:{
+              type:'timelineCustom',
+              timelineCustomList: [{
+                content: 'Custom icon',
+                timestamp: '2018-04-12 20:46',
+                size: 'large',
+                type: 'primary',
+                icon: 'el-icon-more'
+              }, {
+                content: 'Custom color',
+                timestamp: '2018-04-03 20:46',
+                color: '#0bbd87'
+              }, {
+                content: 'Custom size',
+                timestamp: '2018-04-03 20:46',
+                size: 'large'
+              }, {
+                content: 'Default node',
+                timestamp: '2018-04-03 20:46'
+              }]
             }
           
 
@@ -1394,10 +1458,6 @@ export default {
       visibleVal.visible = false;
       this.getVueComponentName('eldialog','visible',visibleVal.visible);
     },
-    getVueComponentName(refName,paramsName,paramsVal){
-      var refComponent = getVueComponent(this,'$children','$refs',refName);
-      refComponent._events.changeValue[0](paramsName,paramsVal); 
-    },
     loadBasicUsage(){
         console.log("加载loadBasicUsage");
         var list = this.customcontent.infiniteListItem_basicUsage.list;
@@ -1451,7 +1511,20 @@ export default {
       if(type !== 'init'){
         this.getVueComponentName('elInnerDrawerRef','visible',false);
       }
-    }
+    },
+    changeElTimelineBasicUsageVal(val){
+      this.getVueComponentName('elTimelineBasicUsage','reverse',val);
+    },
+
+
+
+
+
+    
+    getVueComponentName(refName,paramsName,paramsVal){
+      var refComponent = getVueComponent(this,'$children','$refs',refName);
+      refComponent._events.changeValue[0](paramsName,paramsVal); 
+    },
   }
 }
 </script>
@@ -1463,6 +1536,10 @@ export default {
   }
 
   ::v-deep {
+
+    .el-timeline {
+      margin-top: 30px;
+    }
     .is-selected {
       color: #1989FA;
     }
