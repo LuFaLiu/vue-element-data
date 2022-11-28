@@ -950,6 +950,45 @@ export default {
                 content: 'Default node',
                 timestamp: '2018-04-03 20:46'
               }]
+            },
+            elTimeLineItemCardContent1:{
+              tag:'div',
+              childrenNode:[
+                {
+                  tag:'h4',
+                  text:'Update Github template'
+                },
+                {
+                  tag:'p',
+                  text:'Tom committed 2018/4/12 20:46'
+                }
+              ]
+            },
+            elTimeLineItemCardContent2:{
+              tag:'div',
+              childrenNode:[
+                {
+                  tag:'h4',
+                  text:'Update Github template'
+                },
+                {
+                  tag:'p',
+                  text:'Tom committed 2018/4/3 20:46'
+                }
+              ]
+            },
+            elTimeLineItemCardContent3:{
+              tag:'div',
+              childrenNode:[
+                {
+                  tag:'h4',
+                  text:'Update Github template'
+                },
+                {
+                  tag:'p',
+                  text:'Tom committed 2018/4/2 20:46'
+                }
+              ]
             }
           
 
