@@ -989,6 +989,24 @@ export default {
                   text:'Tom committed 2018/4/2 20:46'
                 }
               ]
+            },
+            elCollapseType1:{
+              tag:'span',
+              style:{
+                'margin':'20px 0'
+              },
+              text:'Basic usage'
+            },
+            elCollapseType2:{
+              tag:'span',
+              style:{
+                'margin':'20px 0'
+              },
+              text:'Accordion'
+            },
+            elCollapseType3:{
+              tag:'span',
+              text:'Custom title'
             }
           
 
@@ -1575,6 +1593,9 @@ export default {
   }
 
   ::v-deep {
+    .el-collapse {
+      margin: 30px 0;
+    }
 
     .el-timeline {
       margin-top: 30px;
