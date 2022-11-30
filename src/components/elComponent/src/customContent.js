@@ -46,7 +46,22 @@ export default {
                     </template>
                 )
                 
-            }else if(node.type == 'elRadioGroup'){
+            }else if(node.type == 'customCollapseItemTitle'){
+                console.log("node.type == 'slot'");
+                console.log(node);
+                return (
+                    <el-collapse-item>
+                        <template slot={node.slot}>
+                            {node.text}<i style={node.style} class={node.class}></i>
+                        </template>
+                        <div>
+                            {
+                                node.childrenNode && node.childrenNode.length > 0 ? this.deepChildrenComponent(node,h) : this.$slots.default
+                            }
+                        </div>
+                    </el-collapse-item>
+                )
+            } else if(node.type == 'elRadioGroup'){
                 const changeVal = () => {
                     node.value = !node.value;
                     this.superParams.changeElTimelineBasicUsageVal(node.value);

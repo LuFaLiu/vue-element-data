@@ -332,7 +332,7 @@ export default {
                             item[i] = Number(item[i]);
                         }else if(item[i] == 'clear'){
                             delete item[i]
-                        }else if(componentNameParams == 'elsteps' && i == 'active'){
+                        } else if(componentNameParams == 'elsteps' && i == 'active'){
                             item[i] = that.superParams.elsteps.active; 
                         } else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :

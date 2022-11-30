@@ -1007,6 +1007,26 @@ export default {
             elCollapseType3:{
               tag:'span',
               text:'Custom title'
+            },
+            elCollapseCustomTitle:{
+              type:'customCollapseItemTitle',
+              slot:'title',
+              text:'Consistency',
+              tag:'i',
+              class:'header-icon el-icon-info',
+              style:{
+                'margin-left':'5px'
+              },
+              childrenNode:[
+                {
+                  tag:'div',
+                  text:'Consistent with real life: in line with the process and logic of real life, and comply with languages and habits that the users are used to;'
+                },
+                {
+                  tag:'div',
+                  text:'Consistent within interface: all elements should be consistent, such as: design style, icons and texts, position of elements, etc.'
+                }
+              ]
             }
           
 
