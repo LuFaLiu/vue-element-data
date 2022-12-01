@@ -1027,6 +1027,26 @@ export default {
                   text:'Consistent within interface: all elements should be consistent, such as: design style, icons and texts, position of elements, etc.'
                 }
               ]
+            },
+            elCarouselType1:{
+              tag:'span',
+              text:'Basic usage'
+            },
+            elCarouselType2:{
+              tag:'span',
+              text:'Indicators'
+            },
+            elCarouselType3:{
+              tag:'span',
+              text:'Arrows'
+            },
+            elCarouselType4:{
+              tag:'span',
+              text:'Card mode'
+            },
+            elCarouselType5:{
+              tag:'span',
+              text:'vertical'
             }
           
 
@@ -1613,7 +1633,7 @@ export default {
   }
 
   ::v-deep {
-    .el-collapse {
+    .el-collapse,.el-carousel {
       margin: 30px 0;
     }
 
