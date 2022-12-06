@@ -420,9 +420,33 @@ export default {
             tag:'span',
             text:'Card name'
           },
-          elCardContent:{
+          elCardContent1:{
             tag:'div',
-            text:'List item 1'
+            text:'List item 1',
+            style:{
+              'margin-bottom': '18px'
+            }
+          },
+          elCardContent2:{
+            tag:'div',
+            text:'List item 2',
+            style:{
+              'margin-bottom': '18px'
+            }
+          },
+          elCardContent3:{
+            tag:'div',
+            text:'List item 3',
+            style:{
+              'margin-bottom': '18px'
+            }
+          },
+          elCardContent4:{
+            tag:'div',
+            text:'List item 4',
+            style:{
+              'margin-bottom': '18px'
+            }
           },
           elCollapseItemContent1:{
             tag:'div',
@@ -1047,6 +1071,22 @@ export default {
             elCarouselType5:{
               tag:'span',
               text:'vertical'
+            },
+            elCardType1:{
+              tag:'span',
+              text:'Basic usage'
+            },
+            elCardType2:{
+              tag:'span',
+              text:'Simple card'
+            },
+            elCardType3:{
+              tag:'span',
+              text:'With images'
+            },
+            elCardType4:{
+              tag:'span',
+              text:'Shadow'
             }
           
 
@@ -1633,7 +1673,7 @@ export default {
   }
 
   ::v-deep {
-    .el-collapse,.el-carousel {
+    .el-collapse,.el-carousel,.el-card {
       margin: 30px 0;
     }
 
