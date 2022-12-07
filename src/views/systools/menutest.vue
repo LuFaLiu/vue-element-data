@@ -1892,6 +1892,16 @@ export default {
       margin-left: 15px;
     }
 
+    .el-card__body {
+      .image {
+        width: 500px;
+        height: 267px;
+      }
+      .skeletonCardCtn {
+        padding: 14px;
+      }
+    }
+
     //.skeletonContainer {
       flex-direction: column;
       .skeleton {
