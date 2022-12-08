@@ -1087,7 +1087,19 @@ export default {
             elCardType4:{
               tag:'span',
               text:'Shadow'
-            }
+            },
+            elCardShadowAlway:{
+              tag:'span',
+              text:'Always'
+            },
+            elCardShadowHover:{
+              tag:'span',
+              text:'Hover'
+            },
+            elCardShadowNever:{
+              tag:'span',
+              text:'Never'
+            },
           
 
         },
@@ -1673,6 +1685,11 @@ export default {
   }
 
   ::v-deep {
+    .elCardShadowRow {
+      .el-card {
+        width: auto !important;
+      }
+    }
     .el-collapse,.el-carousel,.el-card {
       margin: 30px 0;
     }
