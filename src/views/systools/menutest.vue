@@ -1100,6 +1100,22 @@ export default {
               tag:'span',
               text:'Never'
             },
+            elPopconfirmType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elPopconfirmType2:{
+              tag:'span',
+              text:'Customise',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
           
 
         },
