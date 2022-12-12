@@ -446,6 +446,8 @@ export default {
           break;  placement
         case 'ElPopover':
           this.componentProps.push({attributeName:'placement',attributeLabel:'placement',attributeModel:'placement','placement': 'bottom' ,inputFormat:'string', attributeType: 'ruleInput'})
+          this.componentProps.push({attributeName:'value',attributeLabel:'value',attributeModel:'value','value': false ,inputFormat:'string', attributeType: 'ruleInput'})
+          this.componentProps.push({attributeName:'refName',attributeLabel:'refName',attributeModel:'refName','refName': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break; 
         case 'ElCarouselItem':
           this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title','title': '' ,inputFormat:'string', attributeType: 'ruleInput'})

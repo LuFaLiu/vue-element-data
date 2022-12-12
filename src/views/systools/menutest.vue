@@ -1116,6 +1116,30 @@ export default {
                 'display': 'block'
               }
             },
+            elPopoverType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elPopoverType2:{
+              tag:'span',
+              text:'Nested information',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elPopoverType3:{
+              tag:'span',
+              text:'Nested operation',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            }
           
 
         },
@@ -1679,6 +1703,12 @@ export default {
     },
     changeElTimelineBasicUsageVal(val){
       this.getVueComponentName('elTimelineBasicUsage','reverse',val);
+    },
+    visibleManualPopover(){
+      console.log("visibleManualPopover");
+      var manualPopoverVal = getVueComponent(this,'$children','$refs','manualPopoverRef').value;
+      this.getVueComponentName('manualPopoverRef','value',!manualPopoverVal);
+      console.log(getVueComponent(this,'$children','$refs','manualPopoverRef'));
     },
 
 
