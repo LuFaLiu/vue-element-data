@@ -1139,6 +1139,10 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elPopoverNestedOperation:{
+              tag:'p',
+              text:'Are you sure to delete this?'
             }
           
 
@@ -1704,11 +1708,13 @@ export default {
     changeElTimelineBasicUsageVal(val){
       this.getVueComponentName('elTimelineBasicUsage','reverse',val);
     },
-    visibleManualPopover(){
-      console.log("visibleManualPopover");
+    visibleManualPopover(){ // ElPopover 无法设置visible 只能设置value
       var manualPopoverVal = getVueComponent(this,'$children','$refs','manualPopoverRef').value;
       this.getVueComponentName('manualPopoverRef','value',!manualPopoverVal);
-      console.log(getVueComponent(this,'$children','$refs','manualPopoverRef'));
+    },
+    closePopoverNestedOperation(){ // ElPopover 无法设置visible 只能设置value
+      console.log("关闭nestedOperationRef");
+      this.getVueComponentName('nestedOperationRef','value',false);
     },
 
 
@@ -1731,6 +1737,13 @@ export default {
   }
 
   ::v-deep {
+    .el-popover__reference {
+      margin-right: 20px;
+    }
+    .popoverNestedOperationContent {
+      text-align: right; 
+      margin: 0
+    }
     .elCardShadowRow {
       .el-card {
         width: auto !important;
