@@ -1143,6 +1143,38 @@ export default {
             elPopoverNestedOperation:{
               tag:'p',
               text:'Are you sure to delete this?'
+            },
+            elTooltipType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTooltipType2:{
+              tag:'span',
+              text:'Theme',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTooltipType3:{
+              tag:'span',
+              text:'More Content',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTooltipType4:{
+              tag:'span',
+              text:'Advanced usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
           
 
