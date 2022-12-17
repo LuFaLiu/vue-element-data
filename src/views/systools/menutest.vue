@@ -1175,6 +1175,12 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elTooltipMoreContent:{
+              type:'tooltipMoreContent',
+              slot:'content',
+              text1:'Advanced usage',
+              text2:'second line'
             }
           
 

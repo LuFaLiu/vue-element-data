@@ -46,7 +46,7 @@ export default {
                     </template>
                 )
                 
-            }else if(node.type == 'customCollapseItemTitle'){
+            }else if(node.type == 'customCollapseItemTitle'){  // 遇到slot=xxx，这种没有起效果的那么将整个模块都定义在customContent
                 console.log("node.type == 'slot'");
                 console.log(node);
                 return (
@@ -80,6 +80,16 @@ export default {
                             node.timelineCustomList.map((v,index) => <el-timeline-item key={index} icon={v.icon} type={v.type} color={v.color} size={v.size} timestamp={v.timestamp} >{v.content}</el-timeline-item>)
                         }
                     </div>
+                )
+            }else if(node.type == 'tooltipMoreContent'){ // 遇到slot=xxx，这种没有起效果的那么将整个模块都定义在customContent
+                console.log(node.type == 'tooltipMoreContent');
+                return (
+                    <el-tooltip placement="top">
+                        <div slot={node.slot}>
+                            {node.text1}<br/>{node.text2}
+                        </div>
+                        <el-button>Top center</el-button>
+                    </el-tooltip>
                 )
             } else {
 
