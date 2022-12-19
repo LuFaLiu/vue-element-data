@@ -5,6 +5,12 @@ export default {
             type:String
         }
     },
+    data(){
+        return {
+            advancedUsagedisabled:false
+        }
+        
+    },
     name:'CustomContent',
     render(h){
         //console.log(this.attributeName);
@@ -91,6 +97,12 @@ export default {
                         <el-button>Top center</el-button>
                     </el-tooltip>
                 )
+            }else if(node.type == 'tooltipAdvancedUsage'){ // 遇到slot=xxx，这种没有起效果的那么将整个模块都定义在customContent
+                return (
+                    <el-tooltip disabled={this.advancedUsagedisabled} content={node.text} placement="bottom" effect="light">
+                        <el-button onClick={this.changeAdvancedUsagedisabled}>click to {this.advancedUsagedisabled ? 'active' : 'close'} tooltip function</el-button>
+                    </el-tooltip>
+                )
             } else {
 
                 return h(
@@ -116,6 +128,11 @@ export default {
         }
     },
     methods:{
+        changeAdvancedUsagedisabled(){
+
+           this.advancedUsagedisabled = !this.advancedUsagedisabled;
+           console.log(this.advancedUsagedisabled);
+        },
         deepChildrenComponent(nodeList,h){
             var that = this;
             return nodeList && nodeList.childrenNode.length > 0 && nodeList.childrenNode.map(function (item) {

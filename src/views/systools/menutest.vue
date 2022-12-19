@@ -1181,7 +1181,11 @@ export default {
               slot:'content',
               text1:'Advanced usage',
               text2:'second line'
-            }
+            },
+            elTooltipAdvancedUsage:{
+              type:'tooltipAdvancedUsage',
+              text:'click to close tooltip function'
+            },
           
 
         },
