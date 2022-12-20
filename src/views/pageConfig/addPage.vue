@@ -439,7 +439,8 @@ export default {
           this.componentProps.push({attributeName:'slot',attributeLabel:'slot',attributeModel:'slot','slot': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;  
         case 'ElDialog':
-          this.componentProps.push({attributeName:'visible',attributeLabel:'visible',attributeModel:'visible','visible': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          this.componentProps.push({attributeName:'visible',attributeLabel:'visible',attributeModel:'visible','visible': false ,inputFormat:'boolean', attributeType: 'ruleRadio'})
+          this.componentProps.push({attributeName:'refName',attributeLabel:'refName',attributeModel:'refName','refName': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;  
         case 'ElTooltip':
           this.componentProps.push({attributeName:'placement',attributeLabel:'placement',attributeModel:'placement','placement': 'bottom' ,inputFormat:'string', attributeType: 'ruleInput'})

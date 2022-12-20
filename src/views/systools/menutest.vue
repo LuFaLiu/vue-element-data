@@ -1186,8 +1186,38 @@ export default {
               type:'tooltipAdvancedUsage',
               text:'click to close tooltip function'
             },
-          
-
+            elDialogType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elDialogType2:{
+              tag:'span',
+              text:'Customizations',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elDialogType3:{
+              tag:'span',
+              text:'Nested Dialog',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elDialogType4:{
+              tag:'span',
+              text:'Centered content',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            }
         },
         elrate:{
           value:0,
@@ -1670,16 +1700,21 @@ export default {
     elProgressFormat(percentage){
       return percentage;
     },
-    openDialog(){
+    openBasicUsageDialog(){
       let visibleVal = this.eldialog;
       visibleVal.visible = true;
       this.getVueComponentName('eldialog','visible',visibleVal.visible);
+    },
+    openCustomizationsDialog(){
+      let visibleVal = this.eldialog;
+      visibleVal.visible = true;
+      this.getVueComponentName('elCustomizationsDialog','visible',visibleVal.visible);
     },
     beforeClose(){
       console.log("beforeClose======>");
       console.log(this);
       //具备beforeClose方法的集合
-      var closeComponentRefList = ['elDrawerRef','eldialog','elTableDrawerRef','elNestedDrawerRef','elInnerDrawerRef'];
+      var closeComponentRefList = ['elDrawerRef','eldialog','elTableDrawerRef','elNestedDrawerRef','elInnerDrawerRef','elCustomizationsDialog'];
       for(var i in closeComponentRefList){
         var component = getVueComponent(this,'$children','$refs',closeComponentRefList[i]);
         console.log(component);
