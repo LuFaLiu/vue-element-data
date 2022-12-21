@@ -76,6 +76,10 @@ export default {
           }],
           value:''
         },
+        elFormNested:{
+          inputVal:'',
+          selectVal:''
+        },
         elcascader:{
           value:'',
           props:{},
@@ -1710,11 +1714,27 @@ export default {
       visibleVal.visible = true;
       this.getVueComponentName('elCustomizationsDialog','visible',visibleVal.visible);
     },
+    openFormNestedDialog(){
+      let visibleVal = this.eldialog;
+      visibleVal.visible = true;
+      this.getVueComponentName('elFormNestedDialog','visible',visibleVal.visible);
+    },
+    openOuterDialog(){
+      let visibleVal = this.eldialog;
+      visibleVal.visible = true;
+      this.getVueComponentName('elOuterDialog','visible',visibleVal.visible);
+      this.getVueComponentName('elInnerDialog','visible',false);
+    },
+    openInnerDialog(){
+      let visibleVal = this.eldialog;
+      visibleVal.visible = true;
+      this.getVueComponentName('elInnerDialog','visible',visibleVal.visible);
+    },
+    //具备beforeClose方法的集合(所有关闭弹框事件取refName检索组件并修改组件值)
     beforeClose(){
       console.log("beforeClose======>");
       console.log(this);
-      //具备beforeClose方法的集合
-      var closeComponentRefList = ['elDrawerRef','eldialog','elTableDrawerRef','elNestedDrawerRef','elInnerDrawerRef','elCustomizationsDialog'];
+      var closeComponentRefList = ['elDrawerRef','eldialog','elTableDrawerRef','elNestedDrawerRef','elInnerDrawerRef','elCustomizationsDialog','elFormNestedDialog','elOuterDialog','elInnerDialog'];
       for(var i in closeComponentRefList){
         var component = getVueComponent(this,'$children','$refs',closeComponentRefList[i]);
         console.log(component);
@@ -1814,6 +1834,14 @@ export default {
   }
 
   ::v-deep {
+
+    .elInnerDialogClass {
+      .el-dialog__body {
+        width: 200px;
+        height: 200px;
+      } 
+      
+    }
     .el-popover__reference {
       margin-right: 20px;
     }
