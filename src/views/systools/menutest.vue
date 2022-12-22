@@ -1221,6 +1221,10 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elCenteredContent:{
+              tag:'span',
+              text:'It should be noted that the content will not be aligned in center by default',
             }
         },
         elrate:{
@@ -1730,11 +1734,16 @@ export default {
       visibleVal.visible = true;
       this.getVueComponentName('elInnerDialog','visible',visibleVal.visible);
     },
+    openCenteredContentDialog(){
+      let visibleVal = this.eldialog;
+      visibleVal.visible = true;
+      this.getVueComponentName('elCenteredContentDialog','visible',visibleVal.visible);
+    },
     //具备beforeClose方法的集合(所有关闭弹框事件取refName检索组件并修改组件值)
     beforeClose(){
       console.log("beforeClose======>");
       console.log(this);
-      var closeComponentRefList = ['elDrawerRef','eldialog','elTableDrawerRef','elNestedDrawerRef','elInnerDrawerRef','elCustomizationsDialog','elFormNestedDialog','elOuterDialog','elInnerDialog'];
+      var closeComponentRefList = ['elDrawerRef','eldialog','elTableDrawerRef','elNestedDrawerRef','elInnerDrawerRef','elCustomizationsDialog','elFormNestedDialog','elOuterDialog','elInnerDialog','elCenteredContentDialog'];
       for(var i in closeComponentRefList){
         var component = getVueComponent(this,'$children','$refs',closeComponentRefList[i]);
         console.log(component);
