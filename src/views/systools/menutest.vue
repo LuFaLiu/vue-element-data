@@ -1225,6 +1225,62 @@ export default {
             elCenteredContent:{
               tag:'span',
               text:'It should be noted that the content will not be aligned in center by default',
+            },
+            elStepsType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elStepsType2:{
+              tag:'span',
+              text:'Step bar that contains status',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elStepsType3:{
+              tag:'span',
+              text:'Center',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elStepsType4:{
+              tag:'span',
+              text:'Step bar with description',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elStepsType5:{
+              tag:'span',
+              text:'Step bar with icon',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elStepsType6:{
+              tag:'span',
+              text:'Vertical step bar',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elStepsType7:{
+              tag:'span',
+              text:'Simple step bar',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
         },
         elrate:{
