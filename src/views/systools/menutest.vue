@@ -1900,6 +1900,10 @@ export default {
 
   ::v-deep {
 
+    .elStepsVerticalStep {
+      height: 300px;
+    }
+
     .elInnerDialogClass {
       .el-dialog__body {
         width: 200px;
