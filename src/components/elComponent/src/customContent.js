@@ -103,6 +103,18 @@ export default {
                         <el-button onClick={this.changeAdvancedUsagedisabled}>click to {this.advancedUsagedisabled ? 'active' : 'close'} tooltip function</el-button>
                     </el-tooltip>
                 )
+            }else if(node.type == 'dropdownListBtn') {
+                return (
+                    <el-button type="primary">
+                        {node.text}<i class="el-icon-arrow-down el-icon--right"></i>
+                    </el-button>
+                )
+            }else if(node.type == 'basicUsageBtn') {
+                return (
+                    <span class="el-dropdown-link">
+                        {node.text}<i class="el-icon-arrow-down el-icon--right"></i>
+                    </span>
+                )
             } else {
 
                 return h(

@@ -1281,6 +1281,66 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elDropdownType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elDropdownType2:{
+              tag:'span',
+              text:'Triggering element',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elDropdownType3:{
+              tag:'span',
+              text:'How to trigger',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elDropdownType4:{
+              tag:'span',
+              text:'Menu hiding behavior',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elDropdownType5:{
+              tag:'span',
+              text:'Command event',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elDropdownType6:{
+              tag:'span',
+              text:'Sizes',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elDropdownBasicUsageBtn:{
+              type:'basicUsageBtn',
+              text:'Dropdown List'
+            },
+            elDropdownTriggeringElementBtn:{
+              type:'dropdownListBtn',
+              text:'Dropdown List'
+            },
+            elDropdownTriggeringElementBtn2:{
+              tag:'span',
+              text:'Dropdown List'
             }
         },
         elrate:{
@@ -1899,7 +1959,9 @@ export default {
   }
 
   ::v-deep {
-
+    .el-dropdown {
+      margin-right: 15px;
+    }
     .elStepsVerticalStep {
       height: 300px;
     }
