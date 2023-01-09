@@ -1341,7 +1341,23 @@ export default {
             elDropdownTriggeringElementBtn2:{
               tag:'span',
               text:'Dropdown List'
-            }
+            },
+            elHoverTriggerTitle:{
+              tag:'span',
+              text:'hover to trigger',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elClickTriggerTitle:{
+              tag:'span',
+              text:'click to trigger',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
         },
         elrate:{
           value:0,
