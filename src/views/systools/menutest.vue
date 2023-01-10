@@ -1975,6 +1975,13 @@ export default {
   }
 
   ::v-deep {
+    .triggerType {
+      display: flex;
+    }
+    .triggerDetail {
+      display: flex;
+      flex-direction: column;
+    }
     .el-dropdown {
       margin-right: 15px;
     }
