@@ -432,6 +432,9 @@ export default {
         case 'ElBreadcrumbItem':
           this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title','title': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;  
+        case 'ElDropdown':
+          this.componentProps.push({attributeName:'command',attributeLabel:'command',attributeModel:'command','command': false ,inputFormat:'boolean', attributeType: 'ruleRadio'})
+          break;   
         case 'ElDropdownItem':
           this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title','title': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;  

@@ -103,6 +103,17 @@ export default {
                                         break;
                                 }
                             },
+                            'command':function (e) {
+                                switch (item.componentName) {
+                                    case "ElDropdown" :
+                                        if(item.command) {
+                                            that.handleDropdownCommand(e);
+                                        }
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            },
                             'selection-change':function (e) {
                                 console.log(e);
                                 that.selectChange(e,item);
@@ -250,6 +261,9 @@ export default {
             } else{
                 this.superParams[item.event]();  
             }
+        },
+        handleDropdownCommand(command){
+            this.$message('click on item ' + command);
         },
         selectChange(val,item){ 
             var selectName = item.selectionEvent;
