@@ -1358,6 +1358,22 @@ export default {
                 'display': 'block'
               }
             },
+            elDropdownSizesType1:{
+              tag:'span',
+              text:'Default'
+            },
+            elDropdownSizesType2:{
+              tag:'span',
+              text:'Medium'
+            },
+            elDropdownSizesType3:{
+              tag:'span',
+              text:'Small'
+            },
+            elDropdownSizesType4:{
+              tag:'span',
+              text:'Mini'
+            }
         },
         elrate:{
           value:0,
