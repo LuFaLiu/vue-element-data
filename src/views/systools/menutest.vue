@@ -1373,6 +1373,30 @@ export default {
             elDropdownSizesType4:{
               tag:'span',
               text:'Mini'
+            },
+            elPageHeaderType:{
+              tag:'span',
+              text:'Basic',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elBreadcrumbType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elBreadcrumbType2:{
+              tag:'span',
+              text:'Icon separator',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
         },
         elrate:{
