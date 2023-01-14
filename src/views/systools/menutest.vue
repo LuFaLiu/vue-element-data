@@ -1397,6 +1397,62 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elTabsType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTabsType2:{
+              tag:'span',
+              text:'Card Style',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTabsType3:{
+              tag:'span',
+              text:'Border card',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTabsType4:{
+              tag:'span',
+              text:'Tab position',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTabsType5:{
+              tag:'span',
+              text:'Custom Tab',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTabsType6:{
+              tag:'span',
+              text:'Add & close tab',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTabsType7:{
+              tag:'span',
+              text:'Customized trigger button of new tab',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
         },
         elrate:{
