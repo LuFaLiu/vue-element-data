@@ -49,7 +49,7 @@ export default {
           value:false
         },
         elradiogroup:{
-          value:''
+          value:'top'
         },
         elradio:{
           value:''
@@ -2071,6 +2071,12 @@ export default {
   }
 
   ::v-deep {
+    .elRadioTab {
+      margin-bottom: 30px;
+    }
+    .elTabPosition {
+      height: 200px;
+    }
     .triggerType {
       display: flex;
     }

@@ -127,7 +127,14 @@ export default {
                                     if(event.length > 0){
                                         hasVal = true;
                                     }
-                                }else {
+                                }else if(item.componentName == "ElRadioGroup"){ 
+                                    console.log("item.componentName == ElRadioGroup");
+                                    console.log(event);
+                                    if(item.customVal == "elRadioTab") { //elTabs Tab position
+                                        item.value = event;
+                                        that.superParams.getVueComponentName('tabPosition','tabPosition',event);
+                                    }
+                                } else {
                                     if(event){
                                         hasVal = true;
                                     }
