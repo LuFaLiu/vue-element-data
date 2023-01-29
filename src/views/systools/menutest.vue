@@ -1453,6 +1453,10 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elTabsCustomTab:{
+              type:'customTab',
+              text:'Route',
             }
         },
         elrate:{

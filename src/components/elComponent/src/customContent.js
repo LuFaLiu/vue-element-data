@@ -115,6 +115,12 @@ export default {
                         {node.text}<i class="el-icon-arrow-down el-icon--right"></i>
                     </span>
                 )
+            }else if(node.type == 'customTab') {
+                return (
+                    <span slot="label">
+                        <i class="el-icon-date"></i> {node.text}
+                        </span>
+                )
             } else {
 
                 return h(
