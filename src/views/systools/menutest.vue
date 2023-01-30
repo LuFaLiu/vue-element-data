@@ -1457,6 +1457,18 @@ export default {
             elTabsCustomTab:{
               type:'customTab',
               text:'Route',
+            },
+            elTabList:{
+              type:'tabList',
+              tabList:[{
+                title: 'Tab 1',
+                name: '1',
+                content: 'Tab 1 content'
+              }, {
+                title: 'Tab 2',
+                name: '2',
+                content: 'Tab 2 content'
+              }]
             }
         },
         elrate:{
@@ -1655,7 +1667,7 @@ export default {
           defaultActive:'1'
         },
         eltabs:{
-          activeName: 'second'
+          activeName: 'first'
         },
         elsteps:{
           active:0
