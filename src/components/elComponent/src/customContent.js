@@ -10,15 +10,26 @@ export default {
             advancedUsagedisabled:false,
             editableTabsValue: '2',
             editableTabs: [{
-            title: 'Tab 1',
-            name: '1',
-            content: 'Tab 1 content'
-            }, {
-            title: 'Tab 2',
-            name: '2',
-            content: 'Tab 2 content'
+                title: 'Tab 1',
+                name: '1',
+                content: 'Tab 1 content'
+                }, {
+                title: 'Tab 2',
+                name: '2',
+                content: 'Tab 2 content'
             }],
-            tabIndex: 2
+            tabIndex: 2,
+            editableTabsValue2: '2',
+            editableTabs2: [{
+                title: 'Tab 1',
+                name: '1',
+                content: 'Tab 1 content'
+                }, {
+                title: 'Tab 2',
+                name: '2',
+                content: 'Tab 2 content'
+            }],
+            tabIndex2: 2
         }
         
     },
@@ -140,6 +151,24 @@ export default {
                         }
                     </el-tabs>
                 )
+            }else if(node.type == 'customizedTrigger') {
+                return (
+                    <div>
+                        <div style="margin-bottom: 20px;">
+                            <el-button
+                                size="small"
+                                nativeOnClick={this.addTab}
+                            >
+                                add tab
+                            </el-button>
+                        </div>
+                        <el-tabs v-model={this.editableTabsValue2} type="card" closable v-on:tab-remove={this.removeTab}>
+                            {
+                                this.editableTabs2.map((item,index) => <el-tab-pane key={item.name} label={item.title} name={item.name} >{item.content}</el-tab-pane>)
+                            }
+                        </el-tabs>
+                    </div>
+                )
             } else {
 
                 return h(
@@ -235,6 +264,33 @@ export default {
                 this.editableTabsValue = activeName;
                 this.editableTabs = tabs.filter(tab => tab.name !== targetName);
             }
+        },
+        addTab(targetName) {
+            console.log("addTab==========>");
+            let newTabName = ++this.tabIndex2 + '';
+            this.editableTabs2.push({
+                title: 'New Tab',
+                name: newTabName,
+                content: 'New Tab content'
+            });
+            this.editableTabsValue2 = newTabName;
+        },
+        removeTab(targetName) {
+          let tabs = this.editableTabs2;
+          let activeName = this.editableTabsValue2;
+          if (activeName === targetName) {
+            tabs.forEach((tab, index) => {
+              if (tab.name === targetName) {
+                let nextTab = tabs[index + 1] || tabs[index - 1];
+                if (nextTab) {
+                  activeName = nextTab.name;
+                }
+              }
+            });
+          }
+          
+          this.editableTabsValue2 = activeName;
+          this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
         }
     }
 

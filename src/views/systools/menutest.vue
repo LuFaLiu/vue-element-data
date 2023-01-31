@@ -1469,6 +1469,9 @@ export default {
                 name: '2',
                 content: 'Tab 2 content'
               }]
+            },
+            elTabsCustomizedTrigger:{
+              type:'customizedTrigger'
             }
         },
         elrate:{
