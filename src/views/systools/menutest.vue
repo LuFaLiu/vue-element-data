@@ -1472,6 +1472,30 @@ export default {
             },
             elTabsCustomizedTrigger:{
               type:'customizedTrigger'
+            },
+            elNavMenuType1:{
+              tag:'span',
+              text:'Top bar',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elNavMenuType2:{
+              tag:'span',
+              text:'Side bar',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elNavMenuType3:{
+              tag:'span',
+              text:'Collapse',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
         },
         elrate:{
@@ -2090,6 +2114,12 @@ export default {
   }
 
   ::v-deep {
+
+    .el-menu {
+      margin-bottom: 15px;
+    }
+
+
     .elRadioTab {
       margin-bottom: 30px;
     }
