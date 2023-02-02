@@ -1496,6 +1496,31 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elNavMenuSidebarLoaction:{
+              type:'submenuLoaction',
+              text:'Navigator One'
+            },
+            elMenuItem2:{
+              type:'elMenuItemType',
+              index:'2',
+              disabled:false,
+              icon:'el-icon-menu',
+              text:'Navigator Two'
+            },
+            elMenuItem3:{
+              type:'elMenuItemType',
+              disabled:true,
+              index:'3',
+              icon:'el-icon-document',
+              text:'Navigator Three'
+            },
+            elMenuItem4:{
+              type:'elMenuItemType',
+              disabled:false,
+              index:'4',
+              icon:'el-icon-setting',
+              text:'Navigator Four'
             }
         },
         elrate:{

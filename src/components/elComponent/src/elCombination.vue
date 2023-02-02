@@ -1,7 +1,7 @@
 <script type="text/jsx">
 import { filteri18n, dynamicvModel, resizeObserver, getVueComponent } from '@/utils/index'
-import Template from './template'
-import TraverseTemplate from './traverseTemplate'
+import Template from './template' //template里面有多层参数可先创建template solt 再在里面创建子元素
+import TraverseTemplate from './traverseTemplate'  
 import CustomContent from './customContent'
 import elLevelSelect from '@/components/Page/elLevelSelect'
 import elTableTree from '@/components/Page/elTableTree'

@@ -141,7 +141,7 @@ export default {
                 return (
                     <span slot="label">
                         <i class="el-icon-date"></i> {node.text}
-                        </span>
+                    </span>
                 )
             }else if(node.type == 'tabList') {
                 return (
@@ -169,7 +169,21 @@ export default {
                         </el-tabs>
                     </div>
                 )
-            } else {
+            }else if(node.type == 'submenuLoaction') {
+                return (
+                    <div>
+                        <i class="el-icon-location"></i>
+                        <span>{node.text}</span>
+                    </div>
+                )
+            }else if(node.type == 'elMenuItemType') {
+                return (
+                    <el-menu-item index={node.index} disabled={node.disabled}>
+                        <i class={node.icon}></i>
+                        <span>{node.text}</span>
+                    </el-menu-item>
+                )
+            }else {
 
                 return h(
                     node.condition ? (Boolean(this.superParams[node.condition]) == node.conditionVal && node.tag)  : node.tag,
