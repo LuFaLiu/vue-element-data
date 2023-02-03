@@ -176,6 +176,13 @@ export default {
                         <span>{node.text}</span>
                     </div>
                 )
+            }else if(node.type == 'customMenuTitle') {
+                return (
+                    <div>
+                        <i class={node.class}></i>
+                        <span slot="title">{node.text}</span>
+                    </div>
+                )
             }else if(node.type == 'elMenuItemType') {
                 return (
                     <el-menu-item index={node.index} disabled={node.disabled}>

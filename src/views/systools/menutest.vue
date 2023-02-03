@@ -1497,6 +1497,14 @@ export default {
                 'display': 'block'
               }
             },
+            elNavMenuCollapseRadioBtnTitle:{
+              tag:'span',
+              text:'expand',
+            },
+            elNavMenuCollapseRadioBtnTitle2:{
+              tag:'span',
+              text:'collapse',
+            },
             elNavMenuSidebarLoaction:{
               type:'submenuLoaction',
               text:'Navigator One'
@@ -1521,6 +1529,11 @@ export default {
               index:'4',
               icon:'el-icon-setting',
               text:'Navigator Four'
+            },
+            elCustomMenuTitle1:{
+              type:'customMenuTitle',
+              icon:'el-icon-location',
+              text:'Navigator One'
             }
         },
         elrate:{
@@ -1742,8 +1755,7 @@ export default {
           previewSrcList: [
             'https://fuss10.elemecdn.com/8/27/f01c15bb73e1ef3793e64e6b7bbccjpeg.jpeg',
           ]
-        },
-
+        }
         
         
 
@@ -2126,6 +2138,8 @@ export default {
     
     getVueComponentName(refName,paramsName,paramsVal){
       var refComponent = getVueComponent(this,'$children','$refs',refName);
+      console.log("refComponent==========>");
+      console.log(refComponent);
       refComponent._events.changeValue[0](paramsName,paramsVal); 
     },
   }

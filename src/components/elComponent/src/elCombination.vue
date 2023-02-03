@@ -133,6 +133,9 @@ export default {
                                     if(item.customVal == "elRadioTab") { //elTabs Tab position
                                         item.value = event;
                                         that.superParams.getVueComponentName('tabPosition','tabPosition',event);
+                                    }else if(item.customVal == "collapse") {
+                                        item.value = event;
+                                        that.superParams.getVueComponentName('elMenuCollapse','elMenuCollapse',event);
                                     }
                                 } else {
                                     if(event){
@@ -202,6 +205,15 @@ export default {
                                             console.log(customVal);
                                             dynamicvModel(that.superParams,customVal,event,'set');
                                             item.value = event;
+
+                                            if(customVal == "collapse") { // NavMenu  Collapse 类型转换
+                                                item.value = event;
+                                                console.log("item.customVal == collapse");
+                                                console.log(event);
+                                                that.superParams.getVueComponentName('elMenuCollapse','collapse',eval(event.toLowerCase()));
+                                            }
+
+                                            console.log(event);
                                         }else {
                                             dynamicvModel(that.superParams,`${componentNameParams}.value`,event,'set');
                                             item.value = event;
