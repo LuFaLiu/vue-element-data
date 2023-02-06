@@ -1534,6 +1534,62 @@ export default {
               type:'customMenuTitle',
               icon:'el-icon-location',
               text:'Navigator One'
+            },
+            elNotificationType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elNotificationType2:{
+              tag:'span',
+              text:'With types',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elNotificationType3:{
+              tag:'span',
+              text:'Custom position',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elNotificationType4:{
+              tag:'span',
+              text:'With offset',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elNotificationType5:{
+              tag:'span',
+              text:'Use HTML string',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elNotificationType6:{
+              tag:'span',
+              text:'Hide close button',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elNotificationType7:{
+              tag:'span',
+              text:'Global method',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
         },
         elrate:{
@@ -1984,6 +2040,38 @@ export default {
         message: 'This is a message that does not automatically close',
         duration: 0
       });
+    },
+    openNotificationSuccessType() {
+      this.openNotificationType('success');
+    },
+    openNotificationWarningType() {
+      this.openNotificationType('warning');
+    },
+    openNotificationInfoType() {
+      this.openNotificationType('info');
+    },
+    openNotificationErrorType() {
+      this.openNotificationType('error');
+    },
+    openNotificationType(type) {
+      if(type == 'info'){
+        this.$notify.info({
+          title: 'Info',
+          message: 'This is an info message'
+        });
+      }else if(type == 'error') {
+        this.$notify.error({
+          title: 'Error',
+          message: 'This is an error message'
+        });
+      }else {
+        this.$notify({
+          title: 'Error',
+          message: 'This is an '+ type +' message',
+          type:type
+        });
+      }
+      
     },
     stepNext(){
       /*
