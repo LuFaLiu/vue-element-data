@@ -2073,6 +2073,33 @@ export default {
       }
       
     },
+    openNotificationTopRightPostiton(){
+      this.openNotificationPostitonType();
+    },
+    openNotificationBottomRightPostiton(){
+      this.openNotificationPostitonType('bottom-right');
+    },
+    openNotificationBottomLeftPostiton(){
+      this.openNotificationPostitonType('bottom-left');
+    },
+    openNotificationTopLeftPostiton(){
+      this.openNotificationPostitonType('top-left');
+    },
+    openNotificationPostitonType(type) {
+      if(type){
+        this.$notify({
+            title: 'Custom Position',
+            message: 'I\'m at the bottom right corner',
+            position: type
+        });
+      }else {
+        this.$notify({
+          title: 'Custom Position',
+          message: 'I\'m at the top right corner'
+        });
+      }
+      
+    },
     stepNext(){
       /*
       该方法会直接修改VueComponent, error:Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "active"
