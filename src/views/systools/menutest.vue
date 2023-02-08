@@ -2100,6 +2100,13 @@ export default {
       }
       
     },
+    openNotificationWithOffset() {
+      this.$notify.success({
+        title: 'Success',
+        message: 'This is a success message',
+        offset: 100
+      });
+    },
     stepNext(){
       /*
       该方法会直接修改VueComponent, error:Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "active"
