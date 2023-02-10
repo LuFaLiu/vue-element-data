@@ -1582,14 +1582,6 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
-            },
-            elNotificationType7:{
-              tag:'span',
-              text:'Global method',
-              style:{
-                'margin':'15px 0',
-                'display': 'block'
-              }
             }
         },
         elrate:{
@@ -2112,6 +2104,13 @@ export default {
         title: 'HTML String',
         dangerouslyUseHTMLString: true,
         message: '<strong>This is <i>HTML</i> string</strong>'
+      });
+    },
+    openNotificationHideCloseButton(){
+      this.$notify.success({
+        title: 'Info',
+        message: 'This is a message without close button',
+        showClose: false
       });
     },
     stepNext(){
