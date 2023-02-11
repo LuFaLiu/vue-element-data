@@ -1582,6 +1582,62 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elMessageBoxType1:{
+              tag:'span',
+              text:'Alert',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elMessageBoxType2:{
+              tag:'span',
+              text:'Confirm',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elMessageBoxType3:{
+              tag:'span',
+              text:'Prompt',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elMessageBoxType4:{
+              tag:'span',
+              text:'Customization',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elMessageBoxType5:{
+              tag:'span',
+              text:'Use HTML String',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elMessageBoxType6:{
+              tag:'span',
+              text:'Distinguishing cancel and close',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elMessageBoxType7:{
+              tag:'span',
+              text:'Centered content',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
         },
         elrate:{
@@ -1976,7 +2032,7 @@ export default {
         ])
       });
     },
-    openAlert() {
+    openMessageBoxAlertType() {
       this.$alert('This is a message', 'Title', {
         confirmButtonText: 'OK',
         callback: action => {
@@ -1987,7 +2043,7 @@ export default {
         }
       });
     },
-    openCustomization(){
+    openMessageBoxCustomizationtype(){
       const h = this.$createElement;
       this.$msgbox({
         title: 'Message',
@@ -2017,6 +2073,24 @@ export default {
           type: 'info',
           message: 'action: ' + action
         });
+      });
+    },
+    openMessageBoxPromptType(){
+      this.$prompt('Please input your e-mail', 'Tip', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+        inputErrorMessage: 'Invalid Email'
+      }).then(({ value }) => {
+        this.$message({
+          type: 'success',
+          message: 'Your email is:' + value
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Input canceled'
+        });       
       });
     },
     openNotification1(){
