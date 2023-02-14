@@ -2125,6 +2125,11 @@ export default {
         });
       });
     },
+    openMessageBoxUseHTMLStringType(){
+      this.$alert('<strong>This is <i>HTML</i> string</strong>', 'HTML String', {
+        dangerouslyUseHTMLString: true
+      });
+    },
     openNotification1(){
       const h = this.$createElement;
       this.$notify({
