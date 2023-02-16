@@ -2130,7 +2130,7 @@ export default {
         dangerouslyUseHTMLString: true
       });
     },
-    openMessageBoxDistinguishingCancelAndClose(){
+    openMessageBoxDistinguishingCancelAndCloseType(){
       this.$confirm('You have unsaved changes, save and proceed?', 'Confirm', {
         distinguishCancelAndClose: true,
         confirmButtonText: 'Save',
@@ -2150,6 +2150,24 @@ export default {
               : 'Stay in the current route'
           })
         });
+    },
+    openMessageBoxCenteredContentType(){
+      this.$confirm('This will permanently delete the file. Continue?', 'Warning', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        type: 'warning',
+        center: true
+      }).then(() => {
+        this.$message({
+          type: 'success',
+          message: 'Delete completed'
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Delete canceled'
+        });
+      });
     },
     openNotification1(){
       const h = this.$createElement;
