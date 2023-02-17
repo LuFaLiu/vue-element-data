@@ -1638,6 +1638,46 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elMessageType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elMessageType2:{
+              tag:'span',
+              text:'Types',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elMessageType3:{
+              tag:'span',
+              text:'Closable',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elMessageType4:{
+              tag:'span',
+              text:'Centered text',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elMessageType5:{
+              tag:'span',
+              text:'Use HTML string',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
         },
         elrate:{
@@ -2019,11 +2059,11 @@ export default {
       this.getVueComponentName('elProgressBar','percentage',percentageVal.percentage);
 
     },
-    open() {
+    openShowMessageType() {
       this.$message('This is a message.');
     },
 
-    openVn() {
+    openVNodeType() {
       const h = this.$createElement;
       this.$message({
         message: h('p', null, [
@@ -2031,6 +2071,30 @@ export default {
           h('i', { style: 'color: teal' }, 'VNode')
         ])
       });
+    },
+    openMessageSuccessType(){
+      this.openMessageTypeList('success');
+    },
+    openMessageWarningType(){
+      this.openMessageTypeList('warning');
+    },
+    openMessageDefaultType(){
+      this.openMessageTypeList('message');
+    },
+    openMessageErrorType(){
+      this.openMessageTypeList('error');
+    },
+    openMessageTypeList(type){
+      if(type == 'message') {
+        this.$message('This is a message.');
+      }else if(type == 'error'){
+        this.$message.error('Oops, this is a error message.');
+      } else {
+        this.$message({
+          message: 'Congrats, this is a success message.',
+          type: type
+        });
+      }
     },
     openMessageBoxAlertType() {
       this.$alert('This is a message', 'Title', {
