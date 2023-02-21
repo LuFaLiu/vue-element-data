@@ -2091,11 +2091,38 @@ export default {
         this.$message.error('Oops, this is a error message.');
       } else {
         this.$message({
-          message: 'Congrats, this is a success message.',
+          message: type == 'success' ? 'Congrats' :  'Warning' +', this is a '+type+' message.',
           type: type
         });
       }
     },
+
+    
+    openMessageClosableMessageType(){
+      let content = 'This is a message.';
+      this.openMessageClosableTypeList('message',content);
+    },
+    openMessageClosableSuccessType(){
+      let content = 'Congrats, this is a success message.';
+      this.openMessageClosableTypeList('success',content);
+    },
+    openMessageClosableWarningType(){
+      let content = 'Warning, this is a warning message.';
+      this.openMessageClosableTypeList('warning',content);
+    },
+    openMessageClosableErrorType(){
+      let content = 'Oops, this is a error message.';
+      this.openMessageClosableTypeList('error',content);
+    },
+
+    openMessageClosableTypeList(type,content){
+      this.$message({
+        showClose: true,
+        message: content,
+        type: type
+      });
+    },
+
     openMessageBoxAlertType() {
       this.$alert('This is a message', 'Title', {
         confirmButtonText: 'OK',
