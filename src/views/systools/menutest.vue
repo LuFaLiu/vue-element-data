@@ -2123,6 +2123,13 @@ export default {
       });
     },
 
+    openMessageCenteredText(){
+      this.$message({
+        message: 'Centered text',
+        center: true
+      });
+    },
+
     openMessageBoxAlertType() {
       this.$alert('This is a message', 'Title', {
         confirmButtonText: 'OK',
