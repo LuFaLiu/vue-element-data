@@ -2130,6 +2130,13 @@ export default {
       });
     },
 
+    openMessageUseHTMLString(){
+      this.$message({
+        dangerouslyUseHTMLString: true,
+        message: '<strong>This is <i>HTML</i> string</strong>'
+      });
+    },
+
     openMessageBoxAlertType() {
       this.$alert('This is a message', 'Title', {
         confirmButtonText: 'OK',
