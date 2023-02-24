@@ -1678,6 +1678,30 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elLoadingType1:{
+              tag:'span',
+              text:'Loading inside a container',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elLoadingType2:{
+              tag:'span',
+              text:'Customization',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elLoadingType3:{
+              tag:'span',
+              text:'Full screen loading',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
         },
         elrate:{
@@ -1756,6 +1780,11 @@ export default {
           treeProps:{
             "hasChildren":"hasChildren",
             "children":"children"
+          },
+          attrs:{
+            'element-loading-text':"loading",
+            'element-loading-spinner':"el-icon-loading",
+            'element-loading-background':"rgba(0, 0, 0, 0.8)"
           }
         },
         eltablecolumn:{

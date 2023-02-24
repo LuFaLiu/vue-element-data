@@ -419,6 +419,7 @@ export default {
           break; 
         case 'ElTable':
           this.componentProps.push({attributeName:'loading',attributeLabel:'loading',attributeModel:'loading','loading':false ,inputFormat:'boolean', attributeType: 'ruleRadio'})
+          this.componentProps.push({attributeName:'attrs',attributeLabel:'attrs',attributeModel:'attrs','attrs': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break; 
         case 'ElMenuItem':
           this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title','title': '' ,inputFormat:'string', attributeType: 'ruleInput'})
