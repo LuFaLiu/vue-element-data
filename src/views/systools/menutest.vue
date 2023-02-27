@@ -2397,6 +2397,28 @@ export default {
         showClose: false
       });
     },
+
+    openFullScreenLoading1() {
+      const loading = this.$loading({
+        lock: true,
+        text: 'Loading'
+      });
+      setTimeout(() => {
+        loading.close();
+      }, 2000);
+    },
+    openFullScreenLoading2() {
+      const loading = this.$loading({
+        lock: true,
+        text: 'Loading',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      });
+      setTimeout(() => {
+        loading.close();
+      }, 2000);
+    },
+
     stepNext(){
       /*
       该方法会直接修改VueComponent, error:Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "active"
