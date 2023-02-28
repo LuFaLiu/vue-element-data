@@ -1702,6 +1702,62 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elAlertType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elAlertType2:{
+              tag:'span',
+              text:'Theme',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elAlertType3:{
+              tag:'span',
+              text:'Customizable close button',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elAlertType4:{
+              tag:'span',
+              text:'With icon',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elAlertType5:{
+              tag:'span',
+              text:'Centered text',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elAlertType6:{
+              tag:'span',
+              text:'With description',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elAlertType7:{
+              tag:'span',
+              text:'With icon and description',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
         },
         elrate:{
@@ -2587,6 +2643,10 @@ export default {
   }
 
   ::v-deep {
+
+    .el-alert {
+      margin-bottom: 10px;
+    }
 
     .el-menu {
       margin-bottom: 15px;
