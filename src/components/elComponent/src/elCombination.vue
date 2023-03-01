@@ -90,6 +90,11 @@ export default {
                         },
                         props: item.props && componentNameParams !== 'eltransfer' && componentNameParams !== 'eltree' ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
                         on:{
+                            '&close':function (params) { // close event
+                                if(item.uniqueIdentifier == 'alertTip') {
+                                    alert('Hello World!');
+                                }
+                            },
                             changeValue:function (paramsName,val) {
                                 item[paramsName] = val;
                             },
