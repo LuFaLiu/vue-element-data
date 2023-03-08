@@ -1758,6 +1758,22 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elResultType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elResultType2:{
+              tag:'span',
+              text:'Customized content',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
         },
         elrate:{
