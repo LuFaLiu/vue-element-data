@@ -1774,6 +1774,22 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elDescriptionType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elDescriptionType2:{
+              tag:'span',
+              text:'Sizes',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
         },
         elrate:{
@@ -2000,7 +2016,11 @@ export default {
           previewSrcList: [
             'https://fuss10.elemecdn.com/8/27/f01c15bb73e1ef3793e64e6b7bbccjpeg.jpeg',
           ]
-        }
+        },
+
+
+        // 自定义value
+        elDescriptionRadio:'' //Descriptions-Sizes
         
         
 
@@ -2019,7 +2039,7 @@ export default {
     'elprogress.percentage':function (val,oldVal) {
       console.log("elprogress.percentage====>");
       console.log(val,oldVal);
-    },
+    }
   },
   mounted(){
     this.elskeleton.elskeletonLoading = false;
@@ -2643,6 +2663,7 @@ export default {
 
     
     getVueComponentName(refName,paramsName,paramsVal){
+      console.log("getVueComponentName=====>");
       var refComponent = getVueComponent(this,'$children','$refs',refName);
       console.log("refComponent==========>");
       console.log(refComponent);
@@ -2659,6 +2680,12 @@ export default {
   }
 
   ::v-deep {
+
+    .elDescriptionsSizes {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
 
     .el-alert {
       margin-bottom: 10px;
