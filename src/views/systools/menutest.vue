@@ -1790,7 +1790,24 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elDescriptionType3:{
+              tag:'span',
+              text:'Vertical List',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elDescriptionType4:{
+              tag:'span',
+              text:'Customized Style',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
+
         },
         elrate:{
           value:0,
