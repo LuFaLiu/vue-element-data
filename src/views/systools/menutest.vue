@@ -337,6 +337,9 @@ export default {
           data:{},
           imageUrl:''
         },
+        eldescriptionsitem:{
+          contentStyle:{'text-align': 'right'}
+        },
         imageUrl:'',
         customcontent:{
           attributeName:'',
@@ -2697,6 +2700,14 @@ export default {
   }
 
   ::v-deep {
+
+    .descriptions-label {
+      background: #E1F3D8;
+    }
+
+    .descriptions-content {
+      background: #FDE2E2;
+    }
 
     .elDescriptionsSizes {
       display: flex;
