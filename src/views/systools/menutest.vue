@@ -1809,6 +1809,38 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elEmptyType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elEmptyType2:{
+              tag:'span',
+              text:'Custom image',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elEmptyType3:{
+              tag:'span',
+              text:'Image size',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elEmptyType4:{
+              tag:'span',
+              text:'Bottom content',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
 
         },
