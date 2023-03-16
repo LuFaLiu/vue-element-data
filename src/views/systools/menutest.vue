@@ -1841,6 +1841,62 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elSkeletonType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elSkeletonType2:{
+              tag:'span',
+              text:'Configurable Rows',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elSkeletonType3:{
+              tag:'span',
+              text:'Animation',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elSkeletonType4:{
+              tag:'span',
+              text:'Customized Template',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elSkeletonType5:{
+              tag:'span',
+              text:'Loading state',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elSkeletonType6:{
+              tag:'span',
+              text:'Rendering a list of data',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elSkeletonType7:{
+              tag:'span',
+              text:'Avoiding rendering bouncing.',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
 
         },
@@ -1858,6 +1914,7 @@ export default {
         },
         elskeleton:{
           elskeletonLoading:false,
+          basicUsageLoading:true,
         },
         img:{
           attrs:{
@@ -2165,10 +2222,9 @@ export default {
     rowKey(row){
       return row.staffTypeId;
     },
-    setLoading() {
-      console.log("123456");
-      this.elskeleton.elskeletonLoading = true
-      setTimeout(() => (this.elskeleton.elskeletonLoading = false), 2000)
+    setLoading() { // change Loading state
+      this.getVueComponentName('elskeletonLoadingState','loading',true);
+      setTimeout(() => (this.getVueComponentName('elskeletonLoadingState','loading',false)), 2000)
     },
     formSubmit(formName) {
       var resetForm = getVueComponent(this,'$children','$refs',formName);

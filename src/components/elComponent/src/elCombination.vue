@@ -367,7 +367,10 @@ export default {
                         item[i] = that.superParams[i];
                     } else {
                         if(componentNameParams == 'elskeleton' && i == 'loading'){
-                            item[i] = that.superParams.elskeleton.elskeletonLoading; 
+                            if(item[i]){
+                                item[i] = that.superParams.elskeleton[item[i]];
+                            }
+                            //item[i] = that.superParams.elskeleton.elskeletonLoading; 
                         }else if((componentNameParams == 'elsubmenu' && i == 'index') || (componentNameParams == 'elmenuitem' && i == 'index')){
                             item[i] = item[i];
                         }else if(componentNameParams == 'elinput' && i == 'tabindex'){
@@ -383,7 +386,7 @@ export default {
                                       ( 
                                             i == item[i] 
                                                 ? that.vModelVal(`${hasUniqueIdentifier ? (componentNameParams + hasUniqueIdentifier) : componentNameParams}.${i}`)
-                                                    : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl' || i == 'pageCount' || i == 'total' || i == 'active' || i == 'openDelay' || i == 'arrowOffset' || i == 'tabindex' || i == 'hideAfter' || i == 'percentage' || i == 'initialIndex' || i == 'visibilityHeight' || i == 'right' || i == 'bottom' || i == 'gutter'
+                                                    : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'rows' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl' || i == 'pageCount' || i == 'total' || i == 'active' || i == 'openDelay' || i == 'arrowOffset' || i == 'tabindex' || i == 'hideAfter' || i == 'percentage' || i == 'initialIndex' || i == 'visibilityHeight' || i == 'right' || i == 'bottom' || i == 'gutter'
                                                         ? Number(item[i]) 
                                                                 : item[i] == 'orderVal' && customVal //customVal exist   
                                                                     ? that.vModelVal(customVal)
