@@ -54,6 +54,8 @@
 "children":[]}]},{"id":1661992547866,"label":"ElFormItem","componentRule":{"label":"Skeleton","labelWidth":"100px","prop":"prop","required":"","rules":"rules","error":"","validateStatus":"","for":"","inlineMessage":"","showMessage":true,"size":"","class":""},
 "children":[{"id":1678927316489,"label":"customContent","componentRule":{"componentName":"customContent","tag":"p","attributeName":"elSkeletonType1","class":"","refName":"","customVal":"","uniqueIdentifier":""},
 "children":[]},{"id":1678927347146,"label":"ElSkeleton","componentRule":{"animated":false,"count":1,"rows":4,"loading":"basicUsageLoading","throttle":"0","class":"skeleton","refName":"","customVal":"","uniqueIdentifier":""},
+"children":[]},{"id":1679014214816,"label":"customContent","componentRule":{"componentName":"customContent","tag":"p","attributeName":"elSkeletonType2","class":"","refName":"","customVal":"","uniqueIdentifier":""},
+"children":[]},{"id":1679014256128,"label":"ElSkeleton","componentRule":{"animated":false,"count":1,"rows":"6","loading":"basicUsageLoading","throttle":"0","class":"","refName":"","customVal":"","uniqueIdentifier":""},
 "children":[]},{"id":1678929424854,"label":"customContent","componentRule":{"componentName":"customContent","tag":"p","attributeName":"elSkeletonType5","class":"","refName":"","customVal":"","uniqueIdentifier":""},
 "children":[]},{"id":1661994152409,"label":"ElContainer","componentRule":{"direction":"","class":""},
 "children":[{"id":1661994312545,"label":"ElButton","componentRule":{"type":"default","size":"","icon":"","nativeType":"button","loading":false,"disabled":false,"plain":false,"autofocus":"","round":false,"circle":false,"title":"reload","event":"setLoading"},
