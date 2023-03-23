@@ -183,6 +183,10 @@ export default {
                                 console.log(event);
                                 console.log(item);
                                 console.log(componentNameParams);
+                                if(item.event){
+                                    item.value = event;
+                                    that.btnClick(item,'param');
+                                }
                                 var hasVal = false;
                                 if(typeof event == 'string'){
                                     if(event){
@@ -283,11 +287,13 @@ export default {
         currentChange(val){
             this.superParams[this.parentNode.currentChangeName](val);
         },
-        btnClick(item){
+        btnClick(item,type){
             if(item.params){
                 this.superParams[item.event](item.paramsName);
             }else if(item.tableParams){
                 this.superParams[item.event](this.rowData);  
+            }else if(type == 'param'){
+                this.superParams[item.event](item.value);  
             } else{
                 this.superParams[item.event]();  
             }

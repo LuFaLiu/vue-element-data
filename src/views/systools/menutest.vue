@@ -1890,6 +1890,27 @@ export default {
                 'display': 'block'
               }
             },
+            elSkeletonRenderingListType:{
+              type:'elSkeletonRenderingList',
+              currentDate:'2021-06-01',
+              skeletonList:[
+                {
+                  imgUrl:
+                    'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
+                  name: 'Deer',
+                },
+                {
+                  imgUrl:
+                    'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
+                  name: 'Horse',
+                },
+                {
+                  imgUrl:
+                    'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
+                  name: 'Mountain Lion',
+                },
+              ]
+            },
             elSkeletonType7:{
               tag:'span',
               text:'Avoiding rendering bouncing.',
@@ -2222,9 +2243,12 @@ export default {
     rowKey(row){
       return row.staffTypeId;
     },
-    setLoading() { // change Loading state
-      this.getVueComponentName('elskeletonLoadingState','loading',true);
-      setTimeout(() => (this.getVueComponentName('elskeletonLoadingState','loading',false)), 2000)
+    changeElskeletonLoadingState(val) { // change Loading state
+      this.getVueComponentName('elskeletonLoadingState','loading',val);
+    },
+    changeElskeletonRenderingListLoadingState() { // change Loading state
+      this.getVueComponentName('elskeletonRenderingListRef','loading',true);
+      setTimeout(() => (this.getVueComponentName('elskeletonRenderingListRef','loading',false)), 2000)
     },
     formSubmit(formName) {
       var resetForm = getVueComponent(this,'$children','$refs',formName);
@@ -2765,10 +2789,6 @@ export default {
       this.getVueComponentName('nestedOperationRef','value',false);
     },
 
-
-
-
-
     
     getVueComponentName(refName,paramsName,paramsVal){
       console.log("getVueComponentName=====>");
@@ -2789,6 +2809,20 @@ export default {
 
   ::v-deep {
 
+    .skeleton { // ELSkeleton 一定要设置class为：skeleton
+      .el-card__body {
+        padding: 0 !important;
+        .card-header {
+          margin-top: 20px;
+        }
+      }
+    }
+    
+
+    .skeletonList {
+      width: 400px;
+      
+    }
     .descriptions-label {
       background: #E1F3D8;
     }

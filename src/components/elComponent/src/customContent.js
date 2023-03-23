@@ -190,6 +190,28 @@ export default {
                         <span>{node.text}</span>
                     </el-menu-item>
                 )
+            }else if(node.type == 'elSkeletonRenderingList') {
+                console.log("node.type == 'elSkeletonRenderingList'");
+                console.log(node);
+                return (
+                    // 原文为template 不展示模块，改为div则展示
+                    <div>
+                        {
+                            node.skeletonList.map((item,index) => 
+                                <el-card key={item} >
+                                    <img src={item.imgUrl} class="image multi-content" />
+                                    <div style="padding: 14px;">
+                                        <span>Delicious hamberger</span>
+                                        <div class="bottom card-header">
+                                        <span class="time">{ node.currentDate }</span>
+                                        <el-button type="text" class="button">Operation button</el-button>
+                                        </div>
+                                    </div>
+                                </el-card>
+                            )
+                        }
+                    </div>
+                )
             }else {
 
                 return h(
