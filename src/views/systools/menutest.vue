@@ -2246,6 +2246,9 @@ export default {
     changeElskeletonLoadingState(val) { // change Loading state
       this.getVueComponentName('elskeletonLoadingState','loading',val);
     },
+    changeElskeletonRenderingBouncingLoadingState(val) { // change Loading state
+      this.getVueComponentName('elskeletonRenderingBouncingLoadingState','loading',val);
+    },
     changeElskeletonRenderingListLoadingState() { // change Loading state
       this.getVueComponentName('elskeletonRenderingListRef','loading',true);
       setTimeout(() => (this.getVueComponentName('elskeletonRenderingListRef','loading',false)), 2000)
