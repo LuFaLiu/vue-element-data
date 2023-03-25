@@ -1918,6 +1918,42 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elBadgeType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elDropdownBadgeType:{
+              type:'basicUsageBtn',
+              text:'Click Me'
+            },
+            elBadgeType2:{
+              tag:'span',
+              text:'Max value',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elBadgeType3:{
+              tag:'span',
+              text:'Customizations',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elBadgeType4:{
+              tag:'span',
+              text:'Little red dot',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
 
         },
