@@ -381,6 +381,8 @@ export default {
                             item[i] = item[i];
                         }else if(componentNameParams == 'elinput' && i == 'tabindex'){
                             item[i] = item[i];
+                        }else if(componentNameParams == 'elbadge' && i == 'value'){ // value必须为Number类型
+                            item[i] = Number(item[i]);
                         }else if(componentNameParams == 'elrate' && i == 'value'){
                             item[i] = Number(item[i]);
                         }else if(item[i] == 'clear'){
