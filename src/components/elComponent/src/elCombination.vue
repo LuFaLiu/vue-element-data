@@ -382,7 +382,16 @@ export default {
                         }else if(componentNameParams == 'elinput' && i == 'tabindex'){
                             item[i] = item[i];
                         }else if(componentNameParams == 'elbadge' && i == 'value'){ // value必须为Number类型
-                            item[i] = Number(item[i]);
+                            console.log("componentNameParams == 'elbadge' && i == 'value'");
+                            console.log(item[i]);
+                            console.log(Number(item[i]));
+                            console.log(Boolean(Number(item[i])));
+                            if(Boolean(Number(item[i]))) {
+                                item[i] = Number(item[i]);
+                            }else { //为NaN
+                                item[i] = item[i];
+                            }
+                            
                         }else if(componentNameParams == 'elrate' && i == 'value'){
                             item[i] = Number(item[i]);
                         }else if(item[i] == 'clear'){
