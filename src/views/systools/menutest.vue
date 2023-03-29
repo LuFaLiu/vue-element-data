@@ -1954,6 +1954,10 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elBadgeLittleRedDotText:{
+              tag:'span',
+              text:'query'
             }
 
         },
