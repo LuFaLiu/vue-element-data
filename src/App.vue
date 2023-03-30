@@ -304,8 +304,29 @@ export default {
       line-height: 38px;
     }
 
-    .el-pager li.btn-quicknext, .el-pager li.btn-quickprev{
+    .el-pager li.btn-quicknext, i.btn-quickprev{
       line-height: 38px;
+    }
+
+    .el-pagination {
+      display: flex;
+      align-items: center;
+    }
+
+    .el-pagination--small .el-pager li:last-child {
+      margin: 0 6px;
+      min-width: 38px;
+      height: 38px;
+      line-height: 38px;
+      -webkit-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.16);
+      box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.16);
+      border-radius: 5px;
+    }
+
+    .el-pager, .el-pager li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .el-pagination__total{

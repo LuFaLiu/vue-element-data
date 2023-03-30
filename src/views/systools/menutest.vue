@@ -1958,6 +1958,54 @@ export default {
             elBadgeLittleRedDotText:{
               tag:'span',
               text:'query'
+            },
+            elPaginationType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elPaginationType2:{
+              tag:'span',
+              text:'Number of pagers',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elPaginationType3:{
+              tag:'span',
+              text:'Buttons with background color',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elPaginationType4:{
+              tag:'span',
+              text:'Small Pagination',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elPaginationType5:{
+              tag:'span',
+              text:'More elements',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elPaginationType6:{
+              tag:'span',
+              text:'Hide pagination when there is only one page',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
 
         },
@@ -2150,7 +2198,7 @@ export default {
           ]
         },
         elpagination:{
-          pageSizes:[100, 200, 300, 400]
+          pageSizes:[10, 20, 30, 40]
         },
         elbadge:{
           value:12

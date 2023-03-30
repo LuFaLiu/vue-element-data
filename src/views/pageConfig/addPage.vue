@@ -828,11 +828,11 @@ export default {
     padding-bottom: 20px;
     overflow-y: scroll;
     &::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
+      width: 10px;
+      height: 10px;
     }
     &::-webkit-scrollbar-thumb {
-      border-radius: 5px;
+      border-radius: 10px;
       background-color: #c1c1c1;
     }
   }
