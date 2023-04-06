@@ -259,6 +259,16 @@ export default {
 
     /*el-pagination style */
     .el-pagination {
+      .el-pager li,.el-pagination button:disabled,.btn-next, .btn-prev {
+        background: transparent !important;
+      }
+    }
+    
+    .el-pagination.is-background .el-pager li:not(.disabled).active {
+      color: #409EFF !important;
+    }
+    /*
+    .el-pagination {
       .btn-prev{
         margin-right: 14px;
         padding: 0!important;
@@ -358,6 +368,7 @@ export default {
         padding-left: 10px;
       }
     }
+    */
 
     .el-pagination__jump{
       cursor: pointer;
