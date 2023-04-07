@@ -377,7 +377,12 @@ export default {
                                 item[i] = that.superParams.elskeleton[item[i]];
                             }
                             //item[i] = that.superParams.elskeleton.elskeletonLoading; 
-                        }else if((componentNameParams == 'elsubmenu' && i == 'index') || (componentNameParams == 'elmenuitem' && i == 'index')){
+                        }else if(componentNameParams == 'elpagination' && i == 'pageSizes'){
+                            if(item[i]){
+                                item[i] = that.superParams.elpagination[item[i]];
+                            }
+                            //item[i] = that.superParams.elskeleton.elskeletonLoading; 
+                        } else if((componentNameParams == 'elsubmenu' && i == 'index') || (componentNameParams == 'elmenuitem' && i == 'index')){
                             item[i] = item[i];
                         }else if(componentNameParams == 'elinput' && i == 'tabindex'){
                             item[i] = item[i];

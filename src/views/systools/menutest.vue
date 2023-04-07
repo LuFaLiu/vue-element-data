@@ -1999,6 +1999,38 @@ export default {
                 'display': 'block'
               }
             },
+            elPaginationTypeMoreElement1:{
+              tag:'span',
+              text:'Total item count',
+              style:{
+                'margin':'15px',
+                'display': 'block'
+              }
+            },
+            elPaginationTypeMoreElement2:{
+              tag:'span',
+              text:'Change page size',
+              style:{
+                'margin':'15px',
+                'display': 'block'
+              }
+            },
+            elPaginationTypeMoreElement3:{
+              tag:'span',
+              text:'Jump to',
+              style:{
+                'margin':'15px',
+                'display': 'block'
+              }
+            },
+            elPaginationTypeMoreElement4:{
+              tag:'span',
+              text:'All combined',
+              style:{
+                'margin':'15px',
+                'display': 'block'
+              }
+            },
             elPaginationType6:{
               tag:'span',
               text:'Hide pagination when there is only one page',
@@ -2006,7 +2038,8 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
-            }
+            },
+
 
         },
         elrate:{
@@ -2198,7 +2231,8 @@ export default {
           ]
         },
         elpagination:{
-          pageSizes:[10, 20, 30, 40]
+          pageSizes:[10, 20, 30, 40],
+          pageSizes2:[100, 200, 300, 400],
         },
         elbadge:{
           value:12
