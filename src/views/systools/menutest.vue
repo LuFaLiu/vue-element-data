@@ -2031,7 +2031,7 @@ export default {
                 'display': 'block'
               }
             },
-            elPaginationType6:{
+            elPaginationType5:{
               tag:'span',
               text:'Hide pagination when there is only one page',
               style:{
@@ -2272,7 +2272,10 @@ export default {
 
 
         // 自定义value
-        elDescriptionRadio:'' //Descriptions-Sizes
+        elDescriptionRadio:'', //Descriptions-Sizes
+
+        // 自定义value
+        elPaginationSwitchVal:true //Descriptions-Sizes
         
         
 

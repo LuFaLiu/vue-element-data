@@ -226,6 +226,9 @@ export default {
                                                 console.log("item.customVal == collapse");
                                                 console.log(event);
                                                 that.superParams.getVueComponentName('elMenuCollapse','collapse',eval(event.toLowerCase()));
+                                            }else if(customVal == "elPaginationSwitchVal"){ // elPagination Hide pagination when there is only one page 监听switch切换
+                                                //JSON.parse(event)  将字符串'false',转为布尔类型false
+                                                that.superParams.getVueComponentName('hidePaginationRef','hideOnSinglePage',JSON.parse(event));
                                             }
 
                                             console.log(event);
