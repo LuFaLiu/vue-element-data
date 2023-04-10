@@ -373,7 +373,12 @@ export default {
                     if(i == 'readonly'){
                         item[i] = false;
                     } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error' || i == 'load' || i == 'renderHeader' || i == 'formatter' || i == 'selectable' || i == 'rowKey' || item[i] == 'renderContentTree' || i == 'allowDrag' || i == 'allowDrop' || item[i] == 'formatPercentage' || i == 'increase' || i == 'decrease' || i == 'openDialog' || i == 'beforeClose' || i == 'cancelDialog' || i == 'labelContent' || i == 'beforeLeave' || i == 'format' || i == 'openDrawer' || i == 'openNestedDrawer' || i == 'openInnerDrawer' || i == 'visibleManualPopover' || i == 'closePopoverNestedOperation'){
-                        item[i] = that.superParams[i];
+                        
+                        if(item[i] == 'loadSelectableNode'){
+                            item[i] = that.superParams.loadSelectableNode;
+                        }else {
+                            item[i] = that.superParams[i];
+                        }
                     } else {
                         if(componentNameParams == 'elskeleton' && i == 'loading'){
                             if(item[i]){
@@ -385,7 +390,7 @@ export default {
                                 item[i] = that.superParams.elpagination[item[i]];
                             }
                             //item[i] = that.superParams.elskeleton.elskeletonLoading; 
-                        } else if((componentNameParams == 'elsubmenu' && i == 'index') || (componentNameParams == 'elmenuitem' && i == 'index')){
+                        }else if((componentNameParams == 'elsubmenu' && i == 'index') || (componentNameParams == 'elmenuitem' && i == 'index')){
                             item[i] = item[i];
                         }else if(componentNameParams == 'elinput' && i == 'tabindex'){
                             item[i] = item[i];
@@ -406,6 +411,8 @@ export default {
                             delete item[i]
                         } else if(componentNameParams == 'elsteps' && i == 'active'){
                             item[i] = that.superParams.elsteps.active; 
+                        } else if(componentNameParams == 'eltree' && i == 'props'){
+                            item[i] = that.superParams.eltree[item[i]]; 
                         } else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 

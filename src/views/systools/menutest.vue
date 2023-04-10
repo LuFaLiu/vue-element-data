@@ -2039,6 +2039,86 @@ export default {
                 'display': 'block'
               }
             },
+            elTreeType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTreeType2:{
+              tag:'span',
+              text:'Selectable',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTreeType3:{
+              tag:'span',
+              text:'Custom leaf node in lazy mode',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTreeType4:{
+              tag:'span',
+              text:'Disabled checkbox',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTreeType5:{
+              tag:'span',
+              text:'Default expanded and default checked',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTreeType6:{
+              tag:'span',
+              text:'Checking tree nodes',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTreeType7:{
+              tag:'span',
+              text:'Custom node content',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTreeType8:{
+              tag:'span',
+              text:'Tree node filtering',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTreeType9:{
+              tag:'span',
+              text:'Accordion',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTreeType10:{
+              tag:'span',
+              text:'Draggable',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            }
 
 
         },
@@ -2178,41 +2258,48 @@ export default {
           }]
         },
         eltree:{
+          selectableCount: 1,
+          selectableProps: {
+            label: 'name',
+            children: 'zones'
+          },
+
+
           data: [{
-            label: '一级 1',
-            children: [{
-              label: '二级 1-1',
+            label: 'Level one 1',
               children: [{
-                label: '三级 1-1-1'
-              }]
-            }]
-          }, {
-            label: '一级 2',
-            children: [{
-              label: '二级 2-1',
-              children: [{
-                label: '三级 2-1-1'
+                label: 'Level two 1-1',
+                children: [{
+                  label: 'Level three 1-1-1'
+                }]
               }]
             }, {
-              label: '二级 2-2',
+              label: 'Level one 2',
               children: [{
-                label: '三级 2-2-1'
-              }]
-            }]
-          }, {
-            label: '一级 3',
-            children: [{
-              label: '二级 3-1',
-              children: [{
-                label: '三级 3-1-1'
+                label: 'Level two 2-1',
+                children: [{
+                  label: 'Level three 2-1-1'
+                }]
+              }, {
+                label: 'Level two 2-2',
+                children: [{
+                  label: 'Level three 2-2-1'
+                }]
               }]
             }, {
-              label: '二级 3-2',
+              label: 'Level one 3',
               children: [{
-                label: '三级 3-2-1'
+                label: 'Level two 3-1',
+                children: [{
+                  label: 'Level three 3-1-1'
+                }]
+              }, {
+                label: 'Level two 3-2',
+                children: [{
+                  label: 'Level three 3-2-1'
+                }]
               }]
-            }]
-          }],
+            }],
           defaultProps: {
             children: 'children',
             label: 'label'
@@ -2302,6 +2389,38 @@ export default {
   methods:{
     load(){
 
+    },
+    loadSelectableNode(node, resolve){
+      console.log("eltree");
+      console.log(node,resolve);
+      if (node.level === 0) {
+          return resolve([{ name: 'Root1' }, { name: 'Root2' }]);
+        }
+        if (node.level > 3) return resolve([]);
+
+        var hasChild;
+        if (node.data.name === 'region1') {
+          hasChild = true;
+        } else if (node.data.name === 'region2') {
+          hasChild = false;
+        } else {
+          hasChild = Math.random() > 0.5;
+        }
+
+        setTimeout(() => {
+          var data;
+          if (hasChild) {
+            data = [{
+              name: 'zone' + this.eltree.selectableCount++
+            }, {
+              name: 'zone' + this.eltree.selectableCount++
+            }];
+          } else {
+            data = [];
+          }
+
+          resolve(data);
+        }, 500);
     },
     renderHeader(h, { column, $index }){
       return column.label;
