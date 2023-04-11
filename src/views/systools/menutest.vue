@@ -2264,6 +2264,13 @@ export default {
             children: 'zones'
           },
 
+          customLazyProps:{
+            label: 'name',
+            children: 'zones',
+            isLeaf: 'leaf'
+          },
+
+
 
           data: [{
             label: 'Level one 1',
@@ -2421,6 +2428,23 @@ export default {
 
           resolve(data);
         }, 500);
+    },
+    loadCustomLazyNode(node, resolve){
+      if (node.level === 0) {
+        return resolve([{ name: 'region' }]);
+      }
+      if (node.level > 1) return resolve([]);
+
+      setTimeout(() => {
+        const data = [{
+          name: 'leaf',
+          leaf: true
+        }, {
+          name: 'zone'
+        }];
+
+        resolve(data);
+      }, 500);
     },
     renderHeader(h, { column, $index }){
       return column.label;

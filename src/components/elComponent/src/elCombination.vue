@@ -376,7 +376,9 @@ export default {
                         
                         if(item[i] == 'loadSelectableNode'){
                             item[i] = that.superParams.loadSelectableNode;
-                        }else {
+                        }else if(item[i] == 'loadCustomLazyNode'){
+                            item[i] = that.superParams.loadCustomLazyNode;
+                        } else {
                             item[i] = that.superParams[i];
                         }
                     } else {
