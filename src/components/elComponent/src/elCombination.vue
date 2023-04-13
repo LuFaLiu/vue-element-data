@@ -348,6 +348,7 @@ export default {
         },
         //转化props属性
         conversionProps(item,componentNameParams){
+            //console.log("转化props属性");
             //console.log(item,componentNameParams);
             var that = this;
             var customVal = '';
@@ -422,7 +423,7 @@ export default {
                                                 ? that.vModelVal(`${hasUniqueIdentifier ? (componentNameParams + hasUniqueIdentifier) : componentNameParams}.${i}`)
                                                     : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'rows' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl' || i == 'pageCount' || i == 'total' || i == 'active' || i == 'openDelay' || i == 'arrowOffset' || i == 'tabindex' || i == 'hideAfter' || i == 'percentage' || i == 'initialIndex' || i == 'visibilityHeight' || i == 'right' || i == 'bottom' || i == 'gutter'
                                                         ? Number(item[i]) 
-                                                                : item[i] == 'orderVal' && customVal //customVal exist   
+                                                                : item[i] == 'orderVal' && customVal //customVal exist   (需要将目标key的value设置为orderVal，然后再将customVal设置为具体的值，例：将data的value设置为orderVal，然后将customVal设置为eltree.disabledCheckboxData,就可以将data赋值成eltree.disabledCheckboxData)
                                                                     ? that.vModelVal(customVal)
                                                                         : item[i]
                                         )
