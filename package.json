@@ -2,10 +2,10 @@
   "name": "vue-element-data",
   "version": "1.0.1",
   "scripts": {
-    "dev": "vue-cli-service serve --mode development",
-    "prod": "vue-cli-service serve --mode production",
-    "build:prod": "vue-cli-service build --mode production",
-    "build:stage": "vue-cli-service build --mode staging",
+    "dev": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve --mode development",
+    "prod": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve --mode production",
+    "build:prod": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build --mode production",
+    "build:stage": "set NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build --mode staging",
     "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
     "lint": "eslint --ext .js,.vue src"
   },

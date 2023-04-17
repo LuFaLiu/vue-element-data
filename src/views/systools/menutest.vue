@@ -3127,6 +3127,35 @@ export default {
       this.getVueComponentName('nestedOperationRef','value',false);
     },
 
+    // elTreeType6
+    getCheckedNodes() {
+      var refComponent = getVueComponent(this,'$children','$refs','checkingTreeRef');
+      console.log(refComponent.getCheckedNodes());
+    },
+    getCheckedKeys() {
+      var refComponent = getVueComponent(this,'$children','$refs','checkingTreeRef');
+      console.log(refComponent.getCheckedKeys());
+    },
+    setCheckedNodes() {
+      var refComponent = getVueComponent(this,'$children','$refs','checkingTreeRef');
+      refComponent.setCheckedNodes([{
+        id: 5,
+        label: 'Level two 2-1'
+      }, {
+        id: 9,
+        label: 'Level three 1-1-1'
+      }]);
+    },
+    setCheckedKeys() {
+      var refComponent = getVueComponent(this,'$children','$refs','checkingTreeRef');
+      refComponent.setCheckedKeys([3]);
+    },
+    resetChecked() {
+      var refComponent = getVueComponent(this,'$children','$refs','checkingTreeRef');
+      refComponent.setCheckedKeys([]);
+    },
+    
+
     
     getVueComponentName(refName,paramsName,paramsVal){
       console.log("getVueComponentName=====>");
@@ -3146,6 +3175,12 @@ export default {
   }
 
   ::v-deep {
+
+    .el-tree {
+      height: auto !important;
+      padding: 15px 0;
+      margin: 15px 0;
+    }
 
     .skeleton { // ELSkeleton 一定要设置class为：skeleton
       .el-card__body {
