@@ -2095,6 +2095,26 @@ export default {
                 'display': 'block'
               }
             },
+            elTreeType7Render:{
+              tag:'span',
+              text:'Using render-content',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTreeType7Slot:{
+              tag:'span',
+              text:'Using scoped slot',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTreeTypeUsingScopedSlot:{
+              type:'usingScopedSlot',
+              text:'Click Me'
+            },
             elTreeType8:{
               tag:'span',
               text:'Tree node filtering',
@@ -3154,8 +3174,37 @@ export default {
       var refComponent = getVueComponent(this,'$children','$refs','checkingTreeRef');
       refComponent.setCheckedKeys([]);
     },
-    
 
+    appendCustomNode(data) {
+      console.log(data);
+      let id = 100;
+      const newChild = { id: id++, label: 'testtest', children: [] };
+      if (!data.children) {
+        this.$set(data, 'children', []);
+      }
+      data.children.push(newChild);
+    },
+
+    removeCustomNode(node, data) {
+      const parent = node.parent;
+      const children = parent.data.children || parent.data;
+      const index = children.findIndex(d => d.id === data.id);
+      children.splice(index, 1);
+    },
+
+    renderCustomNodeContent(h, { node, data, store }) {
+      return (
+        <span class="custom-tree-node">
+          <span>{node.label}</span>
+          <span>
+            <el-button size="mini" type="text" on-click={ () => this.appendCustomNode(data) }>Append</el-button>
+            <el-button size="mini" type="text" on-click={ () => this.removeCustomNode(node, data) }>Delete</el-button>
+          </span>
+        </span>);
+    },
+    renderContent(h, option) {
+      return <span>{ option.key } - { option.label }</span>;
+    },
     
     getVueComponentName(refName,paramsName,paramsVal){
       console.log("getVueComponentName=====>");

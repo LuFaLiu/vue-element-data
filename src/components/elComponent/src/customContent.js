@@ -211,7 +211,54 @@ export default {
                             )
                         }
                     </div>
+                ) 
+            }else if(node.type == 'usingScopedSlot') {
+                console.log('node.type == usingScopedSlot');
+                console.log(this.$parent);
+                const treeNode = this.$parent.node.data;
+                 /*
+                this.$parent.$scopedSlots.default = (
+                    <span class="custom-tree-node" slot-scope="{treeNode, treeData}">
+                        12345646
+                        <span>{ treeNode.label }</span>
+                        <span>
+                        <el-button
+                            type="text"
+                            size="mini"
+                            v-on:click={this.superParams.appendCustomNode(treeData)}>
+                            Append
+                        </el-button>
+                        <el-button
+                            type="text"
+                            size="mini"
+                            v-on:click={this.superParams.removeCustomNode(treeNode, treeData)}>
+                            Delete
+                        </el-button>
+                        </span>
+                    </span>
                 )
+                */    
+                
+                return (
+                    <template class="custom-tree-node">
+                        <span>{ treeNode.label }</span>
+                        <span>
+                        <el-button
+                            type="text"
+                            size="mini"
+                            on-click={ () => this.superParams.appendCustomNode(treeNode)}>
+                            Append
+                        </el-button>
+                        <el-button
+                            type="text"
+                            size="mini"
+                            on-click={ () => this.superParams.removeCustomNode(treeNode, treeNode)}>
+                            Delete
+                        </el-button>
+                        </span>
+                    </template>
+                )
+                
             }else {
 
                 return h(
