@@ -2453,10 +2453,13 @@ export default {
 
 
         // 自定义value
-        elDescriptionRadio:'', //Descriptions-Sizes
+        elDescriptionRadio:'', // Descriptions-Sizes
 
         // 自定义value
-        elPaginationSwitchVal:true //Descriptions-Sizes
+        elPaginationSwitchVal:true, // Descriptions-Sizes
+
+        // 自定义value
+        treeNodeFiltering:'' // Tree-Tree node filtering
         
         
 
@@ -2475,6 +2478,14 @@ export default {
     'elprogress.percentage':function (val,oldVal) {
       console.log("elprogress.percentage====>");
       console.log(val,oldVal);
+    },
+    treeNodeFiltering(val) {
+      console.log("treeNodeFiltering");
+      console.log(val);
+      var filterTreeRefComponent = getVueComponent(this,'$children','$refs','filterTreeRef');
+      filterTreeRefComponent.filter(val);
+      console.log(filterTreeRefComponent);
+
     }
   },
   mounted(){
@@ -3204,6 +3215,13 @@ export default {
     },
     renderContent(h, option) {
       return <span>{ option.key } - { option.label }</span>;
+    },
+
+    filterNodeMethod(value, data) {
+      console.log("filterNodeMethod");
+      console.log(value, data);
+        if (!value) return true;
+        return data.label.indexOf(value) !== -1;
     },
     
     getVueComponentName(refName,paramsName,paramsVal){

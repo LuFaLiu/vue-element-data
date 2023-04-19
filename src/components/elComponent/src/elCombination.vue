@@ -422,7 +422,7 @@ export default {
                             item[i] = that.superParams.eltree[item[i]]; 
                         } else if(componentNameParams == 'eltree' && item[i] == 'renderCustomNodeContent'){
                             item[i] = that.superParams.renderCustomNodeContent;
-                        }else {
+                        } else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
                                             i == item[i] 
