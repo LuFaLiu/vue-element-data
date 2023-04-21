@@ -3223,6 +3223,35 @@ export default {
         if (!value) return true;
         return data.label.indexOf(value) !== -1;
     },
+
+    nodeDragStart(node, ev) {
+      console.log('drag start', node);
+    },
+    nodeDragEnter(draggingNode, dropNode, ev) {
+      console.log('tree drag enter: ', dropNode.label);
+    },
+    nodeDragLeave(draggingNode, dropNode, ev) {
+      console.log('tree drag leave: ', dropNode.label);
+    },
+    nodeDragOver(draggingNode, dropNode, ev) {
+      console.log('tree drag over: ', dropNode.label);
+    },
+    nodeDragEnd(draggingNode, dropNode, dropType, ev) {
+      console.log('tree drag end: ', dropNode && dropNode.label, dropType);
+    },
+    nodeDrop(draggingNode, dropNode, dropType, ev) {
+      console.log('tree drop: ', dropNode.label, dropType);
+    },
+    allowDrop(draggingNode, dropNode, type) {
+      if (dropNode.data.label === 'Level two 3-1') {
+        return type !== 'inner';
+      } else {
+        return true;
+      }
+    },
+    allowDrag(draggingNode) {
+      return draggingNode.data.label.indexOf('Level three 3-1-1') === -1;
+    },
     
     getVueComponentName(refName,paramsName,paramsVal){
       console.log("getVueComponentName=====>");

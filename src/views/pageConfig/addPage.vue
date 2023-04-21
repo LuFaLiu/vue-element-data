@@ -465,7 +465,15 @@ export default {
           break;
         case 'ElDescriptionsItem':
           this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title','title': '' ,inputFormat:'string', attributeType: 'ruleInput'})
-          break;  
+          break; 
+        case 'ElTree':
+          this.componentProps.push({attributeName:'nodeDragStart',attributeLabel:'nodeDragStart',attributeModel:'nodeDragStart','nodeDragStart': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          this.componentProps.push({attributeName:'nodeDragEnter',attributeLabel:'nodeDragEnter',attributeModel:'nodeDragEnter','nodeDragEnter': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          this.componentProps.push({attributeName:'nodeDragLeave',attributeLabel:'nodeDragLeave',attributeModel:'nodeDragLeave','nodeDragLeave': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          this.componentProps.push({attributeName:'nodeDragOver',attributeLabel:'nodeDragOver',attributeModel:'nodeDragOver','nodeDragOver': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          this.componentProps.push({attributeName:'nodeDragEnd',attributeLabel:'nodeDragEnd',attributeModel:'nodeDragEnd','nodeDragEnd': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          this.componentProps.push({attributeName:'nodeDrop',attributeLabel:'nodeDrop',attributeModel:'nodeDrop','nodeDrop': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;   
         default: 
           this.componentProps.push({attributeName:'class',attributeLabel:'class',attributeModel:'class','class': '' ,inputFormat:'list', attributeType: 'ruleInput'})
           this.componentProps.push({attributeName:'refName',attributeLabel:'refName',attributeModel:'refName','refName': '' ,inputFormat:'string', attributeType: 'ruleInput'})
