@@ -375,10 +375,12 @@ export default {
                         item[i] = false;
                     } else if(i.indexOf('Method') > 0 || i == 'beforeFilter' || i == 'formatTooltip' || i == 'onRemove' | i == 'onPreview' || i == 'onExceed' || i == 'beforeRemove' || i == 'httpRequest' || i == 'beforeUpload' || i == 'onChange' || i == 'onSuccess' || i == 'onProgress' || i == 'onError' || i == 'error' || i == 'load' || i == 'renderHeader' || i == 'formatter' || i == 'selectable' || i == 'rowKey' || item[i] == 'renderContentTree' || i == 'allowDrag' || i == 'allowDrop' || item[i] == 'formatPercentage' || i == 'increase' || i == 'decrease' || i == 'openDialog' || i == 'beforeClose' || i == 'cancelDialog' || i == 'labelContent' || i == 'beforeLeave' || i == 'format' || i == 'openDrawer' || i == 'openNestedDrawer' || i == 'openInnerDrawer' || i == 'visibleManualPopover' || i == 'closePopoverNestedOperation' || i == 'nodeDragStart' || i == 'nodeDragEnter' || i == 'nodeDragLeave' || i == 'nodeDragOver' || i == 'nodeDragEnd' || i == 'nodeDrop' || i == 'allowDrop'){
                         
-                        if(item[i] == 'loadSelectableNode'){
+                        if (item[i] == 'loadSelectableNode'){
                             item[i] = that.superParams.loadSelectableNode;
-                        }else if(item[i] == 'loadCustomLazyNode'){
+                        } else if(item[i] == 'loadCustomLazyNode'){
                             item[i] = that.superParams.loadCustomLazyNode;
+                        } else if(item[i] == 'formatElProgress'){
+                            item[i] = that.superParams.formatElProgress;
                         } else {
                             item[i] = that.superParams[i];
                         }

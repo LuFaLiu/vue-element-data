@@ -2138,6 +2138,46 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elProgressType1:{
+              tag:'span',
+              text:'Linear progress bar',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elProgressType2:{
+              tag:'span',
+              text:'Internal percentage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elProgressType3:{
+              tag:'span',
+              text:'Custom color',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elProgressType4:{
+              tag:'span',
+              text:'Circular progress bar',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elProgressType5:{
+              tag:'span',
+              text:'Dashboard progress bar',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
 
 
@@ -2670,6 +2710,11 @@ export default {
       this.getVueComponentName('elProgressBar','percentage',percentageVal.percentage);
 
     },
+
+    formatElProgress(percentage) {
+      return percentage === 100 ? 'Full' : `${percentage}%`;
+    },
+
     decrease() {
       
       let percentageVal = this.elprogress;
