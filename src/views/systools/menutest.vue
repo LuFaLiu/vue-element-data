@@ -2443,6 +2443,7 @@ export default {
         },
         elprogress:{
           percentage: 10,
+          customColor: '#409eff',
           colors: [
             {color: '#f56c6c', percentage: 20},
             {color: '#e6a23c', percentage: 40},
@@ -2450,6 +2451,7 @@ export default {
             {color: '#1989fa', percentage: 80},
             {color: '#6f7ad3', percentage: 100}
           ]
+          // elprogress组件color属性值需通过orderVal形式设置（支持自定义属性，自定义方法）
         },
         elpagination:{
           pageSizes:[10, 20, 30, 40],
@@ -2694,20 +2696,31 @@ export default {
     allowDrop(){
 
     },
+
+    customColorMethod(percentage) {
+        if (percentage < 30) {
+          return '#909399';
+        } else if (percentage < 70) {
+          return '#e6a23c';
+        } else {
+          return '#67c23a';
+        }
+    },
     formatPercentage(percentage) {
       console.log("format方法");
       console.log(percentage);
       return percentage === 100 ? 'Full' : `${percentage}%`;
     },
     increase() {
-
       let percentageVal = this.elprogress;
       percentageVal.percentage += 10;
       if (percentageVal.percentage > 100) {
         percentageVal.percentage = 100;
       }
 
-      this.getVueComponentName('elProgressBar','percentage',percentageVal.percentage);
+      this.getVueComponentName('elProgressBar1','percentage',percentageVal.percentage);
+      this.getVueComponentName('elProgressBar2','percentage',percentageVal.percentage);
+      this.getVueComponentName('elProgressBar3','percentage',percentageVal.percentage);
 
     },
 
@@ -2716,14 +2729,15 @@ export default {
     },
 
     decrease() {
-      
       let percentageVal = this.elprogress;
       percentageVal.percentage -= 10;
       if (percentageVal.percentage < 0) {
         percentageVal.percentage = 0;
       }
 
-      this.getVueComponentName('elProgressBar','percentage',percentageVal.percentage);
+      this.getVueComponentName('elProgressBar1','percentage',percentageVal.percentage);
+      this.getVueComponentName('elProgressBar2','percentage',percentageVal.percentage);
+      this.getVueComponentName('elProgressBar3','percentage',percentageVal.percentage);
 
     },
     openShowMessageType() {
@@ -3316,6 +3330,10 @@ export default {
   }
 
   ::v-deep {
+
+    .el-progress {
+      margin-bottom: 10px;
+    }
 
     .el-tree {
       height: auto !important;

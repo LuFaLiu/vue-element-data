@@ -114,7 +114,10 @@ export function getVueComponent(obj,path,path2,refName,result = {}){
     if((_.isPlainObject(result)) && _.isArray(val)){
         _.filter(val,function (o) {
             if(_.includes(_.keys(o[path2]), refName)){
+                
                 result = o[path2][refName]; 
+                console.log("result");
+                console.log(result);
             }else {
                 result = getVueComponent(o,path,path2,refName,result,result);
             }
