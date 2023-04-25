@@ -3557,8 +3557,9 @@ export default {
       margin-right: 30px;
     }
     .el-progress{
-      width: 350px;
+      width: auto;
       margin-top: 12px;
+      margin-right: 15px;
     }
     .el-progress--dashboard {
         width: 126px!important;
