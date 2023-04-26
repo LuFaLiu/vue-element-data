@@ -297,6 +297,8 @@ export default {
                 this.superParams[item.event](this.rowData);  
             }else if(type == 'param'){
                 this.superParams[item.event](item.value);  
+            }else if(item.ref){
+                this.superParams[item.event](item.ref);  
             } else{
                 this.superParams[item.event]();  
             }

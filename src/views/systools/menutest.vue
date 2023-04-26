@@ -2711,16 +2711,22 @@ export default {
       console.log(percentage);
       return percentage === 100 ? 'Full' : `${percentage}%`;
     },
-    increase() {
+    increase(refName) {
       let percentageVal = this.elprogress;
       percentageVal.percentage += 10;
       if (percentageVal.percentage > 100) {
         percentageVal.percentage = 100;
       }
 
-      this.getVueComponentName('elProgressBar1','percentage',percentageVal.percentage);
-      this.getVueComponentName('elProgressBar2','percentage',percentageVal.percentage);
-      this.getVueComponentName('elProgressBar3','percentage',percentageVal.percentage);
+      if(refName) {
+        this.getVueComponentName(refName,'percentage',percentageVal.percentage);
+      }else {
+        this.getVueComponentName('elProgressBar1','percentage',percentageVal.percentage);
+        this.getVueComponentName('elProgressBar2','percentage',percentageVal.percentage);
+        this.getVueComponentName('elProgressBar3','percentage',percentageVal.percentage);
+      }
+
+      
 
     },
 
@@ -2728,16 +2734,20 @@ export default {
       return percentage === 100 ? 'Full' : `${percentage}%`;
     },
 
-    decrease() {
+    decrease(refName) {
       let percentageVal = this.elprogress;
       percentageVal.percentage -= 10;
       if (percentageVal.percentage < 0) {
         percentageVal.percentage = 0;
       }
 
-      this.getVueComponentName('elProgressBar1','percentage',percentageVal.percentage);
-      this.getVueComponentName('elProgressBar2','percentage',percentageVal.percentage);
-      this.getVueComponentName('elProgressBar3','percentage',percentageVal.percentage);
+      if(refName) {
+        this.getVueComponentName(refName,'percentage',percentageVal.percentage);
+      }else {
+        this.getVueComponentName('elProgressBar1','percentage',percentageVal.percentage);
+        this.getVueComponentName('elProgressBar2','percentage',percentageVal.percentage);
+        this.getVueComponentName('elProgressBar3','percentage',percentageVal.percentage);
+      }
 
     },
     openShowMessageType() {
