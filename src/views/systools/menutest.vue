@@ -2178,7 +2178,47 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
-            }
+            },
+            elTagType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTagType2:{
+              tag:'span',
+              text:'Removable Tag',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTagType3:{
+              tag:'span',
+              text:'Edit Dynamically',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTagType4:{
+              tag:'span',
+              text:'Sizes',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTagType5:{
+              tag:'span',
+              text:'Theme',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
 
 
         },
@@ -3341,6 +3381,10 @@ export default {
 
   ::v-deep {
 
+    .el-tag {
+      margin-right: 10px;
+    }
+    
     .el-progress {
       margin-bottom: 10px;
     }
