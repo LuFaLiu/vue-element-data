@@ -259,6 +259,24 @@ export default {
                     </template>
                 )
                 
+            }else if(node.type == 'removableTag') {
+                console.log("node.type == 'removableTag'");
+                console.log(node);
+                return (
+                    // 原文为template 不展示模块，改为div则展示
+                    <div>
+                        {
+                            node.tags.map((tag,index) => 
+                                <el-tag
+                                    key={tag.name}
+                                    closable
+                                    type={tag.type}>
+                                    {tag.name}
+                                </el-tag>
+                            )
+                        }
+                    </div>
+                ) 
             }else {
 
                 return h(
