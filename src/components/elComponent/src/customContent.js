@@ -263,7 +263,7 @@ export default {
                 console.log("node.type == 'removableTag'");
                 console.log(node);
                 return (
-                    // 原文为template 不展示模块，改为div则展示
+                    // template标签 不展示模块，改为div标签则展示
                     <div>
                         {
                             node.tags.map((tag,index) => 
@@ -275,6 +275,40 @@ export default {
                                 </el-tag>
                             )
                         }
+                    </div>
+                ) 
+            }else if(node.type == 'dynamicallyTag') {
+                console.log("node.type == 'dynamicallyTag'");
+                console.log(node);
+                return (
+                    // 原文为template 不展示模块，改为div则展示
+                    // onClose={() => function(){} } 或者 onClose={this.superParams.handleCloseDynamicTags.bind(this, tag)} 阻止事件在render时自动执行一遍
+                    <div style="display:flex;">
+                        {
+                            node.dynamicTags.map((tag,index) => 
+                                <el-tag
+                                    key={tag}
+                                    closable
+                                    disable-transitions={false}
+                                    onClose={this.superParams.handleCloseDynamicTags.bind(this, tag)}>
+                                    {tag}
+                                </el-tag>
+                            )
+                            
+                        } 
+                        <el-input
+                            class="input-new-tag"
+                            v-if={node.inputVisible}
+                            v-model={node.inputValue}
+                            style="width:30%;margin:0 15px;"
+                            ref="saveTagInput"
+                            size="mini"
+                            v-on:keyup={this.superParams.handleInputConfirmDynamicTags}
+                            v-on:blur={this.superParams.handleInputConfirmDynamicTags}
+                        >
+                        </el-input>
+                        <el-button v-else class="button-new-tag" size="small" v-on:click={this.superParams.showInputDynamicTags}>+ New Tag</el-button>
+                        
                     </div>
                 ) 
             }else {

@@ -2213,6 +2213,12 @@ export default {
                 'display': 'block'
               }
             },
+            elDynamicallyTag:{
+              type:'dynamicallyTag',
+              dynamicTags: ['Tag 1', 'Tag 2', 'Tag 3'],
+              inputVisible: false,
+              inputValue: ''
+            },
             elTagType4:{
               tag:'span',
               text:'Sizes',
@@ -3370,6 +3376,30 @@ export default {
     },
     allowDrag(draggingNode) {
       return draggingNode.data.label.indexOf('Level three 3-1-1') === -1;
+    },
+
+    handleCloseDynamicTags(tag) {
+      console.log("handleCloseDynamicTags");
+      console.log(tag);
+      if(tag) {
+        this.customcontent.elDynamicallyTag.dynamicTags.splice(this.customcontent.elDynamicallyTag.dynamicTags.indexOf(tag), 1);
+      }
+    },
+
+    showInputDynamicTags() {
+      this.customcontent.elDynamicallyTag.inputVisible = true;
+      this.$nextTick(_ => {
+        getVueComponent(this,'$children','$refs','saveTagInput').$refs.input.focus();
+      });
+    },
+
+    handleInputConfirmDynamicTags() {
+      let inputValue = this.customcontent.elDynamicallyTag.inputValue;
+      if (inputValue) {
+        this.customcontent.elDynamicallyTag.dynamicTags.push(inputValue);
+      }
+      this.customcontent.elDynamicallyTag.inputVisible = false;
+      this.customcontent.elDynamicallyTag.inputValue = '';
     },
     
     getVueComponentName(refName,paramsName,paramsVal){
