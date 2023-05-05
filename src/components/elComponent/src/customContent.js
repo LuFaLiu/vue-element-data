@@ -311,6 +311,43 @@ export default {
                         
                     </div>
                 ) 
+            }else if(node.type == 'themeTag') {
+                console.log("node.type == 'themeTag'");
+                console.log(node);
+                return (
+                    // 原文为template 不展示模块，改为div则展示
+                    // onClose={() => function(){} } 或者 onClose={this.superParams.handleCloseDynamicTags.bind(this, tag)} 阻止事件在render时自动执行一遍
+                    <div>
+                        <div class="tag-group">
+                            <span class="tag-group__title" style="margin-right:10px;">Dark</span>
+                            {
+                                node.items.map((item,index) => 
+                                    <el-tag
+                                        key={item.label}
+                                        type={item.type}
+                                        effect="dark">
+                                        { item.label }
+                                    </el-tag>
+                                )
+                                
+                            } 
+                        </div>
+                        <div class="tag-group" style="margin-top:20px;">
+                            <span class="tag-group__title" style="margin-right:10px;">Plain</span>
+                            {
+                                node.items.map((item,index) => 
+                                    <el-tag
+                                        key={item.label}
+                                        type={item.type}
+                                        effect="plain">
+                                        { item.label }
+                                    </el-tag>
+                                )
+                                
+                            } 
+                        </div>
+                    </div>
+                ) 
             }else {
 
                 return h(

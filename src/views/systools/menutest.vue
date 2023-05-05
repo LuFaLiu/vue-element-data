@@ -2235,7 +2235,18 @@ export default {
                 'display': 'block'
               }
             },
-
+            elThemeTag:{
+              type:'themeTag',
+              items: [
+                { type: '', label: 'Tag 1' },
+                { type: 'success', label: 'Tag 2' },
+                { type: 'info', label: 'Tag 3' },
+                { type: 'danger', label: 'Tag 4' },
+                { type: 'warning', label: 'Tag 5' }
+              ],
+              effectType1:'Dark',
+              effectType2:'Plain'
+            }
 
         },
         elrate:{
