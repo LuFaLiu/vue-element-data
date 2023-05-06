@@ -2246,6 +2246,166 @@ export default {
               ],
               effectType1:'Dark',
               effectType2:'Plain'
+            },
+            elTableType1:{
+              tag:'span',
+              text:'Basic table',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType2:{
+              tag:'span',
+              text:'Striped Table',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType3:{
+              tag:'span',
+              text:'Table with border',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType4:{
+              tag:'span',
+              text:'Table with status',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType5:{
+              tag:'span',
+              text:'Table with fixed header',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType6:{
+              tag:'span',
+              text:'Table with fixed column',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType7:{
+              tag:'span',
+              text:'Table with fixed columns and header',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType8:{
+              tag:'span',
+              text:'Fluid-height Table with fixed header (and columns)',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType9:{
+              tag:'span',
+              text:'Grouping table head',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType10:{
+              tag:'span',
+              text:'Single select',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType11:{
+              tag:'span',
+              text:'Multiple select',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType12:{
+              tag:'span',
+              text:'Sorting',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType13:{
+              tag:'span',
+              text:'Filter',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType14:{
+              tag:'span',
+              text:'Custom column template',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType15:{
+              tag:'span',
+              text:'Table with custom header',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType16:{
+              tag:'span',
+              text:'Expandable row',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType17:{
+              tag:'span',
+              text:'Tree data and lazy mode',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType18:{
+              tag:'span',
+              text:'Summary row',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType19:{
+              tag:'span',
+              text:'Rowspan and colspan',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTableType20:{
+              tag:'span',
+              text:'Custom index',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
 
         },
@@ -2300,6 +2460,23 @@ export default {
           }
         },
         eltable:{
+          tableData: [{
+            date: '2016-05-03',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles'
+          }, {
+            date: '2016-05-02',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles'
+          }, {
+            date: '2016-05-04',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles'
+          }, {
+            date: '2016-05-01',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles'
+          }],
           data: [{
             date: '2016-05-02',
             name: 'Jack',
@@ -2334,6 +2511,7 @@ export default {
           }
         },
         eltablecolumn:{
+          filterPlacement:'',
           filteredValue:[],
           filters:[],
           sortOrders:['ascending', 'descending', null],
@@ -2663,7 +2841,7 @@ export default {
 
     },
     filterMethod(){
-      return true; //为Transfer组件时必须返回真值才能回显数据
+      //return true; //为Transfer组件时必须返回真值才能回显数据
     },
     beforeFilter(){
 
@@ -3431,6 +3609,10 @@ export default {
   }
 
   ::v-deep {
+
+    .el-table {
+      width: 800px;
+    }
 
     .el-tag {
       margin-right: 10px;

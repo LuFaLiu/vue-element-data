@@ -383,6 +383,12 @@ export default {
                             item[i] = that.superParams.loadCustomLazyNode;
                         } else if(item[i] == 'formatElProgress'){
                             item[i] = that.superParams.formatElProgress;
+                        } else if(componentNameParams == 'eltablecolumn' && i == 'filterMethod'){ // 需要设置filterMethod为空时删除该属性，否则eltablecolumn 会出现下拉框筛选条件
+                            if(!item[i]) {
+                                delete item[i]
+                            }else {
+                                item[i] = that.superParams.eltablecolumn.filterMethod
+                            }
                         } else {
                             item[i] = that.superParams[i];
                         }
@@ -426,12 +432,23 @@ export default {
                             item[i] = that.superParams.eltree[item[i]]; 
                         } else if(componentNameParams == 'eltree' && item[i] == 'renderCustomNodeContent'){
                             item[i] = that.superParams.renderCustomNodeContent;
+                        } else if(componentNameParams == 'eltable' && item[i] == 'treeProps'){
+                            item[i] = new Object(that.superParams.eltable.treeProps);
+                        } else if(componentNameParams == 'eltablecolumn' && (i == 'filterMethod' || i == 'filters' || i == 'filteredValue')){
+                            console.log("componentNameParams == 'eltablecolumn'");
+                            console.log(i,item[i]);
+                            if(!item[i]) {
+                                delete item[i]
+                            }else {
+                                item[i] = that.superParams.eltablecolumn[item[i]]
+                            }
+                            console.log(item);
                         } else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
                                             i == item[i] 
                                                 ? that.vModelVal(`${hasUniqueIdentifier ? (componentNameParams + hasUniqueIdentifier) : componentNameParams}.${i}`)
-                                                    : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'rows' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl' || i == 'pageCount' || i == 'total' || i == 'active' || i == 'openDelay' || i == 'arrowOffset' || i == 'tabindex' || i == 'hideAfter' || i == 'percentage' || i == 'initialIndex' || i == 'visibilityHeight' || i == 'right' || i == 'bottom' || i == 'gutter' || i == 'strokeWidth'
+                                                    : i == 'max' || i == 'min' || i == 'precision' || i == 'multipleLimit' || i == 'count' || i == 'throttle' || i == 'rows' || i == 'imageSize' || i == 'index' || i == 'width' || i == 'multipleLimit' || i == 'span' || i == 'offset' || i == 'pull' || i == 'push' || i == 'xs' || i == 'sm' || i == 'md' || i == 'lg' || i == 'xl' || i == 'pageCount' || i == 'total' || i == 'active' || i == 'openDelay' || i == 'arrowOffset' || i == 'tabindex' || i == 'hideAfter' || i == 'percentage' || i == 'initialIndex' || i == 'visibilityHeight' || i == 'right' || i == 'bottom' || i == 'gutter' || i == 'strokeWidth' || i == 'index'
                                                         ? Number(item[i]) 
                                                                 : item[i] == 'orderVal' && customVal //customVal exist   (需要将目标key的value设置为orderVal，然后再将customVal设置为具体的值，例：将data的value设置为orderVal，然后将customVal设置为eltree.disabledCheckboxData,就可以将data赋值成eltree.disabledCheckboxData)
                                                                     ? that.vModelVal(customVal)
