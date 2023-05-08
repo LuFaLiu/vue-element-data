@@ -231,17 +231,22 @@ export default {
       }
     }
 
+    .el-table {
+      .el-table__fixed,.el-table__fixed-header-wrapper,.el-table__header,.el-table__body {
+        width: 100% !important;
+      }
+
+      .defaultWidth .cell {
+        width: 100% !important;
+      }
+    }
+
 
     .el-table th.el-table__cell>.cell{
       font-size: 15px;
       font-weight: 550;
       color: #333333;
     }
-
-    .el-table td.el-table__cell, .el-table th.el-table__cell.is-leaf{
-      border-bottom:0px!important;
-    }
-    
 
     .el-table__body-wrapper::-webkit-scrollbar{
       width: 10px;
