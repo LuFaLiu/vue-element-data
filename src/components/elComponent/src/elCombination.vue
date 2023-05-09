@@ -434,6 +434,8 @@ export default {
                             item[i] = that.superParams.renderCustomNodeContent;
                         } else if(componentNameParams == 'eltable' && item[i] == 'treeProps'){
                             item[i] = new Object(that.superParams.eltable.treeProps);
+                        } else if(componentNameParams == 'eltable' && i == 'rowClassName' && item[i] == 'tableRowClassName'){
+                            item[i] = that.superParams.tableRowClassName
                         } else if(componentNameParams == 'eltablecolumn' && (i == 'filterMethod' || i == 'filters' || i == 'filteredValue')){
                             console.log("componentNameParams == 'eltablecolumn'");
                             console.log(i,item[i]);

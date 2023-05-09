@@ -3582,6 +3582,15 @@ export default {
       });
     },
 
+    tableRowClassName({row, rowIndex}) {
+      if (rowIndex === 1) {
+        return 'warning-row';
+      } else if (rowIndex === 3) {
+        return 'success-row';
+      }
+      return '';
+    },
+
     handleInputConfirmDynamicTags() {
       let inputValue = this.customcontent.elDynamicallyTag.inputValue;
       if (inputValue) {
@@ -3609,6 +3618,14 @@ export default {
   }
 
   ::v-deep {
+
+    .el-table .warning-row {
+      background: oldlace;
+    }
+
+    .el-table .success-row {
+      background: #f0f9eb;
+    }
 
     .el-table {
       width: 800px;
