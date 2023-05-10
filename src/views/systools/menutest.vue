@@ -2494,6 +2494,35 @@ export default {
             name: 'Jack',
             address: 'New York City'
           }],
+          tableMultipleData: [{
+            date: '2016-05-03',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles'
+          }, {
+            date: '2016-05-02',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles'
+          }, {
+            date: '2016-05-04',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles'
+          }, {
+            date: '2016-05-01',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles'
+          }, {
+            date: '2016-05-08',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles'
+          }, {
+            date: '2016-05-06',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles'
+          }, {
+            date: '2016-05-07',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles'
+          }],
           rowStyle:{},
           cellStyle:{},
           headerRowStyle:{},
@@ -3619,6 +3648,21 @@ export default {
 
   ::v-deep {
 
+
+    .el-table__fixed-body-wrapper {
+      overflow-y: scroll;
+
+      /*
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #99a9bf;
+        border-radius: 20px;
+      }
+      */
+    }
     .el-table .warning-row {
       background: oldlace;
     }
