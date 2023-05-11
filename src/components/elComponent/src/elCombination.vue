@@ -412,10 +412,6 @@ export default {
                         }else if(componentNameParams == 'elinput' && i == 'tabindex'){
                             item[i] = item[i];
                         }else if(componentNameParams == 'elbadge' && i == 'value'){ // value必须为Number类型
-                            console.log("componentNameParams == 'elbadge' && i == 'value'");
-                            console.log(item[i]);
-                            console.log(Number(item[i]));
-                            console.log(Boolean(Number(item[i])));
                             if(Boolean(Number(item[i]))) {
                                 item[i] = Number(item[i]);
                             }else { //为NaN
@@ -437,14 +433,17 @@ export default {
                         } else if(componentNameParams == 'eltable' && i == 'rowClassName' && item[i] == 'tableRowClassName'){
                             item[i] = that.superParams.tableRowClassName
                         } else if(componentNameParams == 'eltablecolumn' && (i == 'filterMethod' || i == 'filters' || i == 'filteredValue')){
-                            console.log("componentNameParams == 'eltablecolumn'");
-                            console.log(i,item[i]);
                             if(!item[i]) {
                                 delete item[i]
                             }else {
                                 item[i] = that.superParams.eltablecolumn[item[i]]
                             }
-                            console.log(item);
+                        } else if(componentNameParams == 'eltablecolumn' && (i == 'width' || i == 'minWidth')){
+                            if(item[i]) {
+                                item[i] = Number(item[i]) 
+                            }else {
+                                item[i] = 400
+                            }
                         } else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 

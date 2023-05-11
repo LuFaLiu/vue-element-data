@@ -2295,6 +2295,11 @@ export default {
                 'display': 'block'
               }
             },
+            elTableFixedColumn:{
+              type:'fixedColumn',
+              eventName1:'Detail',
+              eventName2:'Edit',
+            },
             elTableType7:{
               tag:'span',
               text:'Table with fixed columns and header',
@@ -2522,6 +2527,39 @@ export default {
             date: '2016-05-07',
             name: 'Tom',
             address: 'No. 189, Grove St, Los Angeles'
+          }],
+          multipleAttributeTableData: [{
+            date: '2016-05-03',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036',
+            tag: 'Home'
+          }, {
+            date: '2016-05-02',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036',
+            tag: 'Office'
+          }, {
+            date: '2016-05-04',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036',
+            tag: 'Home'
+          }, {
+            date: '2016-05-01',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036',
+            tag: 'Office'
           }],
           rowStyle:{},
           cellStyle:{},
@@ -3499,6 +3537,10 @@ export default {
     closePopoverNestedOperation(){ // ElPopover 无法设置visible 只能设置value
       console.log("关闭nestedOperationRef");
       this.getVueComponentName('nestedOperationRef','value',false);
+    },
+
+    handleClickTableColumn() {
+      console.log('click');
     },
 
     // elTreeType6

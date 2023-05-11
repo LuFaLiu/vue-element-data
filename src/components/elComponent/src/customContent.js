@@ -348,6 +348,15 @@ export default {
                         </div>
                     </div>
                 ) 
+            }else if (node.type == 'fixedColumn') {
+                console.log("node.type == 'fixedColumn'");
+                console.log(node);
+                return (
+                    <div slot-scope={'scope'}>
+                        <el-button v-on:click={ () => this.superParams.handleClickTableColumn} type="text" size="small">{node.eventName1}</el-button>
+                        <el-button type="text" size="small">{node.eventName2}</el-button>
+                    </div>
+                )
             }else {
 
                 return h(

@@ -233,7 +233,7 @@ export default {
 
     .el-table {
       .el-table__fixed,.el-table__fixed-header-wrapper,.el-table__header,.el-table__body {
-        width: 100% !important;
+        /*width: 100% !important;*/
       }
 
       .defaultWidth .cell {
