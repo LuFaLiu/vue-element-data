@@ -444,6 +444,16 @@ export default {
                             }else {
                                 item[i] = 400
                             }
+                        } else if(componentNameParams == 'eltablecolumn' && i == 'fixed'){
+                            console.log(componentNameParams == 'eltablecolumn' && i == 'fixed');
+                            console.log(i,item[i]);
+                            console.log(typeof item[i]);
+                            item[i] = Boolean(item[i]) 
+                            /*
+                            if(item[i] == 'true' || item[i] == 'false') {
+                                item[i] = Boolean(item[i]) 
+                            }
+                            */
                         } else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
