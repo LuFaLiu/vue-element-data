@@ -124,7 +124,13 @@ export default {
                                 that.selectChange(e,item);
                             },
                             'current-change':function (e) { //table row select
-                                that.superParams[item.selectionEvent](e);
+                                console.log(e);
+                                if(e.selectionEvent){
+                                    that.superParams[item.selectionEvent](e);
+                                }else {
+                                    return
+                                }
+                                
                             },
                             input: function (event) { //v-model
                                 var hasVal = false;
@@ -180,6 +186,7 @@ export default {
                                 
                             }, 
                             change: function (event) { //v-model
+                                console.log("changeTable");
                                 console.log(event);
                                 console.log(item);
                                 console.log(componentNameParams);
@@ -255,7 +262,7 @@ export default {
                         ref:item.refName,
                         scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' && !item.operation && {
                             default: props => h('Template',{props,item}) //通过单文件组件展示对应的信息(组件需要的一切都是通过 context 参数传递)
-                        } || item.componentName == 'elRadioGroup' && { default: props => h('TraverseTemplate',{props:{node:item,parent:that}})  } //非单文件组件
+                        } || item.componentName == 'elRadioGroup' || item.uniqueIdentifier == 'fixedHeaderAndColumn' && { default: props => h('TraverseTemplate',{props:{node:item,parent:that,props:props}})  } //非单文件组件
                         
                     },
                     item && item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) 

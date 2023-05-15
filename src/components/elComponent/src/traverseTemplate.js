@@ -3,24 +3,34 @@ export default {
     name:'TraverseTemplate',
     props:{
         node:{},
-        parent:{}
+        parent:{},
+        props:{},
     },
     render(h){
         const node = this.node;
         const parent = this.parent;
+        const props = this.props
         console.log(node);
-        
-        const elTraverseTemplate = node.componentName == 'elRadioGroup' ? (
 
-            <el-radio-group v-model={this.resetvModel}>
-                {
-                   parent.superParams[node.radioListName].map((v,index) => <el-radio label={v.lable} key={index} >{parent.$t(v.name)}</el-radio>)
-                }
-           </el-radio-group>         
+         
+        if(node.componentName == 'elRadioGroup') {
 
-        ) :  (<span>operation</span>)
-
-        return elTraverseTemplate;
+            return (
+                <el-radio-group v-model={this.resetvModel}>
+                    {
+                    parent.superParams[node.radioListName].map((v,index) => <el-radio label={v.lable} key={index} >{parent.$t(v.name)}</el-radio>)
+                    }
+            </el-radio-group>    
+           )     
+        }else if (node.uniqueIdentifier == 'fixedHeaderAndColumn') {
+            return (
+                <div slot-scope="scope">
+                    <el-button v-on:click={ () => parent.superParams.deleteFixedHeaderAndColumn(props.$index) } type="text" size="small">Remove</el-button>
+                </div>
+            )
+        }else {
+            return (<span>operation</span>)
+        }          
 
     },
     computed:{

@@ -2316,6 +2316,11 @@ export default {
                 'display': 'block'
               }
             },
+            elTableFixedHeaderAndColumn:{
+              type:'fixedHeaderAndColumn',
+              eventName:'Remove',
+              event:'deleteFixedHeaderAndColumn'
+            },
             elTableType9:{
               tag:'span',
               text:'Grouping table head',
@@ -3719,6 +3724,15 @@ export default {
       }
       this.customcontent.elDynamicallyTag.inputVisible = false;
       this.customcontent.elDynamicallyTag.inputValue = '';
+    },
+
+    deleteFixedHeaderAndColumn(e){
+      this.eltable.tableDataColumnHeader = this.eltable.tableDataColumnHeader.filter((v,index)=>{
+        console.log(index);
+        return index !== e
+      })
+      var refComponent = getVueComponent(this,'$children','$refs','fixedHeaderAndColumn');
+      refComponent.data = this.eltable.tableDataColumnHeader
     },
     
     getVueComponentName(refName,paramsName,paramsVal){

@@ -191,8 +191,6 @@ export default {
                     </el-menu-item>
                 )
             }else if(node.type == 'elSkeletonRenderingList') {
-                console.log("node.type == 'elSkeletonRenderingList'");
-                console.log(node);
                 return (
                     // 原文为template 不展示模块，改为div则展示
                     <div>
@@ -213,31 +211,7 @@ export default {
                     </div>
                 ) 
             }else if(node.type == 'usingScopedSlot') {
-                console.log('node.type == usingScopedSlot');
-                console.log(this.$parent);
                 const treeNode = this.$parent.node.data;
-                 /*
-                this.$parent.$scopedSlots.default = (
-                    <span class="custom-tree-node" slot-scope="{treeNode, treeData}">
-                        12345646
-                        <span>{ treeNode.label }</span>
-                        <span>
-                        <el-button
-                            type="text"
-                            size="mini"
-                            v-on:click={this.superParams.appendCustomNode(treeData)}>
-                            Append
-                        </el-button>
-                        <el-button
-                            type="text"
-                            size="mini"
-                            v-on:click={this.superParams.removeCustomNode(treeNode, treeData)}>
-                            Delete
-                        </el-button>
-                        </span>
-                    </span>
-                )
-                */    
                 
                 return (
                     <template class="custom-tree-node">
@@ -260,8 +234,6 @@ export default {
                 )
                 
             }else if(node.type == 'removableTag') {
-                console.log("node.type == 'removableTag'");
-                console.log(node);
                 return (
                     // template标签 不展示模块，改为div标签则展示
                     <div>
@@ -278,8 +250,6 @@ export default {
                     </div>
                 ) 
             }else if(node.type == 'dynamicallyTag') {
-                console.log("node.type == 'dynamicallyTag'");
-                console.log(node);
                 return (
                     // 原文为template 不展示模块，改为div则展示
                     // onClose={() => function(){} } 或者 onClose={this.superParams.handleCloseDynamicTags.bind(this, tag)} 阻止事件在render时自动执行一遍
@@ -312,8 +282,6 @@ export default {
                     </div>
                 ) 
             }else if(node.type == 'themeTag') {
-                console.log("node.type == 'themeTag'");
-                console.log(node);
                 return (
                     // 原文为template 不展示模块，改为div则展示
                     // onClose={() => function(){} } 或者 onClose={this.superParams.handleCloseDynamicTags.bind(this, tag)} 阻止事件在render时自动执行一遍
@@ -349,11 +317,9 @@ export default {
                     </div>
                 ) 
             }else if (node.type == 'fixedColumn') {
-                console.log("node.type == 'fixedColumn'");
-                console.log(node);
                 return (
                     <div slot-scope={'scope'}>
-                        <el-button v-on:click={ () => this.superParams.handleClickTableColumn} type="text" size="small">{node.eventName1}</el-button>
+                        <el-button v-on:click={ () => this.superParams.handleClickTableColumn()} type="text" size="small">{node.eventName1}</el-button>
                         <el-button type="text" size="small">{node.eventName2}</el-button>
                     </div>
                 )
