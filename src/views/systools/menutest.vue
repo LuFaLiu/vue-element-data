@@ -3734,6 +3734,11 @@ export default {
       var refComponent = getVueComponent(this,'$children','$refs','fixedHeaderAndColumn');
       refComponent.data = this.eltable.tableDataColumnHeader
     },
+
+    setCurrentSingleSelect(refName,item) {
+      var refComponent = getVueComponent(this,'$children','$refs',refName);
+      refComponent.setCurrentRow(item.uniqueIdentifier == 'tableData' ? this.eltable.tableData[1] : '');
+    },
     
     getVueComponentName(refName,paramsName,paramsVal){
       console.log("getVueComponentName=====>");

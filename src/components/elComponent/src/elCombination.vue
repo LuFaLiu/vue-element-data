@@ -121,11 +121,14 @@ export default {
                             },
                             'selection-change':function (e) {
                                 console.log(e);
-                                that.selectChange(e,item);
+                                if(e){
+                                    that.selectChange(e,item);
+                                }
+                                
                             },
                             'current-change':function (e) { //table row select
                                 console.log(e);
-                                if(e.selectionEvent){
+                                if(e && e.selectionEvent){
                                     that.superParams[item.selectionEvent](e);
                                 }else {
                                     return
@@ -305,7 +308,7 @@ export default {
             }else if(type == 'param'){
                 this.superParams[item.event](item.value);  
             }else if(item.ref){
-                this.superParams[item.event](item.ref);  
+                this.superParams[item.event](item.ref,item);  
             } else{
                 this.superParams[item.event]();  
             }
@@ -460,7 +463,16 @@ export default {
                             if(item[i] == 'true' || item[i] == 'false') {
                                 item[i] = Boolean(item[i]) 
                             }
-                            */
+                            */ 
+                        } else if(componentNameParams == 'eltablecolumn' && i == 'index'){
+                            if(item[i] == 'indexMethod') {
+                                item[i] = that.indexMethod
+                            }else {
+                                item[i] = item[i]
+                            }
+                            
+                            console.log("indexMethod");
+                            console.log(item[i]);
                         } else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
