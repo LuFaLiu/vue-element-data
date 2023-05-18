@@ -2345,6 +2345,10 @@ export default {
                 'display': 'block'
               }
             },
+            elMultipleSelectType:{
+              type:'customProp',
+              prop:'date'
+            },
             elTableType12:{
               tag:'span',
               text:'Sorting',
@@ -2959,8 +2963,8 @@ export default {
     formatter(row, column, cellValue, index){
       return cellValue;
     },
-    selectable(){
-
+    selectable(row, index){
+      return row
     },
     filterMethod(){
       //return true; //为Transfer组件时必须返回真值才能回显数据
@@ -3738,6 +3742,21 @@ export default {
     setCurrentSingleSelect(refName,item) {
       var refComponent = getVueComponent(this,'$children','$refs',refName);
       refComponent.setCurrentRow(item.uniqueIdentifier == 'tableData' ? this.eltable.tableData[1] : '');
+    },
+
+    //multipleSelectRef
+    toggleSelectionMultipleSelect(refName,item){
+      var refComponent = getVueComponent(this,'$children','$refs',refName);
+      console.log(refName,item);
+      var rows = item.uniqueIdentifier == 'tableData' ? [this.eltable.tableMultipleData[1], this.eltable.tableMultipleData[2]] : [];
+      console.log(rows);
+      if(rows.length > 0) {
+        rows.forEach(row => {
+          refComponent.toggleRowSelection(row);
+        });
+      }else {
+        refComponent.clearSelection();
+      }
     },
     
     getVueComponentName(refName,paramsName,paramsVal){

@@ -120,6 +120,7 @@ export default {
                                 }
                             },
                             'selection-change':function (e) {
+                                console.log('selection-change');
                                 console.log(e);
                                 if(e){
                                     that.selectChange(e,item);
@@ -265,7 +266,7 @@ export default {
                         ref:item.refName,
                         scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' && !item.operation && {
                             default: props => h('Template',{props,item}) //通过单文件组件展示对应的信息(组件需要的一切都是通过 context 参数传递)
-                        } || item.componentName == 'elRadioGroup' || item.uniqueIdentifier == 'fixedHeaderAndColumn' && { default: props => h('TraverseTemplate',{props:{node:item,parent:that,props:props}})  } //非单文件组件
+                        } || item.componentName == 'elRadioGroup' || item.uniqueIdentifier == 'fixedHeaderAndColumn' || item.uniqueIdentifier == 'elMultipleSelectType' && { default: props => h('TraverseTemplate',{props:{node:item,parent:that,props:props}})  } //非单文件组件
                         
                     },
                     item && item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) 
@@ -317,8 +318,10 @@ export default {
             this.$message('click on item ' + command);
         },
         selectChange(val,item){ 
-            var selectName = item.selectionEvent;
-            this.superParams[selectName](val);
+            if(item.selectionEvent) {
+                var selectName = item.selectionEvent;
+                this.superParams[selectName](val);
+            }
         },
         indexMethod(index) {
             if (index < 9) {

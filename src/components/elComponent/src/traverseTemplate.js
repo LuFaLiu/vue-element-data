@@ -28,6 +28,16 @@ export default {
                     <el-button v-on:click={ () => parent.superParams.deleteFixedHeaderAndColumn(props.$index) } type="text" size="small">Remove</el-button>
                 </div>
             )
+        }else if (node.uniqueIdentifier == 'elMultipleSelectType') {
+            console.log("node.uniqueIdentifier == 'elMultipleSelectType'");
+            console.log(node);
+            console.log(parent);
+            console.log(props);
+            return (
+                <div slot-scope="scope">
+                    { props.row.date }
+                </div>
+            )
         }else {
             return (<span>operation</span>)
         }          
