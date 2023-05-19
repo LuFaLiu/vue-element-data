@@ -2634,7 +2634,8 @@ export default {
             'element-loading-text':"loading",
             'element-loading-spinner':"el-icon-loading",
             'element-loading-background':"rgba(0, 0, 0, 0.8)"
-          }
+          },
+          defaultSorting:{prop: 'date', order: 'descending'}
         },
         eltablecolumn:{
           filterPlacement:'',
@@ -3757,6 +3758,10 @@ export default {
       }else {
         refComponent.clearSelection();
       }
+    },
+
+    formatterSorting(row, column) {
+        return row.address;
     },
     
     getVueComponentName(refName,paramsName,paramsVal){

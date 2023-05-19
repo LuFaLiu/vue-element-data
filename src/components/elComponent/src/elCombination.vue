@@ -476,6 +476,15 @@ export default {
                             
                             console.log("indexMethod");
                             console.log(item[i]);
+                        } else if(componentNameParams == 'eltablecolumn' && i == 'formatter'){
+                            if(item[i] == 'formatterSorting') {
+                                item[i] = that.superParams.formatterSorting
+                            }else {
+                                item[i] = item[i]
+                            }
+                            
+                            console.log("indexMethod");
+                            console.log(item[i]);
                         } else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
