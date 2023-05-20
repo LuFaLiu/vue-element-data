@@ -2873,9 +2873,11 @@ export default {
         elPaginationSwitchVal:true, // Descriptions-Sizes
 
         // 自定义value
-        treeNodeFiltering:'' // Tree-Tree node filtering
+        treeNodeFiltering:'', // Tree-Tree node filtering
+
+        dateFilter:[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}],
         
-        
+        tagFilter:[{ text: 'Home', value: 'Home' }, { text: 'Office', value: 'Office' }]
 
     }
   },
@@ -3762,6 +3764,25 @@ export default {
 
     formatterSorting(row, column) {
         return row.address;
+    },
+
+    resetDateFilter(refName) {
+      var refComponent = getVueComponent(this,'$children','$refs',refName);
+      refComponent.clearFilter('date');
+    },
+    clearDateFilter(refName) {
+      var refComponent = getVueComponent(this,'$children','$refs',refName);
+      refComponent.clearFilter();
+    },
+    formatterAddress(row, column) {
+      return row.address;
+    },
+    filterTagHandler(value, row) {
+      return row.tag === value;
+    },
+    filterDateHandler(value, row, column) {
+      const property = column['property'];
+      return row[property] === value;
     },
     
     getVueComponentName(refName,paramsName,paramsVal){

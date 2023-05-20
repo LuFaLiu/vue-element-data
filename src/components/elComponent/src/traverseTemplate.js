@@ -38,6 +38,19 @@ export default {
                     { props.row.date }
                 </div>
             )
+        }else if (node.uniqueIdentifier == 'tagScope') {
+            console.log("node.uniqueIdentifier == 'tagScope'");
+            console.log(node);
+            console.log(parent);
+            console.log(props);
+            return (
+                <el-tag
+                    type={props.row.tag === 'Home' ? 'primary' : 'success'}
+                    disable-transitions
+                    >
+                        {props.row.tag}
+                    </el-tag>
+            )
         }else {
             return (<span>operation</span>)
         }          

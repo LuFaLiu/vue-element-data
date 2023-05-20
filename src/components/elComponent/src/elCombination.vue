@@ -266,7 +266,7 @@ export default {
                         ref:item.refName,
                         scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' && !item.operation && {
                             default: props => h('Template',{props,item}) //通过单文件组件展示对应的信息(组件需要的一切都是通过 context 参数传递)
-                        } || item.componentName == 'elRadioGroup' || item.uniqueIdentifier == 'fixedHeaderAndColumn' || item.uniqueIdentifier == 'elMultipleSelectType' && { default: props => h('TraverseTemplate',{props:{node:item,parent:that,props:props}})  } //非单文件组件
+                        } || item.componentName == 'elRadioGroup' || item.uniqueIdentifier == 'fixedHeaderAndColumn' || item.uniqueIdentifier == 'tagScope' || item.uniqueIdentifier == 'elMultipleSelectType' && { default: props => h('TraverseTemplate',{props:{node:item,parent:that,props:props}})  } //非单文件组件
                         
                     },
                     item && item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) 
@@ -362,10 +362,11 @@ export default {
             this.tableHeight = resizeObserver("el-main",classList,130);
         },
         //转化props属性
-        conversionProps(item,componentNameParams){
+        conversionProps(props,componentNameParams){
             //console.log("转化props属性");
-            //console.log(item,componentNameParams);
+            //console.log(props,componentNameParams);
             var that = this;
+            var item = _.cloneDeep(props)
             var customVal = '';
             var hasUniqueIdentifier = '';
             var paramsList = _.keysIn(item);
@@ -383,6 +384,8 @@ export default {
                     hasUniqueIdentifier = '';
                 }
             }
+
+            
         
             for(var i in item){
                 if(i !== 'componentName' || i !== 'pageName'){
@@ -399,6 +402,10 @@ export default {
                         } else if(componentNameParams == 'eltablecolumn' && i == 'filterMethod'){ // 需要设置filterMethod为空时删除该属性，否则eltablecolumn 会出现下拉框筛选条件
                             if(!item[i]) {
                                 delete item[i]
+                            }else if(item[i] == 'filterTagHandler'){
+                                item[i] = that.superParams.filterTagHandler
+                            }else if(item[i] == 'filterDateHandler'){
+                                item[i] = that.superParams.filterDateHandler
                             }else {
                                 item[i] = that.superParams.eltablecolumn.filterMethod
                             }
@@ -445,12 +452,27 @@ export default {
                             item[i] = new Object(that.superParams.eltable.treeProps);
                         } else if(componentNameParams == 'eltable' && i == 'rowClassName' && item[i] == 'tableRowClassName'){
                             item[i] = that.superParams.tableRowClassName
-                        } else if(componentNameParams == 'eltablecolumn' && (i == 'filterMethod' || i == 'filters' || i == 'filteredValue')){
+                        } else if(componentNameParams == 'eltablecolumn' && (i == 'filters' || i == 'filteredValue')){
+                            console.log(item);
                             if(!item[i]) {
-                                delete item[i]
-                            }else {
+                                //delete item[i]
+                            }else if(item[i] == 'dateFilter'){
+                                console.log(item[i]);
+                                console.log(item,i);
+                                console.log("item[i] == 'dateFilter'");
+                                console.log(that.superParams.dateFilter);
+                                // that.superParams.dateFilter
+                                item[i] = that.superParams.dateFilter
+                                console.log(item);
+                            }else if(item[i] == 'tagFilter'){
+                                console.log("tem[i] == 'tagFilter'");
+                                console.log(that.superParams.tagFilter);
+                                item[i] = that.superParams.tagFilter
+                            } else {
                                 item[i] = that.superParams.eltablecolumn[item[i]]
                             }
+
+                            console.log(item);
                         } else if(componentNameParams == 'eltablecolumn' && (i == 'width' || i == 'minWidth')){
                             if(item[i]) {
                                 item[i] = Number(item[i]) 
