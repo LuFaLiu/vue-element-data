@@ -2620,6 +2620,27 @@ export default {
             address: 'No. 189, Grove St, Los Angeles',
             zip: 'CA 90036'
           }],
+          tableData3: [{
+            date: '2016-05-03',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles',
+            tag: 'Home'
+          }, {
+            date: '2016-05-02',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles',
+            tag: 'Office'
+          }, {
+            date: '2016-05-04',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles',
+            tag: 'Home'
+          }, {
+            date: '2016-05-01',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles',
+            tag: 'Office'
+          }],
           rowStyle:{},
           cellStyle:{},
           headerRowStyle:{},
@@ -3783,6 +3804,13 @@ export default {
     filterDateHandler(value, row, column) {
       const property = column['property'];
       return row[property] === value;
+    },
+
+    handleCustomColumnEdit(index, row) {
+      console.log(index, row);
+    },
+    handleCustomColumnDelete(index, row) {
+      console.log(index, row);
     },
     
     getVueComponentName(refName,paramsName,paramsVal){

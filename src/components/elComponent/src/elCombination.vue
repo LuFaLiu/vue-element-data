@@ -266,7 +266,7 @@ export default {
                         ref:item.refName,
                         scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' && !item.operation && {
                             default: props => h('Template',{props,item}) //通过单文件组件展示对应的信息(组件需要的一切都是通过 context 参数传递)
-                        } || item.componentName == 'elRadioGroup' || item.uniqueIdentifier == 'fixedHeaderAndColumn' || item.uniqueIdentifier == 'tagScope' || item.uniqueIdentifier == 'elMultipleSelectType' && { default: props => h('TraverseTemplate',{props:{node:item,parent:that,props:props}})  } //非单文件组件
+                        } || (item.componentName == 'elRadioGroup' || item.uniqueIdentifier == 'fixedHeaderAndColumn' || item.uniqueIdentifier == 'tagScope' || item.uniqueIdentifier == 'elMultipleSelectType' || item.uniqueIdentifier == 'customIconDate' || item.uniqueIdentifier == 'customHoverName' || item.uniqueIdentifier == 'customOperations') && { default: props => h('TraverseTemplate',{props:{node:item,parent:that,props:props}})  } //非单文件组件
                         
                     },
                     item && item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) 
