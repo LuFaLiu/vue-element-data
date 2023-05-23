@@ -2381,6 +2381,11 @@ export default {
                 'display': 'block'
               }
             },
+            elCustomHeader:{
+              type:'customHeader',
+              size:'mini',
+              placeholder:'Type to search'
+            },
             elTableType16:{
               tag:'span',
               text:'Expandable row',
@@ -2641,6 +2646,23 @@ export default {
             address: 'No. 189, Grove St, Los Angeles',
             tag: 'Office'
           }],
+          tableData8: [{
+            date: '2016-05-03',
+            name: 'Tom',
+            address: 'No. 189, Grove St, Los Angeles'
+          }, {
+            date: '2016-05-02',
+            name: 'John',
+            address: 'No. 189, Grove St, Los Angeles'
+          }, {
+            date: '2016-05-04',
+            name: 'Morgan',
+            address: 'No. 189, Grove St, Los Angeles'
+          }, {
+            date: '2016-05-01',
+            name: 'Jessy',
+            address: 'No. 189, Grove St, Los Angeles'
+          }],
           rowStyle:{},
           cellStyle:{},
           headerRowStyle:{},
@@ -2898,7 +2920,9 @@ export default {
 
         dateFilter:[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}],
         
-        tagFilter:[{ text: 'Home', value: 'Home' }, { text: 'Office', value: 'Office' }]
+        tagFilter:[{ text: 'Home', value: 'Home' }, { text: 'Office', value: 'Office' }],
+
+        searchHeaderVal:''
 
     }
   },
@@ -2923,6 +2947,11 @@ export default {
       filterTreeRefComponent.filter(val);
       console.log(filterTreeRefComponent);
 
+    }
+  },
+  computed:{
+    customHeaderTableData(){
+      return this.eltable.tableData8.filter(data => !this.searchHeaderVal || data.name.toLowerCase().includes(this.searchHeaderVal.toLowerCase()))
     }
   },
   mounted(){
@@ -3812,7 +3841,7 @@ export default {
     handleCustomColumnDelete(index, row) {
       console.log(index, row);
     },
-    
+
     getVueComponentName(refName,paramsName,paramsVal){
       console.log("getVueComponentName=====>");
       var refComponent = getVueComponent(this,'$children','$refs',refName);

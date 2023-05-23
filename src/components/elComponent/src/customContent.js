@@ -1,3 +1,4 @@
+import { dynamicvModel } from '@/utils/index'
 export default {
     inject: ['superParams'],
     props:{
@@ -32,6 +33,16 @@ export default {
             tabIndex2: 2
         }
         
+    },
+    computed:{
+        searchHeaderVal:{
+            get(){
+                return dynamicvModel(this.superParams,'searchHeaderVal','','get');
+            },
+            set(val){
+                dynamicvModel(this.superParams,'searchHeaderVal',val,'set');
+            }
+        }
     },
     name:'CustomContent',
     render(h){
@@ -322,7 +333,28 @@ export default {
                         <el-button v-on:click={ () => this.superParams.handleClickTableColumn()} type="text" size="small">{node.eventName1}</el-button>
                         <el-button type="text" size="small">{node.eventName2}</el-button>
                     </div>
-                )
+                ) 
+            }else if (node.type == 'customHeader') {
+                console.log("node.type == 'customHeader'");
+                return (
+                    <el-table-column align="right" width="200">
+                        <template slot="header" slot-scope="scope">
+                            <el-input
+                                v-model={this.searchHeaderVal}
+                                size={node.size}
+                                placeholder={node.placeholder}/>
+                        </template>    
+                        <div>
+                            <el-button
+                                size="mini"
+                                >Edit</el-button>
+                                <el-button
+                                size="mini"
+                                type="danger"
+                                >Delete</el-button>
+                        </div>
+                    </el-table-column>
+                ) 
             }else {
 
                 return h(
