@@ -2663,6 +2663,107 @@ export default {
             name: 'Jessy',
             address: 'No. 189, Grove St, Los Angeles'
           }],
+          tableData9: [{
+            id: 1,
+            date: '2016-05-03',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036'
+          }, {
+            id: 2,
+            date: '2016-05-02',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036'
+          }, {
+            id: 3,
+            date: '2016-05-04',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036'
+          }, {
+            id: 4,
+            date: '2016-05-01',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036'
+          }, {
+            id: 5,
+            date: '2016-05-08',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036'
+          }, {
+            id: 6,
+            date: '2016-05-06',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036'
+          }, {
+            id: 7,
+            date: '2016-05-07',
+            name: 'Tom',
+            state: 'California',
+            city: 'Los Angeles',
+            address: 'No. 189, Grove St, Los Angeles',
+            zip: 'CA 90036'
+          }],
+          tableData10: [{
+            id: 1,
+            date: '2016-05-02',
+            name: 'wangxiaohu'
+          }, {
+            id: 2,
+            date: '2016-05-04',
+            name: 'wangxiaohu'
+          }, {
+            id: 3,
+            date: '2016-05-01',
+            name: 'wangxiaohu',
+            children: [{
+                id: 31,
+                date: '2016-05-01',
+                name: 'wangxiaohu'
+              }, {
+                id: 32,
+                date: '2016-05-01',
+                name: 'wangxiaohu'
+            }]
+          }, {
+            id: 4,
+            date: '2016-05-03',
+            name: 'wangxiaohu'
+          }],
+          tableData11: [{
+            id: 1,
+            date: '2016-05-02',
+            name: 'wangxiaohu'
+          }, {
+            id: 2,
+            date: '2016-05-04',
+            name: 'wangxiaohu'
+          }, {
+            id: 3,
+            date: '2016-05-01',
+            name: 'wangxiaohu',
+            hasChildren: true
+          }, {
+            id: 4,
+            date: '2016-05-03',
+            name: 'wangxiaohu'
+          }],
           rowStyle:{},
           cellStyle:{},
           headerRowStyle:{},
@@ -3840,6 +3941,22 @@ export default {
     },
     handleCustomColumnDelete(index, row) {
       console.log(index, row);
+    },
+
+    treeDataload(tree, treeNode, resolve) {
+      setTimeout(() => {
+        resolve([
+          {
+            id: 31,
+            date: '2016-05-01',
+            name: 'wangxiaohu'
+          }, {
+            id: 32,
+            date: '2016-05-01',
+            name: 'wangxiaohu'
+          }
+        ])
+      }, 1000)
     },
 
     getVueComponentName(refName,paramsName,paramsVal){

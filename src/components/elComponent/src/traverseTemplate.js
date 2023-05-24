@@ -77,7 +77,7 @@ export default {
                     </div>
                 </el-popover>
             )
-        }else if (node.uniqueIdentifier == 'customOperations') {
+        } else if (node.uniqueIdentifier == 'customOperations') {
             console.log("node.uniqueIdentifier == 'customOperations'");
             console.log(node);
             console.log(parent);
@@ -91,6 +91,19 @@ export default {
                     size="mini"
                     type="danger"
                     v-on:click={parent.superParams.handleCustomColumnDelete(props.$index, props.row)}>Delete</el-button>
+                </div>
+            )
+        } else if (node.uniqueIdentifier == 'expandableRow') {
+            console.log("node.uniqueIdentifier == 'expandableRow'");
+            console.log(node);
+            console.log(parent);
+            console.log(props);
+            return (
+                <div>
+                    <p>State: { props.row.state }</p>
+                    <p>City: { props.row.city }</p>
+                    <p>Address: { props.row.address }</p>
+                    <p>Zip: { props.row.zip }</p>
                 </div>
             )
         }  else {
