@@ -410,10 +410,17 @@ export default {
                                 item[i] = that.superParams.eltablecolumn.filterMethod
                             }
                         } else if(item[i] == 'treeDataload'){
-                            item[i] = that.superParams.treeDataload;
+                            item[i] = that.superParams.treeDataload
                         } else if(item[i] == 'rowKey' || componentNameParams == 'eltable') {
-                            let rowKey = 0
-                            item[i] = rowKey++
+                            if(item[i]) { // 一定需要这样设置，否则不能显示出对应的children
+                                item[i] = 'id'
+                            }else {
+                                let rowKey = 0
+                                item[i] = (++rowKey).toString()
+                            }
+                            
+                            console.log("item[i] == 'rowKey'");
+                                console.log(item);
                         } else {
                             item[i] = that.superParams[i];
                         }
