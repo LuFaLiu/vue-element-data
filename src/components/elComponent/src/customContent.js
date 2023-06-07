@@ -355,7 +355,102 @@ export default {
                         </div>
                     </el-table-column>
                 ) 
-            }else {
+            } else if (node.type == 'showSummaryTable') {
+                console.log("node.type == 'showSummaryTable'");
+                return (
+                    <el-table
+                        data={this.superParams.eltable.tableData12}
+                        border
+                        height="200"
+                        summary-method={this.superParams.getSummaries}
+                        show-summary
+                        style="width: 100%; margin-top: 20px">
+                        <el-table-column
+                        prop="id"
+                        label="ID"
+                        width="180">
+                        </el-table-column>
+                        <el-table-column
+                        prop="name"
+                        label="姓名">
+                        </el-table-column>
+                        <el-table-column
+                        prop="amount1"
+                        label="数值 1（元）">
+                        </el-table-column>
+                        <el-table-column
+                        prop="amount2"
+                        label="数值 2（元）">
+                        </el-table-column>
+                        <el-table-column
+                        prop="amount3"
+                        label="数值 3（元）">
+                        </el-table-column>
+                    </el-table>
+                )
+            } else if (node.type == 'rowspanTable') {
+                console.log("node.type == 'rowspanTable'");
+                return (
+                    <el-table
+                        data={this.superParams.eltable.tableData12}
+                        border
+                        span-method={this.superParams.arraySpanMethod}
+                        style="width: 100%; margin-top: 20px">
+                        <el-table-column
+                        prop="id"
+                        label="ID"
+                        width="180">
+                        </el-table-column>
+                        <el-table-column
+                        prop="name"
+                        label="姓名">
+                        </el-table-column>
+                        <el-table-column
+                        prop="amount1"
+                        label="数值 1（元）">
+                        </el-table-column>
+                        <el-table-column
+                        prop="amount2"
+                        label="数值 2（元）">
+                        </el-table-column>
+                        <el-table-column
+                        prop="amount3"
+                        label="数值 3（元）">
+                        </el-table-column>
+                    </el-table>
+                )
+            } else if (node.type == 'colspanTable') {
+                console.log("node.type == 'colspanTable'");
+                return (
+                    <el-table
+                        data={this.superParams.eltable.tableData12}
+                        border
+                        span-method={this.superParams.objectSpanMethod}
+                        style="width: 100%; margin-top: 20px">
+                        <el-table-column
+                        prop="id"
+                        label="ID"
+                        width="180">
+                        </el-table-column>
+                        <el-table-column
+                        prop="name"
+                        label="姓名">
+                        </el-table-column>
+                        <el-table-column
+                        prop="amount1"
+                        label="数值 1（元）">
+                        </el-table-column>
+                        <el-table-column
+                        prop="amount2"
+                        label="数值 2（元）">
+                        </el-table-column>
+                        <el-table-column
+                        prop="amount3"
+                        label="数值 3（元）">
+                        </el-table-column>
+                    </el-table>
+                )
+            } else {
 
                 return h(
                     node.condition ? (Boolean(this.superParams[node.condition]) == node.conditionVal && node.tag)  : node.tag,

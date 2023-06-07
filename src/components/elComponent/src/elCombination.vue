@@ -330,6 +330,11 @@ export default {
                 return index + 1;
             }
         },
+
+        customIndexMethod(index) {
+            return index * 2;
+        },
+
         getObjKey(row,key){
             return _.get(row, key);
         },
@@ -361,6 +366,35 @@ export default {
             }
             this.tableHeight = resizeObserver("el-main",classList,130);
         },
+
+        getSummaries(param) {
+            const { columns, data } = param;
+            const sums = [];
+            console.log("columns, data");
+            console.log(columns, data);
+            columns.forEach((column, index) => {
+                if (index === 0) {
+                sums[index] = 'Total Cost';
+                return;
+                }
+                const values = data.map(item => Number(item[column.property]));
+                if (!values.every(value => isNaN(value))) {
+                sums[index] = '$ ' + values.reduce((prev, curr) => {
+                    const value = Number(curr);
+                    if (!isNaN(value)) {
+                    return prev + curr;
+                    } else {
+                    return prev;
+                    }
+                }, 0);
+                } else {
+                sums[index] = 'N/A';
+                }
+            });
+
+            return sums;
+        },
+
         //转化props属性
         conversionProps(props,componentNameParams){
             //console.log("转化props属性");
@@ -430,7 +464,7 @@ export default {
                                 item[i] = that.superParams.elskeleton[item[i]];
                             }
                             //item[i] = that.superParams.elskeleton.elskeletonLoading; 
-                        }else if(componentNameParams == 'elpagination' && i == 'pageSizes'){
+                        } else if(componentNameParams == 'elpagination' && i == 'pageSizes'){
                             if(item[i]){
                                 item[i] = that.superParams.elpagination[item[i]];
                             }
@@ -461,8 +495,8 @@ export default {
                         } else if(componentNameParams == 'eltree' && item[i] == 'renderCustomNodeContent'){
                             item[i] = that.superParams.renderCustomNodeContent;
                         } else if(componentNameParams == 'eltable' && item[i] == 'treeProps'){
-                            item[i] = new Object(that.superParams.eltable.treeProps);
-                        } else if(componentNameParams == 'eltable' && i == 'rowClassName' && item[i] == 'tableRowClassName'){
+                            item[i] = new Object(that.superParams.eltable.treeProps);  
+                        }  else if(componentNameParams == 'eltable' && i == 'rowClassName' && item[i] == 'tableRowClassName'){
                             item[i] = that.superParams.tableRowClassName
                         } else if(componentNameParams == 'eltablecolumn' && (i == 'filters' || i == 'filteredValue')){
                             console.log(item);
@@ -504,7 +538,9 @@ export default {
                         } else if(componentNameParams == 'eltablecolumn' && i == 'index'){
                             if(item[i] == 'indexMethod') {
                                 item[i] = that.indexMethod
-                            }else {
+                            }else if(item[i] == 'customIndexMethod') {
+                                item[i] = that.customIndexMethod
+                            } else {
                                 item[i] = item[i]
                             }
                             

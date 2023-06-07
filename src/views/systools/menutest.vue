@@ -2410,6 +2410,9 @@ export default {
                 'display': 'block'
               }
             },
+            elTableShowSummaryTableType:{
+              type:'showSummaryTable'
+            },
             elTableType19:{
               tag:'span',
               text:'Rowspan and colspan',
@@ -2417,6 +2420,12 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elTableRowspanTableType:{
+              type:'rowspanTable'
+            },
+            elTableColspanTableType:{
+              type:'colspanTable'
             },
             elTableType20:{
               tag:'span',
@@ -2763,6 +2772,37 @@ export default {
             id: 4,
             date: '2016-05-03',
             name: 'wangxiaohu'
+          }],
+          tableData12: [{
+            id: '12987122',
+            name: 'Tom',
+            amount1: '234',
+            amount2: '3.2',
+            amount3: 10
+          }, {
+            id: '12987123',
+            name: 'Tom',
+            amount1: '165',
+            amount2: '4.43',
+            amount3: 12
+          }, {
+            id: '12987124',
+            name: 'Tom',
+            amount1: '324',
+            amount2: '1.9',
+            amount3: 9
+          }, {
+            id: '12987125',
+            name: 'Tom',
+            amount1: '621',
+            amount2: '2.2',
+            amount3: 17
+          }, {
+            id: '12987126',
+            name: 'Tom',
+            amount1: '539',
+            amount2: '4.1',
+            amount3: 15
           }],
           rowStyle:{},
           cellStyle:{},
@@ -3957,6 +3997,60 @@ export default {
           }
         ])
       }, 1000)
+    },
+
+    getSummaries(param) {
+      const { columns, data } = param;
+      const sums = [];
+      console.log("columns, data");
+      console.log(columns, data);
+      columns.forEach((column, index) => {
+        if (index === 0) {
+          sums[index] = 'Total Cost';
+          return;
+        }
+        const values = data.map(item => Number(item[column.property]));
+        if (!values.every(value => isNaN(value))) {
+          sums[index] = '$ ' + values.reduce((prev, curr) => {
+            const value = Number(curr);
+            if (!isNaN(value)) {
+              return prev + curr;
+            } else {
+              return prev;
+            }
+          }, 0);
+        } else {
+          sums[index] = 'N/A';
+        }
+      });
+
+      return sums;
+    },
+
+    arraySpanMethod({ row, column, rowIndex, columnIndex }) {
+      if (rowIndex % 2 === 0) {
+        if (columnIndex === 0) {
+          return [1, 2];
+        } else if (columnIndex === 1) {
+          return [0, 0];
+        }
+      }
+    },
+
+    objectSpanMethod({ row, column, rowIndex, columnIndex }) {
+      if (columnIndex === 0) {
+        if (rowIndex % 2 === 0) {
+          return {
+            rowspan: 2,
+            colspan: 1
+          };
+        } else {
+          return {
+            rowspan: 0,
+            colspan: 0
+          };
+        }
+      }
     },
 
     getVueComponentName(refName,paramsName,paramsVal){
