@@ -36,6 +36,10 @@ export default {
         elform:{
           model:{},
           rules:{},
+          inlineFormModel: {
+            user: '',
+            region: ''
+          }
         },
         elformitem:{
           rules:{},
@@ -73,6 +77,13 @@ export default {
           }, {
             value: '选项5',
             label: '北京烤鸭'
+          }],
+          ElInlineFormListName:[{
+            value: 'shanghai',
+            label: 'Zone one'
+          }, {
+            value: 'beijing',
+            label: 'Zone two'
           }],
           value:''
         },
@@ -2434,6 +2445,70 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elFormType1:{
+              tag:'span',
+              text:'Basic form',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elFormType2:{
+              tag:'span',
+              text:'Inline form',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elFormType3:{
+              tag:'span',
+              text:'Alignment',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elFormType4:{
+              tag:'span',
+              text:'Validation',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elFormType5:{
+              tag:'span',
+              text:'Custom validation rules',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elFormType6:{
+              tag:'span',
+              text:'Delete or add form items dynamically',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elFormType7:{
+              tag:'span',
+              text:'Number Validate',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elFormType8:{
+              tag:'span',
+              text:'Size control',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
 
         },
@@ -4051,6 +4126,10 @@ export default {
           };
         }
       }
+    },
+
+    onSubmitInlineForm(){
+      console.log('submit!');
     },
 
     getVueComponentName(refName,paramsName,paramsVal){
