@@ -552,9 +552,13 @@ export default {
                             }else {
                                 item[i] = item[i]
                             }
-                            
+                              
                             console.log("indexMethod");
                             console.log(item[i]);
+                        } else if(componentNameParams == 'elform' && i == 'labelPosition'){
+                            if(item[i] == 'alignmentLabelPosition') {
+                                item[i] = that.superParams.alignmentLabelPosition
+                            }
                         } else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 

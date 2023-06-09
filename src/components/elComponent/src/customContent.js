@@ -450,6 +450,15 @@ export default {
                         </el-table-column>
                     </el-table>
                 )
+            } else if (node.type == 'alignmentRadio') {
+                console.log("node.type == 'alignmentRadio'");
+                return (
+                    <el-radio-group v-model={this.superParams.alignmentLabelPosition} size="small">
+                        <el-radio-button label="left">Left</el-radio-button>
+                        <el-radio-button label="right">Right</el-radio-button>
+                        <el-radio-button label="top">Top</el-radio-button>
+                    </el-radio-group>
+                )
             } else {
 
                 return h(

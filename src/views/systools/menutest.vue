@@ -39,7 +39,15 @@ export default {
           inlineFormModel: {
             user: '',
             region: ''
-          }
+          },
+          alignment: {
+            formLabelAlign: {
+              name: '',
+              region: '',
+              type: ''
+            }
+          },
+
         },
         elformitem:{
           rules:{},
@@ -2470,6 +2478,9 @@ export default {
                 'display': 'block'
               }
             },
+            elFormAlignmentType:{
+              type:'alignmentRadio'
+            },
             elFormType4:{
               tag:'span',
               text:'Validation',
@@ -3138,7 +3149,8 @@ export default {
         
         tagFilter:[{ text: 'Home', value: 'Home' }, { text: 'Office', value: 'Office' }],
 
-        searchHeaderVal:''
+        searchHeaderVal:'',
+        alignmentLabelPosition:'right'
 
     }
   },
@@ -4151,6 +4163,12 @@ export default {
 
   ::v-deep {
 
+
+    .el-container {
+      .el-form {
+        height: auto !important;
+      }
+    }
 
     .el-table__fixed-body-wrapper {
       overflow-y: scroll;
