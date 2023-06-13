@@ -471,6 +471,9 @@ export default {
         case 'ElDescriptionsItem':
           this.componentProps.push({attributeName:'title',attributeLabel:'title',attributeModel:'title','title': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break; 
+        case 'ElCheckbox':
+          this.componentProps.push({attributeName:'checked',attributeLabel:'checked',attributeModel:'checked','checked': false ,inputFormat:'boolean', attributeType: 'ruleRadio'})
+          break;   
         case 'ElTree':
           this.componentProps.push({attributeName:'nodeDragStart',attributeLabel:'nodeDragStart',attributeModel:'nodeDragStart','nodeDragStart': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           this.componentProps.push({attributeName:'nodeDragEnter',attributeLabel:'nodeDragEnter',attributeModel:'nodeDragEnter','nodeDragEnter': '' ,inputFormat:'string', attributeType: 'ruleInput'})

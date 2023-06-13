@@ -559,6 +559,10 @@ export default {
                             if(item[i] == 'alignmentLabelPosition') {
                                 item[i] = that.superParams.alignmentLabelPosition
                             }
+                        } else if(componentNameParams == 'elform' && i == 'rules'){
+                            if(item[i] == 'validationRules') {
+                                item[i] = that.superParams.elform.validationRules
+                            }
                         } else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
