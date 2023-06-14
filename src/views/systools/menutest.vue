@@ -32,6 +32,46 @@ export default {
       console.log(data);
       return data;
     };
+
+
+    var checkAge = (rule, value, callback) => {
+      if (!value) {
+        return callback(new Error('Please input the age'));
+      }
+      setTimeout(() => {
+        if (!Number.isInteger(value)) {
+          callback(new Error('Please input digits'));
+        } else {
+          if (value < 18) {
+            callback(new Error('Age must be greater than 18'));
+          } else {
+            callback();
+          }
+        }
+      }, 1000);
+    };
+
+    var validatePass = (rule, value, callback) => {
+      if (this.elform.customValidationRuleForm.pass === '') {
+        callback(new Error('Please input the password'));
+      } else {
+        if (this.elform.customValidationRuleForm.checkPass !== '') {
+          var refComponent = getVueComponent(this,'$children','$refs','ruleForm');
+          refComponent.validateField('checkPass');
+        }
+        callback();
+      }
+    };
+
+    var validatePass2 = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('Please input the password again'));
+      } else if (value !== this.elform.customValidationRuleForm.pass) {
+        callback(new Error('Two inputs don\'t match!'));
+      } else {
+        callback();
+      }
+    };
     return {
         elform:{
           model:{},
@@ -81,7 +121,22 @@ export default {
             resource: '',
             desc: ''
           },
-
+          customValidationRuleForm: {
+            pass: '',
+            checkPass: '',
+            age: ''
+          },
+          customValidationRules: {
+            pass: [
+              { validator: validatePass, trigger: 'blur' }
+            ],
+            checkPass: [
+              { validator: validatePass2, trigger: 'blur' }
+            ],
+            age: [
+              { validator: checkAge, trigger: 'blur' }
+            ]
+          }
         },
         elformitem:{
           rules:{},
