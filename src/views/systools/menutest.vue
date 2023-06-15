@@ -136,7 +136,18 @@ export default {
             age: [
               { validator: checkAge, trigger: 'blur' }
             ]
-          }
+          },
+          dynamicValidateForm: {
+            domains: [{
+              key: 1,
+              value: ''
+            }],
+            email: ''
+          },
+          dynamicValidateEmailRules: [
+            { required: true, message: 'Please input email address', trigger: 'blur' },
+            { type: 'email', message: 'Please input correct email address', trigger: ['blur', 'change'] }
+          ]
         },
         elformitem:{
           rules:{},
@@ -2594,6 +2605,12 @@ export default {
                 'display': 'block'
               }
             },
+            elFormDynamically:{
+              type:'formDynamically',
+              rules:{
+                  required: true, message: 'domain can not be null', trigger: 'blur'
+              }
+            },
             elFormType7:{
               tag:'span',
               text:'Number Validate',
@@ -4244,9 +4261,27 @@ export default {
         }
       });
     },
+
     resetValidationForm(refName) {
       var refComponent = getVueComponent(this,'$children','$refs',refName);
       refComponent.resetFields();
+    },
+
+    removeFormDynamicallyDomain(item) {
+      var index = this.elform.dynamicValidateForm.domains.indexOf(item);
+      if (index !== -1) {
+        this.elform.dynamicValidateForm.domains.splice(index, 1);
+      }
+    },
+
+    addFormDynamicallyDomain() {
+      console.log("addFormDynamicallyDomain");
+      this.elform.dynamicValidateForm.domains.push({
+        key: Date.now(),
+        value: ''
+      });
+
+      console.log(this.elform.dynamicValidateForm.domains);
     },
 
     getVueComponentName(refName,paramsName,paramsVal){
