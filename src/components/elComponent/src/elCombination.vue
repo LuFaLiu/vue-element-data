@@ -569,6 +569,8 @@ export default {
                         } else if(componentNameParams == 'elformitem' && i == 'rules'){
                             if(item[i] == 'dynamicValidateEmailRules') {
                                 item[i] = that.superParams.elform.dynamicValidateEmailRules
+                            }else if(item[i] == 'numberValidateRules') {
+                                item[i] = that.superParams.elform.numberValidateRules
                             }
                         } else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :

@@ -147,6 +147,13 @@ export default {
           dynamicValidateEmailRules: [
             { required: true, message: 'Please input email address', trigger: 'blur' },
             { type: 'email', message: 'Please input correct email address', trigger: ['blur', 'change'] }
+          ],
+          numberValidateForm: {
+            age: ''
+          },
+          numberValidateRules:[
+            { required: true, message: 'age is required'},
+            { type: 'number', message: 'age must be a number'}
           ]
         },
         elformitem:{
