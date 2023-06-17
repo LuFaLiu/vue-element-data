@@ -154,6 +154,26 @@ export default {
           numberValidateRules:[
             { required: true, message: 'age is required'},
             { type: 'number', message: 'age must be a number'}
+          ],
+          sizeForm: {
+            name: '',
+            region: '',
+            date1: '',
+            date2: '',
+            delivery: false,
+            type: [],
+            resource: '',
+            desc: ''
+          },
+          sizeFormRegionList:[
+            {
+              label:"Zone one",
+              value:"shanghai"
+            },
+            {
+              label:"Zone two",
+              value:"beijing"
+            }
           ]
         },
         elformitem:{
