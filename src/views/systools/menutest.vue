@@ -28,8 +28,6 @@ export default {
           disabled: i % 4 === 0
         });
       }
-      console.log("generateData=========>");
-      console.log(data);
       return data;
     };
 
@@ -2653,6 +2651,41 @@ export default {
                 'margin':'15px 0',
                 'display': 'block'
               }
+            },
+            elTransferType1:{
+              tag:'span',
+              text:'Basic usage',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elBasicUsageTransfer:{
+              type:'basicUsageTransfer'
+            },
+            elTransferType2:{
+              tag:'span',
+              text:'Filterable',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTransferType3:{
+              tag:'span',
+              text:'Customizable',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
+            },
+            elTransferType4:{
+              tag:'span',
+              text:'Prop aliases',
+              style:{
+                'margin':'15px 0',
+                'display': 'block'
+              }
             }
 
         },
@@ -2690,12 +2723,12 @@ export default {
         },
         eltransfer:{
           data: generateData(),
-          value: [],
+          value: [1,4],
           buttonTexts:[],
           titles:[],
           leftDefaultChecked:[],
           rightDefaultChecked:[],
-          format:{},
+          format:{ noChecked: '${checked}/${total}', hasChecked: '${checked}/${total}' },
           props:{
             label: 'label',
             key: 'key',
@@ -2703,7 +2736,8 @@ export default {
           }, //必须
           defaultChecked:[2, 3],
           renderContent(h, option) {
-            return <span>{ option.key } - { option.label }</span>;
+            //return <span>{ option.key } - { option.label }</span>
+            return '123456'
           }
         },
         eltable:{

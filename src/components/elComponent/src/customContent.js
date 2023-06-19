@@ -465,100 +465,136 @@ export default {
                 return (
                     <div>
                         {
-                            this.superParams.elform.dynamicValidateForm.domains.map((domain, index) => 
+                            this.superParams.elform.dynamicValidateForm.domains.map((domain, index) =>
                                 <el-form-item
                                     label={'Domain' + index}
                                     key={index}
                                     prop={'domains.' + index + '.value'}
                                     rules={node.rules}
                                 >
-                                <el-input v-model={domain.value}></el-input><el-button v-on:click={() => this.superParams.removeFormDynamicallyDomain(domain)}>Delete</el-button>
-                            </el-form-item>
+                                    <el-input v-model={domain.value}></el-input><el-button v-on:click={() => this.superParams.removeFormDynamicallyDomain(domain)}>Delete</el-button>
+                                </el-form-item>
                             )
                         }
                     </div>
                 )
-        } else {
+            } else if (node.type == 'basicUsageTransfer') {
+                console.log("node.type == 'basicUsageTransfer'");
+                return (
+                    <el-transfer
+                        v-model={this.superParams.eltransfer.value}
+                        data={this.superParams.eltransfer.data}>
+                    </el-transfer>
+                )
+            } else {
 
-            return h(
-                node.condition ? (Boolean(this.superParams[node.condition]) == node.conditionVal && node.tag) : node.tag,
-                {
-                    class: node.class || '',
-                    style: node.style || {},
-                    props: node.props ? node.props : {
-                        slot: node.props && node.props.slot || '',
+                return h(
+                    node.condition ? (Boolean(this.superParams[node.condition]) == node.conditionVal && node.tag) : node.tag,
+                    {
+                        class: node.class || '',
+                        style: node.style || {},
+                        props: node.props ? node.props : {
+                            slot: node.props && node.props.slot || '',
+                        },
+                        attrs: {
+                            src: node.props && node.props.src || '',
+                        },
+                        domProps: node.domProps || '',
+                        directives: node.directives || '',
+                        slot: node.slot || '',
+                        ref: node.refName || '',
                     },
-                    attrs: {
-                        src: node.props && node.props.src || '',
-                    },
-                    domProps: node.domProps || '',
-                    directives: node.directives || '',
-                    slot: node.slot || '',
-                    ref: node.refName || '',
-                },
-                node.text
-                    ? [h('span', node.text)] : node.childrenNode && node.childrenNode.length > 0 ? this.deepChildrenComponent(node, h) : this.$slots.default
-            )
-        }
-    }
-},
-methods: {
-    changeAdvancedUsagedisabled(){
-
-        this.advancedUsagedisabled = !this.advancedUsagedisabled;
-        console.log(this.advancedUsagedisabled);
-    },
-    deepChildrenComponent(nodeList, h){
-        var that = this;
-        return nodeList && nodeList.childrenNode.length > 0 && nodeList.childrenNode.map(function (item) {
-            return h(
-
-                //版本一
-                /*
-                item.componentName,
-                item.attribute,
-                item && item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) : that.$slots.default
-                */
-                //版本二
-                item.condition ? (Boolean(this.superParams[item.condition]) == item.conditionVal && item.tag) : item.tag,
-                {
-                    class: item.class || '',
-                    style: item.style || {},
-                    props: item.props ? item.props : {
-                        slot: item.props && item.props.slot || '',
-                    },
-                    attrs: {
-                        src: item.props && item.props.src || '',
-                    },
-                    domProps: item.domProps || '',
-                    directives: item.directives || '',
-                    slot: item.slot || '',
-                    ref: item.refName || '',
-
-                },
-                item.text
-                    ? [h('span', item.text)] : item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item, h) : that.$slots.default
-            )
-        })
-    },
-    changeValMethod(refName){
-        if (refName == 'elRadioGroup') {
-            this.superParams.changeElTimelineGroupVal(refName);
+                    node.text
+                        ? [h('span', node.text)] : node.childrenNode && node.childrenNode.length > 0 ? this.deepChildrenComponent(node, h) : this.$slots.default
+                )
+            }
         }
     },
-    handleTabsEdit(targetName, action){
-        if (action === 'add') {
-            let newTabName = ++this.tabIndex + '';
-            this.editableTabs.push({
+    methods: {
+        changeAdvancedUsagedisabled() {
+
+            this.advancedUsagedisabled = !this.advancedUsagedisabled;
+            console.log(this.advancedUsagedisabled);
+        },
+        deepChildrenComponent(nodeList, h) {
+            var that = this;
+            return nodeList && nodeList.childrenNode.length > 0 && nodeList.childrenNode.map(function (item) {
+                return h(
+
+                    //版本一
+                    /*
+                    item.componentName,
+                    item.attribute,
+                    item && item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) : that.$slots.default
+                    */
+                    //版本二
+                    item.condition ? (Boolean(this.superParams[item.condition]) == item.conditionVal && item.tag) : item.tag,
+                    {
+                        class: item.class || '',
+                        style: item.style || {},
+                        props: item.props ? item.props : {
+                            slot: item.props && item.props.slot || '',
+                        },
+                        attrs: {
+                            src: item.props && item.props.src || '',
+                        },
+                        domProps: item.domProps || '',
+                        directives: item.directives || '',
+                        slot: item.slot || '',
+                        ref: item.refName || '',
+
+                    },
+                    item.text
+                        ? [h('span', item.text)] : item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item, h) : that.$slots.default
+                )
+            })
+        },
+        changeValMethod(refName) {
+            if (refName == 'elRadioGroup') {
+                this.superParams.changeElTimelineGroupVal(refName);
+            }
+        },
+        handleTabsEdit(targetName, action) {
+            if (action === 'add') {
+                let newTabName = ++this.tabIndex + '';
+                this.editableTabs.push({
+                    title: 'New Tab',
+                    name: newTabName,
+                    content: 'New Tab content'
+                });
+                this.editableTabsValue = newTabName;
+            }
+            if (action === 'remove') {
+                let tabs = this.editableTabs;
+                let activeName = this.editableTabsValue;
+                if (activeName === targetName) {
+                    tabs.forEach((tab, index) => {
+                        if (tab.name === targetName) {
+                            let nextTab = tabs[index + 1] || tabs[index - 1];
+                            if (nextTab) {
+                                activeName = nextTab.name;
+                            }
+                        }
+                    });
+                }
+
+                this.editableTabsValue = activeName;
+                this.editableTabs = tabs.filter(tab => tab.name !== targetName);
+            }
+        },
+        addTab(targetName) {
+            console.log("addTab==========>");
+            let newTabName = ++this.tabIndex2 + '';
+            this.editableTabs2.push({
                 title: 'New Tab',
                 name: newTabName,
                 content: 'New Tab content'
             });
-            this.editableTabsValue = newTabName;
-        }
-        if (action === 'remove') {
-            let tabs = this.editableTabs;
-            let activeName = this.editableTabsValue;
+            this.editableTabsValue2 = newTabName;
+        },
+        removeTab(targetName) {
+            let tabs = this.editableTabs2;
+            let activeName = this.editableTabsValue2;
             if (activeName === targetName) {
                 tabs.forEach((tab, index) => {
                     if (tab.name === targetName) {
@@ -570,37 +606,9 @@ methods: {
                 });
             }
 
-            this.editableTabsValue = activeName;
-            this.editableTabs = tabs.filter(tab => tab.name !== targetName);
+            this.editableTabsValue2 = activeName;
+            this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
         }
-    },
-    addTab(targetName) {
-        console.log("addTab==========>");
-        let newTabName = ++this.tabIndex2 + '';
-        this.editableTabs2.push({
-            title: 'New Tab',
-            name: newTabName,
-            content: 'New Tab content'
-        });
-        this.editableTabsValue2 = newTabName;
-    },
-    removeTab(targetName) {
-        let tabs = this.editableTabs2;
-        let activeName = this.editableTabsValue2;
-        if (activeName === targetName) {
-            tabs.forEach((tab, index) => {
-                if (tab.name === targetName) {
-                    let nextTab = tabs[index + 1] || tabs[index - 1];
-                    if (nextTab) {
-                        activeName = nextTab.name;
-                    }
-                }
-            });
-        }
-
-        this.editableTabsValue2 = activeName;
-        this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
     }
-}
 
 }

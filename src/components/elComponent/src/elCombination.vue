@@ -88,7 +88,7 @@ export default {
                         attrs: item.attrs ? that.superParams[componentNameParams][item.attrs] : {
                             placeholder: (item.componentName == 'elInput' || item.componentName == 'elSelect') && that.filteri18n(item.placeholder) || ''
                         },
-                        props: item.props && componentNameParams !== 'eltransfer' && componentNameParams !== 'eltree' ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
+                        props: item.props  && componentNameParams !== 'eltree' ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
                         on:{
                             '&close':function (params) { // close event
                                 if(item.uniqueIdentifier == 'alertTip') {
@@ -329,6 +329,12 @@ export default {
             } else {
                 return index + 1;
             }
+        },
+
+        renderContentTransferBasicusage(h, option) {
+            console.log("renderContentTransferBasicusage");
+            console.log(option);
+            return <span>{ option.key } - { option.label }</span>;
         },
 
         customIndexMethod(index) {
@@ -582,7 +588,7 @@ export default {
                                                                 : item[i] == 'orderVal' && customVal //customVal exist   (需要将目标key的value设置为orderVal，然后再将customVal设置为具体的值，例：将data的value设置为orderVal，然后将customVal设置为eltree.disabledCheckboxData,就可以将data赋值成eltree.disabledCheckboxData)
                                                                     ? that.vModelVal(customVal)
                                                                         : item[i]
-                                        )
+                                      )
                         }
                     }
                 }
