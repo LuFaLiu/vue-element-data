@@ -486,6 +486,17 @@ export default {
                         data={this.superParams.eltransfer.data}>
                     </el-transfer>
                 )
+            } else if (node.type == 'filterableTransfer') {
+                console.log("node.type == 'filterableTransfer'");
+                return (
+                    <el-transfer
+                        filterable
+                        filter-method={this.filterableTransferMethod}
+                        filter-placeholder="State Abbreviations"
+                        v-model={this.superParams.eltransfer.filterableValue}
+                        data={this.superParams.eltransfer.filterableData}>
+                    </el-transfer>
+                )
             } else {
 
                 return h(
@@ -511,6 +522,9 @@ export default {
         }
     },
     methods: {
+        filterableTransferMethod(query, item) {
+            return item.initial.toLowerCase().indexOf(query.toLowerCase()) > -1;
+        },
         changeAdvancedUsagedisabled() {
 
             this.advancedUsagedisabled = !this.advancedUsagedisabled;

@@ -31,6 +31,20 @@ export default {
       return data;
     };
 
+    const generateFilterableData = _ => {
+        const data = [];
+        const states = ['California', 'Illinois', 'Maryland', 'Texas', 'Florida', 'Colorado', 'Connecticut '];
+        const initials = ['CA', 'IL', 'MD', 'TX', 'FL', 'CO', 'CT'];
+        states.forEach((city, index) => {
+          data.push({
+            label: city,
+            key: index,
+            initial: initials[index]
+          });
+        });
+        return data;
+      };
+
 
     var checkAge = (rule, value, callback) => {
       if (!value) {
@@ -2671,6 +2685,9 @@ export default {
                 'display': 'block'
               }
             },
+            elFilterableTransfer:{
+              type:'filterableTransfer'
+            },
             elTransferType3:{
               tag:'span',
               text:'Customizable',
@@ -2738,7 +2755,9 @@ export default {
           renderContent(h, option) {
             //return <span>{ option.key } - { option.label }</span>
             return '123456'
-          }
+          },
+          filterableData: generateFilterableData(),
+          filterableValue: []
         },
         eltable:{
           tableData: [{
