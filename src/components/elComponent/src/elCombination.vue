@@ -264,10 +264,12 @@ export default {
                         //key:Math.random(), //v-model响应数据时会触发render函数，需将key关闭，否则会重新渲染组件
                         slot: item.slot ? item.slot : that.$slots.default,
                         ref:item.refName,
+                        scopedSlots: that.customScopedSlots(h,item)
+                        /*
                         scopedSlots: item.componentName == 'elTableColumn' && item.type !== 'selection' && !item.operation && {
                             default: props => h('Template',{props,item}) //通过单文件组件展示对应的信息(组件需要的一切都是通过 context 参数传递)
-                        } || (item.componentName == 'elRadioGroup' || item.uniqueIdentifier == 'fixedHeaderAndColumn' || item.uniqueIdentifier == 'tagScope' || item.uniqueIdentifier == 'elMultipleSelectType' || item.uniqueIdentifier == 'customIconDate' || item.uniqueIdentifier == 'customHoverName' || item.uniqueIdentifier == 'customOperations' || item.uniqueIdentifier == 'expandableRow') && { default: props => h('TraverseTemplate',{props:{node:item,parent:that,props:props}})  } //非单文件组件
-                        
+                        } || (item.componentName == 'elRadioGroup' || item.uniqueIdentifier == 'fixedHeaderAndColumn' || item.uniqueIdentifier == 'tagScope' || item.uniqueIdentifier == 'elMultipleSelectType' || item.uniqueIdentifier == 'customIconDate' || item.uniqueIdentifier == 'customHoverName' || item.uniqueIdentifier == 'customOperations' || item.uniqueIdentifier == 'expandableRow') && { default: props => h('TraverseTemplate',{props:{node:item,parent:that,props:props}}) }  //非单文件组件
+                        */
                     },
                     item && item.childrenNode && item.childrenNode.length > 0 ? that.deepChildrenComponent(item,h) 
                             : item.componentName == 'ElButton' || (item.componentName == 'elContainer' && item.title) || item.componentName == 'ElLink' || item.componentName == 'ElHeader' || item.componentName == 'ElFooter' || item.componentName == 'ElRadio' || item.componentName == 'ElMenuItem' || (item.componentName == 'template' && item.title) || (item.componentName == 'ElTabPane' && item.title) || (item.componentName == 'ElBreadcrumbItem' && item.title) || (item.componentName == 'ElDropdownItem' && item.title) || (item.componentName == 'ElCarouselItem' && item.title) || (item.componentName == 'ElTimelineItem' && item.title) || (item.componentName == 'ElDivider' && item.title) || (item.componentName == 'ElDescriptionsItem' && item.title) || (item.componentName == 'ElTag' && item.title) 
@@ -278,6 +280,20 @@ export default {
                 )
            })
         },
+
+        customScopedSlots(h,item) {
+            var that = this
+            console.log(item.uniqueIdentifier);
+            if(item.componentName == 'elTableColumn' && item.type !== 'selection' && !item.operation) {
+                return { default: props => h('Template',{props,item}) }
+            }else if(item.componentName == 'elRadioGroup' || item.uniqueIdentifier == 'fixedHeaderAndColumn' || item.uniqueIdentifier == 'tagScope' || item.uniqueIdentifier == 'elMultipleSelectType' || item.uniqueIdentifier == 'customIconDate' || item.uniqueIdentifier == 'customHoverName' || item.uniqueIdentifier == 'customOperations' || item.uniqueIdentifier == 'expandableRow') {
+                return { default: props => h('TraverseTemplate',{props:{node:item,parent:that,props:props}}) }
+            }else if(item.uniqueIdentifier == 'customizableTransfer'){
+                console.log("item.uniqueIdentifier == 'customizableTransfer'");
+                return { default: props => h(TraverseTemplate,{props:{node:item,parent:that,props:props}}) }
+            }
+        },
+
         getValue(){
             if(_.get(this.rowData, this.parentNode.btnCondition)){
                 return false;

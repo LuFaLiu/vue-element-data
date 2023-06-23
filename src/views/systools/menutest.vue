@@ -31,6 +31,18 @@ export default {
       return data;
     };
 
+    const generateCustomizableData = _ => {
+      const data = [];
+      for (let i = 1; i <= 15; i++) {
+        data.push({
+          key: i,
+          label: `Option ${ i }`,
+          disabled: i % 4 === 0
+        });
+      }
+      return data;
+    };
+
     const generateFilterableData = _ => {
         const data = [];
         const states = ['California', 'Illinois', 'Maryland', 'Texas', 'Florida', 'Colorado', 'Connecticut '];
@@ -2696,6 +2708,9 @@ export default {
                 'display': 'block'
               }
             },
+            elCustomizableTransfer:{
+              type:'customizableTransfer'
+            },
             elTransferType4:{
               tag:'span',
               text:'Prop aliases',
@@ -2757,7 +2772,15 @@ export default {
             return '123456'
           },
           filterableData: generateFilterableData(),
-          filterableValue: []
+          filterableValue: [],
+
+          // Customizable
+          customizableValueData: generateCustomizableData(),
+          customizableValue: [1],
+          customizableValue4: [1],
+          customizableRenderFunc(h, option) {
+            return <span>{ option.key } - { option.label }</span>;
+          }
         },
         eltable:{
           tableData: [{
@@ -4362,6 +4385,10 @@ export default {
       });
 
       console.log(this.elform.dynamicValidateForm.domains);
+    },
+
+    handleChangeCustomizable(value, direction, movedKeys) {
+      console.log(value, direction, movedKeys);
     },
 
     getVueComponentName(refName,paramsName,paramsVal){

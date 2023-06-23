@@ -497,6 +497,55 @@ export default {
                         data={this.superParams.eltransfer.filterableData}>
                     </el-transfer>
                 )
+            } else if (node.type == 'customizableTransfer') {
+
+                console.log("node.type == 'customizableTransfer'");
+
+      
+                const format = {
+                    'noChecked':'${total}',
+                    'hasChecked':'${checked}/${total}'
+                }
+               
+                return (
+                    <div>
+                        <p style="text-align: center; margin: 0 0 20px">Customize data items using render-content</p>
+                        <div style="text-align: center">
+                            <el-transfer
+                            style="text-align: left; display: inline-block"
+                            v-model={this.superParams.eltransfer.customizableValueValue}
+                            filterable
+                            left-default-checked={[2, 3]}
+                            right-default-checked={[1]}
+                            render-content={this.superParams.eltransfer.customizableRenderFunc}
+                            titles={['Source', 'Target']}
+                            button-texts={['To left', 'To right']}
+                            format={format}
+                            v-on:change={this.superParams.handleChangeCustomizable}
+                            data={this.superParams.eltransfer.customizableValueData}>
+                            <el-button class="transfer-footer" slot="left-footer" size="small">Operation</el-button>
+                            <el-button class="transfer-footer" slot="right-footer" size="small">Operation</el-button>
+                            </el-transfer>
+                            <p style="text-align: center; margin: 50px 0 20px">Customize data items using scoped slot</p>
+                            <div style="text-align: center">
+                                <el-transfer
+                                    style="text-align: left; display: inline-block"
+                                    v-model={this.superParams.eltransfer.customizableValueValue4}
+                                    filterable
+                                    left-default-checked={[2, 3]}
+                                    right-default-checked={[1]}
+                                    titles={['Source', 'Target']}
+                                    button-texts={['To left', 'To right']}
+                                    format={format}
+                                    v-on:change={this.superParams.handleChangeCustomizable}
+                                    data={this.superParams.eltransfer.customizableValueData}>
+                                    <el-button class="transfer-footer" slot="left-footer" size="small">Operation</el-button>
+                                    <el-button class="transfer-footer" slot="right-footer" size="small">Operation</el-button>
+                                </el-transfer>
+                            </div >
+                        </div >
+                    </div >
+                )
             } else {
 
                 return h(
