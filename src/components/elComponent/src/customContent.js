@@ -546,7 +546,16 @@ export default {
                         </div >
                     </div >
                 )
-            } else {
+            } else if (node.type == 'propAliasesTransfer') {
+                console.log("node.type == 'propAliasesTransfer'");
+                return (
+                    <el-transfer
+                        v-model={this.superParams.eltransfer.propAliasesValue}
+                        props={this.superParams.eltransfer.propAliasesProps}
+                        data={this.superParams.eltransfer.customizableValueData}>
+                    </el-transfer>
+                )
+            }  else {
 
                 return h(
                     node.condition ? (Boolean(this.superParams[node.condition]) == node.conditionVal && node.tag) : node.tag,
