@@ -2882,6 +2882,38 @@ export default {
         elPropAliasesTransfer: {
           type: "propAliasesTransfer",
         },
+        elColorPickerType1: {
+          tag: "span",
+          text: "Basic usage",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          },
+        },
+        elColorPickerType2: {
+          tag: "span",
+          text: "Alpha",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          },
+        },
+        elColorPickerType3: {
+          tag: "span",
+          text: "Predefined colors",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          },
+        },
+        elColorPickerType4: {
+          tag: "span",
+          text: "Sizes",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          },
+        }
       },
       elrate: {
         value: 0,
@@ -2916,7 +2948,8 @@ export default {
         contentStyle: {},
       },
       elcolorpicker: {
-        value: "#409EFF",
+        basicUsageColor1: "#409EFF",
+        basicUsageColor2: null,
         predefine: [],
       },
       eltransfer: {
