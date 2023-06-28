@@ -2950,6 +2950,7 @@ export default {
       elcolorpicker: {
         basicUsageColor1: "#409EFF",
         basicUsageColor2: null,
+        alphaColor: 'rgba(19, 206, 102, 0.8)',
         predefine: [],
       },
       eltransfer: {
