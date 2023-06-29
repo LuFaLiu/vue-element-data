@@ -594,6 +594,10 @@ export default {
                             }else if(item[i] == 'numberValidateRules') {
                                 item[i] = that.superParams.elform.numberValidateRules
                             }
+                        } else if(componentNameParams == 'elcolorpicker' && i == 'predefine'){
+                            if(item[i] == 'predefineColorList') {
+                                item[i] = that.superParams.elcolorpicker.predefineColorList
+                            }
                         } else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
