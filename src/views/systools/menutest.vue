@@ -2882,6 +2882,38 @@ export default {
         elPropAliasesTransfer: {
           type: "propAliasesTransfer",
         },
+        elRateType1: {
+          tag: "span",
+          text: "Basic usage",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          }
+        },
+        elRateType2: {
+          tag: "span",
+          text: "With text",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          }
+        },
+        elRateType3: {
+          tag: "span",
+          text: "More icons",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          }
+        },
+        elRateType4: {
+          tag: "span",
+          text: "Read-only",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          }
+        },
         elColorPickerType1: {
           tag: "span",
           text: "Basic usage",
@@ -2916,8 +2948,10 @@ export default {
         }
       },
       elrate: {
-        value: 0,
-        colors: ["#F7BA2A", "#F7BA2A", "#F7BA2A"],
+        basicUsageValue1: null,
+        basicUsageValue2: null,
+        withTextValue: null,
+        basicUsageColors: ['#99A9BF', '#F7BA2A', '#FF9900'],
         texts: [
           "Very poor ",
           " disappointed ",
@@ -2925,6 +2959,7 @@ export default {
           " satisfied ",
           "surprised",
         ],
+        withText: ['oops', 'disappointed', 'normal', 'good', 'great'],
         iconClasses: ["el-icon-star-on", "el-icon-star-on", "el-icon-star-on"],
       },
       elavatar: {},
@@ -2947,6 +2982,7 @@ export default {
         labelStyle: {},
         contentStyle: {},
       },
+      
       elcolorpicker: {
         basicUsageColor1: "#409EFF",
         basicUsageColor2: null,

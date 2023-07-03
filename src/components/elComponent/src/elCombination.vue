@@ -508,6 +508,10 @@ export default {
                             
                         }else if(componentNameParams == 'elrate' && i == 'value'){
                             item[i] = Number(item[i]);
+                        }else if(componentNameParams == 'elrate' && i == 'colors'){
+                            item[i] = that.superParams.elrate.basicUsageColors
+                        }else if(componentNameParams == 'elrate' && i == 'texts'){
+                            item[i] = that.superParams.elrate.withText
                         }else if(item[i] == 'clear'){
                             delete item[i]
                         } else if(componentNameParams == 'elsteps' && i == 'active'){
