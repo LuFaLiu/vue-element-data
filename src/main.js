@@ -10,6 +10,7 @@ import 'zrender/lib/svg/svg'
 import 'v-charts/lib/style.css'
 import moment from 'moment'
 import Element from 'element-ui'
+import "@/assets/fonts/style.css" // 解决笑脸icon 显示
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/zh-CN' // lang i18n
 import VueResource from 'vue-resource'

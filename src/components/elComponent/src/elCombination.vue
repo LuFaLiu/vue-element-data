@@ -511,7 +511,23 @@ export default {
                         }else if(componentNameParams == 'elrate' && i == 'colors'){
                             item[i] = that.superParams.elrate.basicUsageColors
                         }else if(componentNameParams == 'elrate' && i == 'texts'){
-                            item[i] = that.superParams.elrate.withText
+                            if(item[i] == 'texts') {
+                                item[i] = that.superParams.elrate.texts
+                            }else if(item[i] == 'withText'){
+                                item[i] = that.superParams.elrate.withText
+                            }
+                            
+                        }else if(componentNameParams == 'elrate' && i == 'iconClasses'){
+                            console.log("componentNameParams == 'elrate' && i == 'iconClasses'");
+                            console.log(item[i]);
+                            if(item[i] == 'iconClasses') {
+                                item[i] = that.superParams.elrate.iconClasses
+                            }else if(item[i] == 'moreIconClasses') {
+                                item[i] = that.superParams.elrate.moreIconClasses
+                                console.log(that.superParams.elrate.moreIconClasses);
+                            }
+                            
+                            
                         }else if(item[i] == 'clear'){
                             delete item[i]
                         } else if(componentNameParams == 'elsteps' && i == 'active'){
