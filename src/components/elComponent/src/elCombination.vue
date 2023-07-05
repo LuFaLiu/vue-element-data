@@ -507,7 +507,12 @@ export default {
                             }
                             
                         }else if(componentNameParams == 'elrate' && i == 'value'){
-                            item[i] = Number(item[i]);
+                            if(item[i] === 'readOnlyValue'){
+                                item[i] = that.superParams.elrate.readOnlyValue
+                            }else {
+                                item[i] = Number(item[i]);
+                            }
+                            
                         }else if(componentNameParams == 'elrate' && i == 'colors'){
                             item[i] = that.superParams.elrate.basicUsageColors
                         }else if(componentNameParams == 'elrate' && i == 'texts'){

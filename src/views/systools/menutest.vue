@@ -2952,6 +2952,7 @@ export default {
         basicUsageValue2: null,
         withTextValue: null,
         moreIconValue: null,
+        readOnlyValue: 3.7,
         basicUsageColors: ['#99A9BF', '#F7BA2A', '#FF9900'],
         texts: [
           "Very poor ",
