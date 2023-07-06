@@ -477,6 +477,9 @@ export default {
                             
                             console.log("item[i] == 'rowKey'");
                                 console.log(item);
+                        }else if(item[i] == 'photoWallPreview'){
+                            console.log("item[i] == 'photoWallPreview'");
+                            item[i] = that.superParams.photoWallPreview
                         } else {
                             item[i] = that.superParams[i];
                         }
@@ -623,7 +626,11 @@ export default {
                             if(item[i] == 'predefineColorList') {
                                 item[i] = that.superParams.elcolorpicker.predefineColorList
                             }
-                        } else {
+                        } else if(componentNameParams == 'elimage' && i == 'src'){
+                            if(item[i] == 'photoWallImageUrl') {
+                                item[i] = that.superParams.elupload.photoWallImageUrl
+                            }
+                        }  else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
                                             i == item[i] 

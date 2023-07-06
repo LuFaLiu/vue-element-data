@@ -657,6 +657,7 @@ export default {
         limit: 3,
         data: {},
         imageUrl: "",
+        photoWallImageUrl: ''
       },
       eldescriptionsitem: {
         contentStyle: { "text-align": "right" },
@@ -2882,6 +2883,70 @@ export default {
         elPropAliasesTransfer: {
           type: "propAliasesTransfer",
         },
+        elUploadType1: {
+          tag: "span",
+          text: "Click to upload files",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          }
+        },
+        elUploadType2: {
+          tag: "span",
+          text: "User avatar upload",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          }
+        },
+        elUploadType3: {
+          tag: "span",
+          text: "Photo Wall",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          }
+        },
+        elUploadType4: {
+          tag: "span",
+          text: "Custom file thumbnail",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          }
+        },
+        elUploadType5: {
+          tag: "span",
+          text: "FileList with thumbnail",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          }
+        },
+        elUploadType6: {
+          tag: "span",
+          text: "File list control",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          }
+        },
+        elUploadType7: {
+          tag: "span",
+          text: "Drag to upload",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          }
+        },
+        elUploadType8: {
+          tag: "span",
+          text: "Manual upload",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          }
+        },
         elRateType1: {
           tag: "span",
           text: "Basic usage",
@@ -3913,6 +3978,14 @@ export default {
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`);
     },
+
+    photoWallPreview(file){
+      console.log("photoWallPreview");
+      console.log(file);
+      this.elupload.photoWallImageUrl = file.url;
+      this.getVueComponentName("photoWallDialogVisible", "visible", true);
+    },
+
     httpRequest() {},
     beforeUpload(file) {
       const isJPG = file.type === "image/jpeg";
@@ -4527,6 +4600,7 @@ export default {
         "elOuterDialog",
         "elInnerDialog",
         "elCenteredContentDialog",
+        "photoWallDialogVisible"
       ];
       for (var i in closeComponentRefList) {
         var component = getVueComponent(
@@ -5320,6 +5394,19 @@ export default {
   .upload-demo {
     float: left;
   }
+
+  .el-upload {
+    display: table;
+    margin: 30px 0;
+  }
+
+  .upload-demo {
+    margin: 30px 0;
+    .el-upload {
+      margin: 0;
+    }
+  }
+
   .avatar-uploader {
     float: left;
     margin-left: 30px;
