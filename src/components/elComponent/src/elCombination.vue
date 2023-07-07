@@ -291,6 +291,9 @@ export default {
             }else if(item.uniqueIdentifier == 'customizableTransfer'){
                 console.log("item.uniqueIdentifier == 'customizableTransfer'");
                 return { default: props => h(TraverseTemplate,{props:{node:item,parent:that,props:props}}) }
+            }else if(item.uniqueIdentifier == 'customFileThumbnail'){
+                console.log("item.uniqueIdentifier == 'customFileThumbnail'");
+                return { file: props => h(TraverseTemplate,{props:{node:item,parent:that,props:props}}) }
             }
         },
 
@@ -629,6 +632,8 @@ export default {
                         } else if(componentNameParams == 'elimage' && i == 'src'){
                             if(item[i] == 'photoWallImageUrl') {
                                 item[i] = that.superParams.elupload.photoWallImageUrl
+                            }else if(item[i] == 'customFileThumbnailImageUrl') {
+                                item[i] = that.superParams.elupload.customFileThumbnailImageUrl
                             }
                         }  else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :

@@ -30,7 +30,10 @@ export default {
                 name: '2',
                 content: 'Tab 2 content'
             }],
-            tabIndex2: 2
+            tabIndex2: 2,
+            customFileThumbnailDialogImageUrl: '',
+            customFileThumbnailDialogVisible: false,
+            customFileThumbnailDisabled: false
         }
 
     },
@@ -555,6 +558,42 @@ export default {
                         data={this.superParams.eltransfer.customizableValueData}>
                     </el-transfer>
                 )
+            } else if (node.type == 'iconAttribute') {
+                return (
+                    <i class="el-icon-plus"></i>
+                )
+            } else if (node.type == 'customFileThumbnail') {
+                console.log("node.type == 'customFileThumbnail'");
+                return (
+                    <div slot="file" slot-scope={'file'}>
+                        <img
+                            class="el-upload-list__item-thumbnail"
+                            src={file.url} alt=""
+                        />
+                        <span class="el-upload-list__item-actions">
+                            <span
+                                class="el-upload-list__item-preview"
+                                v-on:click={() => this.handleCustomFileThumbnailPictureCardPreview(file)}
+                            >
+                                <i class="el-icon-zoom-in"></i>
+                            </span>
+                            <span
+                                v-if={!this.customFileThumbnailDisabled}
+                                class="el-upload-list__item-delete"
+                                v-on:click={() => this.handleCustomFileThumbnailDownload(file)}
+                            >
+                                <i class="el-icon-download"></i>
+                            </span>
+                            <span
+                                v-if={!this.customFileThumbnailDisabled}
+                                class="el-upload-list__item-delete"
+                                v-on:click={() => this.handleCustomFileThumbnailRemove(file)}
+                            >
+                                <i class="el-icon-delete"></i>
+                            </span>
+                        </span>
+                    </div>
+                )
             }  else {
 
                 return h(
@@ -680,6 +719,21 @@ export default {
 
             this.editableTabsValue2 = activeName;
             this.editableTabs2 = tabs.filter(tab => tab.name !== targetName);
+        },
+        handleCustomFileThumbnailRemove(file) {
+            console.log(file);
+        },
+        handleCustomFileThumbnailPictureCardPreview(file) {
+            this.customFileThumbnailDialogImageUrl = file.url;
+            console.log(this.$refs);
+            this.$refs.customFileThumbnailDialogVisible.visible = true
+        },
+        handleCustomFileThumbnailDownload(file) {
+            console.log(file);
+        },
+        handleCustomFileThumbnailDialogClose(){
+            console.log("handleCustomFileThumbnailDialogClose");
+            this.$refs.customFileThumbnailDialogVisible.visible = false
         }
     }
 

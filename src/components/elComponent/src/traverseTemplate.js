@@ -25,7 +25,6 @@ export default {
         } else if (node.uniqueIdentifier == 'fixedHeaderAndColumn') {
             return (
                 <div slot-scope="scope">
-                    1234564
                     <el-button v-on:click={() => parent.superParams.deleteFixedHeaderAndColumn(props.$index)} type="text" size="small">Remove</el-button>
                 </div>
             )
@@ -104,6 +103,41 @@ export default {
                     <p>City: {props.row.city}</p>
                     <p>Address: {props.row.address}</p>
                     <p>Zip: {props.row.zip}</p>
+                </div>
+            )
+        } else if (node.uniqueIdentifier == 'customFileThumbnail') {
+            console.log("node.uniqueIdentifier == 'customFileThumbnail'");
+            console.log(node);
+            console.log(parent);
+            console.log(props);
+            return (
+                <div slot="file" slot-scope="{file}">
+                    <img
+                        class="el-upload-list__item-thumbnail"
+                        src={props.file.url} alt=""
+                    />
+                    <span class="el-upload-list__item-actions">
+                        <span
+                            class="el-upload-list__item-preview"
+                            v-on:click={() => parent.superParams.handleCustomFileThumbnailPictureCardPreview(props.file)}
+                        >
+                            <i class="el-icon-zoom-in"></i>
+                        </span>
+                        <span
+                            v-if={!parent.superParams.elupload.customFileThumbnailDisabled}
+                            class="el-upload-list__item-delete"
+                            v-on:click={() => parent.superParams.handleCustomFileThumbnailDownload(props.file)}
+                        >
+                            <i class="el-icon-download"></i>
+                        </span>
+                        <span
+                            v-if={!parent.superParams.elupload.customFileThumbnailDisabled}
+                            class="el-upload-list__item-delete"
+                            v-on:click={() => parent.superParams.handleCustomFileThumbnailRemove(props.file)}
+                        >
+                            <i class="el-icon-delete"></i>
+                        </span>
+                    </span>
                 </div>
             )
         } else {

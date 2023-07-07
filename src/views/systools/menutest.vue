@@ -657,7 +657,9 @@ export default {
         limit: 3,
         data: {},
         imageUrl: "",
-        photoWallImageUrl: ''
+        photoWallImageUrl: '',
+        customFileThumbnailImageUrl: '',
+        customFileThumbnailDisabled: false
       },
       eldescriptionsitem: {
         contentStyle: { "text-align": "right" },
@@ -2883,6 +2885,9 @@ export default {
         elPropAliasesTransfer: {
           type: "propAliasesTransfer",
         },
+        iconAttribute:{
+          type:'iconAttribute'
+        },
         elUploadType1: {
           tag: "span",
           text: "Click to upload files",
@@ -2914,6 +2919,9 @@ export default {
             margin: "15px 0",
             display: "block",
           }
+        },
+        elCustomFileThumbnail:{
+          type:'customFileThumbnail'
         },
         elUploadType5: {
           tag: "span",
@@ -4600,7 +4608,8 @@ export default {
         "elOuterDialog",
         "elInnerDialog",
         "elCenteredContentDialog",
-        "photoWallDialogVisible"
+        "photoWallDialogVisible",
+        "customFileThumbnail"
       ];
       for (var i in closeComponentRefList) {
         var component = getVueComponent(
@@ -5075,6 +5084,22 @@ export default {
 
     handleChangeCustomizable(value, direction, movedKeys) {
       console.log(value, direction, movedKeys);
+    },
+
+    handleCustomFileThumbnailRemove(file) {
+        console.log(file);
+    },
+    handleCustomFileThumbnailPictureCardPreview(file) {
+      console.log("handleCustomFileThumbnailPictureCardPreview");
+      console.log(file);
+        this.elupload.customFileThumbnailImageUrl = file.url;
+        this.getVueComponentName("customFileThumbnail", "visible", true);
+    },
+    handleCustomFileThumbnailDownload(file) {
+        console.log(file);
+    },
+    handleCustomFileThumbnailDialogClose(){
+        this.getVueComponentName("customFileThumbnail", "visible", false);
     },
 
     getVueComponentName(refName, paramsName, paramsVal) {
