@@ -2931,6 +2931,9 @@ export default {
             display: "block",
           }
         },
+        elFileListWithThumbnailTip:{
+          type:'fileListWithThumbnailTip'
+        },
         elUploadType6: {
           tag: "span",
           text: "File list control",
@@ -5100,6 +5103,14 @@ export default {
     },
     handleCustomFileThumbnailDialogClose(){
         this.getVueComponentName("customFileThumbnail", "visible", false);
+    },
+
+    handleFileListWithThumbnailRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+
+    handleFileListWithThumbnailPreview(file) {
+      console.log(file);
     },
 
     getVueComponentName(refName, paramsName, paramsVal) {

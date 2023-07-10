@@ -594,6 +594,11 @@ export default {
                         </span>
                     </div>
                 )
+            } else if (node.type == 'fileListWithThumbnailTip') {
+                console.log("node.type == 'fileListWithThumbnailTip'");
+                return (
+                    <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
+                )
             }  else {
 
                 return h(

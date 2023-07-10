@@ -635,6 +635,14 @@ export default {
                             }else if(item[i] == 'customFileThumbnailImageUrl') {
                                 item[i] = that.superParams.elupload.customFileThumbnailImageUrl
                             }
+                        } else if(componentNameParams == 'elupload' && i == 'onRemove'){
+                            if(item[i] == 'handleFileListWithThumbnailRemove') {
+                                item[i] = that.superParams.handleFileListWithThumbnailRemove
+                            }
+                        } else if(componentNameParams == 'elupload' && i == 'onPreview'){
+                            if(item[i] == 'handleFileListWithThumbnailRemove') {
+                                item[i] = that.superParams.handleFileListWithThumbnailPreview
+                            }
                         }  else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
