@@ -642,7 +642,11 @@ export default {
                         } else if(componentNameParams == 'elupload' && i == 'onPreview'){
                             if(item[i] == 'handleFileListWithThumbnailRemove') {
                                 item[i] = that.superParams.handleFileListWithThumbnailPreview
-                            }
+                            } 
+                        } else if(componentNameParams == 'elupload' && i == 'onChange'){
+                            if(item[i] == 'handleFileListControlChange') {
+                                item[i] = that.superParams.handleFileListControlChange
+                            } 
                         }  else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 

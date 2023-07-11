@@ -599,7 +599,7 @@ export default {
                 return (
                     <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
                 )
-            }  else {
+            } else {
 
                 return h(
                     node.condition ? (Boolean(this.superParams[node.condition]) == node.conditionVal && node.tag) : node.tag,

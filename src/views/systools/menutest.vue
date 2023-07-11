@@ -5113,6 +5113,10 @@ export default {
       console.log(file);
     },
 
+    handleFileListControlChange(file, fileList){
+      this.elupload.fileList = fileList.slice(-3);
+    },
+    
     getVueComponentName(refName, paramsName, paramsVal) {
       console.log("getVueComponentName=====>");
       var refComponent = getVueComponent(this, "$children", "$refs", refName);
