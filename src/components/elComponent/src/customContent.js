@@ -562,6 +562,10 @@ export default {
                 return (
                     <i class="el-icon-plus"></i>
                 )
+            } else if (node.type == 'iconUploadAttribute') {
+                return (
+                    <i class="el-icon-upload"></i>
+                )
             } else if (node.type == 'customFileThumbnail') {
                 console.log("node.type == 'customFileThumbnail'");
                 return (
@@ -598,6 +602,11 @@ export default {
                 console.log("node.type == 'fileListWithThumbnailTip'");
                 return (
                     <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
+                )
+            } else if (node.type == 'dropFileText') {
+                console.log("node.type == 'dropFileText'");
+                return (
+                    <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
                 )
             } else {
 

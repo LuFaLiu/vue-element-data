@@ -647,6 +647,12 @@ export default {
                             if(item[i] == 'handleFileListControlChange') {
                                 item[i] = that.superParams.handleFileListControlChange
                             } 
+                        } else if(componentNameParams == 'elupload' && i == 'fileList'){
+                            if(item[i] == 'dragToUploadFileList') {
+                                item[i] = that.superParams.elupload.dragToUploadFileList
+                            } else {
+                                item[i] = that.superParams.elupload.fileList
+                            }
                         }  else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
