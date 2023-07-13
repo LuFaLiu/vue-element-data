@@ -2951,6 +2951,12 @@ export default {
             display: "block",
           }
         },
+        elManualUploadTrigger:{
+          type:'manualUploadTrigger'
+        },
+        elManualUploadServer:{
+          type:'manualUploadServer'
+        },
         elUploadDropFileText:{
           type:'dropFileText'
         },
@@ -5122,6 +5128,11 @@ export default {
 
     handleFileListControlChange(file, fileList){
       this.elupload.fileList = fileList.slice(-3);
+    },
+
+    submitManualUpload() {
+      var manualUploadComponent = getVueComponent(this, "$children", "$refs", 'manualUpload');
+      manualUploadComponent.submit();
     },
     
     getVueComponentName(refName, paramsName, paramsVal) {

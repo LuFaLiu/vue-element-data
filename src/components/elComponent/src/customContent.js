@@ -608,6 +608,16 @@ export default {
                 return (
                     <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
                 )
+            } else if (node.type == 'manualUploadTrigger') {
+                console.log("node.type == 'manualUploadTrigger'");
+                return (
+                    <el-button slot="trigger" size="small" type="primary">select file</el-button>
+                )
+            } else if (node.type == 'manualUploadServer') { 
+                console.log("node.type == 'manualUploadServer'");
+                return (
+                    <el-button style="margin-left: 10px;" size="small" type="success" v-on:click={this.superParams.submitManualUpload}>upload to server</el-button>
+                )
             } else {
 
                 return h(
