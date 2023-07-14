@@ -653,7 +653,19 @@ export default {
                             } else {
                                 item[i] = that.superParams.elupload.fileList
                             }
-                        }  else {
+                        } else if(componentNameParams == 'eldatepicker' && i == 'value'){
+                            if(item[i] == 'value1') {
+                                item[i] = that.superParams.eldatetimePicker.value1
+                            } else if(item[i] == 'value2') {
+                                item[i] = that.superParams.eldatetimePicker.value2
+                            } else if(item[i] == 'value3') {
+                                item[i] = that.superParams.eldatetimePicker.value3
+                            } 
+                        } else if(componentNameParams == 'eldatepicker' && i == 'pickerOptions'){
+                            if(item[i] == 'pickerOptions') {
+                                item[i] = that.superParams.eldatetimePicker.pickerOptions
+                            } 
+                        }   else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
                                             i == item[i] 

@@ -642,6 +642,33 @@ export default {
           ],
         },
       },
+      eldatetimePicker: {
+        pickerOptions: {
+          shortcuts: [{
+            text: 'Today',
+            onClick(picker) {
+              picker.$emit('pick', new Date());
+            }
+          }, {
+            text: 'Yesterday',
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24);
+              picker.$emit('pick', date);
+            }
+          }, {
+            text: 'A week ago',
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', date);
+            }
+          }]
+        },
+        value1: '',
+        value2: '',
+        value3: '',
+      },
       elupload: {
         fileList: [
           {
@@ -2888,6 +2915,30 @@ export default {
         },
         iconAttribute:{
           type:'iconAttribute'
+        },
+        elDateTimePickerType1: {
+          tag: "span",
+          text: "Date and time",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elDateTimePickerType2: {
+          tag: "span",
+          text: "Date and time range",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          }
+        },
+        elDateTimePickerType3: {
+          tag: "span",
+          text: "Default time value for start date and end date",
+          style: {
+            margin: "15px 0",
+            display: "block",
+          }
         },
         elUploadType1: {
           tag: "span",
