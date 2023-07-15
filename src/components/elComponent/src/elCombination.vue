@@ -660,11 +660,17 @@ export default {
                                 item[i] = that.superParams.eldatetimePicker.value2
                             } else if(item[i] == 'value3') {
                                 item[i] = that.superParams.eldatetimePicker.value3
+                            }  else if(item[i] == 'value5') {
+                                item[i] = that.superParams.eldatetimePicker.value5
+                            }  else if(item[i] == 'value6') {
+                                item[i] = that.superParams.eldatetimePicker.value6
                             } 
                         } else if(componentNameParams == 'eldatepicker' && i == 'pickerOptions'){
                             if(item[i] == 'pickerOptions') {
                                 item[i] = that.superParams.eldatetimePicker.pickerOptions
-                            } 
+                            } else if(item[i] == 'pickerOption2'){
+                                item[i] = that.superParams.eldatetimePicker.pickerOption2
+                            }
                         }   else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
