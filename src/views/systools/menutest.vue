@@ -611,7 +611,14 @@ export default {
         },
       },
       eldatepicker: {
-        value: "",
+        value1: '',
+        value2: '',
+        value3: '',
+        value5: '',
+        value6: '',
+        value7: '',
+        value8: '',
+        value9: '',
         pickerOptions: {
           disabledDate(time) {
             return time.getTime() > Date.now();
@@ -2944,6 +2951,46 @@ export default {
         },
         iconAttribute:{
           type:'iconAttribute'
+        },
+        elDatePickerType1:{
+          tag: "span",
+          text: "Enter Date",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elDatePickerType2:{
+          tag: "span",
+          text: "Other measurements",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elDatePickerType3:{
+          tag: "span",
+          text: "Date Range",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elDatePickerType4:{
+          tag: "span",
+          text: "Month Range",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elDatePickerType5:{
+          tag: "span",
+          text: "Default Value",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
         },
         elDateTimePickerType1: {
           tag: "span",

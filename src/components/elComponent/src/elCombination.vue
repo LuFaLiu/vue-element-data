@@ -653,7 +653,7 @@ export default {
                             } else {
                                 item[i] = that.superParams.elupload.fileList
                             }
-                        } else if(componentNameParams == 'eldatepicker' && i == 'value'){
+                        } else if(componentNameParams == 'eldatetimePicker' && i == 'value'){
                             if(item[i] == 'value1') {
                                 item[i] = that.superParams.eldatetimePicker.value1
                             } else if(item[i] == 'value2') {
@@ -664,6 +664,24 @@ export default {
                                 item[i] = that.superParams.eldatetimePicker.value5
                             }  else if(item[i] == 'value6') {
                                 item[i] = that.superParams.eldatetimePicker.value6
+                            } 
+                        } else if(componentNameParams == 'eldatepicker' && i == 'value'){
+                            if(item[i] == 'value1') {
+                                item[i] = that.superParams.eldatepicker.value1
+                            } else if(item[i] == 'value2') {
+                                item[i] = that.superParams.eldatepicker.value2
+                            } else if(item[i] == 'value3') {
+                                item[i] = that.superParams.eldatepicker.value3
+                            }  else if(item[i] == 'value5') {
+                                item[i] = that.superParams.eldatepicker.value5
+                            }  else if(item[i] == 'value6') {
+                                item[i] = that.superParams.eldatepicker.value6
+                            }   else if(item[i] == 'value7') {
+                                item[i] = that.superParams.eldatepicker.value7
+                            }   else if(item[i] == 'value8') {
+                                item[i] = that.superParams.eldatepicker.value8
+                            }   else if(item[i] == 'value9') {
+                                item[i] = that.superParams.eldatepicker.value9
                             } 
                         } else if(componentNameParams == 'eldatepicker' && i == 'pickerOptions'){
                             if(item[i] == 'pickerOptions') {
