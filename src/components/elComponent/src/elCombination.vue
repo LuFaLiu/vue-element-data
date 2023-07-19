@@ -672,24 +672,38 @@ export default {
                                 item[i] = that.superParams.eldatepicker.value2
                             } else if(item[i] == 'value3') {
                                 item[i] = that.superParams.eldatepicker.value3
-                            }  else if(item[i] == 'value5') {
+                            } else if(item[i] == 'value5') {
                                 item[i] = that.superParams.eldatepicker.value5
-                            }  else if(item[i] == 'value6') {
+                            } else if(item[i] == 'value6') {
                                 item[i] = that.superParams.eldatepicker.value6
-                            }   else if(item[i] == 'value7') {
+                            } else if(item[i] == 'value7') {
                                 item[i] = that.superParams.eldatepicker.value7
-                            }   else if(item[i] == 'value8') {
+                            } else if(item[i] == 'value8') {
                                 item[i] = that.superParams.eldatepicker.value8
-                            }   else if(item[i] == 'value9') {
+                            } else if(item[i] == 'value9') {
                                 item[i] = that.superParams.eldatepicker.value9
-                            } 
-                        } else if(componentNameParams == 'eldatepicker' && i == 'pickerOptions'){
+                            } else if(item[i] == 'dateRangeValue1') {
+                                item[i] = that.superParams.eldatepicker.dateRangeValue1
+                            } else if(item[i] == 'dateRangeValue2') {
+                                item[i] = that.superParams.eldatepicker.dateRangeValue2
+                            }
+                        } else if(componentNameParams == 'eldatetimePicker' && i == 'pickerOptions'){
                             if(item[i] == 'pickerOptions') {
                                 item[i] = that.superParams.eldatetimePicker.pickerOptions
                             } else if(item[i] == 'pickerOption2'){
                                 item[i] = that.superParams.eldatetimePicker.pickerOption2
+                            } else if(item[i] == 'dateRangepickerOptions'){
+                                item[i] = that.superParams.eldatetimePicker.dateRangepickerOptions
                             }
-                        }   else {
+                            
+                        }  else if(componentNameParams == 'eldatepicker' && i == 'pickerOptions'){
+                            if(item[i] == 'pickerOptions') {
+                                item[i] = that.superParams.eldatepicker.pickerOptions
+                            }  else if(item[i] == 'dateRangepickerOptions'){
+                                item[i] = that.superParams.eldatepicker.dateRangepickerOptions
+                            }
+                            
+                        }  else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
                                             i == item[i] 
