@@ -699,8 +699,10 @@ export default {
                         }  else if(componentNameParams == 'eldatepicker' && i == 'pickerOptions'){
                             if(item[i] == 'pickerOptions') {
                                 item[i] = that.superParams.eldatepicker.pickerOptions
-                            }  else if(item[i] == 'dateRangepickerOptions'){
+                            } else if(item[i] == 'dateRangepickerOptions'){
                                 item[i] = that.superParams.eldatepicker.dateRangepickerOptions
+                            } else if(item[i] == 'monthRangePickerOptions'){
+                                item[i] = that.superParams.eldatepicker.monthRangePickerOptions
                             }
                             
                         }  else {
