@@ -701,7 +701,9 @@ export default {
               picker.$emit('pick', [start, end]);
             }
           }]
-        }
+        },
+        defaultValue1: '',
+        defaultValue2: '',
       },
       eldatetimePicker: {
         pickerOptions: {

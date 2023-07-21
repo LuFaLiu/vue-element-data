@@ -686,6 +686,10 @@ export default {
                                 item[i] = that.superParams.eldatepicker.dateRangeValue1
                             } else if(item[i] == 'dateRangeValue2') {
                                 item[i] = that.superParams.eldatepicker.dateRangeValue2
+                            } else if(item[i] == 'defaultValue1') {
+                                item[i] = that.superParams.eldatepicker.defaultValue1
+                            } else if(item[i] == 'defaultValue2') {
+                                item[i] = that.superParams.eldatepicker.defaultValue2
                             }
                         } else if(componentNameParams == 'eldatetimePicker' && i == 'pickerOptions'){
                             if(item[i] == 'pickerOptions') {
