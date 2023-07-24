@@ -653,7 +653,19 @@ export default {
                             } else {
                                 item[i] = that.superParams.elupload.fileList
                             }
-                        } else if(componentNameParams == 'eldatetimePicker' && i == 'value'){
+                        }else if(componentNameParams == 'eltimepicker' && i == 'value'){
+                            if(item[i] == 'value1') {
+                                item[i] = that.superParams.eltimepicker.value1
+                            } else if(item[i] == 'value2') {
+                                item[i] = that.superParams.eltimepicker.value2
+                            } else if(item[i] == 'value3') {
+                                item[i] = that.superParams.eltimepicker.value3
+                            }  else if(item[i] == 'value5') {
+                                item[i] = that.superParams.eltimepicker.value5
+                            }  else if(item[i] == 'value6') {
+                                item[i] = that.superParams.eltimepicker.value6
+                            } 
+                        } else if(componentNameParams == 'eldatetimepicker' && i == 'value'){
                             if(item[i] == 'value1') {
                                 item[i] = that.superParams.eldatetimePicker.value1
                             } else if(item[i] == 'value2') {
@@ -691,7 +703,14 @@ export default {
                             } else if(item[i] == 'defaultValue2') {
                                 item[i] = that.superParams.eldatepicker.defaultValue2
                             }
-                        } else if(componentNameParams == 'eldatetimePicker' && i == 'pickerOptions'){
+                        }else if(componentNameParams == 'eltimepicker' && i == 'pickerOptions'){
+                            if(item[i] == 'fixedTimePickerOptions') {
+                                item[i] = that.superParams.eltimepicker.fixedTimePickerOptions
+                            } else if(item[i] == 'arbitraryTimePickerOptions'){
+                                item[i] = that.superParams.eltimepicker.arbitraryTimePickerOptions
+                            }
+                            
+                        } else if(componentNameParams == 'eldatetimepicker' && i == 'pickerOptions'){
                             if(item[i] == 'pickerOptions') {
                                 item[i] = that.superParams.eldatetimePicker.pickerOptions
                             } else if(item[i] == 'pickerOption2'){

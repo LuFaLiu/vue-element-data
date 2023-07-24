@@ -595,13 +595,6 @@ export default {
         value: 1,
         marks: {},
       },
-      eltimepicker: {
-        //value:new Date(2016, 9, 10, 18, 40),
-        value: [new Date(2016, 9, 10, 8, 40), new Date(2016, 9, 10, 9, 40)],
-        pickerOptions: {
-          selectableRange: "18:30:00 - 20:30:00",
-        },
-      },
       eltimeselect: {
         value: "",
         pickerOptions: {
@@ -609,6 +602,19 @@ export default {
           step: "00:15",
           end: "18:30",
         },
+      },
+      eltimepicker: {
+        value1: '',
+        value2: new Date(2016, 9, 10, 18, 40),
+        value3: new Date(2016, 9, 10, 18, 40),
+        fixedTimePickerOptions:{
+          start: '08:30',
+          step: '00:15',
+          end: '18:30'
+        },
+        arbitraryTimePickerOptions:{
+          selectableRange: '18:30:00 - 20:30:00'
+        }
       },
       eldatepicker: {
         value1: '',
@@ -3007,6 +3013,38 @@ export default {
         },
         iconAttribute:{
           type:'iconAttribute'
+        },
+        elTimePickerType1:{
+          tag: "span",
+          text: "Fixed time picker",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elTimePickerType2:{
+          tag: "span",
+          text: "Arbitrary time picker",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elTimePickerType3:{
+          tag: "span",
+          text: "Fixed time range",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elTimePickerType4:{
+          tag: "span",
+          text: "Arbitrary time range",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
         },
         elDatePickerType1:{
           tag: "span",
