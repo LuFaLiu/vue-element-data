@@ -595,18 +595,26 @@ export default {
         value: 1,
         marks: {},
       },
-      eltimeselect: {
-        value: "",
-        pickerOptions: {
-          start: "08:30",
-          step: "00:15",
-          end: "18:30",
+      eltimeselect:{
+        value1: '',
+        fixedTimeRangeStartTime: '',
+        fixedTimeRangeEndTime: '',
+        fixedTimePickerOptions:{
+          start: '08:30',
+          step: '00:15',
+          end: '18:30'
         },
+        fixedTimeRangeStartTimePickerOptions:{
+          start: '08:30',
+          step: '00:15',
+          end: '18:30'
+        }
       },
       eltimepicker: {
         value1: '',
         value2: new Date(2016, 9, 10, 18, 40),
         value3: new Date(2016, 9, 10, 18, 40),
+        
         fixedTimePickerOptions:{
           start: '08:30',
           step: '00:15',
@@ -3045,6 +3053,9 @@ export default {
             margin: "15px",
             display: "block",
           }
+        },
+        elFixedTimeRangeEndTimeType:{
+          type:'fixedTimeRangeEndTimeType'
         },
         elDatePickerType1:{
           tag: "span",

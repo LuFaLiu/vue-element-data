@@ -653,6 +653,12 @@ export default {
                             } else {
                                 item[i] = that.superParams.elupload.fileList
                             }
+                        }else if(componentNameParams == 'eltimeselect' && i == 'value'){
+                            if(item[i] == 'value1') {
+                                item[i] = that.superParams.eltimeselect.value1
+                            } else if(item[i] == 'fixedTimeRangeStartTime') {
+                                item[i] = that.superParams.eltimeselect.fixedTimeRangeStartTime
+                            }  
                         }else if(componentNameParams == 'eltimepicker' && i == 'value'){
                             if(item[i] == 'value1') {
                                 item[i] = that.superParams.eltimepicker.value1
@@ -704,10 +710,15 @@ export default {
                                 item[i] = that.superParams.eldatepicker.defaultValue2
                             }
                         }else if(componentNameParams == 'eltimepicker' && i == 'pickerOptions'){
-                            if(item[i] == 'fixedTimePickerOptions') {
-                                item[i] = that.superParams.eltimepicker.fixedTimePickerOptions
-                            } else if(item[i] == 'arbitraryTimePickerOptions'){
+                            if(item[i] == 'arbitraryTimePickerOptions'){
                                 item[i] = that.superParams.eltimepicker.arbitraryTimePickerOptions
+                            }
+                            
+                        }else if(componentNameParams == 'eltimeselect' && i == 'pickerOptions'){
+                            if(item[i] == 'fixedTimePickerOptions') {
+                                item[i] = that.superParams.eltimeselect.fixedTimePickerOptions
+                            } else if(item[i] == 'fixedTimeRangeStartTimePickerOptions') {
+                                item[i] = that.superParams.eltimeselect.fixedTimeRangeStartTimePickerOptions
                             }
                             
                         } else if(componentNameParams == 'eldatetimepicker' && i == 'pickerOptions'){

@@ -618,6 +618,22 @@ export default {
                 return (
                     <el-button style="margin-left: 10px;" size="small" type="success" v-on:click={this.superParams.submitManualUpload}>upload to server</el-button>
                 )
+            } else if (node.type == 'fixedTimeRangeEndTimeType') { 
+                console.log("node.type == 'fixedTimeRangeStartTimeType'");
+                return (
+                    <el-time-select
+                        placeholder="End time"
+                        v-model={this.superParams.eltimeselect.fixedTimeRangeEndTime}
+                        picker-options={
+                            {
+                                start: '08:30',
+                                step: '00:15',
+                                end: '18:30',
+                                minTime: this.superParams.eltimeselect.fixedTimeRangeStartTime
+                            }
+                        }>
+                    </el-time-select>
+                )
             } else {
 
                 return h(
