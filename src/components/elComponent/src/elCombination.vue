@@ -653,6 +653,18 @@ export default {
                             } else {
                                 item[i] = that.superParams.elupload.fileList
                             }
+                        }else if(componentNameParams == 'elslider' && i == 'value'){
+                            if(item[i] == 'value1') {
+                                item[i] = that.superParams.elslider.value1
+                            } else if(item[i] == 'value2') {
+                                item[i] = that.superParams.elslider.value2
+                            }  
+                        }else if(componentNameParams == 'elslider' && i == 'formatTooltip'){
+                            if(item[i] == 'formatTooltip') {
+                                item[i] = that.superParams.formatTooltip
+                            } else if(item[i] == 'formatTooltip2') {
+                                
+                            } 
                         }else if(componentNameParams == 'eltimeselect' && i == 'value'){
                             if(item[i] == 'value1') {
                                 item[i] = that.superParams.eltimeselect.value1

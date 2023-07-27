@@ -592,7 +592,11 @@ export default {
         rules: {},
       },
       elslider: {
-        value: 1,
+        value1: 0,
+        value2: 50,
+        value3: 36,
+        value4: 48,
+        value5: 42,
         marks: {},
       },
       eltimeselect:{
@@ -3024,6 +3028,54 @@ export default {
         iconAttribute:{
           type:'iconAttribute'
         },
+        elSliderType1:{
+          tag: "span",
+          text: "Basic usage",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elSliderType2:{
+          tag: "span",
+          text: "Discrete values",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elSliderType3:{
+          tag: "span",
+          text: "Slider with input box",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elSliderType4:{
+          tag: "span",
+          text: "Range selection",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elSliderType5:{
+          tag: "span",
+          text: "Vertical mode",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elSliderType6:{
+          tag: "span",
+          text: "Show marks",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
         elTimePickerType1:{
           tag: "span",
           text: "Fixed time picker",
@@ -5367,6 +5419,10 @@ export default {
     submitManualUpload() {
       var manualUploadComponent = getVueComponent(this, "$children", "$refs", 'manualUpload');
       manualUploadComponent.submit();
+    },
+
+    formatTooltip(val) {
+      return val / 100;
     },
     
     getVueComponentName(refName, paramsName, paramsVal) {
