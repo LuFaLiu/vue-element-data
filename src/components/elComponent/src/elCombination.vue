@@ -658,7 +658,17 @@ export default {
                                 item[i] = that.superParams.elslider.value1
                             } else if(item[i] == 'value2') {
                                 item[i] = that.superParams.elslider.value2
-                            }  
+                            }   else if(item[i] == 'value3') {
+                                item[i] = that.superParams.elslider.value2
+                            }   else if(item[i] == 'value4') {
+                                item[i] = that.superParams.elslider.value2
+                            }   else if(item[i] == 'value5') {
+                                item[i] = that.superParams.elslider.value2
+                            }   else if(item[i] == 'value6') {
+                                item[i] = that.superParams.elslider.value2
+                            }   else if(item[i] == 'value7') {
+                                item[i] = that.superParams.elslider.value2
+                            }    
                         }else if(componentNameParams == 'elslider' && i == 'formatTooltip'){
                             if(item[i] == 'formatTooltip') {
                                 item[i] = that.superParams.formatTooltip

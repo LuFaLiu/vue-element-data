@@ -597,6 +597,8 @@ export default {
         value3: 36,
         value4: 48,
         value5: 42,
+        value6: 0,
+        value7: 0,
         marks: {},
       },
       eltimeselect:{
