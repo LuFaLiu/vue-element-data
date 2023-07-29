@@ -659,15 +659,17 @@ export default {
                             } else if(item[i] == 'value2') {
                                 item[i] = that.superParams.elslider.value2
                             }   else if(item[i] == 'value3') {
-                                item[i] = that.superParams.elslider.value2
+                                item[i] = that.superParams.elslider.value3
                             }   else if(item[i] == 'value4') {
-                                item[i] = that.superParams.elslider.value2
+                                item[i] = that.superParams.elslider.value4
                             }   else if(item[i] == 'value5') {
-                                item[i] = that.superParams.elslider.value2
+                                item[i] = that.superParams.elslider.value5
                             }   else if(item[i] == 'value6') {
-                                item[i] = that.superParams.elslider.value2
+                                item[i] = that.superParams.elslider.value6
                             }   else if(item[i] == 'value7') {
-                                item[i] = that.superParams.elslider.value2
+                                item[i] = that.superParams.elslider.value7
+                            }   else if(item[i] == 'value8') {
+                                item[i] = that.superParams.elslider.value8
                             }    
                         }else if(componentNameParams == 'elslider' && i == 'formatTooltip'){
                             if(item[i] == 'formatTooltip') {
