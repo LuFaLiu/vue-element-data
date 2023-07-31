@@ -670,7 +670,9 @@ export default {
                                 item[i] = that.superParams.elslider.value7
                             }   else if(item[i] == 'value8') {
                                 item[i] = that.superParams.elslider.value8
-                            }    
+                            }   else if(item[i] == 'value9') {
+                                item[i] = that.superParams.elslider.value9
+                            }   
                         }else if(componentNameParams == 'elslider' && i == 'formatTooltip'){
                             if(item[i] == 'formatTooltip') {
                                 item[i] = that.superParams.formatTooltip
