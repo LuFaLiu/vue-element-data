@@ -601,6 +601,7 @@ export default {
         value7: 0,
         value8: 0,
         value9: [2, 8],
+        value10: 0,
         marks: {},
       },
       eltimeselect:{
