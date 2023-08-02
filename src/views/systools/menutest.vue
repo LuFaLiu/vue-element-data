@@ -602,7 +602,18 @@ export default {
         value8: 0,
         value9: [2, 8],
         value10: 0,
-        marks: {},
+        value11: [30, 60],
+        marks: {
+          0: '0°C',
+          8: '8°C',
+          37: '37°C',
+          50: {
+            style: {
+              color: '#1989FA'
+            },
+            label: this.$createElement('strong', '50%')
+          }
+        }
       },
       eltimeselect:{
         value1: '',
