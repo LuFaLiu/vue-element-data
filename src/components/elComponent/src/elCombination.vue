@@ -653,6 +653,30 @@ export default {
                             } else {
                                 item[i] = that.superParams.elupload.fileList
                             }
+                        }else if(componentNameParams == 'elswitch' && i == 'value'){
+                            if(item[i] == 'value1') {
+                                item[i] = that.superParams.elswitch.value1
+                            } else if(item[i] == 'value2') {
+                                item[i] = that.superParams.elswitch.value2
+                            }   else if(item[i] == 'value3') {
+                                item[i] = that.superParams.elswitch.value3
+                            }   else if(item[i] == 'value4') {
+                                item[i] = that.superParams.elswitch.value4
+                            }   else if(item[i] == 'value5') {
+                                item[i] = that.superParams.elswitch.value5
+                            }   else if(item[i] == 'value6') {
+                                item[i] = that.superParams.elswitch.value6
+                            }   else if(item[i] == 'value7') {
+                                item[i] = that.superParams.elswitch.value7
+                            }   else if(item[i] == 'value8') {
+                                item[i] = that.superParams.elswitch.value8
+                            }   else if(item[i] == 'value9') {
+                                item[i] = that.superParams.elswitch.value9
+                            }   else if(item[i] == 'value10') {
+                                item[i] = that.superParams.elswitch.value10
+                            }   else if(item[i] == 'value11') {
+                                item[i] = that.superParams.elswitch.value11
+                            }    
                         }else if(componentNameParams == 'elslider' && i == 'value'){
                             if(item[i] == 'value1') {
                                 item[i] = that.superParams.elslider.value1

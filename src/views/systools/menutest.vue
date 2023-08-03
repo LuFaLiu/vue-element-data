@@ -588,7 +588,8 @@ export default {
         ],
       },
       elswitch: {
-        value: false,
+        value1: true,
+        value2: true,
         rules: {},
       },
       elslider: {
@@ -3043,6 +3044,38 @@ export default {
         },
         iconAttribute:{
           type:'iconAttribute'
+        },
+        elSwitchType1:{
+          tag: "span",
+          text: "Basic usage",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elSwitchType2:{
+          tag: "span",
+          text: "Text description",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elSwitchType3:{
+          tag: "span",
+          text: "Extended value types",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elSwitchType4:{
+          tag: "span",
+          text: "Disabled",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
         },
         elSliderType1:{
           tag: "span",
