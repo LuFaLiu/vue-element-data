@@ -590,6 +590,12 @@ export default {
       elswitch: {
         value1: true,
         value2: true,
+        value3: true,
+        value4: true,
+        value5: true,
+        value6: true,
+        value7: true,
+        value8: true,
         rules: {},
       },
       elslider: {
