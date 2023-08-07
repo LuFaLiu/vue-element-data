@@ -3075,6 +3075,9 @@ export default {
             display: "block",
           }
         },
+        elSwitchExtendedValueTypes:{
+          type:'extendedValueTypes'
+        },
         elSwitchType4:{
           tag: "span",
           text: "Disabled",
