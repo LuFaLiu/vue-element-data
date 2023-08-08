@@ -666,16 +666,8 @@ export default {
                                 item[i] = that.superParams.elswitch.value5
                             }   else if(item[i] == 'value6') {
                                 item[i] = that.superParams.elswitch.value6
-                            }   else if(item[i] == 'value7') {
-                                item[i] = that.superParams.elswitch.value7
                             }   else if(item[i] == 'value8') {
                                 item[i] = that.superParams.elswitch.value8
-                            }   else if(item[i] == 'value9') {
-                                item[i] = that.superParams.elswitch.value9
-                            }   else if(item[i] == 'value10') {
-                                item[i] = that.superParams.elswitch.value10
-                            }   else if(item[i] == 'value11') {
-                                item[i] = that.superParams.elswitch.value11
                             }    
                         }else if(componentNameParams == 'elslider' && i == 'value'){
                             if(item[i] == 'value1') {
