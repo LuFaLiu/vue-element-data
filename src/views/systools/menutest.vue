@@ -316,54 +316,54 @@ export default {
         selectVal: "",
       },
       elcascader: {
-        value: "",
-        props: {},
-        options: [
+        value1: [],
+        props1: { expandTrigger: 'hover' },
+        options1: [
           {
-            value: "zhinan",
-            label: "指南",
+            value: "guide",
+            label: "Guide",
             children: [
               {
-                value: "shejiyuanze",
-                label: "设计原则",
+                value: "disciplines",
+                label: "Disciplines",
                 children: [
                   {
-                    value: "yizhi",
-                    label: "一致",
+                    value: "consistency",
+                    label: "Consistency",
                   },
                   {
-                    value: "fankui",
-                    label: "反馈",
+                    value: "feedback",
+                    label: "Feedback",
                   },
                   {
-                    value: "xiaolv",
-                    label: "效率",
+                    value: "efficiency",
+                    label: "Efficiency",
                   },
                   {
-                    value: "kekong",
-                    label: "可控",
+                    value: "controllability",
+                    label: "Controllability",
                   },
                 ],
               },
               {
-                value: "daohang",
-                label: "导航",
+                value: "navigation",
+                label: "Navigation",
                 children: [
                   {
-                    value: "cexiangdaohang",
-                    label: "侧向导航",
+                    value: "side nav",
+                    label: "Side Navigation",
                   },
                   {
-                    value: "dingbudaohang",
-                    label: "顶部导航",
+                    value: "top nav",
+                    label: "Top Navigation",
                   },
                 ],
               },
             ],
           },
           {
-            value: "zujian",
-            label: "组件",
+            value: "component",
+            label: "Component",
             children: [
               {
                 value: "basic",
@@ -371,23 +371,23 @@ export default {
                 children: [
                   {
                     value: "layout",
-                    label: "Layout 布局",
+                    label: "Layout",
                   },
                   {
                     value: "color",
-                    label: "Color 色彩",
+                    label: "Color",
                   },
                   {
                     value: "typography",
-                    label: "Typography 字体",
+                    label: "Typography",
                   },
                   {
                     value: "icon",
-                    label: "Icon 图标",
+                    label: "Icon",
                   },
                   {
                     value: "button",
-                    label: "Button 按钮",
+                    label: "Button",
                   },
                 ],
               },
@@ -397,59 +397,59 @@ export default {
                 children: [
                   {
                     value: "radio",
-                    label: "Radio 单选框",
+                    label: "Radio",
                   },
                   {
                     value: "checkbox",
-                    label: "Checkbox 多选框",
+                    label: "Checkbox",
                   },
                   {
                     value: "input",
-                    label: "Input 输入框",
+                    label: "Input",
                   },
                   {
                     value: "input-number",
-                    label: "InputNumber 计数器",
+                    label: "InputNumber",
                   },
                   {
                     value: "select",
-                    label: "Select 选择器",
+                    label: "Select",
                   },
                   {
                     value: "cascader",
-                    label: "Cascader 级联选择器",
+                    label: "Cascader",
                   },
                   {
                     value: "switch",
-                    label: "Switch 开关",
+                    label: "Switch",
                   },
                   {
                     value: "slider",
-                    label: "Slider 滑块",
+                    label: "Slider",
                   },
                   {
                     value: "time-picker",
-                    label: "TimePicker 时间选择器",
+                    label: "TimePicker",
                   },
                   {
                     value: "date-picker",
-                    label: "DatePicker 日期选择器",
+                    label: "DatePicker",
                   },
                   {
                     value: "datetime-picker",
-                    label: "DateTimePicker 日期时间选择器",
+                    label: "DateTimePicker",
                   },
                   {
                     value: "upload",
-                    label: "Upload 上传",
+                    label: "Upload",
                   },
                   {
                     value: "rate",
-                    label: "Rate 评分",
+                    label: "Rate",
                   },
                   {
                     value: "form",
-                    label: "Form 表单",
+                    label: "Form",
                   },
                 ],
               },
@@ -459,27 +459,27 @@ export default {
                 children: [
                   {
                     value: "table",
-                    label: "Table 表格",
+                    label: "Table",
                   },
                   {
                     value: "tag",
-                    label: "Tag 标签",
+                    label: "Tag",
                   },
                   {
                     value: "progress",
-                    label: "Progress 进度条",
+                    label: "Progress",
                   },
                   {
                     value: "tree",
-                    label: "Tree 树形控件",
+                    label: "Tree",
                   },
                   {
                     value: "pagination",
-                    label: "Pagination 分页",
+                    label: "Pagination",
                   },
                   {
                     value: "badge",
-                    label: "Badge 标记",
+                    label: "Badge",
                   },
                 ],
               },
@@ -489,23 +489,23 @@ export default {
                 children: [
                   {
                     value: "alert",
-                    label: "Alert 警告",
+                    label: "Alert",
                   },
                   {
                     value: "loading",
-                    label: "Loading 加载",
+                    label: "Loading",
                   },
                   {
                     value: "message",
-                    label: "Message 消息提示",
+                    label: "Message",
                   },
                   {
                     value: "message-box",
-                    label: "MessageBox 弹框",
+                    label: "MessageBox",
                   },
                   {
                     value: "notification",
-                    label: "Notification 通知",
+                    label: "Notification",
                   },
                 ],
               },
@@ -515,23 +515,23 @@ export default {
                 children: [
                   {
                     value: "menu",
-                    label: "NavMenu 导航菜单",
+                    label: "NavMenu",
                   },
                   {
                     value: "tabs",
-                    label: "Tabs 标签页",
+                    label: "Tabs",
                   },
                   {
                     value: "breadcrumb",
-                    label: "Breadcrumb 面包屑",
+                    label: "Breadcrumb",
                   },
                   {
                     value: "dropdown",
-                    label: "Dropdown 下拉菜单",
+                    label: "Dropdown",
                   },
                   {
                     value: "steps",
-                    label: "Steps 步骤条",
+                    label: "Steps",
                   },
                 ],
               },
@@ -541,35 +541,35 @@ export default {
                 children: [
                   {
                     value: "dialog",
-                    label: "Dialog 对话框",
+                    label: "Dialog",
                   },
                   {
                     value: "tooltip",
-                    label: "Tooltip 文字提示",
+                    label: "Tooltip",
                   },
                   {
                     value: "popover",
-                    label: "Popover 弹出框",
+                    label: "Popover",
                   },
                   {
                     value: "card",
-                    label: "Card 卡片",
+                    label: "Card",
                   },
                   {
                     value: "carousel",
-                    label: "Carousel 走马灯",
+                    label: "Carousel",
                   },
                   {
                     value: "collapse",
-                    label: "Collapse 折叠面板",
+                    label: "Collapse",
                   },
                 ],
               },
             ],
           },
           {
-            value: "ziyuan",
-            label: "资源",
+            value: "resource",
+            label: "Resource",
             children: [
               {
                 value: "axure",
@@ -580,8 +580,8 @@ export default {
                 label: "Sketch Templates",
               },
               {
-                value: "jiaohu",
-                label: "组件交互文档",
+                value: "docs",
+                label: "Design Documentation",
               },
             ],
           },
@@ -610,57 +610,57 @@ export default {
         value10: 0,
         value11: [30, 60],
         marks: {
-          0: '0°C',
-          8: '8°C',
-          37: '37°C',
+          0: "0°C",
+          8: "8°C",
+          37: "37°C",
           50: {
             style: {
-              color: '#1989FA'
+              color: "#1989FA",
             },
-            label: this.$createElement('strong', '50%')
-          }
-        }
-      },
-      eltimeselect:{
-        value1: '',
-        fixedTimeRangeStartTime: '',
-        fixedTimeRangeEndTime: '',
-        fixedTimePickerOptions:{
-          start: '08:30',
-          step: '00:15',
-          end: '18:30'
+            label: this.$createElement("strong", "50%"),
+          },
         },
-        fixedTimeRangeStartTimePickerOptions:{
-          start: '08:30',
-          step: '00:15',
-          end: '18:30'
-        }
+      },
+      eltimeselect: {
+        value1: "",
+        fixedTimeRangeStartTime: "",
+        fixedTimeRangeEndTime: "",
+        fixedTimePickerOptions: {
+          start: "08:30",
+          step: "00:15",
+          end: "18:30",
+        },
+        fixedTimeRangeStartTimePickerOptions: {
+          start: "08:30",
+          step: "00:15",
+          end: "18:30",
+        },
       },
       eltimepicker: {
-        value1: '',
+        value1: "",
         value2: new Date(2016, 9, 10, 18, 40),
         value3: new Date(2016, 9, 10, 18, 40),
         value5: [new Date(2016, 9, 10, 8, 40), new Date(2016, 9, 10, 9, 40)],
         value6: [new Date(2016, 9, 10, 8, 40), new Date(2016, 9, 10, 9, 40)],
-        
-        fixedTimePickerOptions:{
-          start: '08:30',
-          step: '00:15',
-          end: '18:30'
+
+        fixedTimePickerOptions: {
+          start: "08:30",
+          step: "00:15",
+          end: "18:30",
         },
-        arbitraryTimePickerOptions:{
-          selectableRange: '18:30:00 - 20:30:00'
-        }
+        arbitraryTimePickerOptions: {
+          selectableRange: "18:30:00 - 20:30:00",
+        },
       },
       eldatepicker: {
-        value1: '',
-        value2: '',
-        value3: '',
-        value5: '',
-        value6: '',
-        value7: '',
-        value8: '',
-        value9: '',
+        value1: "",
+        value2: "",
+        value3: "",
+        value5: "",
+        value6: "",
+        value7: "",
+        value8: "",
+        value9: "",
         pickerOptions: {
           disabledDate(time) {
             return time.getTime() > Date.now();
@@ -690,118 +690,137 @@ export default {
             },
           ],
         },
-        dateRangeValue1:'',
-        dateRangeValue2:'',
+        dateRangeValue1: "",
+        dateRangeValue2: "",
         dateRangepickerOptions: {
-          shortcuts: [{
-            text: 'Last week',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit('pick', [start, end]);
-            }
-          }, {
-            text: 'Last month',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-              picker.$emit('pick', [start, end]);
-            }
-          }, {
-            text: 'Last 3 months',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-              picker.$emit('pick', [start, end]);
-            }
-          }]
+          shortcuts: [
+            {
+              text: "Last week",
+              onClick(picker) {
+                const end = new Date();
+                const start = new Date();
+                start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+                picker.$emit("pick", [start, end]);
+              },
+            },
+            {
+              text: "Last month",
+              onClick(picker) {
+                const end = new Date();
+                const start = new Date();
+                start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+                picker.$emit("pick", [start, end]);
+              },
+            },
+            {
+              text: "Last 3 months",
+              onClick(picker) {
+                const end = new Date();
+                const start = new Date();
+                start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+                picker.$emit("pick", [start, end]);
+              },
+            },
+          ],
         },
-        monthRangeValue1: '',
-        monthRangeValue2: '',
+        monthRangeValue1: "",
+        monthRangeValue2: "",
         monthRangePickerOptions: {
-          shortcuts: [{
-            text: 'This month',
-            onClick(picker) {
-              picker.$emit('pick', [new Date(), new Date()]);
-            }
-          }, {
-            text: 'This year',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date(new Date().getFullYear(), 0);
-              picker.$emit('pick', [start, end]);
-            }
-          }, {
-            text: 'Last 6 months',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setMonth(start.getMonth() - 6);
-              picker.$emit('pick', [start, end]);
-            }
-          }]
+          shortcuts: [
+            {
+              text: "This month",
+              onClick(picker) {
+                picker.$emit("pick", [new Date(), new Date()]);
+              },
+            },
+            {
+              text: "This year",
+              onClick(picker) {
+                const end = new Date();
+                const start = new Date(new Date().getFullYear(), 0);
+                picker.$emit("pick", [start, end]);
+              },
+            },
+            {
+              text: "Last 6 months",
+              onClick(picker) {
+                const end = new Date();
+                const start = new Date();
+                start.setMonth(start.getMonth() - 6);
+                picker.$emit("pick", [start, end]);
+              },
+            },
+          ],
         },
-        defaultValue1: '',
-        defaultValue2: '',
+        defaultValue1: "",
+        defaultValue2: "",
       },
       eldatetimePicker: {
         pickerOptions: {
-          shortcuts: [{
-            text: 'Today',
-            onClick(picker) {
-              picker.$emit('pick', new Date());
-            }
-          }, {
-            text: 'Yesterday',
-            onClick(picker) {
-              const date = new Date();
-              date.setTime(date.getTime() - 3600 * 1000 * 24);
-              picker.$emit('pick', date);
-            }
-          }, {
-            text: 'A week ago',
-            onClick(picker) {
-              const date = new Date();
-              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit('pick', date);
-            }
-          }]
+          shortcuts: [
+            {
+              text: "Today",
+              onClick(picker) {
+                picker.$emit("pick", new Date());
+              },
+            },
+            {
+              text: "Yesterday",
+              onClick(picker) {
+                const date = new Date();
+                date.setTime(date.getTime() - 3600 * 1000 * 24);
+                picker.$emit("pick", date);
+              },
+            },
+            {
+              text: "A week ago",
+              onClick(picker) {
+                const date = new Date();
+                date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                picker.$emit("pick", date);
+              },
+            },
+          ],
         },
         pickerOption2: {
-          shortcuts: [{
-            text: 'Last week',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit('pick', [start, end]);
-            }
-          }, {
-            text: 'Last month',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-              picker.$emit('pick', [start, end]);
-            }
-          }, {
-            text: 'Last 3 months',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-              picker.$emit('pick', [start, end]);
-            }
-          }]
+          shortcuts: [
+            {
+              text: "Last week",
+              onClick(picker) {
+                const end = new Date();
+                const start = new Date();
+                start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+                picker.$emit("pick", [start, end]);
+              },
+            },
+            {
+              text: "Last month",
+              onClick(picker) {
+                const end = new Date();
+                const start = new Date();
+                start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+                picker.$emit("pick", [start, end]);
+              },
+            },
+            {
+              text: "Last 3 months",
+              onClick(picker) {
+                const end = new Date();
+                const start = new Date();
+                start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+                picker.$emit("pick", [start, end]);
+              },
+            },
+          ],
         },
-        value1: '',
-        value2: '',
-        value3: '',
-        value5: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],
-        value6: ''
+        value1: "",
+        value2: "",
+        value3: "",
+        value5: [
+          new Date(2000, 10, 10, 10, 10),
+          new Date(2000, 10, 11, 10, 10),
+        ],
+        value6: "",
       },
       elupload: {
         fileList: [
@@ -819,9 +838,9 @@ export default {
         limit: 3,
         data: {},
         imageUrl: "",
-        photoWallImageUrl: '',
-        customFileThumbnailImageUrl: '',
-        customFileThumbnailDisabled: false
+        photoWallImageUrl: "",
+        customFileThumbnailImageUrl: "",
+        customFileThumbnailDisabled: false,
       },
       eldescriptionsitem: {
         contentStyle: { "text-align": "right" },
@@ -3047,166 +3066,254 @@ export default {
         elPropAliasesTransfer: {
           type: "propAliasesTransfer",
         },
-        iconAttribute:{
-          type:'iconAttribute'
+        iconAttribute: {
+          type: "iconAttribute",
         },
-        elSwitchType1:{
+        elCascaderType1: {
           tag: "span",
           text: "Basic usage",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elSwitchType2:{
+        elCascaderType2: {
+          tag: "span",
+          text: "Disabled option",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCascaderType3: {
+          tag: "span",
+          text: "Clearable",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCascaderType4: {
+          tag: "span",
+          text: "Display only the last level",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCascaderType5: {
+          tag: "span",
+          text: "Multiple Selection",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCascaderType6: {
+          tag: "span",
+          text: "Select any level of options",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCascaderType7: {
+          tag: "span",
+          text: "Dynamic loading",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCascaderType8: {
+          tag: "span",
+          text: "Filterable",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCascaderType9: {
+          tag: "span",
+          text: "Custom option content",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCascaderType10: {
+          tag: "span",
+          text: "Cascader panel",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCascaderType1: {
+          tag: "span",
+          text: "Basic usage",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elSwitchType1: {
+          tag: "span",
+          text: "Basic usage",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elSwitchType2: {
           tag: "span",
           text: "Text description",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elSwitchType3:{
+        elSwitchType3: {
           tag: "span",
           text: "Extended value types",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elSwitchExtendedValueTypes:{
-          type:'extendedValueTypes'
+        elSwitchExtendedValueTypes: {
+          type: "extendedValueTypes",
         },
-        elSwitchType4:{
+        elSwitchType4: {
           tag: "span",
           text: "Disabled",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elSliderType1:{
+        elSliderType1: {
           tag: "span",
           text: "Basic usage",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elSliderType2:{
+        elSliderType2: {
           tag: "span",
           text: "Discrete values",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elSliderType3:{
+        elSliderType3: {
           tag: "span",
           text: "Slider with input box",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elSliderType4:{
+        elSliderType4: {
           tag: "span",
           text: "Range selection",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elSliderType5:{
+        elSliderType5: {
           tag: "span",
           text: "Vertical mode",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elSliderType6:{
+        elSliderType6: {
           tag: "span",
           text: "Show marks",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elTimePickerType1:{
+        elTimePickerType1: {
           tag: "span",
           text: "Fixed time picker",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elTimePickerType2:{
+        elTimePickerType2: {
           tag: "span",
           text: "Arbitrary time picker",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elTimePickerType3:{
+        elTimePickerType3: {
           tag: "span",
           text: "Fixed time range",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elTimePickerType4:{
+        elTimePickerType4: {
           tag: "span",
           text: "Arbitrary time range",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elFixedTimeRangeEndTimeType:{
-          type:'fixedTimeRangeEndTimeType'
+        elFixedTimeRangeEndTimeType: {
+          type: "fixedTimeRangeEndTimeType",
         },
-        elDatePickerType1:{
+        elDatePickerType1: {
           tag: "span",
           text: "Enter Date",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elDatePickerType2:{
+        elDatePickerType2: {
           tag: "span",
           text: "Other measurements",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elDatePickerType3:{
+        elDatePickerType3: {
           tag: "span",
           text: "Date Range",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elDatePickerType4:{
+        elDatePickerType4: {
           tag: "span",
           text: "Month Range",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
-        elDatePickerType5:{
+        elDatePickerType5: {
           tag: "span",
           text: "Default Value",
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
         elDateTimePickerType1: {
           tag: "span",
@@ -3214,7 +3321,7 @@ export default {
           style: {
             margin: "15px",
             display: "block",
-          }
+          },
         },
         elDateTimePickerType2: {
           tag: "span",
@@ -3222,7 +3329,7 @@ export default {
           style: {
             margin: "15px 0",
             display: "block",
-          }
+          },
         },
         elDateTimePickerType3: {
           tag: "span",
@@ -3230,7 +3337,7 @@ export default {
           style: {
             margin: "15px 0",
             display: "block",
-          }
+          },
         },
         elUploadType1: {
           tag: "span",
@@ -3238,7 +3345,7 @@ export default {
           style: {
             margin: "15px 0",
             display: "block",
-          }
+          },
         },
         elUploadType2: {
           tag: "span",
@@ -3246,7 +3353,7 @@ export default {
           style: {
             margin: "15px 0",
             display: "block",
-          }
+          },
         },
         elUploadType3: {
           tag: "span",
@@ -3254,7 +3361,7 @@ export default {
           style: {
             margin: "15px 0",
             display: "block",
-          }
+          },
         },
         elUploadType4: {
           tag: "span",
@@ -3262,10 +3369,10 @@ export default {
           style: {
             margin: "15px 0",
             display: "block",
-          }
+          },
         },
-        elCustomFileThumbnail:{
-          type:'customFileThumbnail'
+        elCustomFileThumbnail: {
+          type: "customFileThumbnail",
         },
         elUploadType5: {
           tag: "span",
@@ -3273,10 +3380,10 @@ export default {
           style: {
             margin: "15px 0",
             display: "block",
-          }
+          },
         },
-        elFileListWithThumbnailTip:{
-          type:'fileListWithThumbnailTip'
+        elFileListWithThumbnailTip: {
+          type: "fileListWithThumbnailTip",
         },
         elUploadType6: {
           tag: "span",
@@ -3284,7 +3391,7 @@ export default {
           style: {
             margin: "15px 0",
             display: "block",
-          }
+          },
         },
         elUploadType7: {
           tag: "span",
@@ -3292,19 +3399,19 @@ export default {
           style: {
             margin: "15px 0",
             display: "block",
-          }
+          },
         },
-        elManualUploadTrigger:{
-          type:'manualUploadTrigger'
+        elManualUploadTrigger: {
+          type: "manualUploadTrigger",
         },
-        elManualUploadServer:{
-          type:'manualUploadServer'
+        elManualUploadServer: {
+          type: "manualUploadServer",
         },
-        elUploadDropFileText:{
-          type:'dropFileText'
+        elUploadDropFileText: {
+          type: "dropFileText",
         },
-        elUploadDropFileIcon:{
-          type:'iconUploadAttribute'
+        elUploadDropFileIcon: {
+          type: "iconUploadAttribute",
         },
         elUploadType8: {
           tag: "span",
@@ -3312,7 +3419,7 @@ export default {
           style: {
             margin: "15px 0",
             display: "block",
-          }
+          },
         },
         elRateType1: {
           tag: "span",
@@ -3320,7 +3427,7 @@ export default {
           style: {
             margin: "15px 0",
             display: "block",
-          }
+          },
         },
         elRateType2: {
           tag: "span",
@@ -3328,7 +3435,7 @@ export default {
           style: {
             margin: "15px 0",
             display: "block",
-          }
+          },
         },
         elRateType3: {
           tag: "span",
@@ -3336,7 +3443,7 @@ export default {
           style: {
             margin: "15px 0",
             display: "block",
-          }
+          },
         },
         elRateType4: {
           tag: "span",
@@ -3344,7 +3451,7 @@ export default {
           style: {
             margin: "15px 0",
             display: "block",
-          }
+          },
         },
         elColorPickerType1: {
           tag: "span",
@@ -3377,7 +3484,7 @@ export default {
             margin: "15px 0",
             display: "block",
           },
-        }
+        },
       },
       elrate: {
         basicUsageValue1: null,
@@ -3385,7 +3492,7 @@ export default {
         withTextValue: null,
         moreIconValue: null,
         readOnlyValue: 3.7,
-        basicUsageColors: ['#99A9BF', '#F7BA2A', '#FF9900'],
+        basicUsageColors: ["#99A9BF", "#F7BA2A", "#FF9900"],
         texts: [
           "Very poor ",
           " disappointed ",
@@ -3393,9 +3500,13 @@ export default {
           " satisfied ",
           "surprised",
         ],
-        withText: ['oops', 'disappointed', 'normal', 'good', 'great'],
+        withText: ["oops", "disappointed", "normal", "good", "great"],
         iconClasses: ["el-icon-star-on", "el-icon-star-on", "el-icon-star-on"],
-        moreIconClasses: ['icon-rate-face-1', 'icon-rate-face-2', 'icon-rate-face-3'] // same as { 2: 'icon-rate-face-1', 4: { value: 'icon-rate-face-2', excluded: true }, 5: 'icon-rate-face-3' }
+        moreIconClasses: [
+          "icon-rate-face-1",
+          "icon-rate-face-2",
+          "icon-rate-face-3",
+        ], // same as { 2: 'icon-rate-face-1', 4: { value: 'icon-rate-face-2', excluded: true }, 5: 'icon-rate-face-3' }
       },
       elavatar: {},
       elcard: {
@@ -3417,29 +3528,29 @@ export default {
         labelStyle: {},
         contentStyle: {},
       },
-      
+
       elcolorpicker: {
         basicUsageColor1: "#409EFF",
         basicUsageColor2: null,
-        alphaColor: 'rgba(19, 206, 102, 0.8)',
+        alphaColor: "rgba(19, 206, 102, 0.8)",
         predefine: [],
-        predefinedColor: 'rgba(255, 69, 0, 0.68)',
+        predefinedColor: "rgba(255, 69, 0, 0.68)",
         predefineColorList: [
-          '#ff4500',
-          '#ff8c00',
-          '#ffd700',
-          '#90ee90',
-          '#00ced1',
-          '#1e90ff',
-          '#c71585',
-          'rgba(255, 69, 0, 0.68)',
-          'rgb(255, 120, 0)',
-          'hsv(51, 100, 98)',
-          'hsva(120, 40, 94, 0.5)',
-          'hsl(181, 100%, 37%)',
-          'hsla(209, 100%, 56%, 0.73)',
-          '#c7158577'
-        ]
+          "#ff4500",
+          "#ff8c00",
+          "#ffd700",
+          "#90ee90",
+          "#00ced1",
+          "#1e90ff",
+          "#c71585",
+          "rgba(255, 69, 0, 0.68)",
+          "rgb(255, 120, 0)",
+          "hsv(51, 100, 98)",
+          "hsva(120, 40, 94, 0.5)",
+          "hsl(181, 100%, 37%)",
+          "hsla(209, 100%, 56%, 0.73)",
+          "#c7158577",
+        ],
       },
       eltransfer: {
         data: generateData(),
@@ -3478,7 +3589,7 @@ export default {
         },
         propAliasesData: generateCustomizableData(),
         propAliasesValue: [],
-        propAliasesProps: "{key: 'value',label: 'desc'}"
+        propAliasesProps: "{key: 'value',label: 'desc'}",
       },
       eltable: {
         tableData: [
@@ -4346,7 +4457,7 @@ export default {
       return this.$confirm(`确定移除 ${file.name}？`);
     },
 
-    photoWallPreview(file){
+    photoWallPreview(file) {
       console.log("photoWallPreview");
       console.log(file);
       this.elupload.photoWallImageUrl = file.url;
@@ -4968,7 +5079,7 @@ export default {
         "elInnerDialog",
         "elCenteredContentDialog",
         "photoWallDialogVisible",
-        "customFileThumbnail"
+        "customFileThumbnail",
       ];
       for (var i in closeComponentRefList) {
         var component = getVueComponent(
@@ -5446,19 +5557,19 @@ export default {
     },
 
     handleCustomFileThumbnailRemove(file) {
-        console.log(file);
+      console.log(file);
     },
     handleCustomFileThumbnailPictureCardPreview(file) {
       console.log("handleCustomFileThumbnailPictureCardPreview");
       console.log(file);
-        this.elupload.customFileThumbnailImageUrl = file.url;
-        this.getVueComponentName("customFileThumbnail", "visible", true);
+      this.elupload.customFileThumbnailImageUrl = file.url;
+      this.getVueComponentName("customFileThumbnail", "visible", true);
     },
     handleCustomFileThumbnailDownload(file) {
-        console.log(file);
+      console.log(file);
     },
-    handleCustomFileThumbnailDialogClose(){
-        this.getVueComponentName("customFileThumbnail", "visible", false);
+    handleCustomFileThumbnailDialogClose() {
+      this.getVueComponentName("customFileThumbnail", "visible", false);
     },
 
     handleFileListWithThumbnailRemove(file, fileList) {
@@ -5469,19 +5580,24 @@ export default {
       console.log(file);
     },
 
-    handleFileListControlChange(file, fileList){
+    handleFileListControlChange(file, fileList) {
       this.elupload.fileList = fileList.slice(-3);
     },
 
     submitManualUpload() {
-      var manualUploadComponent = getVueComponent(this, "$children", "$refs", 'manualUpload');
+      var manualUploadComponent = getVueComponent(
+        this,
+        "$children",
+        "$refs",
+        "manualUpload"
+      );
       manualUploadComponent.submit();
     },
 
     formatTooltip(val) {
       return val / 100;
     },
-    
+
     getVueComponentName(refName, paramsName, paramsVal) {
       console.log("getVueComponentName=====>");
       var refComponent = getVueComponent(this, "$children", "$refs", refName);
@@ -5548,7 +5664,6 @@ export default {
     padding: 15px 0;
     margin: 15px 0;
   }
-  
 
   .skeleton {
     // ELSkeleton 一定要设置class为：skeleton

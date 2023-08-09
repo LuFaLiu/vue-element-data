@@ -88,7 +88,7 @@ export default {
                         attrs: item.attrs ? that.superParams[componentNameParams][item.attrs] : {
                             placeholder: (item.componentName == 'elInput' || item.componentName == 'elSelect') && that.filteri18n(item.placeholder) || ''
                         },
-                        props: item.props  && componentNameParams !== 'eltree' ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
+                        props: item.props  && componentNameParams !== 'eltree' && componentNameParams !== 'elcascader' ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
                         on:{
                             '&close':function (params) { // close event
                                 if(item.uniqueIdentifier == 'alertTip') {
@@ -653,6 +653,30 @@ export default {
                             } else {
                                 item[i] = that.superParams.elupload.fileList
                             }
+                        }else if(componentNameParams == 'elcascader' && i == 'options'){
+                            if(item[i] == 'options1') {
+                                item[i] = that.superParams.elcascader.options1
+                            }  
+                        }else if(componentNameParams == 'elcascader' && i == 'props'){
+                            if(item[i] == 'props1') {
+                                item[i] = that.superParams.elcascader.props1
+                            }  
+                        }else if(componentNameParams == 'elcascader' && i == 'value'){
+                            if(item[i] == 'value1') {
+                                item[i] = that.superParams.elcascader.value1
+                            } else if(item[i] == 'value2') {
+                                item[i] = that.superParams.elcascader.value2
+                            }   else if(item[i] == 'value3') {
+                                item[i] = that.superParams.elcascader.value3
+                            }   else if(item[i] == 'value4') {
+                                item[i] = that.superParams.elcascader.value4
+                            }   else if(item[i] == 'value5') {
+                                item[i] = that.superParams.elcascader.value5
+                            }   else if(item[i] == 'value6') {
+                                item[i] = that.superParams.elcascader.value6
+                            }   else if(item[i] == 'value8') {
+                                item[i] = that.superParams.elcascader.value8
+                            }    
                         }else if(componentNameParams == 'elswitch' && i == 'value'){
                             if(item[i] == 'value1') {
                                 item[i] = that.superParams.elswitch.value1
