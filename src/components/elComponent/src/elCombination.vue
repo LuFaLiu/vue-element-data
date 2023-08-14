@@ -660,11 +660,15 @@ export default {
                                 item[i] = that.superParams.elcascader.options2
                             } else if(item[i] == 'options3') {
                                 item[i] = that.superParams.elcascader.options3
+                            } else if(item[i] == 'options5') {
+                                item[i] = that.superParams.elcascader.options5
                             }
                         }else if(componentNameParams == 'elcascader' && i == 'props'){
                             if(item[i] == 'props1') {
                                 item[i] = that.superParams.elcascader.props1
-                            }  
+                            }  else if(item[i] == 'props2') {
+                                item[i] = that.superParams.elcascader.props2
+                            } 
                         }else if(componentNameParams == 'elcascader' && i == 'value'){
                             if(item[i] == 'value1') {
                                 item[i] = that.superParams.elcascader.value1
