@@ -1046,7 +1046,9 @@ export default {
               { value: 31, label: 'Ottawa' }
             ]
           }]
-        }]
+        }],
+        props3: { checkStrictly: true },
+        props5: { multiple: true, checkStrictly: true },
       },
       elswitch: {
         value1: true,
