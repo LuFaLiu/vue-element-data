@@ -12,6 +12,7 @@ import _ from "lodash";
 import elComponent from "@/components/elComponent/index";
 import { resetObj, getVueComponent } from "@/utils/index";
 
+let id = 0;
 export default {
   provide() {
     return {
@@ -1049,6 +1050,22 @@ export default {
         }],
         props3: { checkStrictly: true },
         props5: { multiple: true, checkStrictly: true },
+        props6: {
+          lazy: true,
+          lazyLoad (node, resolve) {
+            const { level } = node;
+            setTimeout(() => {
+              const nodes = Array.from({ length: level + 1 })
+                .map(item => ({
+                  value: ++id,
+                  label: `Option - ${id}`,
+                  leaf: level >= 2
+                }));
+              // Invoke `resolve` callback to return the child nodes data and indicate the loading is finished.
+              resolve(nodes);
+            }, 1000);
+          }
+        }
       },
       elswitch: {
         value1: true,

@@ -672,6 +672,8 @@ export default {
                                 item[i] = that.superParams.elcascader.props3
                             }   else if(item[i] == 'props5') {
                                 item[i] = that.superParams.elcascader.props5
+                            }   else if(item[i] == 'props6') {
+                                item[i] = that.superParams.elcascader.props6
                             } 
                         }else if(componentNameParams == 'elcascader' && i == 'value'){
                             if(item[i] == 'value1') {
