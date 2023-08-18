@@ -140,6 +140,18 @@ export default {
                     </span>
                 </div>
             )
+        } else if (node.uniqueIdentifier == 'elCascaderCustomOptionContent') {
+            console.log("node.uniqueIdentifier == 'elCascaderCustomOptionContent'");
+            console.log(node);
+            console.log(parent);
+            console.log(props);
+            // 原版  <span v-if="!props.node.isLeaf"> ({{ props.data.children.length }}) </span> 需特殊处理
+            return (
+                <div>
+                    <span>{ props.data.label }</span>
+                    <span v-if={!props.node.isLeaf}> { props.data.children ? '('+props.data.children.length+')' : '' } </span>
+                </div>
+            )
         } else {
             return (<span>operation</span>)
         }

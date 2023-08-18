@@ -286,7 +286,7 @@ export default {
             console.log(item.uniqueIdentifier);
             if(item.componentName == 'elTableColumn' && item.type !== 'selection' && !item.operation) {
                 return { default: props => h('Template',{props,item}) }
-            }else if(item.componentName == 'elRadioGroup' || item.uniqueIdentifier == 'fixedHeaderAndColumn' || item.uniqueIdentifier == 'tagScope' || item.uniqueIdentifier == 'elMultipleSelectType' || item.uniqueIdentifier == 'customIconDate' || item.uniqueIdentifier == 'customHoverName' || item.uniqueIdentifier == 'customOperations' || item.uniqueIdentifier == 'expandableRow') {
+            }else if(item.componentName == 'elRadioGroup' || item.uniqueIdentifier == 'fixedHeaderAndColumn' || item.uniqueIdentifier == 'tagScope' || item.uniqueIdentifier == 'elMultipleSelectType' || item.uniqueIdentifier == 'customIconDate' || item.uniqueIdentifier == 'customHoverName' || item.uniqueIdentifier == 'customOperations' || item.uniqueIdentifier == 'expandableRow' || item.uniqueIdentifier == 'elCascaderCustomOptionContent') {
                 return { default: props => h('TraverseTemplate',{props:{node:item,parent:that,props:props}}) }
             }else if(item.uniqueIdentifier == 'customizableTransfer'){
                 console.log("item.uniqueIdentifier == 'customizableTransfer'");
@@ -662,6 +662,8 @@ export default {
                                 item[i] = that.superParams.elcascader.options3
                             } else if(item[i] == 'options5') {
                                 item[i] = that.superParams.elcascader.options5
+                            } else if(item[i] == 'options6') {
+                                item[i] = that.superParams.elcascader.options6
                             }
                         }else if(componentNameParams == 'elcascader' && i == 'props'){
                             if(item[i] == 'props1') {
