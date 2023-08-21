@@ -665,6 +665,10 @@ export default {
                             } else if(item[i] == 'options6') {
                                 item[i] = that.superParams.elcascader.options6
                             }
+                        }else if(componentNameParams == 'elcascaderpanel' && i == 'options'){
+                            if(item[i] == 'options6') {
+                                item[i] = that.superParams.elcascader.options6
+                            }
                         }else if(componentNameParams == 'elcascader' && i == 'props'){
                             if(item[i] == 'props1') {
                                 item[i] = that.superParams.elcascader.props1
