@@ -669,6 +669,22 @@ export default {
                             if(item[i] == 'options6') {
                                 item[i] = that.superParams.elcascader.options6
                             }
+                        }else if(componentNameParams == 'elselect' && i == 'value'){
+                            if(item[i] == 'value1') {
+                                item[i] = that.superParams.elselect.value1
+                            } else if(item[i] == 'value2') {
+                                item[i] = that.superParams.elselect.value2
+                            }   else if(item[i] == 'value3') {
+                                item[i] = that.superParams.elselect.value3
+                            }   else if(item[i] == 'value4') {
+                                item[i] = that.superParams.elselect.value4
+                            }   else if(item[i] == 'value5') {
+                                item[i] = that.superParams.elselect.value5
+                            }   else if(item[i] == 'value6') {
+                                item[i] = that.superParams.elselect.value6
+                            }   else if(item[i] == 'value8') {
+                                item[i] = that.superParams.elselect.value8
+                            }    
                         }else if(componentNameParams == 'elcascader' && i == 'props'){
                             if(item[i] == 'props1') {
                                 item[i] = that.superParams.elcascader.props1

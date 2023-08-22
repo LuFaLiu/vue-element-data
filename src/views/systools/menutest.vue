@@ -277,29 +277,44 @@ export default {
       elinputnumber: {
         value: 1,
       },
+      elFormNested: {
+        inputVal: "",
+        selectVal: "",
+      },
       elselect: {
-        ElOptionListName: [
-          {
-            value: "选项1",
-            label: "黄金糕",
-          },
-          {
-            value: "选项2",
-            label: "双皮奶",
-          },
-          {
-            value: "选项3",
-            label: "蚵仔煎",
-          },
-          {
-            value: "选项4",
-            label: "龙须面",
-          },
-          {
-            value: "选项5",
-            label: "北京烤鸭",
-          },
-        ],
+        ElOptionListName: [{
+          value: 'Option1',
+          label: 'Option1'
+        }, {
+          value: 'Option2',
+          label: 'Option2'
+        }, {
+          value: 'Option3',
+          label: 'Option3'
+        }, {
+          value: 'Option4',
+          label: 'Option4'
+        }, {
+          value: 'Option5',
+          label: 'Option5'
+        }],
+        options2: [{
+          value: 'Option1',
+          label: 'Option1'
+        }, {
+          value: 'Option2',
+          label: 'Option2',
+          disabled: true
+        }, {
+          value: 'Option3',
+          label: 'Option3'
+        }, {
+          value: 'Option4',
+          label: 'Option4'
+        }, {
+          value: 'Option5',
+          label: 'Option5'
+        }],
         ElInlineFormListName: [
           {
             value: "shanghai",
@@ -310,11 +325,8 @@ export default {
             label: "Zone two",
           },
         ],
-        value: "",
-      },
-      elFormNested: {
-        inputVal: "",
-        selectVal: "",
+        value1: "",
+        value2: "",
       },
       elcascader: {
         value1: [],
@@ -3744,9 +3756,81 @@ export default {
         iconAttribute: {
           type: "iconAttribute",
         },
-        elCascaderType1: {
+        elSelectType1: {
           tag: "span",
           text: "Basic usage",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elSelectType2: {
+          tag: "span",
+          text: "Disabled option",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elSelectType3: {
+          tag: "span",
+          text: "Disabled select",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elSelectType4: {
+          tag: "span",
+          text: "Clearable single select",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elSelectType5: {
+          tag: "span",
+          text: "Basic multiple select",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elSelectType6: {
+          tag: "span",
+          text: "Custom template",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elSelectType7: {
+          tag: "span",
+          text: "Grouping",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elSelectType8: {
+          tag: "span",
+          text: "Option filtering",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elSelectType9: {
+          tag: "span",
+          text: "Remote Search",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elSelectType10: {
+          tag: "span",
+          text: "Create new items",
           style: {
             margin: "15px",
             display: "block",
