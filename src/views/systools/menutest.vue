@@ -327,6 +327,7 @@ export default {
         ],
         value1: "",
         value2: "",
+        value3: "",
       },
       elcascader: {
         value1: [],

@@ -152,6 +152,19 @@ export default {
                     <span v-if={!props.node.isLeaf}> { props.data.children ? '('+props.data.children.length+')' : '' } </span>
                 </div>
             )
+        } else if (node.uniqueIdentifier == 'elSelectOptionTransfer') {
+            console.log("node.uniqueIdentifier == 'elSelectOptionTransfer'");
+            console.log(node);
+            console.log(parent);
+            console.log(props);
+            // 原版  <span v-if="!props.node.isLeaf"> ({{ props.data.children.length }}) </span> 需特殊处理
+            return (
+                <div>
+                    {
+                        parent.superParams.elselect[node.ElOptionListName].map((v, index) => <el-option label={v.label} key={v.value} value={v.value} disabled={v.disabled}></el-option>)
+                    }
+                </div>
+            )
         } else {
             return (<span>operation</span>)
         }

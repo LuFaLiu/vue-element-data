@@ -275,7 +275,7 @@ export default {
                             : item.componentName == 'ElButton' || (item.componentName == 'elContainer' && item.title) || item.componentName == 'ElLink' || item.componentName == 'ElHeader' || item.componentName == 'ElFooter' || item.componentName == 'ElRadio' || item.componentName == 'ElMenuItem' || (item.componentName == 'template' && item.title) || (item.componentName == 'ElTabPane' && item.title) || (item.componentName == 'ElBreadcrumbItem' && item.title) || (item.componentName == 'ElDropdownItem' && item.title) || (item.componentName == 'ElCarouselItem' && item.title) || (item.componentName == 'ElTimelineItem' && item.title) || (item.componentName == 'ElDivider' && item.title) || (item.componentName == 'ElDescriptionsItem' && item.title) || (item.componentName == 'ElTag' && item.title) 
                                 //? [h('span',that.filteri18n(item.title))] 
                                 ? [h('span',that.$t(item.title))] 
-                                    : item.componentName == 'ElSelect' ? that.superParams[item.uniqueIdentifier ? (componentNameParams + item.uniqueIdentifier) : componentNameParams]['ElOptionListName'].map((v,index) => [h('el-option',{props:{label:that.$t(v.label),key:v.value,value:v.value}})] )
+                                    //: item.componentName == 'ElSelect' ? that.superParams[item.uniqueIdentifier ? (componentNameParams + item.uniqueIdentifier) : componentNameParams]['ElOptionListName'].map((v,index) => [h('el-option',{props:{label:that.$t(v.label),key:v.value,value:v.value,disabled:v.disabled}})] )
                                         : that.$slots.default
                 )
            })
@@ -294,6 +294,9 @@ export default {
             }else if(item.uniqueIdentifier == 'customFileThumbnail'){
                 console.log("item.uniqueIdentifier == 'customFileThumbnail'");
                 return { file: props => h(TraverseTemplate,{props:{node:item,parent:that,props:props}}) }
+            }else if(item.uniqueIdentifier == 'elSelectOptionTransfer'){
+                console.log("item.uniqueIdentifier == 'elSelectOptionTransfer'");
+                return { default: props => h(TraverseTemplate,{props:{node:item,parent:that,props:props}}) }
             }
         },
 
