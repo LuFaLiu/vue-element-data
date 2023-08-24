@@ -198,6 +198,11 @@ export default {
                                     item.value = event;
                                     that.btnClick(item,'param');
                                 }
+
+                                if(item.clearable) {
+                                    item.value = ''
+                                }
+
                                 var hasVal = false;
                                 if(typeof event == 'string'){
                                     if(event){
