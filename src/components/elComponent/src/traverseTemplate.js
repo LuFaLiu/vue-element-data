@@ -165,6 +165,24 @@ export default {
                     }
                 </div>
             )
+        } else if (node.uniqueIdentifier == 'elSelectCustomTemplate') {
+            console.log("node.uniqueIdentifier == 'elSelectCustomTemplate'");
+            console.log(node);
+            console.log(parent);
+            console.log(props);
+            // 原版  <span v-if="!props.node.isLeaf"> ({{ props.data.children.length }}) </span> 需特殊处理
+            return (
+                <div>
+                    {
+                        parent.superParams.elselect[node.ElOptionListName].map((v, index) => 
+                            <el-option label={v.label} key={v.value} value={v.value}>
+                                <span style="float: left">{ v.label }</span>
+                                <span style="float: right; color: #8492a6; font-size: 13px">{ v.value }</span>
+                            </el-option>
+                        )
+                    }
+                </div>
+            )
         } else {
             return (<span>operation</span>)
         }

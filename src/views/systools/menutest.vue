@@ -325,12 +325,32 @@ export default {
             label: "Zone two",
           },
         ],
+        cities: [{
+          value: 'Beijing',
+          label: 'Beijing'
+        }, {
+          value: 'Shanghai',
+          label: 'Shanghai'
+        }, {
+          value: 'Nanjing',
+          label: 'Nanjing'
+        }, {
+          value: 'Chengdu',
+          label: 'Chengdu'
+        }, {
+          value: 'Shenzhen',
+          label: 'Shenzhen'
+        }, {
+          value: 'Guangzhou',
+          label: 'Guangzhou'
+        }],
         value1: "",
         value2: "",
         value3: "",
         value5: "",
         value6: [],
         value8: [],
+        value9: "",
       },
       elcascader: {
         value1: [],

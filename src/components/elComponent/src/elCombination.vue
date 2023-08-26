@@ -302,6 +302,9 @@ export default {
             }else if(item.uniqueIdentifier == 'elSelectOptionTransfer'){
                 console.log("item.uniqueIdentifier == 'elSelectOptionTransfer'");
                 return { default: props => h(TraverseTemplate,{props:{node:item,parent:that,props:props}}) }
+            }else if(item.uniqueIdentifier == 'elSelectCustomTemplate'){
+                console.log("item.uniqueIdentifier == 'elSelectCustomTemplate'");
+                return { default: props => h(TraverseTemplate,{props:{node:item,parent:that,props:props}}) }
             }
         },
 
@@ -692,6 +695,8 @@ export default {
                                 item[i] = that.superParams.elselect.value6
                             }   else if(item[i] == 'value8') {
                                 item[i] = that.superParams.elselect.value8
+                            }   else if(item[i] == 'value9') {
+                                item[i] = that.superParams.elselect.value9
                             }    
                         }else if(componentNameParams == 'elcascader' && i == 'props'){
                             if(item[i] == 'props1') {
