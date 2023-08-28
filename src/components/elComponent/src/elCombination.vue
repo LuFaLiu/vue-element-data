@@ -305,7 +305,11 @@ export default {
             }else if(item.uniqueIdentifier == 'elSelectCustomTemplate'){
                 console.log("item.uniqueIdentifier == 'elSelectCustomTemplate'");
                 return { default: props => h(TraverseTemplate,{props:{node:item,parent:that,props:props}}) }
+            }else if(item.uniqueIdentifier == 'elSelectGrouping'){
+                console.log("item.uniqueIdentifier == 'elSelectGrouping'");
+                return { default: props => h(TraverseTemplate,{props:{node:item,parent:that,props:props}}) }
             }
+            
         },
 
         getValue(){
@@ -697,7 +701,9 @@ export default {
                                 item[i] = that.superParams.elselect.value8
                             }   else if(item[i] == 'value9') {
                                 item[i] = that.superParams.elselect.value9
-                            }    
+                            }   else if(item[i] == 'value10') {
+                                item[i] = that.superParams.elselect.value10
+                            }   
                         }else if(componentNameParams == 'elcascader' && i == 'props'){
                             if(item[i] == 'props1') {
                                 item[i] = that.superParams.elcascader.props1

@@ -344,6 +344,31 @@ export default {
           value: 'Guangzhou',
           label: 'Guangzhou'
         }],
+        groupingOptions: [{
+          label: 'Popular cities',
+          options: [{
+            value: 'Shanghai',
+            label: 'Shanghai'
+          }, {
+            value: 'Beijing',
+            label: 'Beijing'
+          }]
+        }, {
+          label: 'City name',
+          options: [{
+            value: 'Chengdu',
+            label: 'Chengdu'
+          }, {
+            value: 'Shenzhen',
+            label: 'Shenzhen'
+          }, {
+            value: 'Guangzhou',
+            label: 'Guangzhou'
+          }, {
+            value: 'Dalian',
+            label: 'Dalian'
+          }]
+        }],
         value1: "",
         value2: "",
         value3: "",
@@ -351,6 +376,7 @@ export default {
         value6: [],
         value8: [],
         value9: "",
+        value10: "",
       },
       elcascader: {
         value1: [],

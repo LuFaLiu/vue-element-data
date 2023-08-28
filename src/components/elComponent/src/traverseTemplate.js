@@ -183,6 +183,27 @@ export default {
                     }
                 </div>
             )
+        } else if (node.uniqueIdentifier == 'elSelectGrouping') {
+            console.log("node.uniqueIdentifier == 'elSelectGrouping'");
+            console.log(node);
+            console.log(parent);
+            console.log(props);
+            // 原版  <span v-if="!props.node.isLeaf"> ({{ props.data.children.length }}) </span> 需特殊处理
+            return (
+                <div>
+                    {
+                        parent.superParams.elselect[node.ElOptionListName].map((group, index) => 
+                            <el-option-group key={group.label} label={group.label}>
+                                {
+                                    group.options.map((v, index) => 
+                                        <el-option  label={v.label} key={v.value} value={v.value}></el-option>
+                                    )
+                                }
+                            </el-option-group>
+                        )
+                    }
+                </div>
+            )
         } else {
             return (<span>operation</span>)
         }
