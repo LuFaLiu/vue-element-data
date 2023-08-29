@@ -703,7 +703,9 @@ export default {
                                 item[i] = that.superParams.elselect.value9
                             }   else if(item[i] == 'value10') {
                                 item[i] = that.superParams.elselect.value10
-                            }   
+                            }   else if(item[i] == 'value11') {
+                                item[i] = that.superParams.elselect.value11
+                            }     
                         }else if(componentNameParams == 'elcascader' && i == 'props'){
                             if(item[i] == 'props1') {
                                 item[i] = that.superParams.elcascader.props1
