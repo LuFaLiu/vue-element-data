@@ -369,6 +369,28 @@ export default {
             label: 'Dalian'
           }]
         }],
+        remoteSearchOptions: [],
+        list: [],
+        loading: false,
+        states: [
+          "Alabama", "Alaska", "Arizona",
+          "Arkansas", "California", "Colorado",
+          "Connecticut", "Delaware", "Florida",
+          "Georgia", "Hawaii", "Idaho", "Illinois",
+          "Indiana", "Iowa", "Kansas", "Kentucky",
+          "Louisiana", "Maine", "Maryland",
+          "Massachusetts", "Michigan", "Minnesota",
+          "Mississippi", "Missouri", "Montana",
+          "Nebraska", "Nevada", "New Hampshire",
+          "New Jersey", "New Mexico", "New York",
+          "North Carolina", "North Dakota", "Ohio",
+          "Oklahoma", "Oregon", "Pennsylvania",
+          "Rhode Island", "South Carolina",
+          "South Dakota", "Tennessee", "Texas",
+          "Utah", "Vermont", "Virginia",
+          "Washington", "West Virginia", "Wisconsin",
+          "Wyoming"
+        ],
         value1: "",
         value2: "",
         value3: "",
@@ -378,6 +400,7 @@ export default {
         value9: "",
         value10: "",
         value11: "",
+        value12: [],
       },
       elcascader: {
         value1: [],
@@ -5178,6 +5201,10 @@ export default {
   },
   mounted() {
     this.elskeleton.elskeletonLoading = false;
+
+    this.elselect.list = this.elselect.states.map(item => {
+      return { value: `value:${item}`, label: `label:${item}` };
+    });
   },
   methods: {
     load() {},
@@ -6406,6 +6433,23 @@ export default {
 
     formatTooltip(val) {
       return val / 100;
+    },
+
+    remoteMethod(query) {
+      console.log("remoteMethod(query)");
+      console.log(query);
+      if (query !== '') {
+        this.elselect.loading = true;
+        setTimeout(() => {
+          this.elselect.loading = false;
+          this.elselect.remoteSearchOptions = this.elselect.list.filter(item => {
+            return item.label.toLowerCase()
+              .indexOf(query.toLowerCase()) > -1;
+          });
+        }, 200);
+      } else {
+        this.elselect.remoteSearchOptions = [];
+      }
     },
 
     getVueComponentName(refName, paramsName, paramsVal) {

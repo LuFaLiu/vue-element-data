@@ -498,6 +498,9 @@ export default {
                         }else if(item[i] == 'photoWallPreview'){
                             console.log("item[i] == 'photoWallPreview'");
                             item[i] = that.superParams.photoWallPreview
+                        }else if(item[i] == 'remoteMethod'){
+                            console.log("item[i] == 'remoteMethod'");
+                            item[i] = that.superParams.remoteMethod
                         } else {
                             item[i] = that.superParams[i];
                         }
@@ -505,6 +508,11 @@ export default {
                         if(componentNameParams == 'elskeleton' && i == 'loading'){
                             if(item[i]){
                                 item[i] = that.superParams.elskeleton[item[i]];
+                            }
+                            //item[i] = that.superParams.elskeleton.elskeletonLoading; 
+                        }if(componentNameParams == 'elselect' && i == 'loading'){
+                            if(item[i]){
+                                item[i] = that.superParams.elselect[item[i]];
                             }
                             //item[i] = that.superParams.elskeleton.elskeletonLoading; 
                         } else if(componentNameParams == 'elpagination' && i == 'pageSizes'){
@@ -705,6 +713,8 @@ export default {
                                 item[i] = that.superParams.elselect.value10
                             }   else if(item[i] == 'value11') {
                                 item[i] = that.superParams.elselect.value11
+                            }    else if(item[i] == 'value12') {
+                                item[i] = that.superParams.elselect.value12
                             }     
                         }else if(componentNameParams == 'elcascader' && i == 'props'){
                             if(item[i] == 'props1') {
