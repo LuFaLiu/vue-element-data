@@ -713,8 +713,10 @@ export default {
                                 item[i] = that.superParams.elselect.value10
                             }   else if(item[i] == 'value11') {
                                 item[i] = that.superParams.elselect.value11
-                            }    else if(item[i] == 'value12') {
+                            }   else if(item[i] == 'value12') {
                                 item[i] = that.superParams.elselect.value12
+                            }   else if(item[i] == 'value13') {
+                                item[i] = that.superParams.elselect.value13
                             }     
                         }else if(componentNameParams == 'elcascader' && i == 'props'){
                             if(item[i] == 'props1') {

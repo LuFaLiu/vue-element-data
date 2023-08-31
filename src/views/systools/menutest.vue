@@ -391,6 +391,16 @@ export default {
           "Washington", "West Virginia", "Wisconsin",
           "Wyoming"
         ],
+        newItemOptions: [{
+          value: 'HTML',
+          label: 'HTML'
+        }, {
+          value: 'CSS',
+          label: 'CSS'
+        }, {
+          value: 'JavaScript',
+          label: 'JavaScript'
+        }],
         value1: "",
         value2: "",
         value3: "",
@@ -401,6 +411,7 @@ export default {
         value10: "",
         value11: "",
         value12: [],
+        value13: [],
       },
       elcascader: {
         value1: [],
