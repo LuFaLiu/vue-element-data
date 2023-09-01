@@ -274,12 +274,18 @@ export default {
       elradio: {
         value: "",
       },
-      elinputnumber: {
-        value: 1,
-      },
       elFormNested: {
         inputVal: "",
         selectVal: "",
+      },
+      elinputnumber: {
+        value1: 1,
+        value2: 1,
+        value3: 1,
+        value5: 1,
+        value6: 1,
+        value7: 1,
+        value8: 1
       },
       elselect: {
         ElOptionListName: [{
@@ -3840,6 +3846,62 @@ export default {
         },
         iconAttribute: {
           type: "iconAttribute",
+        },
+        elInputNumberType1: {
+          tag: "span",
+          text: "Basic usage",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputNumberType2: {
+          tag: "span",
+          text: "Disabled",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputNumberType3: {
+          tag: "span",
+          text: "Steps",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputNumberType4: {
+          tag: "span",
+          text: "Step strictly",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputNumberType5: {
+          tag: "span",
+          text: "Precision",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputNumberType6: {
+          tag: "span",
+          text: "Size",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputNumberType7: {
+          tag: "span",
+          text: "Controls Position",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
         },
         elSelectType1: {
           tag: "span",

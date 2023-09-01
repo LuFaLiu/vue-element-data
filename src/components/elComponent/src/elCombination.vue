@@ -692,6 +692,22 @@ export default {
                             if(item[i] == 'options6') {
                                 item[i] = that.superParams.elcascader.options6
                             }
+                        }else if(componentNameParams == 'elinputnumber' && i == 'value'){
+                            if(item[i] == 'value1') {
+                                item[i] = that.superParams.elinputnumber.value1
+                            } else if(item[i] == 'value2') {
+                                item[i] = that.superParams.elinputnumber.value2
+                            }   else if(item[i] == 'value3') {
+                                item[i] = that.superParams.elinputnumber.value3
+                            }   else if(item[i] == 'value5') {
+                                item[i] = that.superParams.elinputnumber.value5
+                            }   else if(item[i] == 'value6') {
+                                item[i] = that.superParams.elinputnumber.value6
+                            }   else if(item[i] == 'value7') {
+                                item[i] = that.superParams.elinputnumber.value7
+                            }   else if(item[i] == 'value8') {
+                                item[i] = that.superParams.elinputnumber.value8
+                            }       
                         }else if(componentNameParams == 'elselect' && i == 'value'){
                             if(item[i] == 'value1') {
                                 item[i] = that.superParams.elselect.value1
