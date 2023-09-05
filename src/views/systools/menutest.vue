@@ -282,7 +282,7 @@ export default {
         value1: 1,
         value2: 1,
         value3: 5,
-        value5: 1,
+        value5: 2,
         value6: 1,
         value7: 1,
         value8: 1
