@@ -285,7 +285,11 @@ export default {
         value5: 2,
         value6: 1,
         value7: 1,
-        value8: 1
+        value8: 1,
+        value9: 1,
+        value10: 1,
+        value11: 1,
+        value12: 1
       },
       elselect: {
         ElOptionListName: [{
@@ -6545,6 +6549,10 @@ export default {
 ::v-deep {
   .upload-demo {
     width: 368px;
+  }
+
+  .elInputNumberSize {
+    margin-right: 15px;
   }
   .el-container {
     .el-form {

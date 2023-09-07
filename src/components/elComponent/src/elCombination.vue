@@ -707,7 +707,15 @@ export default {
                                 item[i] = that.superParams.elinputnumber.value7
                             }   else if(item[i] == 'value8') {
                                 item[i] = that.superParams.elinputnumber.value8
-                            }       
+                            }    else if(item[i] == 'value9') {
+                                item[i] = that.superParams.elinputnumber.value9
+                            }  else if(item[i] == 'value10') {
+                                item[i] = that.superParams.elinputnumber.value10
+                            }  else if(item[i] == 'value11') {
+                                item[i] = that.superParams.elinputnumber.value11
+                            }  else if(item[i] == 'value12') {
+                                item[i] = that.superParams.elinputnumber.value12
+                            }     
                         }else if(componentNameParams == 'elselect' && i == 'value'){
                             if(item[i] == 'value1') {
                                 item[i] = that.superParams.elselect.value1
