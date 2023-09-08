@@ -713,9 +713,7 @@ export default {
                                 item[i] = that.superParams.elinputnumber.value10
                             }  else if(item[i] == 'value11') {
                                 item[i] = that.superParams.elinputnumber.value11
-                            }  else if(item[i] == 'value12') {
-                                item[i] = that.superParams.elinputnumber.value12
-                            }     
+                            }   
                         }else if(componentNameParams == 'elselect' && i == 'value'){
                             if(item[i] == 'value1') {
                                 item[i] = that.superParams.elselect.value1
