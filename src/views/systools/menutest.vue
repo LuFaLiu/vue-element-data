@@ -261,10 +261,6 @@ export default {
         rules: {},
         prop: "",
       },
-      elinput: {
-        value: "title",
-        autosize: {},
-      },
       elcheckbox: {
         value: false,
       },
@@ -277,6 +273,19 @@ export default {
       elFormNested: {
         inputVal: "",
         selectVal: "",
+      },
+      elinput: {
+        value1: '',
+        value2: '',
+        value3: '',
+        value5: '',
+        value6: '',
+        value7: '',
+        value8: '',
+        value9: '',
+        value10: '',
+        value11: '',
+        autosize: {},
       },
       elinputnumber: {
         value1: 1,
@@ -3849,6 +3858,110 @@ export default {
         },
         iconAttribute: {
           type: "iconAttribute",
+        },
+        elInputType1: {
+          tag: "span",
+          text: "Basic usage",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputType2: {
+          tag: "span",
+          text: "Disabled",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputType3: {
+          tag: "span",
+          text: "Clearable",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputType4: {
+          tag: "span",
+          text: "Password box",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputType5: {
+          tag: "span",
+          text: "Input with icon",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputType6: {
+          tag: "span",
+          text: "Textarea",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputType7: {
+          tag: "span",
+          text: "Autosize Textarea",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputType8: {
+          tag: "span",
+          text: "Mixed input",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputType9: {
+          tag: "span",
+          text: "Sizes",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputType10: {
+          tag: "span",
+          text: "Autocomplete",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputType11: {
+          tag: "span",
+          text: "Custom template",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputType12: {
+          tag: "span",
+          text: "Remote search",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elInputType13: {
+          tag: "span",
+          text: "Limit length",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
         },
         elInputNumberType1: {
           tag: "span",
