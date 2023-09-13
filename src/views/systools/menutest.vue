@@ -3891,6 +3891,9 @@ export default {
             display: "block",
           },
         },
+        elinputTypeUsingSlot:{
+          type:'elinputUsingSlot'
+        },
         elInputType5: {
           tag: "span",
           text: "Input with icon",

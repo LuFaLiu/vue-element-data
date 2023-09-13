@@ -86,7 +86,7 @@ export default {
                     {
                         'class':item.class,
                         attrs: item.attrs ? that.superParams[componentNameParams][item.attrs] : {
-                            placeholder: (item.componentName == 'elInput' || item.componentName == 'elSelect') && that.filteri18n(item.placeholder) || ''
+                            placeholder: (item.componentName == 'elInput' || item.componentName == 'elSelect') && that.filteri18n(item.placeholder) || item.placeholder
                         },
                         props: item.props  && componentNameParams !== 'eltree' && componentNameParams !== 'elcascader' ? that.superParams[componentNameParams][item.props] : that.conversionProps(item,componentNameParams),
                         on:{

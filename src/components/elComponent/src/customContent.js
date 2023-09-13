@@ -647,6 +647,23 @@ export default {
                         </el-switch>
                     </el-tooltip>
                 )
+            } else if (node.type == 'elinputUsingSlot') { 
+                console.log("node.type == 'elinputUsingSlot'");
+                return (
+                    <div class="demo-input-suffix">
+                        <span class="demo-input-label">Using slots</span>
+                        <el-input
+                            placeholder="Pick a date"
+                            v-model={this.superParams.elinput.value8}>
+                            <i slot="suffix" class="el-input__icon el-icon-date"></i>
+                        </el-input>
+                        <el-input
+                            placeholder="Type something"
+                            v-model={this.superParams.elinput.value9}>
+                            <i slot="prefix" class="el-input__icon el-icon-search"></i>
+                        </el-input>
+                    </div>
+                )
             } else {
 
                 return h(
