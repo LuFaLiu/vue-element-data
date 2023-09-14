@@ -664,6 +664,16 @@ export default {
                         </el-input>
                     </div>
                 )
+            } else if (node.type == 'elinputTextarea') { 
+                console.log("node.type == 'elinputTextarea'");
+                return (
+                    <el-input
+                        type="textarea"
+                        rows={2}
+                        placeholder="Please input"
+                        v-model={this.superParams.elinput.textarea1}>
+                    </el-input>
+                )
             } else {
 
                 return h(
