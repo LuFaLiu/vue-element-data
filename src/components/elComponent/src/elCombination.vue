@@ -713,7 +713,13 @@ export default {
                                 item[i] = that.superParams.elinput.value10
                             }  else if(item[i] == 'value11') {
                                 item[i] = that.superParams.elinput.value11
-                            }   
+                            }    else if(item[i] == 'textarea1') {
+                                item[i] = that.superParams.elinput.textarea1
+                            }     else if(item[i] == 'textarea2') {
+                                item[i] = that.superParams.elinput.textarea2
+                            }     else if(item[i] == 'textarea3') {
+                                item[i] = that.superParams.elinput.textarea3
+                            }    
                         }else if(componentNameParams == 'elinputnumber' && i == 'value'){
                             if(item[i] == 'value1') {
                                 item[i] = that.superParams.elinputnumber.value1

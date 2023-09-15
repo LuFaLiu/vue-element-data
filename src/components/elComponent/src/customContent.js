@@ -674,6 +674,17 @@ export default {
                         v-model={this.superParams.elinput.textarea1}>
                     </el-input>
                 )
+            } else if (node.type == 'elinputTextareaAutosize') { 
+                console.log("node.type == 'elinputTextareaAutosize'");
+                var autosize = { minRows: 2, maxRows: 4}
+                return (
+                    <el-input
+                        type="textarea"
+                        autosize={autosize}
+                        placeholder="Please input"
+                        v-model={this.superParams.elinput.textarea3}>
+                    </el-input>
+                )
             } else {
 
                 return h(

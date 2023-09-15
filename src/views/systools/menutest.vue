@@ -286,6 +286,8 @@ export default {
         value10: '',
         value11: '',
         textarea1: '',
+        textarea2: '',
+        textarea3: '',
         autosize: {},
       },
       elinputnumber: {
@@ -3913,6 +3915,9 @@ export default {
             margin: "15px",
             display: "block",
           },
+        },
+        elInputTypeTextareaAutosize: {
+          type:'elinputTextareaAutosize'
         },
         elInputType7: {
           tag: "span",
