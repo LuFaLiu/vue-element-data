@@ -685,6 +685,26 @@ export default {
                         v-model={this.superParams.elinput.textarea3}>
                     </el-input>
                 )
+            } else if (node.type == 'elMixedInput') { 
+                console.log("node.type == 'elMixedInput'");
+                return (
+                    <div>
+                        <el-input placeholder="Please input" v-model={this.superParams.elinput.value8}>
+                            <template slot="prepend">Http://</template>
+                        </el-input>
+                        <el-input placeholder="Please input" v-model={this.superParams.elinput.value9}>
+                            <template slot="append">.com</template>
+                        </el-input>
+                        <el-input placeholder="Please input" v-model={this.superParams.elinput.value10} class="input-with-select">
+                            <el-select v-model={this.superParams.elinput.value11} slot="prepend" placeholder="Select">
+                                <el-option label="Restaurant" value="1"></el-option>
+                                <el-option label="Order No." value="2"></el-option>
+                                <el-option label="Tel" value="3"></el-option>
+                            </el-select>
+                            <el-button slot="append" icon="el-icon-search"></el-button>
+                        </el-input>
+                    </div>
+                )
             } else {
 
                 return h(

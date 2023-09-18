@@ -3927,6 +3927,9 @@ export default {
             display: "block",
           },
         },
+        elMixedInputType: {
+          type:'elMixedInput'
+        },
         elInputType8: {
           tag: "span",
           text: "Mixed input",
