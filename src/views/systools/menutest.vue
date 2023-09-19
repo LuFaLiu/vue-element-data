@@ -300,7 +300,12 @@ export default {
         value8: 1,
         value9: 1,
         value10: 1,
-        value11: 1
+        value11: '',
+        value12: '',
+        value13: '',
+        value14: '',
+        value15: '',
+        value16: '',
       },
       elselect: {
         ElOptionListName: [{

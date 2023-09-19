@@ -713,7 +713,17 @@ export default {
                                 item[i] = that.superParams.elinput.value10
                             }  else if(item[i] == 'value11') {
                                 item[i] = that.superParams.elinput.value11
-                            }    else if(item[i] == 'textarea1') {
+                            }   else if(item[i] == 'value12') {
+                                item[i] = that.superParams.elinput.value12
+                            }   else if(item[i] == 'value13') {
+                                item[i] = that.superParams.elinput.value13
+                            }   else if(item[i] == 'value14') {
+                                item[i] = that.superParams.elinput.value14
+                            }   else if(item[i] == 'value15') {
+                                item[i] = that.superParams.elinput.value15
+                            }   else if(item[i] == 'value16') {
+                                item[i] = that.superParams.elinput.value16
+                            }  else if(item[i] == 'textarea1') {
                                 item[i] = that.superParams.elinput.textarea1
                             }     else if(item[i] == 'textarea2') {
                                 item[i] = that.superParams.elinput.textarea2
