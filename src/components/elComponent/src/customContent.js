@@ -705,6 +705,35 @@ export default {
                         </el-input>
                     </div>
                 )
+            } else if (node.type == 'elInputAutocomplete') {
+                console.log("node.type == 'elInputAutocomplete'");
+                return (
+                    <div>
+                        <el-row class="demo-autocomplete">
+                            <el-col span="12">
+                                <div class="sub-title">list suggestions when activated</div>
+                                <el-autocomplete
+                                class="inline-input"
+                                v-model={this.superParams.elautocomplete.state1}
+                                fetch-suggestions={this.superParams.querySearchAutocomplete}
+                                placeholder="Please Input"
+                                v-on:select={this.superParams.handleSelectAutocomplete}
+                                ></el-autocomplete>
+                            </el-col>
+                            <el-col span="12">
+                                <div class="sub-title">list suggestions on input</div>
+                                <el-autocomplete
+                                class="inline-input"
+                                v-model={this.superParams.elautocomplete.state2}
+                                fetch-suggestions={this.superParams.querySearchAutocomplete}
+                                placeholder="Please Input"
+                                trigger-on-focus="false"
+                                v-on:select={this.superParams.handleSelectAutocomplete}
+                                ></el-autocomplete>
+                            </el-col>
+                        </el-row>
+                    </div>
+                )
             } else {
 
                 return h(

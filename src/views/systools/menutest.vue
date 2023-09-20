@@ -290,6 +290,11 @@ export default {
         textarea3: '',
         autosize: {},
       },
+      elautocomplete: {
+        links: [],
+        state1: '',
+        state2: ''
+      },
       elinputnumber: {
         value1: 1,
         value2: 1,
@@ -3951,6 +3956,9 @@ export default {
             display: "block",
           },
         },
+        elInputAutocompleteType: {
+          type: 'elInputAutocomplete'
+        },
         elInputType10: {
           tag: "span",
           text: "Autocomplete",
@@ -5414,6 +5422,8 @@ export default {
     this.elselect.list = this.elselect.states.map(item => {
       return { value: `value:${item}`, label: `label:${item}` };
     });
+
+    this.elautocomplete.links = this.loadAutocompleteAll();
   },
   methods: {
     load() {},
@@ -6659,6 +6669,36 @@ export default {
       } else {
         this.elselect.remoteSearchOptions = [];
       }
+    },
+
+    querySearchAutocomplete(queryString, cb) {
+      console.log("querySearchAutocomplete===========>");
+      var links = this.elautocomplete.links;
+      var results = queryString ? links.filter(this.createAutocompleteFilter(queryString)) : links;
+      // call callback function to return suggestions
+      cb(results);
+    },
+
+    createAutocompleteFilter(queryString) {
+      return (link) => {
+        return (link.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+      };
+    },
+    
+    handleSelectAutocomplete(item) {
+      console.log(item);
+    },
+
+    loadAutocompleteAll() {
+      return [
+        { "value": "vue", "link": "https://github.com/vuejs/vue" },
+        { "value": "element", "link": "https://github.com/ElemeFE/element" },
+        { "value": "cooking", "link": "https://github.com/ElemeFE/cooking" },
+        { "value": "mint-ui", "link": "https://github.com/ElemeFE/mint-ui" },
+        { "value": "vuex", "link": "https://github.com/vuejs/vuex" },
+        { "value": "vue-router", "link": "https://github.com/vuejs/vue-router" },
+        { "value": "babel", "link": "https://github.com/babel/babel" }
+      ];
     },
 
     getVueComponentName(refName, paramsName, paramsVal) {
