@@ -293,7 +293,9 @@ export default {
       elautocomplete: {
         links: [],
         state1: '',
-        state2: ''
+        state2: '',
+        state3: '',
+        popperOptions:{ boundariesElement: 'viewport', removeOnDestroy: true }
       },
       elinputnumber: {
         value1: 1,
@@ -6686,6 +6688,10 @@ export default {
     },
     
     handleSelectAutocomplete(item) {
+      console.log(item);
+    },
+
+    handleClickAutocomplete(item) {
       console.log(item);
     },
 

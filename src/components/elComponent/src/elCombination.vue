@@ -308,6 +308,12 @@ export default {
             }else if(item.uniqueIdentifier == 'elSelectGrouping'){
                 console.log("item.uniqueIdentifier == 'elSelectGrouping'");
                 return { default: props => h(TraverseTemplate,{props:{node:item,parent:that,props:props}}) }
+            }else if(item.uniqueIdentifier == 'elAutocompleteCustomTemplate'){
+                console.log("item.uniqueIdentifier == 'elAutocompleteCustomTemplate'");
+                return { default: props => h(TraverseTemplate,{props:{node:item,parent:that,props:props}}) }
+            }else if(item.uniqueIdentifier == 'elAutocompleteSuffixIcon'){
+                console.log("item.uniqueIdentifier == 'elAutocompleteSuffixIcon'");
+                return { default: props => h(TraverseTemplate,{props:{node:item,parent:that,props:props}}) }
             }
             
         },
@@ -938,7 +944,27 @@ export default {
                                 item[i] = that.superParams.eldatepicker.monthRangePickerOptions
                             }
                             
-                        }  else {
+                        }  else if(componentNameParams == 'elautocomplete' && i == 'value'){
+                            if(item[i] == 'state3') {
+                                item[i] = that.superParams.elautocomplete.state3
+                            } 
+                        }  else if(componentNameParams == 'elautocomplete' && i == 'valueKey'){
+                            if(item[i] == 'state3') {
+                                item[i] = that.superParams.elautocomplete.state3
+                            } 
+                        }   else if(componentNameParams == 'elautocomplete' && i == 'fetchSuggestions'){
+                            if(item[i] == 'querySearchAutocomplete') {
+                                item[i] = that.superParams.querySearchAutocomplete
+                            } 
+                        }  else if(componentNameParams == 'elautocomplete' && i == 'popperOptions'){
+                            if(item[i] == 'popperOptions') {
+                                item[i] = that.superParams.elautocomplete.popperOptions
+                            } 
+                        }  else if(componentNameParams == 'elautocomplete' && i == 'select'){
+                            if(item[i] == 'handleSelectAutocomplete') {
+                                item[i] = that.superParams.elautocomplete.handleSelectAutocomplete
+                            } 
+                        }else {
                             item[i] = componentNameParams == 'eldialog' && i == 'width' ? item[i] :
                                       ( 
                                             i == item[i] 

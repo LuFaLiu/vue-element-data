@@ -204,6 +204,29 @@ export default {
                     }
                 </div>
             )
+        }else if (node.uniqueIdentifier == 'elAutocompleteSuffixIcon') {
+            console.log("node.uniqueIdentifier == 'elAutocompleteSuffixIcon'");
+            console.log(node);
+            console.log(parent);
+            console.log(props);
+            return (
+                <i
+                    class="el-icon-edit el-input__icon"
+                    slot="suffix"
+                    v-on:click={parent.superParams.handleClickAutocomplete}>
+                </i>
+            )
+        } else if (node.uniqueIdentifier == 'elAutocompleteCustomTemplate') {
+            console.log("node.uniqueIdentifier == 'elAutocompleteCustomTemplate'");
+            console.log(node);
+            console.log(parent);
+            console.log(props);
+            return (
+                <div style="display:flex;flex-direction: column;">
+                    <div class="value">{ props.item.value }</div>
+                    <span class="link">{ props.item.link }</span>
+                </div>
+            )
         } else {
             return (<span>operation</span>)
         }

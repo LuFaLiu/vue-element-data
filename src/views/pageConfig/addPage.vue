@@ -482,6 +482,9 @@ export default {
           this.componentProps.push({attributeName:'nodeDragEnd',attributeLabel:'nodeDragEnd',attributeModel:'nodeDragEnd','nodeDragEnd': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           this.componentProps.push({attributeName:'nodeDrop',attributeLabel:'nodeDrop',attributeModel:'nodeDrop','nodeDrop': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;   
+        case 'ElAutocomplete':
+          this.componentProps.push({attributeName:'select',attributeLabel:'select',attributeModel:'select','select': '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          break;   
         default: 
           this.componentProps.push({attributeName:'class',attributeLabel:'class',attributeModel:'class','class': '' ,inputFormat:'list', attributeType: 'ruleInput'})
           this.componentProps.push({attributeName:'refName',attributeLabel:'refName',attributeModel:'refName','refName': '' ,inputFormat:'string', attributeType: 'ruleInput'})
