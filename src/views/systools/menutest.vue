@@ -295,6 +295,8 @@ export default {
         state1: '',
         state2: '',
         state3: '',
+        state5: '',
+        timeout:  null,
         popperOptions:{ boundariesElement: 'viewport', removeOnDestroy: true }
       },
       elinputnumber: {
@@ -3977,6 +3979,9 @@ export default {
             display: "block",
           },
         },
+        elInputAutocompleteRemoteSearchType: {
+          type: 'elInputAutocompleteRemoteSearch'
+        },
         elInputType12: {
           tag: "span",
           text: "Remote search",
@@ -6679,6 +6684,16 @@ export default {
       var results = queryString ? links.filter(this.createAutocompleteFilter(queryString)) : links;
       // call callback function to return suggestions
       cb(results);
+    },
+
+    queryRemoteSearchAsync(queryString, cb) {
+      var links = this.elautocomplete.links;
+      var results = queryString ? links.filter(this.createFilter(queryString)) : links;
+
+      clearTimeout(this.timeout);
+      this.elautocomplete.timeout = setTimeout(() => {
+        cb(results);
+      }, 3000 * Math.random());
     },
 
     createAutocompleteFilter(queryString) {

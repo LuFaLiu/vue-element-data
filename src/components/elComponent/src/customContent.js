@@ -734,6 +734,16 @@ export default {
                         </el-row>
                     </div>
                 )
+            } else if (node.type == 'elInputAutocompleteRemoteSearch') {
+                console.log("node.type == 'elInputAutocompleteRemoteSearch'");
+                return (
+                    <el-autocomplete
+                    v-model={this.superParams.elautocomplete.state5}
+                        fetch-suggestions={this.superParams.queryRemoteSearchAsync}
+                        placeholder="Please input"
+                        v-on:select={this.superParams.handleSelectAutocomplete}
+                        ></el-autocomplete>
+                )
             }else {
 
                 return h(
