@@ -362,7 +362,7 @@ export default {
         //特殊属性作处理
         if(i == 'modal'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
-        }else if(i == 'showClose' || i == 'disabled' || i == 'showPassword' || i == 'clearable' || i== 'loading' || i == 'autosize' || i == 'border' || i == 'vertical' || i == 'readonly' || i == 'drag' || i == 'showScore' || i == 'round' || i == 'plain' || i == 'circle' || i == 'filterable' || i == 'showSummary' || i == 'remote' || i == 'multiple' || i == 'required' || i == 'lazy' || i == 'textInside' || i == 'hidden' || i == 'isDot' || i == 'closable' || i == 'addable' || i == 'editable' || i == 'divided' || i == 'simple' || i == 'appendToBody' || i== 'visible' || i == 'hideIcon' || i == 'manual' || i == 'splitButton' || i == 'showIcon' || i == 'center' || i == 'background' || i == 'small' || i == 'hideOnSinglePage' || i == 'defaultExpandAll' || i == 'highlightCurrent' || i == 'showCheckbox' || i == 'accordion' || i == 'sortable' || i == 'stripe' || i == 'fit' || i == 'highlightCurrentRow' || i == 'showText' || i == 'showStops' || i == 'range' || i == 'showInput' || i == 'collapseTags' || i == 'stepStrictly'){
+        }else if(i == 'showClose' || i == 'disabled' || i == 'showPassword' || i == 'clearable' || i== 'loading' || i == 'autosize' || i == 'border' || i == 'vertical' || i == 'readonly' || i == 'drag' || i == 'showScore' || i == 'round' || i == 'plain' || i == 'circle' || i == 'filterable' || i == 'showSummary' || i == 'remote' || i == 'multiple' || i == 'required' || i == 'lazy' || i == 'textInside' || i == 'hidden' || i == 'isDot' || i == 'closable' || i == 'addable' || i == 'editable' || i == 'divided' || i == 'simple' || i == 'appendToBody' || i== 'visible' || i == 'hideIcon' || i == 'manual' || i == 'splitButton' || i == 'showIcon' || i == 'center' || i == 'background' || i == 'small' || i == 'hideOnSinglePage' || i == 'defaultExpandAll' || i == 'highlightCurrent' || i == 'showCheckbox' || i == 'accordion' || i == 'sortable' || i == 'stripe' || i == 'fit' || i == 'highlightCurrentRow' || i == 'showText' || i == 'showStops' || i == 'range' || i == 'showInput' || i == 'collapseTags' || i == 'stepStrictly' || i == 'showWordLimit'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: componentInfo[i].default ? componentInfo[i].default : false ,inputFormat:'text', attributeType: 'ruleRadio'})
         }else if(i == 'pageSizes'){
           this.componentProps.push({attributeName:i,attributeLabel:i,attributeModel:i,[`${i}`]: '[10, 20, 30, 40, 50, 100]',inputFormat:'Array', attributeType: 'ruleInput'})
@@ -401,6 +401,7 @@ export default {
           break;        
         case 'ElInput':
           this.componentProps.push({attributeName:'placeholder',attributeLabel:'placeholder',attributeModel:'placeholder',[`${i}`]: '' ,inputFormat:'string', attributeType: 'ruleInput'})
+          this.componentProps.push({attributeName:'ref',attributeLabel:'ref',attributeModel:'ref','ref': '' ,inputFormat:'string', attributeType: 'ruleInput'})
           break;
         case 'ElTimePicker':
           this.componentProps.push({attributeName:'isRange',attributeLabel:'isRange',attributeModel:'isRange','isRange': false ,inputFormat:'boolean', attributeType: 'ruleRadio'})

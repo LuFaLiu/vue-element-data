@@ -289,6 +289,8 @@ export default {
         textarea2: '',
         textarea3: '',
         autosize: {},
+        value12: '',
+        value13: ''
       },
       elautocomplete: {
         links: [],
@@ -3997,6 +3999,9 @@ export default {
             margin: "15px",
             display: "block",
           },
+        },
+        elInputLimitLengthType: {
+          type: 'elInputLimitLength'
         },
         elInputNumberType1: {
           tag: "span",

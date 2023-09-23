@@ -744,6 +744,29 @@ export default {
                         v-on:select={this.superParams.handleSelectAutocomplete}
                         ></el-autocomplete>
                 )
+            } else if (node.type == 'elInputLimitLength') {
+                console.log("node.type == 'elInputLimitLength'");
+                return (
+                    <div>
+                        <el-input
+                            type="text"
+                            placeholder="Please input"
+                            v-model={this.superParams.elinput.value12}
+                            maxlength="10"
+                            show-word-limit
+                        >
+                        </el-input>
+                        <div style="margin: 20px 0;"></div>
+                        <el-input
+                            type="textarea"
+                            placeholder="Please input"
+                            v-model={this.superParams.elinput.value13}
+                            maxlength="30"
+                            show-word-limit
+                        >
+                        </el-input>
+                    </div>
+                )
             }else {
 
                 return h(
