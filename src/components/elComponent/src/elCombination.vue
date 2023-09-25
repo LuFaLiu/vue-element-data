@@ -698,6 +698,32 @@ export default {
                             if(item[i] == 'options6') {
                                 item[i] = that.superParams.elcascader.options6
                             }
+                        }else if(componentNameParams == 'elcheckbox' && i == 'value'){
+                            if(item[i] == 'value1') {
+                                item[i] = that.superParams.elcheckbox.value1
+                            } else if(item[i] == 'value2') {
+                                item[i] = that.superParams.elcheckbox.value2
+                            }   else if(item[i] == 'value3') {
+                                item[i] = that.superParams.elcheckbox.value3
+                            }   else if(item[i] == 'value5') {
+                                item[i] = that.superParams.elcheckbox.value5
+                            }   else if(item[i] == 'value6') {
+                                item[i] = that.superParams.elcheckbox.value6
+                            }   else if(item[i] == 'value7') {
+                                item[i] = that.superParams.elcheckbox.value7
+                            }   else if(item[i] == 'value8') {
+                                item[i] = that.superParams.elcheckbox.value8
+                            }    else if(item[i] == 'value9') {
+                                item[i] = that.superParams.elcheckbox.value9
+                            }  else if(item[i] == 'value10') {
+                                item[i] = that.superParams.elcheckbox.value10
+                            }  else if(item[i] == 'value11') {
+                                item[i] = that.superParams.elcheckbox.value11
+                            }   else if(item[i] == 'value12') {
+                                item[i] = that.superParams.elcheckbox.value12
+                            }   else if(item[i] == 'value13') {
+                                item[i] = that.superParams.elcheckbox.value13
+                            }  
                         }else if(componentNameParams == 'elinput' && i == 'value'){
                             if(item[i] == 'value1') {
                                 item[i] = that.superParams.elinput.value1

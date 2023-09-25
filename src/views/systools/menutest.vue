@@ -261,9 +261,6 @@ export default {
         rules: {},
         prop: "",
       },
-      elcheckbox: {
-        value: false,
-      },
       elradiogroup: {
         value: "top",
       },
@@ -273,6 +270,16 @@ export default {
       elFormNested: {
         inputVal: "",
         selectVal: "",
+      },
+      elcheckbox: {
+        value1: true,
+        value2: false,
+        value3: true,
+        value5: true,
+        value6: true,
+        value7: true,
+        value8: true,
+        value9: true,
       },
       elinput: {
         value1: '',
@@ -3877,6 +3884,62 @@ export default {
         },
         iconAttribute: {
           type: "iconAttribute",
+        },
+        elCheckboxType1: {
+          tag: "span",
+          text: "Basic usage",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCheckboxType2: {
+          tag: "span",
+          text: "Disabled State",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCheckboxType3: {
+          tag: "span",
+          text: "Checkbox group",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCheckboxType4: {
+          tag: "span",
+          text: "Indeterminate",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCheckboxType5: {
+          tag: "span",
+          text: "Minimum / Maximum items checked",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCheckboxType6: {
+          tag: "span",
+          text: "Button style",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
+        },
+        elCheckboxType7: {
+          tag: "span",
+          text: "With borders",
+          style: {
+            margin: "15px",
+            display: "block",
+          },
         },
         elInputType1: {
           tag: "span",
