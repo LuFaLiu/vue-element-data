@@ -280,6 +280,7 @@ export default {
         value7: true,
         value8: true,
         value9: true,
+        checkList1: ['selected and disabled','Option A']
       },
       elinput: {
         value1: '',
