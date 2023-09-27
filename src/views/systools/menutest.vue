@@ -12,6 +12,8 @@ import _ from "lodash";
 import elComponent from "@/components/elComponent/index";
 import { resetObj, getVueComponent } from "@/utils/index";
 
+const cityOption1 = ['Shanghai', 'Beijing', 'Guangzhou', 'Shenzhen'];
+
 let id = 0;
 export default {
   provide() {
@@ -280,7 +282,11 @@ export default {
         value7: true,
         value8: true,
         value9: true,
-        checkList1: ['selected and disabled','Option A']
+        checkList1: ['selected and disabled','Option A'],
+        checkAll1: false,
+        checkedCitie1: ['Shanghai', 'Beijing'],
+        citie1: cityOption1,
+        isIndeterminate1: true
       },
       elinput: {
         value1: '',
@@ -3902,6 +3908,9 @@ export default {
             display: "block",
           },
         },
+        elCheckboxIndeterminateType: {
+          type: 'elCheckboxIndeterminate'
+        },
         elCheckboxType3: {
           tag: "span",
           text: "Checkbox group",
@@ -6789,6 +6798,16 @@ export default {
         { "value": "vue-router", "link": "https://github.com/vuejs/vue-router" },
         { "value": "babel", "link": "https://github.com/babel/babel" }
       ];
+    },
+
+    handleCheckAllChange(val) {
+      this.elcheckbox.checkedCitie1 = val ? cityOption1 : [];
+      this.elcheckbox.isIndeterminate = false;
+    },
+    handleCheckedCitiesChange(value) {
+      let checkedCount = value.length;
+      this.elcheckbox.checkAll1 = checkedCount === this.elcheckbox.citie1.length;
+      this.elcheckbox.isIndeterminate1 = checkedCount > 0 && checkedCount < this.elcheckbox.citie1.length;
     },
 
     getVueComponentName(refName, paramsName, paramsVal) {

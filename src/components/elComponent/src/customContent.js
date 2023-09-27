@@ -767,6 +767,27 @@ export default {
                         </el-input>
                     </div>
                 )
+            } else if (node.type == 'elCheckboxIndeterminate') {
+                console.log("node.type == 'elCheckboxIndeterminate'");
+                return (
+                    <div>
+                        <el-checkbox indeterminate={this.superParams.elcheckbox.isIndeterminate1} v-model={this.superParams.elcheckbox.checkAll} v-on:change={this.superParams.handleCheckAllChange}>Check all</el-checkbox>
+                        <div style="margin: 15px 0;"></div>
+                        <el-checkbox-group v-model={this.superParams.elcheckbox.checkedCitie1} v-on:change={this.superParams.handleCheckedCitiesChange}>
+                            {
+                                this.superParams.elcheckbox.citie1.map((city, index) =>
+                                    <el-checkbox
+                                        label={city} 
+                                        key={city}
+                                    >
+                                        {city}
+                                    </el-checkbox>
+                                )
+
+                            }
+                        </el-checkbox-group>
+                    </div>
+                )
             }else {
 
                 return h(
