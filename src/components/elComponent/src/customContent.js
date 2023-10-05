@@ -788,6 +788,25 @@ export default {
                         </el-checkbox-group>
                     </div>
                 )
+            } else if (node.type == 'elCheckboxMinimum') {
+                console.log("node.type == 'elCheckboxMinimum'");
+                return (
+                    <div>
+                        <el-checkbox-group min={"1"} max={"2"} v-model={this.superParams.elcheckbox.checkedCitie2} v-on:change={this.superParams.handleCheckedCitiesChange}>
+                            {
+                                this.superParams.elcheckbox.citie1.map((city, index) =>
+                                    <el-checkbox
+                                        label={city} 
+                                        key={city}
+                                    >
+                                        {city}
+                                    </el-checkbox>
+                                )
+
+                            }
+                        </el-checkbox-group>
+                    </div>
+                )
             }else {
 
                 return h(

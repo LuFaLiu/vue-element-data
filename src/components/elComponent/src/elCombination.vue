@@ -725,6 +725,10 @@ export default {
                                 item[i] = that.superParams.elcheckbox.value13
                             }   else if(item[i] == 'checkList1') {
                                 item[i] = that.superParams.elcheckbox.checkList1
+                            }    else if(item[i] == 'checkedCitie1') {
+                                item[i] = that.superParams.elcheckbox.checkedCitie1
+                            }     else if(item[i] == 'checkedCitie2') {
+                                item[i] = that.superParams.elcheckbox.checkedCitie2
                             } 
                         }else if(componentNameParams == 'elinput' && i == 'value'){
                             if(item[i] == 'value1') {

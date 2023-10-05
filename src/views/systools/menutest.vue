@@ -285,6 +285,7 @@ export default {
         checkList1: ['selected and disabled','Option A'],
         checkAll1: false,
         checkedCitie1: ['Shanghai', 'Beijing'],
+        checkedCitie2: ['Shanghai', 'Beijing'],
         citie1: cityOption1,
         isIndeterminate1: true
       },
@@ -3918,6 +3919,9 @@ export default {
             margin: "15px",
             display: "block",
           },
+        },
+        elMinimumType: {
+          type: 'elCheckboxMinimum'
         },
         elCheckboxType4: {
           tag: "span",
