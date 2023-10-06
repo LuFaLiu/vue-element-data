@@ -287,7 +287,11 @@ export default {
         checkedCitie1: ['Shanghai', 'Beijing'],
         checkedCitie2: ['Shanghai', 'Beijing'],
         citie1: cityOption1,
-        isIndeterminate1: true
+        isIndeterminate1: true,
+        checkboxGroup1: ['Shanghai'],
+        checkboxGroup2: ['Shanghai'],
+        checkboxGroup3: ['Shanghai'],
+        checkboxGroup4: ['Shanghai'],
       },
       elinput: {
         value1: '',
@@ -3930,6 +3934,9 @@ export default {
             margin: "15px",
             display: "block",
           },
+        },
+        elCheckboxButtonStyleType: {
+          type: 'elCheckboxButtonStyle'
         },
         elCheckboxType5: {
           tag: "span",

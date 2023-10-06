@@ -807,6 +807,48 @@ export default {
                         </el-checkbox-group>
                     </div>
                 )
+            } else if (node.type == 'elCheckboxButtonStyle') {
+                console.log("node.type == 'elCheckboxButtonStyle'");
+                return (
+                    <div>
+                        <div>
+                            <el-checkbox-group v-model={this.superParams.elcheckbox.checkboxGroup1}>
+                                {
+                                    this.superParams.elcheckbox.citie1.map((city, index) =>
+                                        <el-checkbox-button label={city} key={city}>{city}</el-checkbox-button>
+                                    )
+                                }
+                            </el-checkbox-group>
+                        </div>
+                        <div style="margin-top: 20px">
+                            <el-checkbox-group v-model={this.superParams.elcheckbox.checkboxGroup2} size="medium">
+                                {
+                                    this.superParams.elcheckbox.citie1.map((city, index) =>
+                                        <el-checkbox-button label={city} key={city}>{city}</el-checkbox-button>
+                                    )
+                                }
+                            </el-checkbox-group>
+                        </div>
+                        <div style="margin-top: 20px">
+                            <el-checkbox-group v-model={this.superParams.elcheckbox.checkboxGroup3} size="small">
+                                {
+                                    this.superParams.elcheckbox.citie1.map((city, index) =>
+                                        <el-checkbox-button label={city} key={city} disabled={city === 'Beijing'}>{city}</el-checkbox-button>
+                                    )
+                                }
+                            </el-checkbox-group>
+                        </div>
+                        <div style="margin-top: 20px">
+                            <el-checkbox-group v-model={this.superParams.elcheckbox.checkboxGroup4} size="mini" disabled>
+                                {
+                                    this.superParams.elcheckbox.citie1.map((city, index) =>
+                                        <el-checkbox-button label={city} key={city}>{city}</el-checkbox-button>
+                                    )
+                                }
+                            </el-checkbox-group>
+                        </div>
+                    </div>
+                )
             }else {
 
                 return h(
