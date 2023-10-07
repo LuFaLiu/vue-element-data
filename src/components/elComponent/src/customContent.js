@@ -849,6 +849,32 @@ export default {
                         </div>
                     </div>
                 )
+            } else if (node.type == 'elCheckboxWithBorder') {
+                console.log("node.type == 'elCheckboxWithBorder'");
+                return (
+                    <div>
+                        <div>
+                            <el-checkbox v-model={this.superParams.elcheckboxchecked1} label="Option1" border></el-checkbox>
+                            <el-checkbox v-model={this.superParams.elcheckboxchecked2} label="Option2" border></el-checkbox>
+                        </div>
+                        <div style="margin-top: 20px">
+                            <el-checkbox v-model={this.superParams.elcheckboxchecked3} label="Option1" border size="medium"></el-checkbox>
+                            <el-checkbox v-model={this.superParams.elcheckboxchecked4} label="Option2" border size="medium"></el-checkbox>
+                        </div>
+                        <div style="margin-top: 20px">
+                            <el-checkbox-group v-model={this.superParams.elcheckboxcheckboxGroup5} size="small">
+                            <el-checkbox label="Option1" border></el-checkbox>
+                            <el-checkbox label="Option2" border disabled></el-checkbox>
+                            </el-checkbox-group>
+                        </div>
+                        <div style="margin-top: 20px">
+                            <el-checkbox-group v-model={this.superParams.elcheckboxcheckboxGroup6} size="mini" disabled>
+                            <el-checkbox label="Option1" border></el-checkbox>
+                            <el-checkbox label="Option2" border></el-checkbox>
+                            </el-checkbox-group>
+                        </div>
+                    </div>
+                )
             }else {
 
                 return h(

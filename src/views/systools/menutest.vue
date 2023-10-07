@@ -292,6 +292,12 @@ export default {
         checkboxGroup2: ['Shanghai'],
         checkboxGroup3: ['Shanghai'],
         checkboxGroup4: ['Shanghai'],
+        checked1: true,
+        checked2: false,
+        checked3: false,
+        checked4: true,
+        checkboxGroup5: [],
+        checkboxGroup6: []
       },
       elinput: {
         value1: '',
@@ -3953,6 +3959,9 @@ export default {
             margin: "15px",
             display: "block",
           },
+        },
+        elCheckboxWithBordersType: {
+          type: 'elCheckboxWithBorder'
         },
         elCheckboxType7: {
           tag: "span",
