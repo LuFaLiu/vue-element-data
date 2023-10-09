@@ -266,12 +266,16 @@ export default {
       elradiogroup: {
         value: "top",
       },
-      elradio: {
-        value: "",
-      },
       elFormNested: {
         inputVal: "",
         selectVal: "",
+      },
+      elradio: {
+        value1: '1',
+        value2: 'selected and disabled',
+        value3: "",
+        value5: "",
+        value6: "",
       },
       elcheckbox: {
         value1: true,
@@ -3902,6 +3906,46 @@ export default {
         },
         iconAttribute: {
           type: "iconAttribute",
+        },
+        elRadioType1: {
+          tag: "span",
+          text: "Basic usage",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elRadioType2: {
+          tag: "span",
+          text: "Disabled",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elRadioType3: {
+          tag: "span",
+          text: "Radio button group",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elRadioType4: {
+          tag: "span",
+          text: "Button style",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elRadioType5: {
+          tag: "span",
+          text: "With borders",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
         },
         elCheckboxType1: {
           tag: "span",

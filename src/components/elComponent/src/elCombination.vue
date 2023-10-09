@@ -698,6 +698,18 @@ export default {
                             if(item[i] == 'options6') {
                                 item[i] = that.superParams.elcascader.options6
                             }
+                        }else if(componentNameParams == 'elradio' && i == 'value'){
+                            if(item[i] == 'value1') {
+                                item[i] = that.superParams.elradio.value1
+                            } else if(item[i] == 'value2') {
+                                item[i] = that.superParams.elradio.value2
+                            }   else if(item[i] == 'value3') {
+                                item[i] = that.superParams.elradio.value3
+                            }   else if(item[i] == 'value5') {
+                                item[i] = that.superParams.elradio.value5
+                            }   else if(item[i] == 'value6') {
+                                item[i] = that.superParams.elradio.value6
+                            }  
                         }else if(componentNameParams == 'elcheckbox' && i == 'value'){
                             if(item[i] == 'value1') {
                                 item[i] = that.superParams.elcheckbox.value1
