@@ -875,6 +875,15 @@ export default {
                         </div>
                     </div>
                 )
+            } else if (node.type == 'elRadioButtonGroup') {
+                console.log("node.type == 'elRadioButtonGroup'");
+                return (
+                    <el-radio-group v-model={this.superParams.elradio.value3}>
+                        <el-radio label={3}>Option A</el-radio>
+                        <el-radio label={6}>Option B</el-radio>
+                        <el-radio label={9}>Option C</el-radio>
+                    </el-radio-group>
+                )
             }else {
 
                 return h(

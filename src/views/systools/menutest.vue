@@ -273,7 +273,7 @@ export default {
       elradio: {
         value1: '1',
         value2: 'selected and disabled',
-        value3: "",
+        value3: 3,
         value5: "",
         value6: "",
       },
@@ -3930,6 +3930,9 @@ export default {
             margin: "15px",
             display: "block",
           }
+        },
+        elRadioButtonGroupType: {
+          type: 'elRadioButtonGroup'
         },
         elRadioType4: {
           tag: "span",
