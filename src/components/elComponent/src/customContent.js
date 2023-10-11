@@ -884,7 +884,45 @@ export default {
                         <el-radio label={9}>Option C</el-radio>
                     </el-radio-group>
                 )
-            }else {
+            } else if (node.type == 'elRadioButtonStyle') {
+                console.log("node.type == 'elRadioButtonStyle'");
+                return (
+                    <div>
+                        <div>
+                            <el-radio-group v-model={this.superParams.elradio.radio1}>
+                                <el-radio-button label="New York"></el-radio-button>
+                                <el-radio-button label="Washington"></el-radio-button>
+                                <el-radio-button label="Los Angeles"></el-radio-button>
+                                <el-radio-button label="Chicago"></el-radio-button>
+                            </el-radio-group>
+                        </div>
+                        <div style="margin-top: 20px">
+                            <el-radio-group v-model={this.superParams.elradio.radio2} size="medium">
+                                <el-radio-button label="New York" ></el-radio-button>
+                                <el-radio-button label="Washington"></el-radio-button>
+                                <el-radio-button label="Los Angeles"></el-radio-button>
+                                <el-radio-button label="Chicago"></el-radio-button>
+                            </el-radio-group>
+                        </div>
+                        <div style="margin-top: 20px">
+                            <el-radio-group v-model={this.superParams.elradio.radio3} size="small">
+                                <el-radio-button label="New York"></el-radio-button>
+                                <el-radio-button label="Washington" disabled ></el-radio-button>
+                                <el-radio-button label="Los Angeles"></el-radio-button>
+                                <el-radio-button label="Chicago"></el-radio-button>
+                            </el-radio-group>
+                        </div>
+                        <div style="margin-top: 20px">
+                            <el-radio-group v-model={this.superParams.elradio.radio4} disabled size="mini">
+                                <el-radio-button label="New York"></el-radio-button>
+                                <el-radio-button label="Washington"></el-radio-button>
+                                <el-radio-button label="Los Angeles"></el-radio-button>
+                                <el-radio-button label="Chicago"></el-radio-button>
+                            </el-radio-group>
+                        </div>
+                    </div>
+                )
+            } else {
 
                 return h(
                     node.condition ? (Boolean(this.superParams[node.condition]) == node.conditionVal && node.tag) : node.tag,
