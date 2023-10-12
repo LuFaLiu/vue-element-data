@@ -279,7 +279,11 @@ export default {
         radio1: 'New York',
         radio2: 'New York',
         radio3: 'New York',
-        radio4: 'New York'
+        radio4: 'New York',
+        radio5: '1',
+        radio6: '1',
+        radio7: '1',
+        radio8: '1'
       },
       elcheckbox: {
         value1: true,
@@ -3956,6 +3960,9 @@ export default {
             margin: "15px",
             display: "block",
           }
+        },
+        elRadioWithBorderType: {
+          type: 'elRadioWithBorder'
         },
         elCheckboxType1: {
           tag: "span",
