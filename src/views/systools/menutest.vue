@@ -3915,6 +3915,38 @@ export default {
         iconAttribute: {
           type: "iconAttribute",
         },
+        elLinkType1: {
+          tag: "span",
+          text: "Basic",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elLinkType2: {
+          tag: "span",
+          text: "Disabled",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elLinkType3: {
+          tag: "span",
+          text: "Underline",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elLinkType5: {
+          tag: "span",
+          text: "Icon",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
         elRadioType1: {
           tag: "span",
           text: "Basic usage",
@@ -6909,6 +6941,10 @@ export default {
 }
 
 ::v-deep {
+
+  .el-link {
+    margin-right: 15px;
+  }
   .upload-demo {
     width: 368px;
   }
