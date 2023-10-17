@@ -1974,6 +1974,10 @@ export default {
           tag: "i",
           class: "el-icon-picture-outline",
         },
+        iconCheckAttribute: {
+          tag: "i",
+          class: "el-icon-view el-icon--right",
+        },
         elImageTypeName1: {
           tag: "p",
           text: "Basic Usage",
@@ -3938,6 +3942,9 @@ export default {
             margin: "15px",
             display: "block",
           }
+        },
+        elIconCheckType:{
+          type:'elIconCheck'
         },
         elLinkType5: {
           tag: "span",

@@ -948,6 +948,11 @@ export default {
                         </div>
                     </div>
                 )
+            } else if (node.type == 'elIconCheck') {
+                console.log("node.type == 'elIconCheck'");
+                return (
+                    <el-link>Check<i class="el-icon-view el-icon--right"></i> </el-link>
+                )
             } else {
 
                 return h(
