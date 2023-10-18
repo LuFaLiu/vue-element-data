@@ -3919,6 +3919,68 @@ export default {
         iconAttribute: {
           type: "iconAttribute",
         },
+        elButtonType1: {
+          tag: "span",
+          text: "Basic usage",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elButtonBasicUsageType:{
+          type: 'elButtonBasicUsage'
+        },
+        elButtonType2: {
+          tag: "span",
+          text: "Disabled Button",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elDisabledButtonType:{
+          type: 'elDisabledButton'
+        },
+        elButtonType3: {
+          tag: "span",
+          text: "Text Button",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elButtonType4: {
+          tag: "span",
+          text: "Icon Button",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elButtonType5: {
+          tag: "span",
+          text: "Button Group",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elButtonType6: {
+          tag: "span",
+          text: "Loading Button",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elButtonType7: {
+          tag: "span",
+          text: "Sizes",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
         elLinkType1: {
           tag: "span",
           text: "Basic",
