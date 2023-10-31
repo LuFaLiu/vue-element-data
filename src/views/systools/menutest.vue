@@ -3957,6 +3957,9 @@ export default {
             display: "block",
           }
         },
+        elUploadButtonType:{
+          type: 'elUploadButton'
+        },
         elButtonType5: {
           tag: "span",
           text: "Button Group",

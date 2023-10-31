@@ -1017,6 +1017,11 @@ export default {
                         </el-row>
                     </div>
                 )
+            } else if (node.type == 'elUploadButton') {
+                console.log("node.type == 'elUploadButton'");
+                return (
+                    <el-button type="primary">Upload<i class="el-icon-upload el-icon-right"></i></el-button>
+                )
             } else {
 
                 return h(
