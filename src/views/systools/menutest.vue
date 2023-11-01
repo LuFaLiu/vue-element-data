@@ -3968,6 +3968,9 @@ export default {
             display: "block",
           }
         },
+        elButtonGroupType:{
+          type: 'elButtonGroup'
+        },
         elButtonType6: {
           tag: "span",
           text: "Loading Button",

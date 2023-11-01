@@ -1022,6 +1022,21 @@ export default {
                 return (
                     <el-button type="primary">Upload<i class="el-icon-upload el-icon-right"></i></el-button>
                 )
+            } else if (node.type == 'elButtonGroup') {
+                console.log("node.type == 'elButtonGroup'");
+                return (
+                    <div>
+                        <el-button-group>
+                            <el-button type="primary" icon="el-icon-arrow-left">Previous Page</el-button>
+                            <el-button type="primary">Next Page<i class="el-icon-arrow-right el-icon-right"></i></el-button>
+                        </el-button-group>
+                        <el-button-group style="margin-left:30px;">
+                            <el-button type="primary" icon="el-icon-edit"></el-button>
+                            <el-button type="primary" icon="el-icon-share"></el-button>
+                            <el-button type="primary" icon="el-icon-delete"></el-button>
+                        </el-button-group>
+                    </div>
+                )
             } else {
 
                 return h(
