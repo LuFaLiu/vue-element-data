@@ -3987,6 +3987,9 @@ export default {
             display: "block",
           }
         },
+        elButtonSizeType: {
+          type: 'elButtonSize'
+        },
         elLinkType1: {
           tag: "span",
           text: "Basic",
