@@ -1055,6 +1055,16 @@ export default {
                         </el-row>
                     </div>
                 )
+            } else if (node.type == 'elBasicUsageIcon') {
+                console.log("node.type == 'elBasicUsageIcon'");
+                return (
+                    <div>
+                        <i class="el-icon-edit" style="margin-right:15px;"></i>
+                        <i class="el-icon-share" style="margin-right:15px;"></i>
+                        <i class="el-icon-delete" style="margin-right:15px;"></i>
+                        <el-button type="primary" icon="el-icon-search">Search</el-button>
+                    </div>
+                )
             } else {
 
                 return h(

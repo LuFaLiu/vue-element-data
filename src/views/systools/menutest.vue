@@ -3919,6 +3919,17 @@ export default {
         iconAttribute: {
           type: "iconAttribute",
         },
+        elIconType: {
+          tag: "span",
+          text: "Basic usage",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elBasicUsageIconType:{
+          type: 'elBasicUsageIcon'
+        },
         elButtonType1: {
           tag: "span",
           text: "Basic usage",
