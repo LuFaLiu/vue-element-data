@@ -3919,6 +3919,41 @@ export default {
         iconAttribute: {
           type: "iconAttribute",
         },
+        elAvatarType1: {
+          tag: "span",
+          text: "Basic",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elAvatarBasicType:{
+          type:'elAvatarBasic'
+        },
+        elAvatarType2: {
+          tag: "span",
+          text: "Types",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elAvatarType3: {
+          tag: "span",
+          text: "Fallback when image load error",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elAvatarType4: {
+          tag: "span",
+          text: "How the image fit its container",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
         elIconType: {
           tag: "span",
           text: "Basic usage",
