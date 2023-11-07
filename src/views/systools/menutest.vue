@@ -3938,6 +3938,9 @@ export default {
             display: "block",
           }
         },
+        elAvatarSupportType:{
+          type:'elAvatarSupport'
+        },
         elAvatarType3: {
           tag: "span",
           text: "Fallback when image load error",

@@ -1072,7 +1072,7 @@ export default {
                 let sizeList = ["large", "medium", "small"]
                 return (
                     <el-row class="demo-avatar demo-basic" style="width:800px">
-                        <el-col span="12">
+                        <el-col span={12}>
                         <div class="sub-title">circle</div>
                         <div class="demo-basic--circle" style="display:flex;">
                             <div class="block"><el-avatar size="50" src={circleUrl}></el-avatar></div>
@@ -1085,7 +1085,7 @@ export default {
                             </div>
                         </div>
                         </el-col>  
-                        <el-col span="12">
+                        <el-col span={12}>
                         <div class="sub-title">square</div>
                         <div class="demo-basic--circle" style="display:flex;">
                             <div class="block"><el-avatar shape="square" size="50" src={squareUrl}></el-avatar></div>
@@ -1099,6 +1099,21 @@ export default {
                         </div>
                         </el-col> 
                     </el-row>
+                )
+            } else if (node.type == 'elAvatarSupport') {
+                console.log("node.type == 'elAvatarSupport'");
+                return (
+                    <div class="demo-type" style="display:flex;">
+                        <div>
+                            <el-avatar icon="el-icon-user-solid"></el-avatar>
+                        </div>
+                        <div>
+                            <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                        </div>
+                        <div>
+                            <el-avatar> user </el-avatar>
+                        </div>
+                    </div>
                 )
             }  else {
 
