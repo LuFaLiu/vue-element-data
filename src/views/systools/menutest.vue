@@ -3949,6 +3949,9 @@ export default {
             display: "block",
           }
         },
+        elAvatarImageLoadType:{
+          type: 'elAvatarImageLoad'
+        },
         elAvatarType4: {
           tag: "span",
           text: "How the image fit its container",

@@ -1115,6 +1115,15 @@ export default {
                         </div>
                     </div>
                 )
+            } else if (node.type == 'elAvatarImageLoad') {
+                console.log("node.type == 'elAvatarImageLoad'");
+                return (
+                    <div class="demo-type">
+                        <el-avatar size="60" src="https://empty">
+                        <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"/>
+                        </el-avatar>
+                    </div>
+                )
             }  else {
 
                 return h(
