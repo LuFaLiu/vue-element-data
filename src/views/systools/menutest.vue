@@ -3960,6 +3960,9 @@ export default {
             display: "block",
           }
         },
+        elAvatarImageFitType:{
+          type:'elAvatarImageFit'
+        },
         elIconType: {
           tag: "span",
           text: "Basic usage",

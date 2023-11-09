@@ -1124,6 +1124,26 @@ export default {
                         </el-avatar>
                     </div>
                 )
+            } else if (node.type == 'elAvatarImageFit') {
+                console.log("node.type == 'elAvatarImageFit'");
+                let fits = ['fill', 'contain', 'cover', 'none', 'scale-down']
+                let url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                return (
+                    <div style="width:800px">
+                        <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
+                            <div class="block" style="flex: 1;display: flex;align-items: center;;flex-grow: 0;">
+                                {
+                                    fits.map((fit, index) =>
+                                        <div>
+                                            <span class="title">{ fit }</span>
+                                            <el-avatar shape="square" size="100" fit={fit} src={url}></el-avatar>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                        </div>
+                    </div>
+                )
             }  else {
 
                 return h(
