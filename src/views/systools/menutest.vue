@@ -3919,6 +3919,72 @@ export default {
         iconAttribute: {
           type: "iconAttribute",
         },
+        elLayoutType1: {
+          tag: "span",
+          text: "Basic layout",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elLayoutBasicLayoutType:{
+          type: 'elLayoutBasicLayout'
+        },
+        elLayoutType2: {
+          tag: "span",
+          text: "Column spacing",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elLayoutColumnSpacingType:{
+          type: 'elLayoutColumnSpacing'
+        },
+        elLayoutType3: {
+          tag: "span",
+          text: "Hybrid layout",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elLayoutHybridLayoutType:{
+          type: 'elLayoutHybridLayout'
+        },
+        elLayoutType4: {
+          tag: "span",
+          text: "Column offset",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elLayoutColumnOffsetType:{
+          type: 'elLayoutColumnOffset'
+        },
+        elLayoutType5: {
+          tag: "span",
+          text: "Alignment",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elLayoutAlignmentType:{
+          type: 'elLayoutAlignment'
+        },
+        elLayoutType6: {
+          tag: "span",
+          text: "Responsive Layout",
+          style: {
+            margin: "15px",
+            display: "block",
+          }
+        },
+        elLayoutResponsiveLayoutType:{
+          type: 'elLayoutResponsiveLayout'
+        },
         elContainerType1: {
           tag: "span",
           text: "Common layouts",
@@ -7096,6 +7162,36 @@ export default {
 }
 
 ::v-deep {
+
+  .elLayoutBasicLayout {
+    width: 1068px;
+    .el-row {
+      margin-bottom: 20px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .el-col {
+      border-radius: 4px;
+    }
+    .bg-purple-dark {
+      background: #99a9bf;
+    }
+    .bg-purple {
+      background: #d3dce6;
+    }
+    .bg-purple-light {
+      background: #e5e9f2;
+    }
+    .grid-content {
+      border-radius: 4px;
+      min-height: 36px;
+    }
+    .row-bg {
+      padding: 10px 0;
+      background-color: #f9fafc;
+    }
+  }
 
   .elContainerCommonLayout {
     .el-header, .el-footer {

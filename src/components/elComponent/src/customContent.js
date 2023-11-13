@@ -1289,6 +1289,140 @@ export default {
                         </el-container>
                     </div>
                 )
+            } else if (node.type == 'elLayoutBasicLayout') {
+                console.log("node.type == 'elLayoutBasicLayout'");
+                let fits = ['fill', 'contain', 'cover', 'none', 'scale-down']
+                let url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                return (
+                    <div class="elLayoutBasicLayout">
+                        <el-row>
+                            <el-col span={24}><div class="grid-content bg-purple-dark"></div></el-col>
+                        </el-row>
+                        <el-row>
+                            <el-col span={12}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={12}><div class="grid-content bg-purple-light"></div></el-col>
+                        </el-row>
+                        <el-row>
+                            <el-col span={8}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={8}><div class="grid-content bg-purple-light"></div></el-col>
+                            <el-col span={8}><div class="grid-content bg-purple"></div></el-col>
+                        </el-row>
+                        <el-row>
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple-light"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple-light"></div></el-col>
+                        </el-row>
+                        <el-row>
+                            <el-col span={4}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={4}><div class="grid-content bg-purple-light"></div></el-col>
+                            <el-col span={4}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={4}><div class="grid-content bg-purple-light"></div></el-col>
+                            <el-col span={4}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={4}><div class="grid-content bg-purple-light"></div></el-col>
+                        </el-row>
+                    </div>
+                )
+            } else if (node.type == 'elLayoutColumnSpacing') {
+                console.log("node.type == 'elLayoutColumnSpacing'");
+                let fits = ['fill', 'contain', 'cover', 'none', 'scale-down']
+                let url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                return (
+                    <div style="width:800px">
+                        <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
+                            <div class="block" style="flex: 1;display: flex;align-items: center;;flex-grow: 0;">
+                                {
+                                    fits.map((fit, index) =>
+                                        <div>
+                                            <span class="title">{ fit }</span>
+                                            <el-avatar shape="square" size="100" fit={fit} src={url}></el-avatar>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                        </div>
+                    </div>
+                )
+            } else if (node.type == 'elLayoutHybridLayout') {
+                console.log("node.type == 'elLayoutHybridLayout'");
+                let fits = ['fill', 'contain', 'cover', 'none', 'scale-down']
+                let url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                return (
+                    <div style="width:800px">
+                        <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
+                            <div class="block" style="flex: 1;display: flex;align-items: center;;flex-grow: 0;">
+                                {
+                                    fits.map((fit, index) =>
+                                        <div>
+                                            <span class="title">{ fit }</span>
+                                            <el-avatar shape="square" size="100" fit={fit} src={url}></el-avatar>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                        </div>
+                    </div>
+                )
+            } else if (node.type == 'elLayoutColumnOffset') {
+                console.log("node.type == 'elLayoutColumnOffset'");
+                let fits = ['fill', 'contain', 'cover', 'none', 'scale-down']
+                let url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                return (
+                    <div style="width:800px">
+                        <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
+                            <div class="block" style="flex: 1;display: flex;align-items: center;;flex-grow: 0;">
+                                {
+                                    fits.map((fit, index) =>
+                                        <div>
+                                            <span class="title">{ fit }</span>
+                                            <el-avatar shape="square" size="100" fit={fit} src={url}></el-avatar>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                        </div>
+                    </div>
+                )
+            } else if (node.type == 'elLayoutAlignment') {
+                console.log("node.type == 'elLayoutAlignment'");
+                let fits = ['fill', 'contain', 'cover', 'none', 'scale-down']
+                let url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                return (
+                    <div style="width:800px">
+                        <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
+                            <div class="block" style="flex: 1;display: flex;align-items: center;;flex-grow: 0;">
+                                {
+                                    fits.map((fit, index) =>
+                                        <div>
+                                            <span class="title">{ fit }</span>
+                                            <el-avatar shape="square" size="100" fit={fit} src={url}></el-avatar>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                        </div>
+                    </div>
+                )
+            } else if (node.type == 'elLayoutResponsiveLayout') {
+                console.log("node.type == 'elLayoutResponsiveLayout'");
+                let fits = ['fill', 'contain', 'cover', 'none', 'scale-down']
+                let url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                return (
+                    <div style="width:800px">
+                        <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
+                            <div class="block" style="flex: 1;display: flex;align-items: center;;flex-grow: 0;">
+                                {
+                                    fits.map((fit, index) =>
+                                        <div>
+                                            <span class="title">{ fit }</span>
+                                            <el-avatar shape="square" size="100" fit={fit} src={url}></el-avatar>
+                                        </div>
+                                    )
+                                }
+                            </div>
+                        </div>
+                    </div>
+                )
             }  else {
 
                 return h(
