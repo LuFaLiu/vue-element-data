@@ -1325,28 +1325,18 @@ export default {
                 )
             } else if (node.type == 'elLayoutColumnSpacing') {
                 console.log("node.type == 'elLayoutColumnSpacing'");
-                let fits = ['fill', 'contain', 'cover', 'none', 'scale-down']
-                let url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
                 return (
-                    <div style="width:800px">
-                        <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
-                            <div class="block" style="flex: 1;display: flex;align-items: center;;flex-grow: 0;">
-                                {
-                                    fits.map((fit, index) =>
-                                        <div>
-                                            <span class="title">{ fit }</span>
-                                            <el-avatar shape="square" size="100" fit={fit} src={url}></el-avatar>
-                                        </div>
-                                    )
-                                }
-                            </div>
-                        </div>
+                    <div class="elLayoutColumnSpacing">
+                        <el-row gutter={20}>
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                        </el-row>
                     </div>
                 )
             } else if (node.type == 'elLayoutHybridLayout') {
                 console.log("node.type == 'elLayoutHybridLayout'");
-                let fits = ['fill', 'contain', 'cover', 'none', 'scale-down']
-                let url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
                 return (
                     <div style="width:800px">
                         <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
@@ -1365,8 +1355,6 @@ export default {
                 )
             } else if (node.type == 'elLayoutColumnOffset') {
                 console.log("node.type == 'elLayoutColumnOffset'");
-                let fits = ['fill', 'contain', 'cover', 'none', 'scale-down']
-                let url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
                 return (
                     <div style="width:800px">
                         <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
@@ -1385,8 +1373,6 @@ export default {
                 )
             } else if (node.type == 'elLayoutAlignment') {
                 console.log("node.type == 'elLayoutAlignment'");
-                let fits = ['fill', 'contain', 'cover', 'none', 'scale-down']
-                let url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
                 return (
                     <div style="width:800px">
                         <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
@@ -1405,8 +1391,6 @@ export default {
                 )
             } else if (node.type == 'elLayoutResponsiveLayout') {
                 console.log("node.type == 'elLayoutResponsiveLayout'");
-                let fits = ['fill', 'contain', 'cover', 'none', 'scale-down']
-                let url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
                 return (
                     <div style="width:800px">
                         <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
