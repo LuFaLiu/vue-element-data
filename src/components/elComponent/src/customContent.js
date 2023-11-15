@@ -1338,19 +1338,23 @@ export default {
             } else if (node.type == 'elLayoutHybridLayout') {
                 console.log("node.type == 'elLayoutHybridLayout'");
                 return (
-                    <div style="width:800px">
-                        <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
-                            <div class="block" style="flex: 1;display: flex;align-items: center;;flex-grow: 0;">
-                                {
-                                    fits.map((fit, index) =>
-                                        <div>
-                                            <span class="title">{ fit }</span>
-                                            <el-avatar shape="square" size="100" fit={fit} src={url}></el-avatar>
-                                        </div>
-                                    )
-                                }
-                            </div>
-                        </div>
+                    <div class="elLayoutHybridLayout">
+                        <el-row gutter={20}>
+                            <el-col span={16}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={8}><div class="grid-content bg-purple"></div></el-col>
+                        </el-row>
+                        <el-row gutter={20}>
+                            <el-col span={8}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={8}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={4}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={4}><div class="grid-content bg-purple"></div></el-col>
+                        </el-row>
+                        <el-row gutter={20}>
+                            <el-col span={4}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={16}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={4}><div class="grid-content bg-purple"></div></el-col>
+                        </el-row>
+
                     </div>
                 )
             } else if (node.type == 'elLayoutColumnOffset') {
