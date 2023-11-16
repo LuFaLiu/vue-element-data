@@ -1360,19 +1360,18 @@ export default {
             } else if (node.type == 'elLayoutColumnOffset') {
                 console.log("node.type == 'elLayoutColumnOffset'");
                 return (
-                    <div style="width:800px">
-                        <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
-                            <div class="block" style="flex: 1;display: flex;align-items: center;;flex-grow: 0;">
-                                {
-                                    fits.map((fit, index) =>
-                                        <div>
-                                            <span class="title">{ fit }</span>
-                                            <el-avatar shape="square" size="100" fit={fit} src={url}></el-avatar>
-                                        </div>
-                                    )
-                                }
-                            </div>
-                        </div>
+                    <div class="elLayoutColumnOffset">
+                        <el-row gutter={20}>
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={6} offset={6}><div class="grid-content bg-purple"></div></el-col>
+                            </el-row>
+                            <el-row gutter={20}>
+                            <el-col span={6} offset={6}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={6} offset={6}><div class="grid-content bg-purple"></div></el-col>
+                            </el-row>
+                            <el-row gutter={20}>
+                            <el-col span={12} offset={6}><div class="grid-content bg-purple"></div></el-col>
+                        </el-row>
                     </div>
                 )
             } else if (node.type == 'elLayoutAlignment') {
