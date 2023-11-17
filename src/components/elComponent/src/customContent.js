@@ -1377,19 +1377,32 @@ export default {
             } else if (node.type == 'elLayoutAlignment') {
                 console.log("node.type == 'elLayoutAlignment'");
                 return (
-                    <div style="width:800px">
-                        <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
-                            <div class="block" style="flex: 1;display: flex;align-items: center;;flex-grow: 0;">
-                                {
-                                    fits.map((fit, index) =>
-                                        <div>
-                                            <span class="title">{ fit }</span>
-                                            <el-avatar shape="square" size="100" fit={fit} src={url}></el-avatar>
-                                        </div>
-                                    )
-                                }
-                            </div>
-                        </div>
+                    <div class="elLayoutAlignment">
+                        <el-row type="flex" class="row-bg">
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple-light"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            </el-row>
+                            <el-row type="flex" class="row-bg" justify="center">
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple-light"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            </el-row>
+                            <el-row type="flex" class="row-bg" justify="end">
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple-light"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            </el-row>
+                            <el-row type="flex" class="row-bg" justify="space-between">
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple-light"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            </el-row>
+                            <el-row type="flex" class="row-bg" justify="space-around">
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple-light"></div></el-col>
+                            <el-col span={6}><div class="grid-content bg-purple"></div></el-col>
+                        </el-row>
                     </div>
                 )
             } else if (node.type == 'elLayoutResponsiveLayout') {
