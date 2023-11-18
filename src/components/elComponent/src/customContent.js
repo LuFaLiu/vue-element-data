@@ -1408,19 +1408,13 @@ export default {
             } else if (node.type == 'elLayoutResponsiveLayout') {
                 console.log("node.type == 'elLayoutResponsiveLayout'");
                 return (
-                    <div style="width:800px">
-                        <div class="demo-fit" style="display: flex;text-align: center;justify-content: space-between;">
-                            <div class="block" style="flex: 1;display: flex;align-items: center;;flex-grow: 0;">
-                                {
-                                    fits.map((fit, index) =>
-                                        <div>
-                                            <span class="title">{ fit }</span>
-                                            <el-avatar shape="square" size="100" fit={fit} src={url}></el-avatar>
-                                        </div>
-                                    )
-                                }
-                            </div>
-                        </div>
+                    <div class="elLayoutResponsiveLayout">
+                        <el-row gutter={10}>
+                            <el-col xs={8} sm={6} md={4} lg={3} xl={1}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col xs={4} sm={6} md={8} lg={9} xl={11}><div class="grid-content bg-purple-light"></div></el-col>
+                            <el-col xs={4} sm={6} md={8} lg={9} xl={11}><div class="grid-content bg-purple"></div></el-col>
+                            <el-col xs={8} sm={6} md={4} lg={3} xl={1}><div class="grid-content bg-purple-light"></div></el-col>
+                        </el-row>
                     </div>
                 )
             }  else {
